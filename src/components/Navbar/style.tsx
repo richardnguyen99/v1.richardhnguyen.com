@@ -35,6 +35,7 @@ export const StyledNavbarBrand = styled(Link)`
   opacity: 0.88;
   cursor: pointer;
   height: 64px;
+  margin-right: 1rem;
 
   letter-spacing: 1;
   font-size: 1.5rem;
@@ -67,5 +68,40 @@ export const StyledNavbarBrand = styled(Link)`
     right: 0;
     bottom: 0;
     transition: width 200ms cubic-bezier(0.2, 1.03, 0.81, 0.99);
+  }
+`;
+
+export const StyledNavbarItemGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const StyledNavbarNav = styled.div`
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: flex-start;
+
+  & > ${StyledNavbarItemGroup}:last-child {
+    margin-left: auto;
+  }
+`;
+
+export const StyledNavbarItem = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  opacity: 0.9;
+
+  & > a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:hover {
+    background: var(--systemColor-gray-6);
   }
 `;

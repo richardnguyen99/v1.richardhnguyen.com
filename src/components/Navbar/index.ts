@@ -5,9 +5,15 @@
  */
 import NavbarWrapper from "./NavbarWrapper";
 import Navbar from "./Navbar";
+import NavbarBrand from "./NavbarBrand";
+import { StyledNavbarItemGroup, StyledNavbarNav, StyledNavbarItem } from "./style";
 
 const exported = Object.assign(Navbar, {
   Wrapper: NavbarWrapper,
+  Brand: NavbarBrand,
+  Nav: StyledNavbarNav,
+  ItemGroup: StyledNavbarItemGroup,
+  Item: StyledNavbarItem,
 });
 
 export default exported;
