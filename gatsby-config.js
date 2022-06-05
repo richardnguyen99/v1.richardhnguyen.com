@@ -4,17 +4,20 @@
  * @see https://www.gatsbyjs.com/docs/
  */
 
-import type { GatsbyConfig } from "gatsby";
-
-const config: GatsbyConfig = {
+// @ts-check
+/**
+ * @type {import('gatsby').GatsbyConfig}
+ */
+const config = {
   siteMetadata: {
     title: "Richard H. Nguyen",
     description: "Main page for Richard H. Nguyen",
     author: "@richardnguyen99",
-    siteUrl: "richardhnguyen.com",
+    siteUrl: "http://richardhnguyen.com",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
     {
       resolve: "gatsby-source-filesystem",
@@ -33,17 +36,12 @@ const config: GatsbyConfig = {
         short_name: "starter",
         start_url: "/",
         background_color: "#663399",
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
         display: "minimal-ui",
         icon: "src/images/gatsby-icon.png", // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
 };
 
-export default config;
+module.exports = config;

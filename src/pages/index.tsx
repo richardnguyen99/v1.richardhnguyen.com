@@ -5,13 +5,13 @@
  */
 import * as React from "react";
 
-import Seo from "@components/SEO";
+import Layout from "@components/Layout";
 
 const IndexPage: React.FC = () => {
   return (
-    <main>
-      <Seo title="Home" lang="en" />
-    </main>
+    <Layout.Page title="Home">
+      <h1>Hello, World</h1>
+    </Layout.Page>
   );
 };
 

@@ -25,6 +25,12 @@
       "@components/*": [
         "src/components/*"
       ],
+      "@mixins": [
+        "src/mixins"
+      ],
+      "@mixins/*": [
+        "src/mixins/*"
+      ],
       "@hooks/*": [
         "src/hooks/*"
       ],

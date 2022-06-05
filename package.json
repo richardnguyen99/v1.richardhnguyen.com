@@ -1,11 +1,12 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "richardhnguyen.com",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Main page for Richard H. Nguyen",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Richard H. Nguyen <richard.ng0616@gmail.com>",
   "dependencies": {
     "@types/react-helmet": "^6.1.5",
+    "babel-plugin-styled-components": "^2.0.7",
     "gatsby": "^4.15.2",
     "gatsby-plugin-gatsby-cloud": "^4.15.0",
     "gatsby-plugin-image": "^2.15.1",
@@ -14,14 +15,16 @@
     "gatsby-plugin-offline": "^5.15.1",
     "gatsby-plugin-react-helmet": "^5.15.0",
     "gatsby-plugin-sharp": "^4.15.1",
+    "gatsby-plugin-styled-components": "^5.15.0",
     "gatsby-source-filesystem": "^4.15.0",
     "gatsby-transformer-sharp": "^4.15.1",
-    "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.25",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^4.33.0",
     "eslint-import-resolver-node": "^0.3.6",
@@ -36,7 +39,7 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
+  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -49,9 +52,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/richardnguyen99/richardhnguyen.com"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/richardnguyen99/richardhnguyen.com/issues"
   }
 }
