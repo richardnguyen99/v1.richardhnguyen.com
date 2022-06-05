@@ -9,7 +9,7 @@ import Layout from "@components/Layout";
 
 const IndexPage: React.FC = () => {
   return (
-    <Layout.Page title="Home">
+    <Layout.Page className="bg-gray-7" title="Home">
       <h1>The standard Lorem Ipsum passage, used since the 1500s</h1>
 
       <p>

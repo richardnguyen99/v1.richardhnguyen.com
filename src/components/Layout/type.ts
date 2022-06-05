@@ -3,7 +3,7 @@
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ClassAttributes } from "react";
 
 export interface LayoutProps {
   [k: string]: any;
@@ -11,6 +11,7 @@ export interface LayoutProps {
 
 export interface PageLayoutProps extends LayoutProps {
   title: string;
+  className?: string;
 }
 
 export type LayoutPropsWithChildren = PropsWithChildren<LayoutProps>;

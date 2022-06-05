@@ -22,9 +22,17 @@ const GlobalStyle = createGlobalStyle`
     --systemColor-purple: rgb(175, 82, 222);
     --systemColor-pink: rgb(255, 45, 85);
     --systemColor-brown: rgb(162, 132, 94);
+    --systemColor-gray-1: rgb(142,142, 147);
+    --systemColor-gray-2: rgb(174, 174, 178);
+    --systemColor-gray-3: rgb(199, 199, 204);
+    --systemColor-gray-4: rgb(209, 209, 214);
+    --systemColor-gray-5: rgb(229, 229,234);
+    --systemColor-gray-6: rgb(242, 242, 247);
+    --systemColor-gray-7: rgb(250, 250, 252);
   }
 
   ${Mixins.Normalize};
+  ${Mixins.SystemColor};
 
   a:hover, a:active, a:visited {
     color: inherit;

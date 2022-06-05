@@ -13,17 +13,24 @@ import Navbar from "@components/Navbar";
 import Seo from "@components/SEO";
 import NavbarBrand from "@components/Navbar/NavbarBrand";
 
-const PageLayout: React.FC<PageLayoutPropsWithChildren> = ({ title, children, ...rest }) => {
+const PageLayout: React.FC<PageLayoutPropsWithChildren> = ({
+  title,
+  className = "",
+  children,
+  ...rest
+}) => {
   return (
-    <RootLayout>
-      <Seo title={title} lang="en" />
-      <Navbar.Wrapper>
-        <Navbar>
-          <NavbarBrand />
-        </Navbar>
-      </Navbar.Wrapper>
-      <Utility.Container {...rest}>{children}</Utility.Container>
-    </RootLayout>
+    <main className={className}>
+      <RootLayout>
+        <Seo title={title} lang="en" />
+        <Navbar.Wrapper>
+          <Navbar>
+            <NavbarBrand />
+          </Navbar>
+        </Navbar.Wrapper>
+        <Utility.Container {...rest}>{children}</Utility.Container>
+      </RootLayout>
+    </main>
   );
 };
 

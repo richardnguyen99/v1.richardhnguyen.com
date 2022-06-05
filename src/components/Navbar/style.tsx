@@ -41,9 +41,9 @@ export const StyledNavbarBrand = styled(Link)`
   letter-spacing: -0.026em;
   font-weight: 600;
 
-  transition: width 200ms ease-in;
+  transition: height 200ms ease-in;
 
-  &.scroll {
+  .scrolled > & {
     height: 52px;
   }
 
