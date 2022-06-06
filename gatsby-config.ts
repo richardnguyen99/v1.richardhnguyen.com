@@ -4,11 +4,9 @@
  * @see https://www.gatsbyjs.com/docs/
  */
 
-// @ts-check
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
-const config = {
+import { GatsbyConfig } from "gatsby";
+
+const config: GatsbyConfig = {
   siteMetadata: {
     title: "Richard H. Nguyen",
     description: "Main page for Richard H. Nguyen",
@@ -44,4 +42,4 @@ const config = {
   ],
 };
 
-module.exports = config;
+export default config;

@@ -1,15 +1,14 @@
 /**
  * Support for Typescript
  *
- * @see https://www.gatsbyjs.com/docs/
+ * @see https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#gatsby-nodets
+ * @see https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#requireresolve
  */
 
-//import path from "path";
-//import type { GatsbyNode } from "gatsby";
+import path from "path";
+import { GatsbyNode } from "gatsby";
 
-const path = require("path");
-
-exports.onCreateWebpackConfig = async ({ actions }) => {
+export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = async ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
@@ -24,16 +23,11 @@ exports.onCreateWebpackConfig = async ({ actions }) => {
   });
 };
 
-// @ts-check
-
-/**
- * @type {import('gatsby').GatsbyNode['createPages']}
- */
-exports.createPages = async ({ actions }) => {
+export const createPages: GatsbyNode["createPages"] = async ({ actions }) => {
   const { createPage } = actions;
   createPage({
     path: "/using-dsg",
-    component: require.resolve("./src/templates/using-dsg.tsx"),
+    component: path.resolve("./src/templates/using-dsg.tsx"),
     context: {},
     defer: true,
   });

@@ -17,7 +17,7 @@ export const StyledNavbarWrapper = styled.nav`
     z-index: 100;
   }
 
-  background: rgb(255, 255, 255, 0.9);
+  background: rgb(255, 255, 255, 1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.16);
 `;
 
@@ -75,6 +75,7 @@ export const StyledNavbarItemGroup = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
 `;
 
 export const StyledNavbarNav = styled.div`
@@ -101,7 +102,9 @@ export const StyledNavbarItem = styled.div`
     color: inherit;
   }
 
-  &:hover {
+  &:hover,
+  &.active {
     background: var(--systemColor-gray-6);
+    opacity: 0.9;
   }
 `;

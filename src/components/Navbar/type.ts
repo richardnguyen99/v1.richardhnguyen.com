@@ -10,4 +10,15 @@ type BaseNavbarProps = {
   [key: string]: any;
 };
 
+type BaseNavbarItemProps = BaseNavbarProps & {
+  id?: string;
+};
+
+export type NavbarContextProps = {
+  activeTab: string;
+  toggleActiveTab: React.Dispatch<React.SetStateAction<string>>;
+};
+
 export type NavbarProps = React.PropsWithChildren<BaseNavbarProps>;
+
+export type NavbarItemProps = React.PropsWithChildren<BaseNavbarItemProps>;

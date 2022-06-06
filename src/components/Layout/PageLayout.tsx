@@ -23,30 +23,32 @@ const PageLayout: React.FC<PageLayoutPropsWithChildren> = ({
     <main className={className}>
       <RootLayout>
         <Seo title={title} lang="en" />
-        <Navbar.Wrapper>
-          <Navbar>
-            <Navbar.Brand />
-            <Navbar.Nav>
-              <Navbar.ItemGroup id="nav-left">
-                <Navbar.Item>
-                  <Link to="/articles">Articles</Link>
-                </Navbar.Item>
-                <Navbar.Item>
-                  <Link to="/about">About</Link>
-                </Navbar.Item>
-                <Navbar.Item>
-                  <Link to="/projects">Projects</Link>
-                </Navbar.Item>
-              </Navbar.ItemGroup>
-              <Navbar.ItemGroup id="nav-right">
-                <Navbar.Item>Github</Navbar.Item>
-                <Navbar.Item>RSS</Navbar.Item>
-                <Navbar.Item style={{ paddingRight: 0 }}>Theme</Navbar.Item>
-              </Navbar.ItemGroup>
-            </Navbar.Nav>
-          </Navbar>
-        </Navbar.Wrapper>
-        <Utility.Container {...rest}>{children}</Utility.Container>
+        <Navbar.Provider>
+          <Navbar.Wrapper>
+            <Navbar>
+              <Navbar.Brand />
+              <Navbar.Nav>
+                <Navbar.ItemGroup id="nav-left">
+                  <Navbar.Item id="articles">
+                    <Link to="/articles">Articles</Link>
+                  </Navbar.Item>
+                  <Navbar.Item id="about">
+                    <Link to="/about">About</Link>
+                  </Navbar.Item>
+                  <Navbar.Item id="projects">
+                    <Link to="/projects">Projects</Link>
+                  </Navbar.Item>
+                </Navbar.ItemGroup>
+                <Navbar.ItemGroup id="nav-right">
+                  <Navbar.Item>Github</Navbar.Item>
+                  <Navbar.Item>RSS</Navbar.Item>
+                  <Navbar.Item>Theme</Navbar.Item>
+                </Navbar.ItemGroup>
+              </Navbar.Nav>
+            </Navbar>
+          </Navbar.Wrapper>
+          <Utility.Container {...rest}>{children}</Utility.Container>
+        </Navbar.Provider>
       </RootLayout>
     </main>
   );
