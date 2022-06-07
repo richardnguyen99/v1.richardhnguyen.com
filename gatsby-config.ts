@@ -7,6 +7,7 @@
 import { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
+  graphqlTypegen: true,
   siteMetadata: {
     title: "Richard H. Nguyen",
     description: "Main page for Richard H. Nguyen",

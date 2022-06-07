@@ -40,9 +40,9 @@ const PageLayout: React.FC<PageLayoutPropsWithChildren> = ({
                   </Navbar.Item>
                 </Navbar.ItemGroup>
                 <Navbar.ItemGroup id="nav-right">
-                  <Navbar.Item>Github</Navbar.Item>
-                  <Navbar.Item>RSS</Navbar.Item>
-                  <Navbar.Item>Theme</Navbar.Item>
+                  <Navbar.Item id="github">Github</Navbar.Item>
+                  <Navbar.Item id="rss">RSS</Navbar.Item>
+                  <Navbar.Item id="theme">Theme</Navbar.Item>
                 </Navbar.ItemGroup>
               </Navbar.Nav>
             </Navbar>

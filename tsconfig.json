@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -19,42 +15,18 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components": [
-        "src/components"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@mixins": [
-        "src/mixins"
-      ],
-      "@mixins/*": [
-        "src/mixins/*"
-      ],
-      "@hooks/*": [
-        "src/hooks/*"
-      ],
-      "@hooks": [
-        "src/hooks"
-      ],
-      "@helper/*": [
-        "src/helper/*"
-      ],
-      "@helper": [
-        "src/helper"
-      ],
-      "@pages/*": [
-        "src/pages/*"
-      ],
-      "@pages": [
-        "src/pages"
-      ],
-      "@generated/*": [
-        "src/generated/*"
-      ],
-      "@generated": [
-        "src/generated"
-      ]
+      "@components": ["src/components"],
+      "@components/*": ["src/components/*"],
+      "@mixins": ["src/mixins"],
+      "@mixins/*": ["src/mixins/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@hooks": ["src/hooks"],
+      "@helper/*": ["src/helper/*"],
+      "@helper": ["src/helper"],
+      "@pages/*": ["src/pages/*"],
+      "@pages": ["src/pages"],
+      "@generated/*": ["src/generated/*"],
+      "@generated": ["src/generated"]
     }
   },
   "include": [
@@ -65,8 +37,5 @@
     "./gatsby-config.ts",
     "./plugins/**/*"
   ],
-  "exclude": [
-    "node_modules",
-    "**/generated/*"
-  ]
+  "exclude": ["node_modules", "**/generated/*"]
 }
