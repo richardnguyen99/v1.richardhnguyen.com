@@ -26,7 +26,7 @@ export const StyledNavbar = styled(StyledContainer)`
   align-items: center;
 `;
 
-export const StyledNavbarBrand = styled(Link)`
+export const StyledNavbarBrand = styled(Link)<{ pageColor: string }>`
   position: relative;
   display: flex;
   align-items: center;
@@ -49,7 +49,7 @@ export const StyledNavbarBrand = styled(Link)`
   }
 
   &:hover {
-    color: var(--systemColor-blue);
+    color: var(--systemColor-${(props) => props.pageColor});
   }
 
   &:hover:after {
@@ -62,7 +62,7 @@ export const StyledNavbarBrand = styled(Link)`
     position: absolute;
     height: 5px;
     width: 0%;
-    background: var(--systemColor-blue);
+    background: var(--systemColor-${(props) => props.pageColor});
     top: calc(100% - 5px);
     left: 0;
     right: 0;

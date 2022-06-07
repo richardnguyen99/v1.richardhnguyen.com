@@ -7,10 +7,14 @@
 import * as React from "react";
 
 import Layout from "@components/Layout";
+import Typography from "@components/Typography";
 
 const AboutPage: React.FC = () => {
   return (
     <Layout.Page className="bg-gray-7" title="About">
+      <Typography.HeroHeadline>
+        <Typography.UnderlineText color="red">About</Typography.UnderlineText> Richard
+      </Typography.HeroHeadline>
       <h3>Hedonist Roots</h3>
 
       <p>

@@ -7,10 +7,16 @@
 import * as React from "react";
 
 import Layout from "@components/Layout";
+import Typography from "@components/Typography";
 
 const IndexPage: React.FC = () => {
   return (
     <Layout.Page className="bg-gray-7" title="Home">
+      <Typography.HeroHeadline>
+        The <Typography.UnderlineText color="blue">latest</Typography.UnderlineText> from Richard H.
+        Nguyen
+      </Typography.HeroHeadline>
+
       <h1>The standard Lorem Ipsum passage, used since the 1500s</h1>
 
       <p>
