@@ -9,6 +9,7 @@ import { Link } from "gatsby";
 import { PageLayoutPropsWithChildren } from "./type";
 import RootLayout from "./RootLayout";
 
+import SVG from "@components/Svg";
 import Utility from "@components/Utility";
 import Navbar from "@components/Navbar";
 import Seo from "@components/SEO";
@@ -40,9 +41,15 @@ const PageLayout: React.FC<PageLayoutPropsWithChildren> = ({
                   </Navbar.Item>
                 </Navbar.ItemGroup>
                 <Navbar.ItemGroup id="nav-right">
-                  <Navbar.Item id="github">Github</Navbar.Item>
-                  <Navbar.Item id="rss">RSS</Navbar.Item>
-                  <Navbar.Item id="theme">Theme</Navbar.Item>
+                  <Navbar.Item id="github">
+                    <SVG.Github />
+                  </Navbar.Item>
+                  <Navbar.Item id="rss">
+                    <SVG.RSS size={16} />
+                  </Navbar.Item>
+                  <Navbar.Item id="theme">
+                    <SVG.Sun size={16} />
+                  </Navbar.Item>
                 </Navbar.ItemGroup>
               </Navbar.Nav>
             </Navbar>
