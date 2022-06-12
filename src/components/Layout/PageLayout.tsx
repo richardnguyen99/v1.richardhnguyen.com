@@ -41,13 +41,13 @@ const PageLayout: React.FC<PageLayoutPropsWithChildren> = ({
                   </Navbar.Item>
                 </Navbar.ItemGroup>
                 <Navbar.ItemGroup id="nav-right">
-                  <Navbar.Item id="github">
+                  <Navbar.Item id="github" icon>
                     <SVG.Github />
                   </Navbar.Item>
-                  <Navbar.Item id="rss">
+                  <Navbar.Item id="rss" icon>
                     <SVG.RSS size={16} />
                   </Navbar.Item>
-                  <Navbar.Item id="theme">
+                  <Navbar.Item id="theme" icon>
                     <SVG.Sun size={16} />
                   </Navbar.Item>
                 </Navbar.ItemGroup>

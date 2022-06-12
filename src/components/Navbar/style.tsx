@@ -4,7 +4,7 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { StyledContainer } from "@components/Utility/Container";
 
@@ -89,11 +89,11 @@ export const StyledNavbarNav = styled.div`
   }
 `;
 
-export const StyledNavbarItem = styled.div`
+export const StyledNavbarItem = styled.div<{ icon: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.25rem 0.5rem;
+  padding: ${(props) => (props.icon ? css`0.5rem` : css`0.25rem 0.5rem`)};
   border-radius: 6px;
   opacity: 0.9;
 

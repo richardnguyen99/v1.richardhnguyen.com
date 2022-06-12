@@ -10,7 +10,7 @@ import { NavbarContext } from "./context";
 import { StyledNavbarItem } from "./style";
 import { NavbarItemProps } from "./type";
 
-const NavbarItem: React.FC<NavbarItemProps> = ({ id = "", children, ...rest }) => {
+const NavbarItem: React.FC<NavbarItemProps> = ({ id = "", children, icon = false, ...rest }) => {
   const navbarContext = React.useContext(NavbarContext);
 
   const location = useLocation();
@@ -28,7 +28,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ id = "", children, ...rest }) =
   }, [id, location, navbarContext]);
 
   return (
-    <StyledNavbarItem id={id} className={active && "active"} {...rest}>
+    <StyledNavbarItem id={id} className={active && "active"} {...rest} icon={icon}>
       {children}
     </StyledNavbarItem>
   );

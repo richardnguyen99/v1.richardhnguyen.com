@@ -12,6 +12,7 @@ type BaseNavbarProps = {
 
 type BaseNavbarItemProps = BaseNavbarProps & {
   id?: string;
+  icon?: boolean;
 };
 
 export type NavbarContextProps = {
