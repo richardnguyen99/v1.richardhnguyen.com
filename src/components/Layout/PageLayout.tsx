@@ -13,6 +13,7 @@ import SVG from "@components/Svg";
 import Utility from "@components/Utility";
 import Navbar from "@components/Navbar";
 import Seo from "@components/SEO";
+import Tooltip from "@components/Tooltip";
 
 const PageLayout: React.FC<PageLayoutPropsWithChildren> = ({
   title,
@@ -30,26 +31,34 @@ const PageLayout: React.FC<PageLayoutPropsWithChildren> = ({
               <Navbar.Brand />
               <Navbar.Nav>
                 <Navbar.ItemGroup id="nav-left">
-                  <Navbar.Item id="articles">
+                  <Navbar.Item id="articles" internal>
                     <Link to="/articles">Articles</Link>
                   </Navbar.Item>
-                  <Navbar.Item id="about">
+                  <Navbar.Item id="about" internal>
                     <Link to="/about">About</Link>
                   </Navbar.Item>
-                  <Navbar.Item id="projects">
+                  <Navbar.Item id="projects" internal>
                     <Link to="/projects">Projects</Link>
                   </Navbar.Item>
                 </Navbar.ItemGroup>
                 <Navbar.ItemGroup id="nav-right">
-                  <Navbar.Item id="github" icon>
-                    <SVG.Github />
-                  </Navbar.Item>
-                  <Navbar.Item id="rss" icon>
-                    <SVG.RSS size={16} />
-                  </Navbar.Item>
-                  <Navbar.Item id="theme" icon>
-                    <SVG.Sun size={16} />
-                  </Navbar.Item>
+                  <Tooltip text="Github" position="bottom-right">
+                    <Navbar.Item id="github" icon>
+                      <a href="https://github.com/richardnguyen99/richardhnguyen.com">
+                        <SVG.Github />
+                      </a>
+                    </Navbar.Item>
+                  </Tooltip>
+                  <Tooltip text="RSS" position="bottom-center">
+                    <Navbar.Item id="rss" icon>
+                      <SVG.RSS size={16} />
+                    </Navbar.Item>
+                  </Tooltip>
+                  <Tooltip text="Toggle theme" position="bottom-left">
+                    <Navbar.Item id="theme" icon>
+                      <SVG.Sun size={16} />
+                    </Navbar.Item>
+                  </Tooltip>
                 </Navbar.ItemGroup>
               </Navbar.Nav>
             </Navbar>

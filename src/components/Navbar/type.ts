@@ -5,6 +5,9 @@
  */
 
 import * as React from "react";
+import { MouseEvent as ReactMouseEvent } from "react";
+
+export type ButtonMouseEvent = ReactMouseEvent<HTMLButtonElement | HTMLDivElement, MouseEvent>;
 
 type BaseNavbarProps = {
   [key: string]: any;
@@ -13,6 +16,10 @@ type BaseNavbarProps = {
 type BaseNavbarItemProps = BaseNavbarProps & {
   id?: string;
   icon?: boolean;
+  internal?: boolean;
+  onClickCallback?: (evt: ButtonMouseEvent) => void;
+  onMouseEnterCallback?: (evt: ButtonMouseEvent) => void;
+  onMouseLeaveCallback?: (evt: ButtonMouseEvent) => void;
 };
 
 export type NavbarContextProps = {
