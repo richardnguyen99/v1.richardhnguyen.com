@@ -4,6 +4,9 @@ Main page for Richard H. Nguyen, where you can find
 
 - Articles: I write technical stuff such as technologies and programming.
 - Myself: I write about myself and some of works.
+- Projects: I love messing around with Typescript, React, Python, C++ and more.
+
+Url: [https://richardhnguyen.com/](https://richardhnguyen.com/)
 
 ## Note
 
