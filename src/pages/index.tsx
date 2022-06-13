@@ -13,8 +13,8 @@ const IndexPage: React.FC = () => {
   return (
     <Layout.Page className="bg-gray-7" title="Home">
       <Typography.HeroHeadline>
-        The <Typography.UnderlineText color="blue">latest</Typography.UnderlineText> from Richard H.
-        Nguyen
+        The <Typography.UnderlineText color="blue">latest</Typography.UnderlineText> from{" "}
+        <Typography.GradientText>Richard H. Nguyen</Typography.GradientText>
       </Typography.HeroHeadline>
 
       <h1>The standard Lorem Ipsum passage, used since the 1500s</h1>

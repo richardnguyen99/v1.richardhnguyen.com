@@ -13,6 +13,12 @@ import { css } from "styled-components";
 const NormalizeCSS = css`
   /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
   /* Document
    ========================================================================== */
 

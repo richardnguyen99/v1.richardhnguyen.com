@@ -23,10 +23,10 @@ export const StyledBaseTooltip = styled.span<{ position: TooltipPosition }>`
   justify-content: center;
   transition: opacity 200ms ease, scale 200ms ease;
   font-size: 0.75rem;
+  letter-spacing: 0.075em;
   font-family: sans-serif;
   font-weight: 600;
   padding: 0.75rem 0.5rem;
-  letter-spacing: 0.075em;
   z-index: 100;
 
   &:after {

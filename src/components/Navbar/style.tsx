@@ -40,7 +40,7 @@ export const StyledNavbarBrand = styled(Link)<{ pageColor: string }>`
   letter-spacing: 1;
   font-size: 1.5rem;
   letter-spacing: -0.026em;
-  font-weight: 600;
+  font-weight: 700;
 
   transition: height 200ms ease-in;
 
@@ -95,16 +95,21 @@ export const StyledNavbarItem = styled.div<{ icon: boolean }>`
   align-items: center;
   padding: ${(props) => (props.icon ? css`0.5rem` : css`0.25rem 0.5rem`)};
   border-radius: 6px;
-  opacity: 0.9;
+  opacity: 0.7;
+  font-weight: 600;
 
   & > a {
     text-decoration: none;
     color: inherit;
   }
 
+  & > svg {
+    opacity: 0.9;
+  }
+
   &:hover,
   &.active {
     background: var(--systemColor-gray-6);
-    opacity: 0.9;
+    opacity: 1;
   }
 `;

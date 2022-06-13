@@ -8,13 +8,9 @@ import { createGlobalStyle } from "styled-components";
 import Mixins from "@mixins";
 
 const GlobalStyle = createGlobalStyle`
-
   :root {
     --systemColor-red: rgb(255, 59, 48);
-    --systemColor-orange: rgb(255, 149, 0);
-    --systemColor-yellow: rgb(255, 204, 0);
-    --systemColor-green: rgb(52, 199, 89);
-    --systemColor-mint: rgb(0, 199, 190);
+    --systemColor-green: rgb(52, 199, 59);
     --systemColor-teal: rgb(48, 176, 199);
     --systemColor-cyan: rgb(50, 173, 230);
     --systemColor-blue: rgb(0, 122, 255);
@@ -41,11 +37,12 @@ const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
+    font-family: "Alliance No.1",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   }
 
   html {
     line-height: 1.5;
-    font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-family: "Alliance No.1",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   }
 `;
 

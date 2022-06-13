@@ -10,13 +10,20 @@ export const StyledHeroHeadline = styled.h1`
   padding: 0;
   font-size: 96px;
   line-height: 1;
-  font-weight: 600;
-  letter-spacing: -0.015em;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   padding-top: 116px;
   padding-bottom: 116px;
   margin-bottom: 64px;
   position: relative;
   z-index: 10;
+`;
+
+export const StyledGradientBlueText = styled.span`
+  background: linear-gradient(-70deg, var(--systemColor-teal) 0%, var(--systemColor-blue) 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: none;
 `;
 
 const drawPathKeyframes = keyframes`
@@ -39,7 +46,7 @@ export const StyledUnderlineText = styled.em<{ underlineColor: string }>`
     width: 105%;
     height: 0.16em;
     left: -3%;
-    bottom: -6%;
+    bottom: -10%;
     z-index: -1;
   }
 

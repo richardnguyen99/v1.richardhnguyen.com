@@ -4,11 +4,12 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 
-import { StyledHeroHeadline } from "./style";
+import { StyledGradientBlueText, StyledHeroHeadline } from "./style";
 import UnderlineText from "./UnderlineText";
 
 const exported = Object.assign("Typography", {
   HeroHeadline: StyledHeroHeadline,
+  GradientText: StyledGradientBlueText,
   UnderlineText,
 });
 
