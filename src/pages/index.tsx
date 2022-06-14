@@ -8,6 +8,7 @@ import * as React from "react";
 
 import Layout from "@components/Layout";
 import Typography from "@components/Typography";
+import Select from "@components/Select";
 
 const IndexPage: React.FC = () => {
   return (
@@ -16,6 +17,10 @@ const IndexPage: React.FC = () => {
         The <Typography.UnderlineText color="blue">latest</Typography.UnderlineText> from{" "}
         <Typography.GradientText>Richard H. Nguyen</Typography.GradientText>
       </Typography.HeroHeadline>
+
+      <Select>
+        <option>All categories</option>
+      </Select>
 
       <h1>The standard Lorem Ipsum passage, used since the 1500s</h1>
 

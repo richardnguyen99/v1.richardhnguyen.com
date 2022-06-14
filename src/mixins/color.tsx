@@ -42,6 +42,19 @@ const matchRootTextColor = (color: string) => `
 const SystemColor = css`
   ${COLORS.map((color) => matchRootBackgroundColor(color).concat())}
   ${COLORS.map((color) => matchRootTextColor(color).concat())}
+
+  .border-top {
+    border-top: 1px solid rgba(0, 0, 0, 0.16);
+  }
+  .border-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+  }
+  .border-left {
+    border-left: 1px solid rgba(0, 0, 0, 0.16);
+  }
+  .border-right {
+    border-right: 1px solid rgba(0, 0, 0, 0.16);
+  }
 `;
 
 export default SystemColor;

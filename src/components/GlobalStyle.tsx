@@ -10,6 +10,9 @@ import Mixins from "@mixins";
 const GlobalStyle = createGlobalStyle`
   :root {
     --systemColor-red: rgb(255, 59, 48);
+    --systemColor-yellow: rgb(255, 204, 0);
+    --systemColor-orange: rgb(255, 149, 0);
+    --systemColor-mint: rgb(0, 199, 190);
     --systemColor-green: rgb(52, 199, 59);
     --systemColor-teal: rgb(48, 176, 199);
     --systemColor-cyan: rgb(50, 173, 230);
@@ -25,10 +28,14 @@ const GlobalStyle = createGlobalStyle`
     --systemColor-gray-5: rgb(229, 229,234);
     --systemColor-gray-6: rgb(242, 242, 247);
     --systemColor-gray-7: rgb(250, 250, 252);
+
+    --systemColor-black: rgb(0,0,0);
+    --systemColor-white: rgb(255,255,255);
   }
 
   ${Mixins.Normalize};
   ${Mixins.SystemColor};
+  ${Mixins.Spacing};
 
   a:hover, a:active, a:visited {
     color: inherit;
