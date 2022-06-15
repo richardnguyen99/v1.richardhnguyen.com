@@ -77,7 +77,7 @@ const IndexPage: React.FC = () => {
           </Article.Timeline>
           <Article.Timeline>
             <Article.TimelineHeader>
-              <Article.TimelineStickyHeader>
+              <Article.TimelineStickyHeader className="sticky-header">
                 <SVG.Commit />
                 <Article.TimelineHeaderTitle>
                   <Typography.GradientText>

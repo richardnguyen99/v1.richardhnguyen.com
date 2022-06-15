@@ -3,7 +3,7 @@
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 export const StyledHeroHeadline = styled.h1`
   margin: 0;
@@ -24,6 +24,15 @@ export const StyledGradientBlueText = styled.span`
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-box-decoration-break: none;
+  position: relative;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: currentcolor;
+    text-decoration-thickness: auto;
+    text-decoration-thickness: 0.1em;
+    text-decoration-color: var(--systemColor-cyan);
+  }
 `;
 
 const drawPathKeyframes = keyframes`

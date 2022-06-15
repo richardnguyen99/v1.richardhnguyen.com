@@ -26,6 +26,10 @@ export const StyledTimelineArticle = styled.div`
 
   @media (min-width: 768px) {
     top: 48px;
+
+    &:last-child::before {
+      display: none;
+    }
   }
 
   &::before {
@@ -49,7 +53,6 @@ export const StyledTimelineHeader = styled.div`
     width: ${(5 / 12) * 100}%;
   }
 `;
-
 export const StyledTimelineStickyHeader = styled.div`
   top: 72px;
   position: sticky;
@@ -68,8 +71,16 @@ export const StyledTimelineStickyHeader = styled.div`
     overflow: visible;
     fill: currentColor;
   }
-`;
 
+  &.sticky-header::before {
+    content: "";
+    position: absolute;
+    height: 64px;
+    top: -64px;
+    left: 0px;
+    border-left: 2px solid var(--systemColor-gray-2);
+  }
+`;
 export const StyledTimelineHeaderTitle = styled.h2`
   font-size: 24px;
   line-height: 24px;
