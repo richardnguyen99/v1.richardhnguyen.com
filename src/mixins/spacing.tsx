@@ -18,6 +18,7 @@ const spacingSize = {
   10: 96,
   11: 112,
   12: 128,
+  auto: "auto",
 };
 
 const marginMixins = (size: string) => css`

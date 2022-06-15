@@ -63,7 +63,7 @@ const PageLayout: React.FC<PageLayoutPropsWithChildren> = ({
               </Navbar.Nav>
             </Navbar>
           </Navbar.Wrapper>
-          <Utility.Container {...rest}>{children}</Utility.Container>
+          {children}
         </Navbar.Provider>
       </RootLayout>
     </main>
