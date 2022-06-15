@@ -9,11 +9,11 @@ import * as React from "react";
 import Layout from "@components/Layout";
 import Typography from "@components/Typography";
 
-const AboutPage: React.FC = () => {
+const ReadmePage: React.FC = () => {
   return (
-    <Layout.Page className="bg-gray-7" title="About">
+    <Layout.Page className="bg-gray-7" title="README">
       <Typography.HeroHeadline>
-        <Typography.UnderlineText color="red">About</Typography.UnderlineText> Richard
+        <Typography.UnderlineText color="red">README</Typography.UnderlineText> Richard
       </Typography.HeroHeadline>
       <h3>Hedonist Roots</h3>
 
@@ -117,4 +117,4 @@ const AboutPage: React.FC = () => {
   );
 };
 
-export default AboutPage;
+export default ReadmePage;

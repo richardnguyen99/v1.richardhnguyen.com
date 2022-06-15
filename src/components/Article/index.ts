@@ -13,15 +13,11 @@ import {
   StyledTimelineStickyHeader,
   StyledTimelineTime,
 } from "./style";
+import TimelineArticle from "./TimelineArticle";
 
 const exported = Object.assign("Article", {
   Container: StyledArticleContainer,
-  Timeline: StyledTimelineArticle,
-  TimelineHeader: StyledTimelineHeader,
-  TimelineStickyHeader: StyledTimelineStickyHeader,
-  TimelineArticleContent: StyledTimelineArticleContent,
-  TimelineHeaderTitle: StyledTimelineHeaderTitle,
-  TimelineTime: StyledTimelineTime,
+  Timeline: TimelineArticle,
 });
 
 export default exported;

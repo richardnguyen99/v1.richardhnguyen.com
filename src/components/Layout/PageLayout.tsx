@@ -10,7 +10,6 @@ import { PageLayoutPropsWithChildren } from "./type";
 import RootLayout from "./RootLayout";
 
 import SVG from "@components/Svg";
-import Utility from "@components/Utility";
 import Navbar from "@components/Navbar";
 import Seo from "@components/SEO";
 import Tooltip from "@components/Tooltip";
@@ -34,8 +33,8 @@ const PageLayout: React.FC<PageLayoutPropsWithChildren> = ({
                   <Navbar.Item id="articles" internal>
                     <Link to="/articles">Articles</Link>
                   </Navbar.Item>
-                  <Navbar.Item id="about" internal>
-                    <Link to="/about">About</Link>
+                  <Navbar.Item id="readme" internal>
+                    <Link to="/readme">README</Link>
                   </Navbar.Item>
                   <Navbar.Item id="projects" internal>
                     <Link to="/projects">Projects</Link>
