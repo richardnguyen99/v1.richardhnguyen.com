@@ -323,3 +323,67 @@
   font-weight: 800;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Inconsolata";
+  src: local("Inconsolata ExtraLight"), local("Inconsolata-ExtraLight"),
+    url("Inconsolata-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: local("Inconsolata Light"), local("Inconsolata-Light"),
+    url("Inconsolata-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: local("Inconsolata Regular"), local("Inconsolata-Regular"),
+    url("Inconsolata-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: local("Inconsolata Medium"), local("Inconsolata-Medium"),
+    url("Inconsolata-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: local("Inconsolata SemiBold"), local("Inconsolata-SemiBold"),
+    url("Inconsolata-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: local("Inconsolata Bold"), local("Inconsolata-Bold"),
+    url("Inconsolata-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: local("Inconsolata ExtraBold"), local("Inconsolata-ExtraBold"),
+    url("Inconsolata-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: local("Inconsolata Black"), local("Inconsolata-Black"),
+    url("Inconsolata-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}

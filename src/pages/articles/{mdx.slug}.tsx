@@ -7,28 +7,49 @@ import * as React from "react";
 import { graphql, PageProps } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import RootLayout from "@components/Layout/RootLayout";
+import PageLayout from "@components/Layout/PageLayout";
+import Container from "@components/Utility/Container";
+import Content from "@components/Content";
 
 type PostData = {
   mdx: Queries.Mdx;
 };
 
 const BlogPost = ({ data }: PageProps<PostData>) => {
+  const {
+    frontmatter: { title, created, update },
+    timeToRead,
+    body,
+  } = data.mdx;
+
   return (
-    <RootLayout>
-      <MDXRenderer>{data.mdx.body}</MDXRenderer>
-    </RootLayout>
+    <PageLayout title={title}>
+      <Content.Header title={title}>
+        <Content.FrontMatter created={created} timeToRead={timeToRead} updated={update} />
+      </Content.Header>
+      <Container>
+        <Content>
+          <MDXRenderer>{body}</MDXRenderer>
+        </Content>
+      </Container>
+    </PageLayout>
   );
 };
 
 export const query = graphql`
   query ($id: String) {
     mdx(id: { eq: $id }) {
-      frontmatter {
-        title
-        date(formatString: "MMMM D, YYYY")
-      }
       body
+      frontmatter {
+        categories
+        author
+        created(formatString: "YYYY-MM-DD")
+        description
+        tags
+        title
+        update
+      }
+      timeToRead
     }
   }
 `;

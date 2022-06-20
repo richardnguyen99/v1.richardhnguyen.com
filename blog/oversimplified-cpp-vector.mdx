@@ -1,0 +1,47 @@
+---
+title: "Oversimplified C++ Vector"
+created: 2022-06-20
+update: ""
+author: "Richard Nguyen"
+description: "An oversimplified breakdown of C++ std::vector"
+categories:
+  - "tutorial"
+tags:
+  - "c++"
+---
+
+`std::vector` is a C++ template class that allows contiguous elements with an abilility of growing and shrinking automatically. It's widely used by many C++ developers in many projects because it provides a set of public methods to deal with dynamic allocation.
+
+# Introduction
+
+In a nutshell, `std::vector` is C++ template class which wraps a native C-style array. However, instead of using C-style `malloc` or `realloc` to handle dynamic size, it uses a passed-in allocator by users (which by default is `std::allocator`).
+
+So the whole idea of `std::vector` is resizing when there is no space to add new items. It's done by allocating a new array and copy-constructing each element in the new array from the old one. So in this article, I will show my oversimplified version of `std::vector`
+
+This article is a part of **Oversimplified** series. They are:
+
+1. [Oversimplified C++ Vector](/articles/oversimplified-cpp-vector)
+
+# Design
+
+There are many approaches to replicate the C++ vector class. However, there are two major approaches that are both widely accepted:
+
+```cpp
+template <class _Tp, class _Alloc = std::allocator<_Tp>>
+class vector {
+public:
+    // public member functions
+private:
+    _Tp*                  data_;
+    typename A::size_type capacity_;
+    typename A::size_type size_;
+    _Alloc                allocator_;
+};
+```
+
+In this approach:
+
+- `data_` &mdash; Stores every elements in a contiguous fashion (C-style array).
+- `capacity_` &mdash; Indicates how many this vector **could** store at most.
+- `size_` &mdash; Indicates how many elements there are in this vector.
+- `allocator_` &mdash; Allocates elements and handles internal growing and shrinking dynamically.
