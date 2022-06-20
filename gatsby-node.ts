@@ -6,7 +6,7 @@
  */
 
 import path from "path";
-import { GatsbyNode } from "gatsby";
+import { GatsbyNode, graphql } from "gatsby";
 
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = async ({ actions }) => {
   actions.setWebpackConfig({
@@ -25,6 +25,7 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = async 
 
 export const createPages: GatsbyNode["createPages"] = async ({ actions }) => {
   const { createPage } = actions;
+
   createPage({
     path: "/using-dsg",
     component: path.resolve("./src/templates/using-dsg.tsx"),

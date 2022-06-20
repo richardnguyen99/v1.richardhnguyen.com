@@ -25,7 +25,22 @@ const config: GatsbyConfig = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "blog",
+        path: `${__dirname}/blog`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "review",
+        path: `${__dirname}/blog/review`,
+      },
+    },
     "gatsby-plugin-netlify",
+    "gatsby-plugin-mdx",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     {
