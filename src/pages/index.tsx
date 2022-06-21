@@ -6,7 +6,6 @@
  */
 import * as React from "react";
 
-import SVG from "@components/Svg";
 import Layout from "@components/Layout";
 import Typography from "@components/Typography";
 import Select from "@components/Select";
@@ -19,7 +18,7 @@ const IndexPage: React.FC = () => {
       <Utility.Container>
         <Typography.HeroHeadline>
           The <Typography.UnderlineText color="blue">latest</Typography.UnderlineText> from{" "}
-          <Typography.GradientText>Richard H. Nguyen</Typography.GradientText>
+          <Typography.Gradient>Richard H. Nguyen</Typography.Gradient>
         </Typography.HeroHeadline>
       </Utility.Container>
 

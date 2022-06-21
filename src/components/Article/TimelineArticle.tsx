@@ -31,7 +31,7 @@ const TimelineArticle: React.FC<TimelineArticleProps> = ({
         <StyledTimelineStickyHeader className={`${last && "sticky-header"}`}>
           <SVG.Commit />
           <StyledTimelineHeaderTitle>
-            <Typography.GradientText>{title}</Typography.GradientText>
+            <Typography.Gradient>{title}</Typography.Gradient>
           </StyledTimelineHeaderTitle>
           {time ? <StyledTimelineTime>{time}</StyledTimelineTime> : null}
         </StyledTimelineStickyHeader>

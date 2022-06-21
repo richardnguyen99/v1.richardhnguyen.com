@@ -70,7 +70,7 @@ export const StyledContent = styled.main`
   }
 
   a {
-    color: var(--systemColor-blue);
+    color: var(--systemColor-green);
     text-decoration: none;
 
     &:hover {

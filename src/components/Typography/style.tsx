@@ -35,6 +35,22 @@ export const StyledGradientBlueText = styled.span`
   }
 `;
 
+export const StyledGradientGreenText = styled.span`
+  background: linear-gradient(-70deg, rgb(4, 160, 82) 0%, var(--systemColor-green) 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: none;
+  position: relative;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: currentcolor;
+    text-decoration-thickness: auto;
+    text-decoration-thickness: 0.1em;
+    text-decoration-color: var(--systemColor-green);
+  }
+`;
+
 const drawPathKeyframes = keyframes`
   0% {
     stroke-dashoffset: 1.1

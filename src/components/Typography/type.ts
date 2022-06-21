@@ -5,9 +5,10 @@
  */
 import { PropsWithChildren } from "react";
 
-type BaseUnderlineTextProps = {
-  color: string;
+type BaseColorTextProps = {
+  color?: string;
   [key: string]: any;
 };
 
-export type UnderlineTextProps = PropsWithChildren<BaseUnderlineTextProps>;
+export type UnderlineTextProps = PropsWithChildren<BaseColorTextProps>;
+export type GradientTextProps = PropsWithChildren<BaseColorTextProps>;
