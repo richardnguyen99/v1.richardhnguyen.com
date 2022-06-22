@@ -22,4 +22,6 @@ export type FrontMatterProps = BaseProps & {
   timeToRead: number;
 };
 
+export type ThumbnailProps = PropsWithChildren<BaseProps>;
+
 export type ContentProps = PropsWithChildren<BaseProps>;

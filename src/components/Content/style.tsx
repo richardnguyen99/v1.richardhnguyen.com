@@ -54,6 +54,34 @@ export const StyledFrontMatter = styled.div`
   }
 `;
 
+export const StyledThumbnail = styled.div`
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3rem;
+
+  & > .gatsby-image-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+
+    border-radius: 6px;
+    border-style: none;
+  }
+`;
+
+export const StyledDescription = styled.p`
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-style: italic;
+  color: var(--systemColor-gray-2);
+  width: ${(9 / 12) * 100}%;
+`;
+
 export const StyledContent = styled.main`
   display: block;
   width: 100%;
@@ -88,6 +116,17 @@ export const StyledContent = styled.main`
     margin-top: 3rem;
     letter-spacing: 0;
     line-height: 28px;
+  }
+
+  & > h2 {
+    margin-top: 2.5rem;
+    line-height: 24px;
+    letter-spacing: 0;
+  }
+  & > h3 {
+    margin-top: 2rem;
+    line-height: 20px;
+    letter-spacing: 0;
   }
 
   & > pre {

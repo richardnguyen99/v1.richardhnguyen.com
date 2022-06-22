@@ -1,0 +1,249 @@
+---
+title: "Oversimplified C++ Vector: Constructors"
+created: 2022-06-21
+update: ""
+author: "Richard Nguyen"
+description: "An oversimplified breakdown of C++ std::vector"
+categories:
+  - "tutorial"
+tags:
+  - "c++"
+part: 2
+article: "Oversimplifed C++ Vector"
+featuredImage: ./thumbnails/vector-ctor.png
+featuredImageAlt: "Vector Constructor"
+---
+
+In [Part 1](/articles/oversimplified-cpp-vector-p1), I have introduced what the C++ standard template library vector class is and how it's implemented. Next, we talk about how constructors work.
+
+# Default constructor
+
+Default constructors are called when a variable of a type is defined but an initializer is not provided. In other words, the variable is declared without given any value.
+
+```cpp
+#include <vector>
+
+int main()
+{
+    ...
+    std::vector<int> v;   // Default constructor is called
+    ...
+}
+```
+
+The default constructor for vector class can be defined easily by zero-filling all the data members, or initializing all the pointers to `nullptr`.
+
+```cpp
+template <class _Tp, class _Alloc = std::allocator<_Tp>>
+class vector {
+public:
+    vector() : _start(), _finish(), _end() {} // _start = 0x0, _finish = 0x0, _end = 0x0
+
+    // other public member functions
+private:
+    _Tp*    _start;     // points to first element
+    _Tp*    _end;       // points to one past internal storage
+    _Tp*    _finish;    // points to one past last element
+    _Alloc  _alloc;
+}
+```
+
+It's very dangerous to not initialize the pointers to `nullptr`. The pointers would be initialized to non-null garbage value that points to either nothing or something that doesn't belong to the program. Additionally, it ensures that the according vector object has the correct size and capacity, which are both zero.
+
+# Counted-value constructor
+
+This constructor will construct the container with a number of of copies of the passed-in value.
+
+```cpp
+std::vector<int> v(8, 3)  // A container filled with eight 3's
+```
+
+The constructor can be defined as below:
+
+```cpp
+public:
+    // other public member functions
+    vector(size_type n, const _Tp &value)
+    {
+        using traits_t = std::allocator_traits<_Alloc>;
+
+        _start  = traits_t::allocate(_alloc, n);
+        _finish = std::__uninitialized_fill_n_a(_start, n, value, _alloc);
+        _end    = _start + n;
+    }
+    // other public member functions
+```
+
+`traits_t::allocator()` will allocate space for an array of n objects of type `_Tp` whose elements have not been constructed yet, and the pointer to the first element in the array will be assigned to `_start`.
+
+Then `std::__uninitialized_fill_n_a()` will copy the given `value` to uninitialized memory area defined by the range `[_start, _start + n)`. Finally, `_end` will point the end of the array which has been allocated and assigned to `_start`.
+
+# Counted-default-value constructor
+
+This constructor acts as the counted-value constructor but instead of filling a given value, it will fill each element with a default value of type `_Tp`. For example, if the type is integer, 0 will be assigned to each elements. If the type is a user-defined class, a default constructor must be provided.
+
+```cpp
+std::vector<int> v(8)  // A container filled with eight 0's
+```
+
+The constructor can be defined as below:
+
+```cpp
+vector(size_type n, const _Tp &value)
+{
+    using traits_t = std::allocator_traits<_Alloc>;
+
+    _start  = traits_t::allocate(_alloc, n);
+    _finish = std::__uninitialized_default_n_a(_start, n, value, _alloc);
+    _end    = _start + n;
+}
+```
+
+The definition is mostly the same as in the counted-value constructor. But instead of using `std::__uninitialized_fill_n_a()`, it uses `std::__uninitialized_default_n_a()` to fill default values to each element in the container.
+
+Note that the constructor will still fill the container with default values, `_finish` will be modified and point to the end of the array. To reserve the space without filling values, see [`reserve()`](/articles/).
+
+# Range constructor
+
+The constructor will construct the container with the contents in the given range.
+
+```cpp
+std::vector<int> nums1(3, 3);                               // { 3, 3, 3 }
+std::vector<int> nums2(std::begin(nums1), std::end(nums1)); // { 3, 3, 3 }
+```
+
+The constructor can be defined as below:
+
+```cpp
+template <typename _InputIter,
+          typename = std::_RequireInputIter<_InputIter>>
+vector(_InputIter first, _InputIter last)
+{
+    using traits_t = std::allocator_traits<_Alloc>;
+
+    const std::ptrdiff_t n = std::distance(first, last);
+    _start                  = traits_t::allocate(_alloc, n);
+    _finish                 = _start;
+
+    for (auto curr = first; curr != last; curr++)
+    {
+        traits_t::construct(_alloc, std::addressof(*_finish), *curr);
+        _finish++;
+    }
+
+    _end = _start + n;
+}
+```
+
+This constructor is templated with typename `_InputIter`, and the typename is required to be a [valid input iterator](https://cplusplus.com/reference/iterator/InputIterator/), which can be copy-constructed, copy-assigned, destructed, compared, dereferenced or incremented. With this, vector class can accept any range from any container as long as it provides support for input iterators.
+
+As the previous two constructors, it calculates the number, `n`, of elements to allocate spaces to store by using `traits_t::allocate()`, and assign the starting memory address to `_start`. Then `traits_t::construct()` constructs elements in the allocated storage starting from `_start`. `std::addressof()` is used to get the actual address since `_finish` might end up with a different address from `_start`.
+
+# Initializer constructor
+
+The constructor constructs the container with the contents of the initializer list.
+
+```cpp
+std::vector<int> v{1, 2, 3, 4};
+```
+
+The constructor can be defined as below:
+
+```cpp
+vector(std::initializer_list<_Tp> init)
+{
+    using traits_t = std::allocator_traits<_Alloc>;
+
+    const difference_type n = std::distance(init.begin(), init.end());
+    _start                  = traits_t::allocate(_alloc, n);
+    _finish                 = _start;
+    for (auto curr = init.begin(); curr != init.end(); curr++)
+    {
+        traits_t::construct(_alloc, std::addressof(*_finish), *curr);
+        _finish++;
+    }
+    _end = _start + n;
+}
+```
+
+The identity of this constructor is different from the range constructor, but the definition (the body) is the same since initializer lists support input iterators.
+
+Note that the constructor is sometimes mistaken with the counted constructors due to the some-what identical syntax with minor difference
+
+```cpp
+std::vector<int> b{3}; // creates a 1-element vector holding {3}
+std::vector<int> a(3); // creates a 3-element vector holding {0, 0, 0}
+
+std::vector<int> d{3, 2}; // creates a 2-element vector holding {3, 2}
+std::vector<int> c(3, 2); // creates a 1-element vector holding {2, 2, 3}
+
+// {} instead of () for initializer list constructors
+```
+
+# Copy constructor
+
+Copy constructors will copy everything from the original object to the new one without compromising the data members in the original object when modifying those in the new one. Since the elements are dynamically allocated, which are store in the heap, a shared memory region, copy constructors should be provided to prevent corrupted data from happening.
+
+```cpp
+std::vector<std::string> words1 {"Foo", "Bar", "Baz"};
+std::vector<std::string> words2(words1);                //  {"Foo", "Bar", "Baz"}
+```
+
+The constructor can be defined as below:
+
+```cpp
+vector(const vector &other)
+{
+    using traits_t = std::allocator_traits<allocator>;
+
+    const difference_type n
+        = std::distance(other._start, other._end);
+    _start  = traits_t::allocate(_alloc, n);
+    _finish = _start;
+
+    for (auto curr = other._start; curr != other._finish; curr++)
+    {
+        traits_t::construct(_alloc, std::addressof(*_finish), *curr);
+        _finish++;
+    }
+
+    _end = _start + n;
+}
+```
+
+The parameter of this constructor is passed by reference and marked with `const`. This will ensure that the origin vector will not be copied since there is no copy constructor defined, it will create an infinite loop. The `const` is optional but good to have because it guarantees no modification happens to the original vector.
+
+The definition for this constructor is similar to the previous range and initializer list constructor.However, not only does it copy elements only in the range `[other._start, other._finish)`, it also allocates the same capacity as `[other._start, other._end)`. To make it simple and less complicated to understand, let's assume that this constructor requires the type to support the copy constructor in its definition.
+
+# Move constructor
+
+Move constructors enables the data member owned by an _rvalue_ object to moved into an _lvalue_ object without copying. In other words, they will move every data controlled and managed by an object to another one without deep copying technique such as copy constructors.
+
+```cpp
+std::vector<int> v1{1,2,3};
+std::vector<int> v2(std::move(v1));
+```
+
+The constructor can be defined as below:
+
+```cpp
+vector(vector &&other)
+{
+    this->_start  = other._start;
+    this->_finish = other._finish;
+    this->_end    = other._end;
+
+    other._start  = pointer();
+    other._finish = pointer();
+    other._end    = pointer();
+}
+```
+
+There are many ways to define the move constructor for the vector class. But an easy and intuitive way is to assign the three pointers in the original one to those in the new one. Then, assign `nullptr` to those pointers in the original to make it give up the ownership of the storage. After move constructor is called, the original one should have the size and capacity of 0.
+
+# References
+
+- [https://en.cppreference.com/w/cpp/container/vector/vector](https://en.cppreference.com/w/cpp/container/vector/vector)
+- [https://en.cppreference.com/w/cpp/memory/allocator](https://en.cppreference.com/w/cpp/memory/allocator)
+- [https://cplusplus.com/reference/iterator/InputIterator](https://cplusplus.com/reference/iterator/InputIterator/)
+- [https://en.cppreference.com/w/cpp/memory](https://en.cppreference.com/w/cpp/memory)

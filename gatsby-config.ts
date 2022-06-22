@@ -16,13 +16,25 @@ const config: GatsbyConfig = {
   },
   plugins: [
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-image",
+    {
+      resolve: "gatsby-plugin-styled-components",
+      options: {
+        displayName: true,
+      },
+    },
+    //"gatsby-plugin-image",
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "thumbnail",
+        path: `${__dirname}/blog/thumbnails`,
       },
     },
     {
@@ -40,9 +52,28 @@ const config: GatsbyConfig = {
       },
     },
     "gatsby-plugin-netlify",
-    "gatsby-plugin-mdx",
-    "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [],
+      },
+    },
+    "gatsby-remark-images",
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: "gatsby-plugin-manifest",
       options: {

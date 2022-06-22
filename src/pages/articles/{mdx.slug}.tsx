@@ -4,6 +4,7 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 import * as React from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql, PageProps } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
@@ -17,8 +18,9 @@ type PostData = {
 
 const BlogPost = ({ data }: PageProps<PostData>) => {
   const {
-    frontmatter: { title, created, update },
+    frontmatter: { title, created, update, featuredImage, featuredImageAlt },
     timeToRead,
+    excerpt,
     body,
   } = data.mdx;
 
@@ -26,7 +28,18 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
     <PageLayout title={title}>
       <Content.Header title={title}>
         <Content.FrontMatter created={created} timeToRead={timeToRead} updated={update} />
+        <Content.Description>{excerpt}</Content.Description>
       </Content.Header>
+      {featuredImage ? (
+        <Content.Thumbnail>
+          <GatsbyImage
+            image={featuredImage.childImageSharp.gatsbyImageData}
+            alt={featuredImageAlt}
+            style={{ marginRight: "auto", marginLeft: "auto" }}
+          />
+        </Content.Thumbnail>
+      ) : null}
+
       <Container>
         <Content>
           <MDXRenderer>{body}</MDXRenderer>
@@ -48,8 +61,15 @@ export const query = graphql`
         tags
         title
         update
+        featuredImage {
+          childImageSharp {
+            gatsbyImageData(layout: FIXED, quality: 100, width: 980)
+          }
+        }
+        featuredImageAlt
       }
       timeToRead
+      excerpt
     }
   }
 `;
