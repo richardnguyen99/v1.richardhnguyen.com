@@ -22,6 +22,11 @@ export type FrontMatterProps = BaseProps & {
   timeToRead: number;
 };
 
+export type ChapterProps = BaseProps & {
+  name: string;
+  currentChapter: number;
+};
+
 export type ThumbnailProps = PropsWithChildren<BaseProps>;
 
 export type ContentProps = PropsWithChildren<BaseProps>;

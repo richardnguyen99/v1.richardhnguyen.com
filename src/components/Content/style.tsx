@@ -58,6 +58,11 @@ export const StyledThumbnail = styled.div`
   position: relative;
   z-index: 1;
   margin-bottom: 3rem;
+  max-width: 980px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 1.5rem;
 
   & > .gatsby-image-wrapper {
     height: 100%;
@@ -80,6 +85,102 @@ export const StyledDescription = styled.p`
   font-style: italic;
   color: var(--systemColor-gray-2);
   width: ${(9 / 12) * 100}%;
+`;
+
+export const StyledContentGrid = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: 1440px;
+  align-items: flex-start;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+`;
+
+export const StyledChapterNav = styled.div`
+  padding-left: 2rem;
+  display: block;
+
+  & > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  & > h5 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+`;
+
+export const StyledChapterItem = styled.li`
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--systemColor-gray-2);
+  position: relative;
+  list-style: none;
+  padding-bottom: 1.25rem;
+  margin-left: -1.5rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--systemColor-gray-2);
+
+  &:hover {
+    color: var(--systemColor-gray-1);
+    border-left: 1px solid var(--systemColor-gray-1);
+  }
+
+  & > a {
+    text-decoration: none;
+  }
+
+  &:hover > a {
+    text-decoration: underline;
+  }
+
+  &:first-of-type {
+    padding-top: 1.5rem;
+  }
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+
+  &.active {
+    color: var(--systemColor-green);
+    border-left: 1px solid var(--systemColor-green);
+  }
+`;
+
+export const StyledChapterIcon = styled.span`
+  margin-left: -37px;
+  margin-right: 7px;
+  vertical-align: middle;
+`;
+
+export const StyledStickySideContent = styled.div`
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: auto;
+  width: 230px;
+  background: var(--systemColor-white, #fff);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (min-width: 768px) {
+    position: sticky;
+    z-index: auto;
+    top: 66px;
+    height: auto;
+    width: 230px;
+    flex: none;
+    transform: none;
+    opacity: 1;
+  }
 `;
 
 export const StyledContent = styled.main`

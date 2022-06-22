@@ -18,15 +18,27 @@ type PostData = {
 
 const BlogPost = ({ data }: PageProps<PostData>) => {
   const {
-    frontmatter: { title, created, update, featuredImage, featuredImageAlt },
+    frontmatter: {
+      title,
+      created,
+      update,
+      featuredImage,
+      featuredImageAlt,
+      series,
+      chapter,
+      part,
+      article,
+    },
     timeToRead,
     excerpt,
     body,
   } = data.mdx;
 
+  const fullTitle = `${series}: ${title}`;
+
   return (
-    <PageLayout title={title}>
-      <Content.Header title={title}>
+    <PageLayout title={fullTitle}>
+      <Content.Header title={fullTitle}>
         <Content.FrontMatter created={created} timeToRead={timeToRead} updated={update} />
         <Content.Description>{excerpt}</Content.Description>
       </Content.Header>
@@ -35,16 +47,22 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
           <GatsbyImage
             image={featuredImage.childImageSharp.gatsbyImageData}
             alt={featuredImageAlt}
-            style={{ marginRight: "auto", marginLeft: "auto" }}
+            style={{ width: "100%", marginRight: "auto", marginLeft: "auto" }}
           />
         </Content.Thumbnail>
       ) : null}
 
-      <Container>
-        <Content>
-          <MDXRenderer>{body}</MDXRenderer>
-        </Content>
-      </Container>
+      <Content.Grid>
+        <Content.Side>
+          <Content.Chapter name={article} currentChapter={part} />
+        </Content.Side>
+        <Container>
+          <Content>
+            <MDXRenderer>{body}</MDXRenderer>
+          </Content>
+        </Container>
+        <Content.Side>H1</Content.Side>
+      </Content.Grid>
     </PageLayout>
   );
 };
@@ -61,6 +79,10 @@ export const query = graphql`
         tags
         title
         update
+        series
+        chapter
+        article
+        part
         featuredImage {
           childImageSharp {
             gatsbyImageData(layout: FIXED, quality: 100, width: 980)

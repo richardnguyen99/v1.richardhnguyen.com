@@ -22,6 +22,7 @@ export const StyledHeroHeadline = styled.h1`
 export const StyledGradientBlueText = styled.span`
   background: linear-gradient(-70deg, var(--systemColor-teal) 0%, var(--systemColor-blue) 100%);
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-box-decoration-break: none;
   position: relative;
@@ -38,6 +39,7 @@ export const StyledGradientBlueText = styled.span`
 export const StyledGradientGreenText = styled.span`
   background: linear-gradient(-70deg, rgb(4, 160, 82) 0%, var(--systemColor-green) 100%);
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-box-decoration-break: none;
   position: relative;
