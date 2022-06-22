@@ -22,7 +22,7 @@ const config: GatsbyConfig = {
         displayName: true,
       },
     },
-    //"gatsby-plugin-image",
+    "gatsby-plugin-image",
     {
       resolve: "gatsby-source-filesystem",
       options: {

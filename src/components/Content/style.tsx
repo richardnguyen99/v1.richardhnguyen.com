@@ -60,12 +60,12 @@ export const StyledThumbnail = styled.div`
   margin-bottom: 3rem;
 
   & > .gatsby-image-wrapper {
-    position: absolute;
     height: 100%;
     width: 100%;
     object-fit: cover;
     left: 0;
     top: 0;
+    position: relative;
 
     border-radius: 6px;
     border-style: none;
