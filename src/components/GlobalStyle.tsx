@@ -51,6 +51,17 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     font-family: "Alliance No.1",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   }
+
+  .anchor.before {
+    transform: translateX(-100%) translateY(50%);
+    padding-right: 1rem;
+
+    & > svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 `;
 
 export default GlobalStyle;
