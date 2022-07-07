@@ -71,6 +71,13 @@ const config: GatsbyConfig = {
               maxWidth: 1200,
             },
           },
+          {
+            resolve: "gatsby-remark-autolink-headers",
+            options: {
+              offsetY: "100",
+              elements: ["h1", "h4"],
+            },
+          },
         ],
       },
     },
