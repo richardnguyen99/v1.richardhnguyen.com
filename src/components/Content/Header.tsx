@@ -10,7 +10,11 @@ import { ContentTitleProps } from "./type";
 import Utility from "@components/Utility";
 import Typography from "@components/Typography";
 
-const ContentTitle: React.FC<ContentTitleProps> = ({ title, children, ...rest }) => {
+const ContentTitle: React.FC<ContentTitleProps> = ({
+  title,
+  children,
+  ...rest
+}) => {
   return (
     <StyledSectionHeader>
       <Utility.Container>

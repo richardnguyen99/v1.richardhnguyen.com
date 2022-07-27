@@ -235,7 +235,8 @@ export const StyledContent = styled.main`
     background: #eff2ff;
     padding: 16px 24px;
     border-radius: 4px;
-    font-family: Inconsolata, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-family: Inconsolata, SF Mono, Menlo, Consolas, Liberation Mono,
+      monospace;
     min-width: 100px;
     max-width: 100%;
     margin: 28px 0;
@@ -249,7 +250,8 @@ export const StyledContent = styled.main`
     padding: 0;
     display: block;
     overflow-x: auto;
-    font-family: Inconsolata, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-family: Inconsolata, SF Mono, Menlo, Consolas, Liberation Mono,
+      monospace;
     font-weight: 600;
     border-radius: 6px;
     padding: 4px 6px;
@@ -257,7 +259,8 @@ export const StyledContent = styled.main`
   }
 
   code {
-    font-family: Inconsolata, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-family: Inconsolata, SF Mono, Menlo, Consolas, Liberation Mono,
+      monospace;
     font-weight: 600;
     border-radius: 6px;
     padding: 4px 6px;

@@ -27,6 +27,12 @@ export type ChapterProps = BaseProps & {
   currentChapter: number;
 };
 
+export type TOCProps = PropsWithChildren<
+  BaseProps & {
+    toc: Record<string, unknown>;
+  }
+>;
+
 export type ThumbnailProps = PropsWithChildren<BaseProps>;
 
 export type ContentProps = PropsWithChildren<BaseProps>;

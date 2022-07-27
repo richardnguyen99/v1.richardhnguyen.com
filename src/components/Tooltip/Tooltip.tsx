@@ -15,7 +15,12 @@ import * as ReactDOM from "react-dom";
 import { StyledBaseTooltip } from "./style";
 import { TooltipProps } from "./type";
 
-const Tooltip: React.FC<TooltipProps> = ({ text, children, position, ...rest }) => {
+const Tooltip: React.FC<TooltipProps> = ({
+  text,
+  children,
+  position,
+  ...rest
+}) => {
   const wrapperRef = React.useRef<HTMLElement>(null);
   const tooltipRef = React.useRef<HTMLDivElement>(null);
   const timeoutRef = React.useRef<NodeJS.Timeout>(null);
@@ -50,23 +55,32 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children, position, ...rest }) 
     if (tooltipRef.current !== null) {
       const oldTooltipRect = tooltipRef.current.getBoundingClientRect();
       const wrapperRect = wrapperRef.current.getBoundingClientRect();
-      const bodyRect = document.getElementsByTagName("body")[0].getBoundingClientRect();
+      const bodyRect = document
+        .getElementsByTagName("body")[0]
+        .getBoundingClientRect();
       tooltipRef.current.style.opacity = showing ? "1" : "0";
       tooltipRef.current.style.scale = showing ? "1.2" : "1";
 
       if (position === "bottom-center") {
-        tooltipRef.current.style.top = wrapperRect.top + 48 - bodyRect.top + "px";
+        tooltipRef.current.style.top =
+          wrapperRect.top + 48 - bodyRect.top + "px";
         tooltipRef.current.style.left =
-          wrapperRect.left - oldTooltipRect.width / 2 + wrapperRect.width / 2 + "px";
+          wrapperRect.left -
+          oldTooltipRect.width / 2 +
+          wrapperRect.width / 2 +
+          "px";
       }
 
       if (position === "bottom-right") {
-        tooltipRef.current.style.top = wrapperRect.top + 48 - bodyRect.top + "px";
-        tooltipRef.current.style.left = wrapperRect.left - oldTooltipRect.width / 2 + "px";
+        tooltipRef.current.style.top =
+          wrapperRect.top + 48 - bodyRect.top + "px";
+        tooltipRef.current.style.left =
+          wrapperRect.left - oldTooltipRect.width / 2 + "px";
       }
 
       if (position === "bottom-left") {
-        tooltipRef.current.style.top = wrapperRect.top + 48 - bodyRect.top + "px";
+        tooltipRef.current.style.top =
+          wrapperRect.top + 48 - bodyRect.top + "px";
         tooltipRef.current.style.left = wrapperRect.left + "px";
       }
     }
@@ -81,7 +95,11 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children, position, ...rest }) 
   return (
     <>
       {renderWrapper()}
-      {showing && ReactDOM.createPortal(tooltipComponent, document.getElementById("modal"))}
+      {showing &&
+        ReactDOM.createPortal(
+          tooltipComponent,
+          document.getElementById("modal")
+        )}
     </>
   );
 };

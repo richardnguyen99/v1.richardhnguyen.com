@@ -21,7 +21,9 @@ export const StyledContainer = styled.div`
   max-width: 980px;
 `;
 
-const Container: React.FC<React.PropsWithChildren<ContainerProps>> = ({ children }) => {
+const Container: React.FC<React.PropsWithChildren<ContainerProps>> = ({
+  children,
+}) => {
   return <StyledContainer>{children}</StyledContainer>;
 };
 

@@ -32,6 +32,7 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
     timeToRead,
     excerpt,
     body,
+    tableOfContents,
   } = data.mdx;
 
   const fullTitle = `${series}: ${title}`;
@@ -39,7 +40,11 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
   return (
     <PageLayout title={fullTitle}>
       <Content.Header title={fullTitle}>
-        <Content.FrontMatter created={created} timeToRead={timeToRead} updated={update} />
+        <Content.FrontMatter
+          created={created}
+          timeToRead={timeToRead}
+          updated={update}
+        />
         <Content.Description>{excerpt}</Content.Description>
       </Content.Header>
       {featuredImage ? (
@@ -61,7 +66,7 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
             <MDXRenderer>{body}</MDXRenderer>
           </Content>
         </Container>
-        <Content.Side>H1</Content.Side>
+        <Content.TOC toc={tableOfContents} />
       </Content.Grid>
     </PageLayout>
   );
@@ -71,6 +76,7 @@ export const query = graphql`
   query ($id: String) {
     mdx(id: { eq: $id }) {
       body
+      tableOfContents(maxDepth: 2)
       frontmatter {
         categories
         author

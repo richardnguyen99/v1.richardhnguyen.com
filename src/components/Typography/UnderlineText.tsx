@@ -8,11 +8,19 @@ import * as React from "react";
 import { StyledUnderlineText } from "./style";
 import { UnderlineTextProps } from "./type";
 
-const UnderlineText: React.FC<UnderlineTextProps> = ({ color, children, ...rest }) => {
+const UnderlineText: React.FC<UnderlineTextProps> = ({
+  color,
+  children,
+  ...rest
+}) => {
   return (
     <StyledUnderlineText underlineColor={color} {...rest}>
       {children}
-      <svg className="underline-svg" viewBox="0 0 305 15" preserveAspectRatio="none">
+      <svg
+        className="underline-svg"
+        viewBox="0 0 305 15"
+        preserveAspectRatio="none"
+      >
         <g>
           {" "}
           <clipPath id="underline-clip-path">

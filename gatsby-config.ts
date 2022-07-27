@@ -82,6 +82,15 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: "gatsby-plugin-nprogress",
+      options: {
+        // Setting a color is optional.
+        color: "tomato",
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
+    {
       resolve: "gatsby-plugin-manifest",
       options: {
         name: "gatsby-starter-default",

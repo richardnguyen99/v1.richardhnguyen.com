@@ -10,7 +10,10 @@ import { NavbarContext } from "./context";
 import { StyledNavbarItem } from "./style";
 import { NavbarItemProps } from "./type";
 
-const NavbarItem: React.FC<NavbarItemProps> = React.forwardRef<HTMLDivElement, NavbarItemProps>(
+const NavbarItem: React.FC<NavbarItemProps> = React.forwardRef<
+  HTMLDivElement,
+  NavbarItemProps
+>(
   (
     {
       id = "",

@@ -6,7 +6,11 @@
 import { graphql, Link, useStaticQuery } from "gatsby";
 import * as React from "react";
 
-import { StyledChapterIcon, StyledChapterItem, StyledChapterNav } from "./style";
+import {
+  StyledChapterIcon,
+  StyledChapterItem,
+  StyledChapterNav,
+} from "./style";
 import { ChapterProps } from "./type";
 import SVG from "@components/Svg";
 
@@ -46,9 +50,13 @@ const Chapter: React.FC<ChapterProps> = ({ name, currentChapter, ...rest }) => {
       {validChapters.map((chapter, i) => (
         <StyledChapterItem
           key={i}
-          className={currentChapter === chapter.node.frontmatter.part ? "active" : ""}
+          className={
+            currentChapter === chapter.node.frontmatter.part ? "active" : ""
+          }
         >
-          <Link to={`/articles/${chapter.node.slug}`}>{chapter.node.frontmatter.title}</Link>
+          <Link to={`/articles/${chapter.node.slug}`}>
+            {chapter.node.frontmatter.title}
+          </Link>
         </StyledChapterItem>
       ))}
     </StyledChapterNav>

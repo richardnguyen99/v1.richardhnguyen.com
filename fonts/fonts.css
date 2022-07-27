@@ -1,7 +1,8 @@
 @font-face {
   font-family: "Alliance No.1";
   src: url("AllianceNo1-ExtraBoldItalic.eot");
-  src: local("Alliance No.1 ExtraBold Italic"), local("AllianceNo.1-ExtraBoldItalic"),
+  src: local("Alliance No.1 ExtraBold Italic"),
+    local("AllianceNo.1-ExtraBoldItalic"),
     url("AllianceNo1-ExtraBoldItalic.eot?#iefix") format("embedded-opentype"),
     url("AllianceNo1-ExtraBoldItalic.woff2") format("woff2"),
     url("AllianceNo1-ExtraBoldItalic.woff") format("woff"),
@@ -15,7 +16,8 @@
   src: url("AllianceNo1-Medium.eot");
   src: local("Alliance No.1 Medium"), local("AllianceNo.1-Medium"),
     url("AllianceNo1-Medium.eot?#iefix") format("embedded-opentype"),
-    url("AllianceNo1-Medium.woff2") format("woff2"), url("AllianceNo1-Medium.woff") format("woff"),
+    url("AllianceNo1-Medium.woff2") format("woff2"),
+    url("AllianceNo1-Medium.woff") format("woff"),
     url("AllianceNo1-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
@@ -24,7 +26,8 @@
 @font-face {
   font-family: "Alliance No.1";
   src: url("AllianceNo1-SemiBoldItalic.eot");
-  src: local("Alliance No.1 SemiBold Italic"), local("AllianceNo.1-SemiBoldItalic"),
+  src: local("Alliance No.1 SemiBold Italic"),
+    local("AllianceNo.1-SemiBoldItalic"),
     url("AllianceNo1-SemiBoldItalic.eot?#iefix") format("embedded-opentype"),
     url("AllianceNo1-SemiBoldItalic.woff2") format("woff2"),
     url("AllianceNo1-SemiBoldItalic.woff") format("woff"),
@@ -50,7 +53,8 @@
   src: url("AllianceNo1-Black.eot");
   src: local("Alliance No.1 Black"), local("AllianceNo.1-Black"),
     url("AllianceNo1-Black.eot?#iefix") format("embedded-opentype"),
-    url("AllianceNo1-Black.woff2") format("woff2"), url("AllianceNo1-Black.woff") format("woff"),
+    url("AllianceNo1-Black.woff2") format("woff2"),
+    url("AllianceNo1-Black.woff") format("woff"),
     url("AllianceNo1-Black.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
@@ -61,7 +65,8 @@
   src: url("AllianceNo1-Light.eot");
   src: local("Alliance No.1 Light"), local("AllianceNo.1-Light"),
     url("AllianceNo1-Light.eot?#iefix") format("embedded-opentype"),
-    url("AllianceNo1-Light.woff2") format("woff2"), url("AllianceNo1-Light.woff") format("woff"),
+    url("AllianceNo1-Light.woff2") format("woff2"),
+    url("AllianceNo1-Light.woff") format("woff"),
     url("AllianceNo1-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
@@ -72,7 +77,8 @@
   src: url("AllianceNo1-Regular.eot");
   src: local("Alliance No.1 Regular"), local("AllianceNo.1-Regular"),
     url("AllianceNo1-Regular.eot?#iefix") format("embedded-opentype"),
-    url("AllianceNo1-Regular.woff2") format("woff2"), url("AllianceNo1-Regular.woff") format("woff"),
+    url("AllianceNo1-Regular.woff2") format("woff2"),
+    url("AllianceNo1-Regular.woff") format("woff"),
     url("AllianceNo1-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
@@ -107,7 +113,8 @@
   src: url("AllianceNo1-Bold.eot");
   src: local("Alliance No.1 Bold"), local("AllianceNo.1-Bold"),
     url("AllianceNo1-Bold.eot?#iefix") format("embedded-opentype"),
-    url("AllianceNo1-Bold.woff2") format("woff2"), url("AllianceNo1-Bold.woff") format("woff"),
+    url("AllianceNo1-Bold.woff2") format("woff2"),
+    url("AllianceNo1-Bold.woff") format("woff"),
     url("AllianceNo1-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
@@ -128,7 +135,8 @@
 @font-face {
   font-family: "Alliance No.1";
   src: url("AllianceNo1-RegularItalic.eot");
-  src: local("Alliance No.1 Regular Italic"), local("AllianceNo.1-RegularItalic"),
+  src: local("Alliance No.1 Regular Italic"),
+    local("AllianceNo.1-RegularItalic"),
     url("AllianceNo1-RegularItalic.eot?#iefix") format("embedded-opentype"),
     url("AllianceNo1-RegularItalic.woff2") format("woff2"),
     url("AllianceNo1-RegularItalic.woff") format("woff"),
@@ -178,7 +186,8 @@
   src: url("AllianceNo2-Light.eot");
   src: local("Alliance No.2 Light"), local("AllianceNo.2-Light"),
     url("AllianceNo2-Light.eot?#iefix") format("embedded-opentype"),
-    url("AllianceNo2-Light.woff2") format("woff2"), url("AllianceNo2-Light.woff") format("woff"),
+    url("AllianceNo2-Light.woff2") format("woff2"),
+    url("AllianceNo2-Light.woff") format("woff"),
     url("AllianceNo2-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
@@ -189,7 +198,8 @@
   src: url("AllianceNo2-Medium.eot");
   src: local("Alliance No.2 Medium"), local("AllianceNo.2-Medium"),
     url("AllianceNo2-Medium.eot?#iefix") format("embedded-opentype"),
-    url("AllianceNo2-Medium.woff2") format("woff2"), url("AllianceNo2-Medium.woff") format("woff"),
+    url("AllianceNo2-Medium.woff2") format("woff2"),
+    url("AllianceNo2-Medium.woff") format("woff"),
     url("AllianceNo2-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
@@ -198,7 +208,8 @@
 @font-face {
   font-family: "Alliance No.2";
   src: url("AllianceNo2-SemiBoldItalic.eot");
-  src: local("Alliance No.2 SemiBold Italic"), local("AllianceNo.2-SemiBoldItalic"),
+  src: local("Alliance No.2 SemiBold Italic"),
+    local("AllianceNo.2-SemiBoldItalic"),
     url("AllianceNo2-SemiBoldItalic.eot?#iefix") format("embedded-opentype"),
     url("AllianceNo2-SemiBoldItalic.woff2") format("woff2"),
     url("AllianceNo2-SemiBoldItalic.woff") format("woff"),
@@ -224,7 +235,8 @@
   src: url("AllianceNo2-Regular.eot");
   src: local("Alliance No.2 Regular"), local("AllianceNo.2-Regular"),
     url("AllianceNo2-Regular.eot?#iefix") format("embedded-opentype"),
-    url("AllianceNo2-Regular.woff2") format("woff2"), url("AllianceNo2-Regular.woff") format("woff"),
+    url("AllianceNo2-Regular.woff2") format("woff2"),
+    url("AllianceNo2-Regular.woff") format("woff"),
     url("AllianceNo2-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
@@ -247,7 +259,8 @@
   src: url("AllianceNo2-Bold.eot");
   src: local("Alliance No.2 Bold"), local("AllianceNo.2-Bold"),
     url("AllianceNo2-Bold.eot?#iefix") format("embedded-opentype"),
-    url("AllianceNo2-Bold.woff2") format("woff2"), url("AllianceNo2-Bold.woff") format("woff"),
+    url("AllianceNo2-Bold.woff2") format("woff2"),
+    url("AllianceNo2-Bold.woff") format("woff"),
     url("AllianceNo2-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
@@ -268,7 +281,8 @@
 @font-face {
   font-family: "Alliance No.2";
   src: url("AllianceNo2-RegularItalic.eot");
-  src: local("Alliance No.2 Regular Italic"), local("AllianceNo.2-RegularItalic"),
+  src: local("Alliance No.2 Regular Italic"),
+    local("AllianceNo.2-RegularItalic"),
     url("AllianceNo2-RegularItalic.eot?#iefix") format("embedded-opentype"),
     url("AllianceNo2-RegularItalic.woff2") format("woff2"),
     url("AllianceNo2-RegularItalic.woff") format("woff"),
@@ -280,7 +294,8 @@
 @font-face {
   font-family: "Alliance No.2";
   src: url("AllianceNo2-ExtraBoldItalic.eot");
-  src: local("Alliance No.2 ExtraBold Italic"), local("AllianceNo.2-ExtraBoldItalic"),
+  src: local("Alliance No.2 ExtraBold Italic"),
+    local("AllianceNo.2-ExtraBoldItalic"),
     url("AllianceNo2-ExtraBoldItalic.eot?#iefix") format("embedded-opentype"),
     url("AllianceNo2-ExtraBoldItalic.woff2") format("woff2"),
     url("AllianceNo2-ExtraBoldItalic.woff") format("woff"),
@@ -294,7 +309,8 @@
   src: url("AllianceNo2-Black.eot");
   src: local("Alliance No.2 Black"), local("AllianceNo.2-Black"),
     url("AllianceNo2-Black.eot?#iefix") format("embedded-opentype"),
-    url("AllianceNo2-Black.woff2") format("woff2"), url("AllianceNo2-Black.woff") format("woff"),
+    url("AllianceNo2-Black.woff2") format("woff2"),
+    url("AllianceNo2-Black.woff") format("woff"),
     url("AllianceNo2-Black.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;

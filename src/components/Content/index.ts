@@ -8,8 +8,13 @@ import Content from "./Content";
 import ContentTitle from "./Header";
 import FrontMatter from "./FrontMatter";
 import Thumbnail from "./Thumbnail";
-import { StyledContentGrid, StyledDescription, StyledStickySideContent } from "./style";
+import {
+  StyledContentGrid,
+  StyledDescription,
+  StyledStickySideContent,
+} from "./style";
 import Chapter from "./Chapter";
+import TOC from "./TOC";
 
 const exported = Object.assign(Content, {
   Header: ContentTitle,
@@ -19,6 +24,7 @@ const exported = Object.assign(Content, {
   Grid: StyledContentGrid,
   Side: StyledStickySideContent,
   Chapter: Chapter,
+  TOC,
 });
 
 export default exported;

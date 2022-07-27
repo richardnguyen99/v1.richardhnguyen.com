@@ -3,6 +3,7 @@
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
+
 import { css } from "styled-components";
 
 const COLORS = [

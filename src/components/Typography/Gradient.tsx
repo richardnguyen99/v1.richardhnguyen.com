@@ -8,7 +8,11 @@ import * as React from "react";
 import { StyledGradientBlueText, StyledGradientGreenText } from "./style";
 import { GradientTextProps } from "./type";
 
-const Gradient: React.FC<GradientTextProps> = ({ color = "blue", children, ...rest }) => {
+const Gradient: React.FC<GradientTextProps> = ({
+  color = "blue",
+  children,
+  ...rest
+}) => {
   const getGradientColor = () => {
     switch (color) {
       case "green":

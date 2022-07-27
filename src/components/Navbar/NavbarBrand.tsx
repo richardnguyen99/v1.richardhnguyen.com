@@ -22,7 +22,10 @@ const NavbarBrand: React.FC = () => {
   };
 
   return (
-    <StyledNavbarBrand pageColor={matchPageWithColor(navbarContext.activeTab)} to="/">
+    <StyledNavbarBrand
+      pageColor={matchPageWithColor(navbarContext.activeTab)}
+      to="/"
+    >
       Richard H. Nguyen
     </StyledNavbarBrand>
   );

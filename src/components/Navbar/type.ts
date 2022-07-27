@@ -7,7 +7,10 @@
 import * as React from "react";
 import { MouseEvent as ReactMouseEvent } from "react";
 
-export type ButtonMouseEvent = ReactMouseEvent<HTMLButtonElement | HTMLDivElement, MouseEvent>;
+export type ButtonMouseEvent = ReactMouseEvent<
+  HTMLButtonElement | HTMLDivElement,
+  MouseEvent
+>;
 
 type BaseNavbarProps = {
   [key: string]: any;

@@ -12,6 +12,8 @@ import { GatsbyBrowser } from "gatsby";
 
 import "./fonts/fonts.css";
 
-export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({ element }) => {
+export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
+  element,
+}) => {
   return <>{element}</>;
 };

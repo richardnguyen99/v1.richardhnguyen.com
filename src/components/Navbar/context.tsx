@@ -6,7 +6,9 @@
 import * as React from "react";
 import { NavbarContextProps, NavbarProps } from "./type";
 
-export const NavbarContext = React.createContext<NavbarContextProps>({} as NavbarContextProps);
+export const NavbarContext = React.createContext<NavbarContextProps>(
+  {} as NavbarContextProps
+);
 
 const NavbarProvider: React.FC<NavbarProps> = ({ children }) => {
   const [activeTab, setActiveTab] = React.useState("");
@@ -19,7 +21,11 @@ const NavbarProvider: React.FC<NavbarProps> = ({ children }) => {
     [activeTab]
   );
 
-  return <NavbarContext.Provider value={contextValue}>{children}</NavbarContext.Provider>;
+  return (
+    <NavbarContext.Provider value={contextValue}>
+      {children}
+    </NavbarContext.Provider>
+  );
 };
 
 export default NavbarProvider;
