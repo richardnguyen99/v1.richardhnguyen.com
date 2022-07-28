@@ -33,6 +33,12 @@ export type TOCProps = PropsWithChildren<
   }
 >;
 
+export type SectionProps = PropsWithChildren<
+  BaseProps & {
+    title: string;
+  }
+>;
+
 export type ThumbnailProps = PropsWithChildren<BaseProps>;
 
 export type ContentProps = PropsWithChildren<BaseProps>;

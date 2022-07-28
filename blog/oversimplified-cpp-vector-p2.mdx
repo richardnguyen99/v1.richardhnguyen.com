@@ -78,7 +78,6 @@ public:
 ```
 
 `traits_t::allocator()` will allocate space for an array of n objects of type `_Tp` whose elements have not been constructed yet, and the pointer to the first element in the array will be assigned to `_start`.
-
 Then `std::__uninitialized_fill_n_a()` will copy the given `value` to uninitialized memory area defined by the range `[_start, _start + n)`. Finally, `_end` will point the end of the array which has been allocated and assigned to `_start`.
 
 # Counted-default-value constructor

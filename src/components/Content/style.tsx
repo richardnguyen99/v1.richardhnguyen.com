@@ -280,7 +280,7 @@ export const StyledChapterActiveLine = styled.div<{
     width: 5px;
     height: ${(props) => props.end - props.start + 2}px;
     top: ${(props) => props.start}px;
-    background: black;
+    background: var(--systemColor-green);
     left: 6px;
     z-index: 100;
     overflow-y: hidden;

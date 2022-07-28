@@ -15,6 +15,7 @@ import {
 } from "./style";
 import Chapter from "./Chapter";
 import TOC from "./TOC";
+import Section from "./Section";
 
 const exported = Object.assign(Content, {
   Header: ContentTitle,
@@ -24,6 +25,7 @@ const exported = Object.assign(Content, {
   Grid: StyledContentGrid,
   Side: StyledStickySideContent,
   Chapter: Chapter,
+  Section,
   TOC,
 });
 

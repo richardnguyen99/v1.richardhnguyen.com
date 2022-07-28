@@ -6,6 +6,7 @@
 import * as React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql, PageProps } from "gatsby";
+import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import PageLayout from "@components/Layout/PageLayout";
@@ -57,13 +58,15 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
         </Content.Thumbnail>
       ) : null}
 
-      <Content.Grid>
+      <Content.Grid style={{ marginTop: "66px" }}>
         <Content.Side>
           <Content.Chapter name={article} currentChapter={part} />
         </Content.Side>
         <Container>
           <Content>
-            <MDXRenderer>{body}</MDXRenderer>
+            <MDXProvider components={{ Section: Content.Section }}>
+              <MDXRenderer>{body}</MDXRenderer>
+            </MDXProvider>
           </Content>
         </Container>
         <Content.Side>
