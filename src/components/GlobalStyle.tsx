@@ -50,6 +50,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     line-height: 1.5;
     font-family: "Alliance No.1",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    scroll-behavior: smooth;
   }
 
   .anchor.before {

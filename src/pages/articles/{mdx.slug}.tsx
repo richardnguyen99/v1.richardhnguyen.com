@@ -66,7 +66,9 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
             <MDXRenderer>{body}</MDXRenderer>
           </Content>
         </Container>
-        <Content.TOC toc={tableOfContents} />
+        <Content.Side>
+          <Content.TOC toc={tableOfContents} />
+        </Content.Side>
       </Content.Grid>
     </PageLayout>
   );

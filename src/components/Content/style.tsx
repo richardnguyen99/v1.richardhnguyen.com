@@ -3,7 +3,7 @@
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledSectionHeader = styled.section`
   padding-top: 65px;
@@ -161,6 +161,7 @@ export const StyledChapterIcon = styled.span`
 export const StyledStickySideContent = styled.div`
   height: 100vh;
   position: fixed;
+  display: flex;
   top: 0;
   bottom: 0;
   left: 0;
@@ -177,9 +178,9 @@ export const StyledStickySideContent = styled.div`
     top: 66px;
     height: auto;
     width: 230px;
-    flex: none;
     transform: none;
     opacity: 1;
+    overflow-y: hidden;
   }
 `;
 
@@ -265,5 +266,25 @@ export const StyledContent = styled.main`
     border-radius: 6px;
     padding: 4px 6px;
     background: #eff2ff;
+  }
+`;
+
+export const StyledChapterActiveLine = styled.div<{
+  display: boolean;
+  start: number;
+  end: number;
+}>`
+  &::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: ${(props) => props.end - props.start + 2}px;
+    top: ${(props) => props.start}px;
+    background: black;
+    left: 6px;
+    z-index: 100;
+    overflow-y: hidden;
+
+    transition: all 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 `;
