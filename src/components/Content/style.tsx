@@ -288,3 +288,42 @@ export const StyledChapterActiveLine = styled.div<{
     transition: all 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 `;
+
+export const StyledPill = styled.a``;
+
+export const StyledLabels = styled.ul`
+  list-style: none;
+  margin-top: 8px;
+  padding-left: 0;
+  margin-bottom: 0;
+  width: auto;
+  position: relative;
+  display: inline-block;
+`;
+
+export const StyledLabel = styled.li`
+  margin-right: 8px;
+  margin-top: 8px;
+  padding: 5px 11px;
+  padding-bottom: 7px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  clip-path: fill-box;
+  background-color: var(--systemColor-green);
+
+  &:hover {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;

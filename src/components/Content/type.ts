@@ -39,6 +39,12 @@ export type SectionProps = PropsWithChildren<
   }
 >;
 
+export type PillProps = PropsWithChildren<
+  BaseProps & {
+    color?: string;
+  }
+>;
+
 export type ThumbnailProps = PropsWithChildren<BaseProps>;
 
 export type ContentProps = PropsWithChildren<BaseProps>;

@@ -11,11 +11,14 @@ import Thumbnail from "./Thumbnail";
 import {
   StyledContentGrid,
   StyledDescription,
+  StyledLabel,
+  StyledLabels,
   StyledStickySideContent,
 } from "./style";
 import Chapter from "./Chapter";
 import TOC from "./TOC";
 import Section from "./Section";
+import Pill from "./Pill";
 
 const exported = Object.assign(Content, {
   Header: ContentTitle,
@@ -26,6 +29,9 @@ const exported = Object.assign(Content, {
   Side: StyledStickySideContent,
   Chapter: Chapter,
   Section,
+  LabelContainer: StyledLabels,
+  Label: StyledLabel,
+  Pill,
   TOC,
 });
 

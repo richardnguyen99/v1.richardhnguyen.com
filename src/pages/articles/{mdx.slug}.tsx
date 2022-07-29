@@ -26,9 +26,9 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
       featuredImage,
       featuredImageAlt,
       series,
-      chapter,
       part,
       article,
+      tags,
     },
     timeToRead,
     excerpt,
@@ -47,6 +47,15 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
           updated={update}
         />
         <Content.Description>{excerpt}</Content.Description>
+        {tags ? (
+          <Content.LabelContainer>
+            {tags.map((tag, idx) => (
+              <Content.Label key={idx}>
+                <Content.Pill>{tag}</Content.Pill>
+              </Content.Label>
+            ))}
+          </Content.LabelContainer>
+        ) : null}
       </Content.Header>
       {featuredImage ? (
         <Content.Thumbnail>
