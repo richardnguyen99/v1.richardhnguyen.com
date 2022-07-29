@@ -3,7 +3,8 @@
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
-import styled, { css } from "styled-components";
+
+import styled from "styled-components";
 
 export const StyledSectionHeader = styled.section`
   padding-top: 65px;
