@@ -1,4 +1,4 @@
-# [richardhnguyen.com](richardhnguyen.com/) &middot; [![GitHub license]
+# [richardhnguyen.com](richardhnguyen.com/) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/richardnguyen99/richardhnguyen.com/blob/main/README.md)
 
 Main page for Richard H. Nguyen, where you can find
 
