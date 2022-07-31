@@ -1,4 +1,4 @@
-# [richardhnguyen.com](richardhnguyen.com/) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/richardnguyen99/richardhnguyen.com/blob/main/README.md) [![Netlify Status](https://api.netlify.com/api/v1/badges/0aa9295d-e5f1-4850-8809-7fa26b170674/deploy-status)](https://app.netlify.com/sites/spiffy-concha-bdc080/deploys)
+# [richardhnguyen.com](richardhnguyen.com/) &middot; [![GitHub license]
 
 Main page for Richard H. Nguyen, where you can find
 
