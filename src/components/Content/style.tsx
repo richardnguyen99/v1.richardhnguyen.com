@@ -306,17 +306,26 @@ export const StyledContent = styled.main`
     }
   }
 
-  figure {
+  figure:not(.gatsby-resp-image-figure) {
     margin: 0;
     padding-top: 2rem;
     padding-bottom: 2rem;
     text-align: center;
     background: var(--systemColor-gray-6);
     border-radius: 16px;
+
+    & > figcaption {
+      font-size: 16px;
+      font-weight: 500;
+    }
   }
 
   figure > figcaption {
-    font-size: 15px;
+    font-size: 14px;
+
+    &.gatsby-resp-image-figcaption {
+      margin-top: 1rem;
+    }
   }
 `;
 

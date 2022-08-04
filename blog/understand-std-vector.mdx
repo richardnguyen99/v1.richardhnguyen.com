@@ -114,7 +114,7 @@ In `std::vector`, `begin()` and `end()` are used to indicate the valid range of 
     alt="STL C++ vector iterator"
   />
   <figcaption>
-    Source:
+    Source:&nbsp;
     <a href="https://en.cppreference.com">https://en.cppreference.com</a>
   </figcaption>
 </figure>
@@ -156,3 +156,89 @@ ccurr -= 3;
 ```
 
 ## Reverse iterator
+
+Like normal iterators, reverse iterators will go backward when using incremental operators and go forward when using decremental operators. Reverse iterators can be used by calling `rbegin()`, `rend()`, `crbegin()` and `crend()`.
+
+Somewhat similar to normal iterator, `rbegin()` will point to the first element in the _reversed_ sequence and `rend()` will point to one-past the last element in the same _reversed_ seqquence.
+
+<figure>
+  <img
+    src="https://upload.cppreference.com/mwiki/images/3/39/range-rbegin-rend.svg"
+    alt="STL C++ vector reverse iterator"
+  />
+  <figcaption>
+    Source:&nbsp;
+    <a href="https://en.cppreference.com">https://en.cppreference.com</a>
+  </figcaption>
+</figure>
+
+```cpp
+std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
+
+std::cout << "Forward: { ";
+std::for_each(v.begin(), v.end(), [](const auto& e) {
+    std::cout << e << " ";
+});
+std::cout << " }\n";
+
+std::cout << "Backward: { ";
+std::for_each(v.rbegin(), v.rend(), [](const auto& e) {
+    std::cout << e << " ";
+});
+std::cout << " }\n";
+
+// Ouput:
+// Forward: { 1, 2, 3, 4, 5, 6, 7, 8 }
+// Backward: { 8, 7, 6, 5, 4, 3, 2, 1 }
+```
+
+# How does inserting work?
+
+Unlike C-style arrays which are fixed after initialization, `std::vector` allows users to add as many elements as they want after initialization. It will handle the growing internally and automatically. But at this point, we all know that `std::vector` is built on top of a C-style array. So how does it work?
+
+## Insert at the end
+
+Let's discuss the simplest inserting operation in `std::vector`. Inserting at the end can be done easily by constructing a new object at the pointer `_end`. Simple, right? That's why vector is efficient for pushing new elements to the end because it guarantees that the time complexity is $O(1)$.
+
+But you will hear many people say that the time complexity is _amortized constant_. The term _amortized time_ can be explained in simple terms.
+
+Basically, adding new elements to the end of a vector takes a constant time regardless of the current size of the vector. But what happens when the array is full and there is no space to allocate and construct a new element?
+
+Then the vector needs determine the new size (`std::vector` simply doubles the old size) and allocates a new array somewhere in memory according to the new size. Then it will move the data from the old array to the newly-allocated array and free the old array. Assume that allocating and dellocating the old array takes constant time (regardless what the old size is), moving each individual item from the old one to the new one takes $O(n)$ in time complexity where $n$ is the size of the old array.
+
+But since this process happens once in while, its _"slowness"_ is diluted away when it's run, say, in a million times. It can be ignored when comparing to the average time taken to perform inserting.
+
+> **TL;DR**
+>
+> 1. Check if there is an available space at the end. If yes, go to step 6.
+> 2. If not, determine the new size (the old size is doubled mostly).
+> 3. Allocate the new array according to the new size.
+> 4. Move data from the old one to the new one.
+> 5. Free up the space allocated to the old one.
+> 6. Construct a new element at the end.
+> 7. Update all the necessary data members.
+
+## Insert anywhere
+
+Now, inserting a new element anywhere in the vector is a bit more complicated. The data are stored a contiguous fashion so there is no available space to insert between elements. Therefore, making up space is required.
+
+The process is called _shifting_. It will shift the data in the range `[pos, _finish)` to the right. Specifically, the data will be moved to the range `[pos + 1, _finish + 1)`. But first, it still needs to check if there is enough space to do so. It is done exactly as inserting at the end. After shifting, there will an available space at `pos` to construct a new element.
+
+With the shifting process, inserting a new element anywhere takes $O(n)$ in time complexity where $n$ is the distance from `pos` to `_finish`. Therefore, the worst case is when inserting a new element at the front. That's why inserting at the front of a vector is not recommended due to its overhead.
+
+For example, `insert(v.begin() + 3, 4)`:
+
+<figure>
+  <img
+    alt="First initialization"
+    src="./images/understand-std-vector-insert-1.png"
+  />
+  <img alt="After shifting" src="./images/understand-std-vector-insert-2.png" />
+  <img
+    alt="Construct new element"
+    src="./images/understand-std-vector-insert-3.png"
+  />
+  <figcaption>
+    A simple illustration how inserting an element anywhere works
+  </figcaption>
+</figure>

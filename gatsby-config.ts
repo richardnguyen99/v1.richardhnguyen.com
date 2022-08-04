@@ -33,6 +33,13 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        name: "inline-images",
+        path: `${__dirname}/blog/images`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         name: "thumbnail",
         path: `${__dirname}/blog/thumbnails`,
       },
@@ -68,7 +75,9 @@ const config: GatsbyConfig = {
           {
             resolve: "gatsby-remark-images",
             options: {
-              maxWidth: 1200,
+              maxWidth: 980,
+              showCaptions: ["title", "alt"],
+              backgroundColor: "transparent",
             },
           },
           {
