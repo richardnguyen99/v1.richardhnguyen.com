@@ -9,6 +9,7 @@
  */
 import * as React from "react";
 import { GatsbyBrowser } from "gatsby";
+import "katex/dist/katex.min.css";
 
 import "./fonts/fonts.css";
 

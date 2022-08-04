@@ -23,6 +23,10 @@ import {
 type ItemProps = {
   title: string;
   url: string;
+  items?: Array<{
+    title: string;
+    url: string;
+  }>;
 };
 
 type ItemArrayProps = Array<ItemProps>;
@@ -49,7 +53,10 @@ const TOC: React.FC<TOCProps> = ({ toc, ...rest }) => {
 
         if (id) {
           console.log(entry.intersectionRect.top);
-          if (entry.intersectionRect.top > 0) {
+          if (
+            entry.intersectionRect.top > 0 ||
+            entry.intersectionRect.bottom > 0
+          ) {
             const element = document.querySelector(`a[data-toc='#${id}']`);
             if (element) {
               // getBoundingClientRect is relative to the viewport. To make sure
@@ -115,6 +122,15 @@ const TOC: React.FC<TOCProps> = ({ toc, ...rest }) => {
             <Link data-toc={entry.url} to={entry.url}>
               {entry.title}
             </Link>
+
+            {entry.items &&
+              entry.items.map((item, i) => (
+                <StyledChapterItem key={i} className="sub">
+                  <Link data-toc={item.url} to={item.url}>
+                    {item.title}
+                  </Link>
+                </StyledChapterItem>
+              ))}
           </StyledChapterItem>
         ))}
       </StyledChapterActiveLine>

@@ -8,6 +8,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql, PageProps } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { InlineMath, BLockMath } from "react-katex";
 
 import PageLayout from "@components/Layout/PageLayout";
 import Container from "@components/Utility/Container";
@@ -15,6 +16,23 @@ import Content from "@components/Content";
 
 type PostData = {
   mdx: Queries.Mdx;
+};
+
+const components = {
+  div: (props) => {
+    if (props.className.includes("math-display")) {
+      return <BLockMath math={props.children} />;
+    }
+
+    return <div {...props} />;
+  },
+  span: (props) => {
+    if (props.className.includes("math-inline")) {
+      return <InlineMath math={props.children} />;
+    }
+
+    return <span {...props} />;
+  },
 };
 
 const BlogPost = ({ data }: PageProps<PostData>) => {
@@ -29,6 +47,7 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
       part,
       article,
       tags,
+      displayTOC,
     },
     timeToRead,
     excerpt,
@@ -36,11 +55,19 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
     tableOfContents,
   } = data.mdx;
 
-  const fullTitle = `${series}: ${title}`;
+  const getFullTitle = () => {
+    let fullTitle = "";
+
+    if (series) fullTitle = fullTitle + `${series}: `;
+
+    fullTitle = fullTitle + title;
+
+    return fullTitle;
+  };
 
   return (
-    <PageLayout title={fullTitle}>
-      <Content.Header title={fullTitle}>
+    <PageLayout title={getFullTitle()}>
+      <Content.Header title={getFullTitle()}>
         <Content.FrontMatter
           created={created}
           timeToRead={timeToRead}
@@ -65,22 +92,28 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
             style={{ width: "100%", marginRight: "auto", marginLeft: "auto" }}
           />
         </Content.Thumbnail>
-      ) : null}
+      ) : (
+        <Content.Dots />
+      )}
 
       <Content.Grid style={{ marginTop: "66px" }}>
         <Content.Side>
-          <Content.Chapter name={article} currentChapter={part} />
+          {series && <Content.Chapter name={article} currentChapter={part} />}
         </Content.Side>
         <Container>
           <Content>
-            <MDXProvider components={{ Section: Content.Section }}>
+            <MDXProvider
+              components={{ Section: Content.Section, ...components }}
+            >
               <MDXRenderer>{body}</MDXRenderer>
             </MDXProvider>
           </Content>
         </Container>
-        <Content.Side>
-          <Content.TOC toc={tableOfContents} />
-        </Content.Side>
+        {displayTOC && (
+          <Content.Side>
+            <Content.TOC toc={tableOfContents} />
+          </Content.Side>
+        )}
       </Content.Grid>
     </PageLayout>
   );
@@ -90,8 +123,9 @@ export const query = graphql`
   query ($id: String) {
     mdx(id: { eq: $id }) {
       body
-      tableOfContents(maxDepth: 2)
+      tableOfContents(maxDepth: 3)
       frontmatter {
+        displayTOC
         categories
         author
         created(formatString: "YYYY-MM-DD")

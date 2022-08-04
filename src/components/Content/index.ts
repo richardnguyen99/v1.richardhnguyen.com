@@ -19,6 +19,7 @@ import Chapter from "./Chapter";
 import TOC from "./TOC";
 import Section from "./Section";
 import Pill from "./Pill";
+import Dots from "./Dots";
 
 const exported = Object.assign(Content, {
   Header: ContentTitle,
@@ -33,6 +34,7 @@ const exported = Object.assign(Content, {
   Label: StyledLabel,
   Pill,
   TOC,
+  Dots,
 });
 
 export default exported;
