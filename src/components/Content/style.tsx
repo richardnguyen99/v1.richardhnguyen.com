@@ -123,10 +123,15 @@ export const StyledChapterItem = styled.li`
   list-style: none;
   padding-bottom: 1.25rem;
   margin-left: -1.5rem;
-  padding-left: 1.5rem;
-  border-left: 1px solid var(--systemColor-gray-2);
+  padding-left: 2.5rem;
 
-  &:hover {
+  :not(.sub) {
+    border-left: 1px solid var(--systemColor-gray-2);
+    list-style: circle;
+    padding-left: 1.5rem;
+  }
+
+  &:not(.sub):hover {
     color: var(--systemColor-gray-1);
     border-left: 1px solid var(--systemColor-gray-1);
   }
@@ -268,6 +273,51 @@ export const StyledContent = styled.main`
     padding: 4px 6px;
     background: #eff2ff;
   }
+
+  blockquote {
+    &::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 5px;
+      top: 0;
+      left: -1rem;
+      border-radius: 3px;
+      background-color: var(--systemColor-gray-1);
+    }
+
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1.5rem;
+    border-radius: 6px;
+    font-style: italic;
+    position: relative;
+
+    background-color: var(--systemColor-gray-6);
+
+    & > p {
+      padding: 0;
+      margin: 0;
+    }
+
+    code {
+      color: var(--systemColor-green);
+      background: var(--systemColor-gray-5);
+    }
+  }
+
+  figure {
+    margin: 0;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+    background: var(--systemColor-gray-6);
+    border-radius: 16px;
+  }
+
+  figure > figcaption {
+    font-size: 15px;
+  }
 `;
 
 export const StyledChapterActiveLine = styled.div<{
@@ -327,4 +377,16 @@ export const StyledLabel = styled.li`
     text-decoration: underline;
     cursor: pointer;
   }
+`;
+
+export const StyledDots = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 96px;
+  opacity: 0.2;
+  font-size: sans-serif;
+  padding-bottom: 100px;
+  line-height: 0;
+  letter-spacing: 32px;
 `;

@@ -1,0 +1,158 @@
+---
+title: "Understanding std::vector"
+created: 2022-06-30
+update: ""
+author: "Richard Nguyen"
+description: "An oversimplified breakdown of C++ std::vector"
+categories:
+  - "explanation"
+tags:
+  - "c++"
+featuredImageAlt: "Vector Iterator"
+displayTOC: true
+---
+
+The _C++ Standard Template Library_ (or STL for short) has been around in the C++ comunnity for decades. It provides a set of C++ template classes and functions to support common data structures like `std::vector`.
+
+# What is vector?
+
+`std::vector` falls into the category [**Sequence Containers**](https://en.cppreference.com/w/cpp/container#Sequence_containers), which are containers that can be accessed sequentially. Like the good old C arrays, it allows users to perform pointer-like arithmetic calculation and random access. But now, it also has the abilility to resize itself automatically if needed as well as provides users a set of methods to manually grow or shrink the size by themself.
+
+Another trait of a vector is that inserting an element to the back of the vector is constant time (_most of the time_). Removing the last element is also guaranteed to be constant time.
+
+Finally, vectors will manage allocation and dellocation internally when it deals with creating, inserting, deleting or going out of scope. Users don't need to manage all of those painful tasks mannually.
+
+# How is it managed?
+
+Internally, `std::vector` is built on top of a C-style array. Everything, including data members and methods, is structured and operated around this one array.
+
+With that being said, there are two major ways to maintain the necessary information about that array. Both are interchangeable, validated and accepted by many C++ programmers.
+
+```cpp
+// Approach 2
+template <typename T>
+class vector {
+public:
+    // public member functions
+private:
+    _Tp*          _data;      // Storage for all elements
+    unsigned int  _capacity;  // Maximum elements can be stored
+    unsigned int  _size;      // Current elements are stored
+};
+
+// Approach 2
+template <typename T>
+class vector {
+public:
+    // public member functions
+private:
+    _Tp*    _start;     // points to first element
+    _Tp*    _end;       // points to one past internal storage
+    _Tp*    _finish;    // points to one past last element
+};
+```
+
+However, the C++ STL vector uses the second approach in the internal implementation. Thus, it will be the main approach in this artcile.
+
+# How is it constructed?
+
+To put it simply, the constructors (a special function to initialize vector objects) will examine the input arguments to get the number of elements. This will be the size of the new vector object. The vector then allocate an array according to the size, and construct elements to fill in the array. Finally, it will update the data members to maintain the array.
+
+Take an example from the initializer-list constructor provided in `std::vector`:
+
+```cpp
+std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
+```
+
+First, it will examine how many element there are in the initializer list, which is 8 in this case. This will determine how many space should be allocated for this new vector object. The size can be computed by many ways:
+
+```cpp
+// std::initialize_list<int> l = { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+std::size_t n1 = std::distance(l.begin(), l.end());
+std::size_t n2 = l.size();
+```
+
+The allocator which is passed as a template argument by users takes the size and determine how many space to allocate for the internal array. This can be achieved through `allocator_traits::allocate()`. Then, it will iterate through the initializer list and construct elements with the same value. This is done by `allocator_traits::construct()`. Finally, it will update the three pointers to manage the internal array.
+
+Here is the simplified version of initializer-list constructor of vector:
+
+```cpp
+constexpr vector(std::initializer_list<_Tp> init)
+{
+    using traits_t = std::allocator_traits<allocator>;
+
+    const std::size_t n = init.size();
+    this->_start      = traits_t::allocate(_alloc, n);
+    this->_finish     = _start;
+    for (auto curr = init.begin(); curr != init.end(); curr++)
+    {
+        traits_t::construct(_alloc, std::addressof(*_finish), *curr);
+        _finish++;
+    }
+    _end = _start + n;
+}
+```
+
+`std::vector` also has many other constructors to cover all possible use cases. See more [here](https://en.cppreference.com/w/cpp/container/vector/vector).
+
+# What is iterator?
+
+## Normal iterator
+
+An _oversimplified_ explanation for iterators is a class wrapping around a pointer. The reason to create a class wrapping a pointer is to separate the operations carried by that iterator class because different containers require differences on how to work with those pointers underneath.
+
+For example, `std::vector` is built on top of a C-style array internally. Elements can be accessed directly regardless how many elements are stored, or at constant time. This abilility is called [random access](https://en.wikipedia.org/wiki/Random_access).
+
+Without too many details, a random access iterator will support overloaded operators to move the internal pointer foward or backward, one step or multiple steps at one time, to dereference and to access its data members if the type is a class.
+
+In `std::vector`, `begin()` and `end()` are used to indicate the valid range of a vector object. `begin()` will return an iterator pointing to the first element while `end()` will return a iterator pointing to one past the last element.
+
+<figure>
+  <img
+    src="https://upload.cppreference.com/mwiki/images/1/1b/range-begin-end.svg"
+    alt="STL C++ vector iterator"
+  />
+  <figcaption>
+    Source:
+    <a href="https://en.cppreference.com">https://en.cppreference.com</a>
+  </figcaption>
+</figure>
+
+```cpp
+std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
+
+auto prev = v.begin();
+
+prev++;      // Move one step forward
+prev--;      // Move one step backward
+prev += 3;   // Move three steps forward
+prev -= 3;   // Move three steps backward
+
+auto curr = prev + 1;  // Move and assign
+auto next = curr + 1;  // Move and assign
+
+std::cout << *prev << " " << *curr<< " " << *next << "\n";
+// Output: 1 2 3
+```
+
+## Const iterator
+
+`std::vector` also introduces _const iterators_ via `cbegin()` and `cend()`. A constant iterator in `std::vector` is also a class wrapping around a pointer, but the pointer is a pointer to constant. A _pointer to constant_ allows to modify the pointer itself, but the pointed-to value should not be modified.
+
+```cpp
+std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
+
+auto curr  = v.begin();
+auto ccurr = v.cbegin();
+
+ccurr++;
+ccurr--;
+ccurr += 3;
+ccurr -= 3;
+
+*curr  = 3; // Change 1 to 3
+*ccurr = 4; // This will result in compile error
+```
+
+## Reverse iterator

@@ -79,6 +79,7 @@ const config: GatsbyConfig = {
             },
           },
         ],
+        remarkPlugins: [require("remark-math")],
       },
     },
     {
