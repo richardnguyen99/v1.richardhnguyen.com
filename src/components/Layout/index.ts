@@ -1,5 +1,7 @@
 /**
- * Index file for <Layout /> components
+ * Index file for grouping <Layout /> components.
+ *
+ * Layout components are shared frames between multiple pages.
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

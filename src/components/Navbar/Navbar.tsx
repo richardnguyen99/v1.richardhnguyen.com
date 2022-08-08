@@ -1,15 +1,23 @@
+/**
+ * A React component to display the main navbar component as a container.
+ *
+ * @usage <Navbar />
+ *
+ * @author Richard Nguyen <richard.ng0616@gmail.com>
+ */
+
 import * as React from "react";
+
 import { StyledNavbar } from "./style";
 import { NavbarProps } from "./type";
 
 const NAVBAR_NORMAL_SIZE = 64;
-const NAVBAR_SHRINK_SIZE = 52;
 
 const Navbar: React.FC<NavbarProps> = ({ children, ...rest }) => {
   const navbarRef = React.useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = React.useState(false);
 
-  const onUserScroll = React.useCallback(() => {
+  const onScrollResize = React.useCallback(() => {
     if (
       document &&
       (document.body.scrollTop > NAVBAR_NORMAL_SIZE + 1 ||
@@ -22,12 +30,12 @@ const Navbar: React.FC<NavbarProps> = ({ children, ...rest }) => {
   }, []);
 
   React.useEffect(() => {
-    window.addEventListener("scroll", onUserScroll);
+    window.addEventListener("scroll", onScrollResize);
 
     return () => {
-      window.removeEventListener("scroll", onUserScroll);
+      window.removeEventListener("scroll", onScrollResize);
     };
-  }, [onUserScroll]);
+  }, [onScrollResize]);
 
   return (
     <StyledNavbar ref={navbarRef} className={scrolled && "scrolled"} {...rest}>

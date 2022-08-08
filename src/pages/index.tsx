@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /**
- * Index page (/)
+ * A React component to display the index page (/)
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

@@ -1,5 +1,7 @@
 /**
- * Index file for <Content /> components
+ * Index file for grouping <Content /> components
+ *
+ * <Content /> components are mainly used to display Markdown content.
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
@@ -17,7 +19,6 @@ import {
 } from "./style";
 import Chapter from "./Chapter";
 import TOC from "./TOC";
-import Section from "./Section";
 import Pill from "./Pill";
 import Dots from "./Dots";
 
@@ -29,7 +30,6 @@ const exported = Object.assign(Content, {
   Grid: StyledContentGrid,
   Side: StyledStickySideContent,
   Chapter: Chapter,
-  Section,
   LabelContainer: StyledLabels,
   Label: StyledLabel,
   Pill,

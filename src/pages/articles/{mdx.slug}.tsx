@@ -1,5 +1,10 @@
 /**
- * A Gatsby Slug boilerplate for programmatically creating pages for posts
+ * A Gatsby Slug boilerplate for programmatically creating pages for posts.
+ *
+ * Essentially, it will consume contents from all MDX files in <rootDir>/blog
+ * and generates the according pages.
+ *
+ * @see https://www.gatsbyjs.com/docs/tutorial/part-6/#task-create-blog-post-page-template
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
@@ -102,9 +107,7 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
         </Content.Side>
         <Container>
           <Content>
-            <MDXProvider
-              components={{ Section: Content.Section, ...components }}
-            >
+            <MDXProvider components={{ ...components }}>
               <MDXRenderer>{body}</MDXRenderer>
             </MDXProvider>
           </Content>

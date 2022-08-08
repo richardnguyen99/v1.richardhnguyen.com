@@ -1,5 +1,5 @@
 /**
- * React component for displaying main content from MDX
+ * A React component for displaying the content in an MDX.
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

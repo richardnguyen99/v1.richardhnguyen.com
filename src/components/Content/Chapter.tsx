@@ -1,5 +1,5 @@
 /**
- * React component for displaying chapters on the side of MDX content
+ * A React component for displaying chapters on the side of MDX content.
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
@@ -34,7 +34,7 @@ const Chapter: React.FC<ChapterProps> = ({ name, currentChapter, ...rest }) => {
     }
   `);
 
-  const validChapters = chaptersInfo.allMdx.edges
+  const relatedChapters = chaptersInfo.allMdx.edges
     .filter((edge) => edge.node.frontmatter.article === name)
     .sort((e1, e2) => e1.node.frontmatter.part - e2.node.frontmatter.part);
 
@@ -47,7 +47,7 @@ const Chapter: React.FC<ChapterProps> = ({ name, currentChapter, ...rest }) => {
         {name}
       </h5>
 
-      {validChapters.map((chapter, i) => (
+      {relatedChapters.map((chapter, i) => (
         <StyledChapterItem
           key={i}
           className={

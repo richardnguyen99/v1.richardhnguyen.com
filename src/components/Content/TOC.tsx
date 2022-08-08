@@ -86,6 +86,8 @@ const TOC: React.FC<TOCProps> = ({ toc, ...rest }) => {
         }
       },
       {
+        // This will make sure the intersectioning is triggered if and only if
+        // the header appears 90% on viewport, i.e. header will be nearly on the top of the screen.
         rootMargin: "0px 0px -90% 0px",
       }
     );

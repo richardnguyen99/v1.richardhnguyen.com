@@ -1,5 +1,5 @@
 /**
- * Styling for MDX content
+ * Styling for MDX contents.
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

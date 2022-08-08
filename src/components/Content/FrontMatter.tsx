@@ -1,5 +1,7 @@
 /**
- * React components for FrontMatter information in MDX content
+ * A React component to display frontmatter information in an MDX file.
+ *
+ * Frontmatter can include title, tags, featured images, etc.
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /**
- * Index page (/articles)
+ * A React component to display Articles page (/articles)
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

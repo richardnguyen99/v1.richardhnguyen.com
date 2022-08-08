@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /**
- * Index page (/about)
+ * A React component to display README page (/readme)
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
@@ -13,8 +13,7 @@ const ReadmePage: React.FC = () => {
   return (
     <Layout.Page className="bg-gray-7" title="README">
       <Typography.HeroHeadline>
-        <Typography.UnderlineText color="red">README</Typography.UnderlineText>{" "}
-        Richard
+        <Typography.UnderlineText color="red">README</Typography.UnderlineText>
       </Typography.HeroHeadline>
       <h3>Hedonist Roots</h3>
 

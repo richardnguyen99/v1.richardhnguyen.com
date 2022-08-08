@@ -1,5 +1,5 @@
 /**
- * React Context API for Navbar components
+ * A React Context API for Navbar components
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

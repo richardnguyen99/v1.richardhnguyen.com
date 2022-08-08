@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 /**
- * React component for gradient text components
+ * A React component for gradient text components
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

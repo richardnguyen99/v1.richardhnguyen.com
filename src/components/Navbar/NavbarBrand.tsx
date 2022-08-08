@@ -1,5 +1,7 @@
 /**
- * React component for <Navbar.Brand />
+ * A React component to display brand on the left of the navbar.
+ *
+ * @usage <Navbar.Brand />
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

@@ -1,5 +1,7 @@
 /**
- * React component items in navbar container <Navbar.Item />
+ * A React component to display items in the navbar.
+ *
+ * @usage <Navbar.Item />
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

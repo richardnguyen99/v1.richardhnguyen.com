@@ -1,5 +1,5 @@
 /**
- * React component for MDX title
+ * A React component to display the title queried from frontmatter.
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

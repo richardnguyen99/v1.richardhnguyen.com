@@ -1,5 +1,5 @@
 /**
- * React component for SVG-animated underline text
+ * A React component for SVG-animated underline text
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

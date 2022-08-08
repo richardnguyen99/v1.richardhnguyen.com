@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /**
- * Index page (/projects)
+ * A React component to display Projects page (/projects)
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

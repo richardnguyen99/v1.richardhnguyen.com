@@ -1,5 +1,7 @@
 /**
- * React component to hold <Navbar.Item /> components
+ * A React component to hold <Navbar.Item /> components
+ *
+ * @usage <Navbar.Nav />
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
