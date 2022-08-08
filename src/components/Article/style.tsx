@@ -6,6 +6,9 @@
 import styled from "styled-components";
 
 export const StyledArticleContainer = styled.div`
+  padding-right: 40px;
+  padding-left: 40px;
+
   @media (min-width: 768px) {
     margin-bottom: 128px;
     margin-top: 48px;
@@ -24,21 +27,23 @@ export const StyledTimelineArticle = styled.div`
   margin-right: -24px;
   margin-left: -24px;
 
-  @media (min-width: 768px) {
-    top: 48px;
-
-    &:last-child::before {
-      display: none;
-    }
-  }
-
   &::before {
     content: "";
     position: absolute;
     height: 100%;
-    top: 72px;
+    top: 40px;
     left: 0px;
     border-left: 2px solid var(--systemColor-gray-2);
+  }
+
+  &:last-child::before {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    &:before {
+      top: 72px;
+    }
   }
 `;
 
@@ -102,9 +107,11 @@ export const StyledTimelineTime = styled.div`
 `;
 
 export const StyledTimelineArticleContent = styled.div`
-  padding-left: 24px;
   width: 100%;
   border-bottom: 1px solid var(--systemColor-gray-1);
+  margin-left: 48px;
+  padding-bottom: 32px;
+  padding-top: 0px;
 
   @media (min-width: 768px) {
     width: ${(7 / 12) * 100}%;

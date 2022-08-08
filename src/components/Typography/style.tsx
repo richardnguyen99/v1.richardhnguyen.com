@@ -8,15 +8,29 @@ import styled, { keyframes, css } from "styled-components";
 export const StyledHeroHeadline = styled.h1`
   margin: 0;
   padding: 0;
-  font-size: 96px;
+  position: relative;
+  z-index: 10;
+  font-size: 48px;
   line-height: 1;
   font-weight: 800;
   letter-spacing: -0.03em;
-  padding-top: 116px;
-  padding-bottom: 116px;
-  margin-bottom: 64px;
-  position: relative;
-  z-index: 10;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  @media screen and (min-width: 480px) {
+    font-size: 80px;
+    letter-spacing: -0.04em;
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 96px;
+    letter-spacing: -0.05em;
+    padding-top: 116px;
+    padding-bottom: 116px;
+    margin-bottom: 64px;
+  }
 `;
 
 export const StyledGradientBlueText = styled.span`
@@ -93,8 +107,10 @@ export const StyledUnderlineText = styled.em<{ underlineColor: string }>`
     stroke-miterlimit: 10;
     stroke-width: 12px;
     stroke-dasharray: 1.1;
-    stroke-dashoffset: 1.1;
+    stroke-dashoffset: 0;
 
-    animation: ${drawPathKeyframes} 1s ease-in-out forwards;
+    @media screen and (min-width: 768px) {
+      animation: ${drawPathKeyframes} 1s ease-in-out forwards;
+    }
   }
 `;

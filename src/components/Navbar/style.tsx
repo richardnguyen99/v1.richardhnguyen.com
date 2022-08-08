@@ -9,16 +9,16 @@ import styled, { css } from "styled-components";
 import { StyledContainer } from "@components/Utility/Container";
 
 export const StyledNavbarWrapper = styled.nav`
-  @media screen and (min-width: 750px) {
+  background: rgb(255, 255, 255, 1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+
+  @media screen and (min-width: 768px) {
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
   }
-
-  background: rgb(255, 255, 255, 1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
 `;
 
 export const StyledNavbar = styled(StyledContainer)`
@@ -44,30 +44,32 @@ export const StyledNavbarBrand = styled(Link)<{ pageColor: string }>`
 
   transition: height 200ms ease-in;
 
-  .scrolled > & {
-    height: 52px;
-  }
+  @media screen and (min-width: 768px) {
+    .scrolled > & {
+      height: 52px;
+    }
 
-  &:hover {
-    color: var(--systemColor-${(props) => props.pageColor});
-  }
+    &:hover {
+      color: var(--systemColor-${(props) => props.pageColor});
+    }
 
-  &:hover:after {
-    width: 100%;
-  }
+    &:hover:after {
+      width: 100%;
+    }
 
-  &:after {
-    content: "";
-    content: "";
-    position: absolute;
-    height: 5px;
-    width: 0%;
-    background: var(--systemColor-${(props) => props.pageColor});
-    top: calc(100% - 5px);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: width 200ms cubic-bezier(0.2, 1.03, 0.81, 0.99);
+    &:after {
+      content: "";
+      content: "";
+      position: absolute;
+      height: 5px;
+      width: 0%;
+      background: var(--systemColor-${(props) => props.pageColor});
+      top: calc(100% - 5px);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: width 200ms cubic-bezier(0.2, 1.03, 0.81, 0.99);
+    }
   }
 `;
 
@@ -79,13 +81,17 @@ export const StyledNavbarItemGroup = styled.div`
 `;
 
 export const StyledNavbarNav = styled.div`
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: flex-start;
+  display: none;
 
-  & > ${StyledNavbarItemGroup}:last-child {
-    margin-left: auto;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-start;
+
+    & > ${StyledNavbarItemGroup}:last-child {
+      margin-left: auto;
+    }
   }
 `;
 
