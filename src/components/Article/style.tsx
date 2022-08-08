@@ -20,7 +20,7 @@ export const StyledArticleContainer = styled.div`
   }
 `;
 
-export const StyledTimelineArticle = styled.div`
+export const StyledTimelineArticle = styled.article`
   display: flex;
   position: relative;
   flex-wrap: wrap;

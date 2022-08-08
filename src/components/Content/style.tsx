@@ -98,7 +98,7 @@ export const StyledContentGrid = styled.div`
   padding: 0;
 `;
 
-export const StyledChapterNav = styled.div`
+export const StyledChapterNav = styled.nav`
   padding-left: 2rem;
   display: block;
 
@@ -348,8 +348,6 @@ export const StyledChapterActiveLine = styled.div<{
     transition: all 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 `;
-
-export const StyledPill = styled.a``;
 
 export const StyledLabels = styled.ul`
   list-style: none;

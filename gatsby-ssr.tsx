@@ -13,7 +13,7 @@ import type { GatsbySSR } from "gatsby";
 
 export const onRenderBody: GatsbySSR["onRenderBody"] = (
   { setPostBodyComponents },
-  pluginOptions
+  _pluginOptions
 ) => {
   setPostBodyComponents([<div key="portal" id="modal" />]);
 };

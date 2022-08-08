@@ -6,7 +6,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 
-import { PageLayoutPropsWithChildren } from "./type";
+import { PageLayoutProps } from "./type";
 import RootLayout from "./RootLayout";
 
 import SVG from "@components/Svg";
@@ -14,14 +14,14 @@ import Navbar from "@components/Navbar";
 import Seo from "@components/SEO";
 import Tooltip from "@components/Tooltip";
 
-const PageLayout: React.FC<PageLayoutPropsWithChildren> = ({
+const PageLayout: React.FC<PageLayoutProps> = ({
   title,
   className = "",
   children,
   ...rest
 }) => {
   return (
-    <main className={className}>
+    <main className={className} {...rest}>
       <RootLayout>
         <Seo title={title} lang="en" />
         <Navbar.Provider>

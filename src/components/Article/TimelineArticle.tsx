@@ -20,7 +20,7 @@ import { TimelineArticleProps } from "./type";
 const TimelineArticle: React.FC<TimelineArticleProps> = ({
   title,
   time = "",
-  tags = [],
+  tags: _tags = [],
   last = false,
   children,
   ...rest

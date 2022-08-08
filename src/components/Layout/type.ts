@@ -3,17 +3,15 @@
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
-import { PropsWithChildren, ClassAttributes } from "react";
+import { HTMLAttributes, PropsWithChildren } from "react";
 
-export interface LayoutProps {
-  [k: string]: any;
-}
-
-export interface PageLayoutProps extends LayoutProps {
+export interface BasePageLayoutProps extends HTMLAttributes<HTMLElement> {
   title: string;
   className?: string;
 }
 
-export type LayoutPropsWithChildren = PropsWithChildren<LayoutProps>;
+export type LayoutPropsWithChildren = PropsWithChildren<
+  HTMLAttributes<HTMLElement>
+>;
 
-export type PageLayoutPropsWithChildren = PropsWithChildren<PageLayoutProps>;
+export type PageLayoutProps = PropsWithChildren<BasePageLayoutProps>;

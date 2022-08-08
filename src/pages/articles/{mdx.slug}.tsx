@@ -82,9 +82,7 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
         {tags ? (
           <Content.LabelContainer>
             {tags.map((tag, idx) => (
-              <Content.Label key={idx}>
-                <Content.Pill>{tag}</Content.Pill>
-              </Content.Label>
+              <Content.Label key={idx}>{tag}</Content.Label>
             ))}
           </Content.LabelContainer>
         ) : null}

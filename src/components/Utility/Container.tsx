@@ -5,21 +5,9 @@
  */
 
 import * as React from "react";
-import styled from "styled-components";
 
-type ContainerProps = {
-  [key: string]: any;
-};
-
-export const StyledContainer = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  position: relative;
-  z-index: 2;
-
-  max-width: 980px;
-`;
+import { ContainerProps } from "./type";
+import { StyledContainer } from "./style";
 
 const Container: React.FC<React.PropsWithChildren<ContainerProps>> = ({
   children,

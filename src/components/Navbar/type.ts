@@ -12,9 +12,7 @@ export type ButtonMouseEvent = ReactMouseEvent<
   MouseEvent
 >;
 
-type BaseNavbarProps = {
-  [key: string]: any;
-};
+type BaseNavbarProps = React.HTMLAttributes<HTMLElement>;
 
 type BaseNavbarItemProps = BaseNavbarProps & {
   id?: string;

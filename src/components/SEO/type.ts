@@ -5,8 +5,8 @@
  */
 
 type Meta =
-  | { name: string; content: any; property?: undefined }
-  | { property: string; content: any; name?: undefined };
+  | { name: string; content: string; property?: undefined }
+  | { property: string; content: string; name?: undefined };
 
 export interface SEOProps {
   description?: string;

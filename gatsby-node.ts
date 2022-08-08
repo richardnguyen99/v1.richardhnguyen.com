@@ -6,7 +6,7 @@
  */
 
 import path from "path";
-import { GatsbyNode, graphql } from "gatsby";
+import { GatsbyNode } from "gatsby";
 
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] =
   async ({ actions }) => {

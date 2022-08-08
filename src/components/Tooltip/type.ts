@@ -3,7 +3,7 @@
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
-import React, { ReactNode } from "react";
+import { ReactNode, HTMLAttributes } from "react";
 
 export type TooltipPosition =
   | "top-center"
@@ -13,9 +13,8 @@ export type TooltipPosition =
   | "bottom-right"
   | "bottom-left";
 
-export interface TooltipProps {
+export interface TooltipProps extends HTMLAttributes<HTMLSpanElement> {
   position: TooltipPosition;
   text: string;
   children: ReactNode | ReactNode[];
-  [key: string]: any;
 }

@@ -3,7 +3,7 @@
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const StyledHeroHeadline = styled.h1`
   margin: 0;
@@ -42,6 +42,7 @@ export const StyledGradientBlueText = styled.span`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  box-decoration-break: none;
   -webkit-box-decoration-break: none;
   position: relative;
 
@@ -63,6 +64,7 @@ export const StyledGradientGreenText = styled.span`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  box-decoration-break: none;
   -webkit-box-decoration-break: none;
   position: relative;
 

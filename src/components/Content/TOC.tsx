@@ -1,5 +1,5 @@
 /**
- * React component for displaying table of contents of a post
+ * A React component for displaying table of contents of an article.
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */

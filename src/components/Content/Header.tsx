@@ -16,9 +16,9 @@ const ContentTitle: React.FC<ContentTitleProps> = ({
   ...rest
 }) => {
   return (
-    <StyledSectionHeader>
+    <StyledSectionHeader {...rest}>
       <Utility.Container>
-        <StyledHeader {...rest}>
+        <StyledHeader>
           <Typography.Gradient color="green">{title}</Typography.Gradient>
         </StyledHeader>
         <div>{children}</div>

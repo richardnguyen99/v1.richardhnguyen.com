@@ -4,10 +4,8 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 
-import { PropsWithChildren } from "react";
+import { HTMLAttributes, PropsWithChildren } from "react";
 
-export type BaseSelectProps = {
-  [key: string]: any;
-};
+export type BaseSelectProps = HTMLAttributes<HTMLSelectElement>;
 
 export type SelectProps = PropsWithChildren<BaseSelectProps>;

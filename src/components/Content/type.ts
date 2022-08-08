@@ -4,47 +4,37 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 
-import { PropsWithChildren } from "react";
-
-type BaseProps = {
-  [key: string]: any;
-};
+import { PropsWithChildren, HTMLAttributes } from "react";
 
 export type ContentTitleProps = PropsWithChildren<
-  BaseProps & {
+  HTMLAttributes<HTMLElement> & {
     title: string;
   }
 >;
 
-export type FrontMatterProps = BaseProps & {
+export type FrontMatterProps = HTMLAttributes<HTMLDivElement> & {
   created: string;
   updated?: string;
   timeToRead: number;
 };
 
-export type ChapterProps = BaseProps & {
+export type ChapterProps = HTMLAttributes<HTMLElement> & {
   name: string;
   currentChapter: number;
 };
 
 export type TOCProps = PropsWithChildren<
-  BaseProps & {
+  HTMLAttributes<HTMLElement> & {
     toc: Record<string, unknown>;
   }
 >;
 
 export type SectionProps = PropsWithChildren<
-  BaseProps & {
+  HTMLAttributes<HTMLElement> & {
     title: string;
   }
 >;
 
-export type PillProps = PropsWithChildren<
-  BaseProps & {
-    color?: string;
-  }
->;
+export type ThumbnailProps = PropsWithChildren<HTMLAttributes<HTMLDivElement>>;
 
-export type ThumbnailProps = PropsWithChildren<BaseProps>;
-
-export type ContentProps = PropsWithChildren<BaseProps>;
+export type ContentProps = PropsWithChildren<HTMLAttributes<HTMLElement>>;

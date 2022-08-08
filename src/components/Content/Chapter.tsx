@@ -39,7 +39,7 @@ const Chapter: React.FC<ChapterProps> = ({ name, currentChapter, ...rest }) => {
     .sort((e1, e2) => e1.node.frontmatter.part - e2.node.frontmatter.part);
 
   return (
-    <StyledChapterNav>
+    <StyledChapterNav {...rest}>
       <h5>
         <StyledChapterIcon>
           <SVG.Path />

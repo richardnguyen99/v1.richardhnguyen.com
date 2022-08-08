@@ -2,19 +2,13 @@
  * Type definition for <Article /> components
  */
 
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, HTMLAttributes } from "react";
 
-export type BaseArticleProps = {
-  [k: string]: any;
-};
-
-export type BaseTimelineArticleProps = BaseArticleProps & {
+export type BaseTimelineArticleProps = HTMLAttributes<HTMLDivElement> & {
   title: string;
   time?: string;
   tags?: string[];
   last?: boolean;
 };
-
-export type ArticleProps = PropsWithChildren<BaseArticleProps>;
 
 export type TimelineArticleProps = PropsWithChildren<BaseTimelineArticleProps>;

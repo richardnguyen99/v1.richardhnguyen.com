@@ -6,7 +6,7 @@
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
 
-import { StyledContainer } from "@components/Utility/Container";
+import { StyledContainer } from "@components/Utility/style";
 
 export const StyledNavbarWrapper = styled.nav`
   background: rgb(255, 255, 255, 1);

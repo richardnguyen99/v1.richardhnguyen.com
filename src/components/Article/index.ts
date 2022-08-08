@@ -4,15 +4,7 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 
-import {
-  StyledArticleContainer,
-  StyledTimelineArticle,
-  StyledTimelineArticleContent,
-  StyledTimelineHeader,
-  StyledTimelineHeaderTitle,
-  StyledTimelineStickyHeader,
-  StyledTimelineTime,
-} from "./style";
+import { StyledArticleContainer } from "./style";
 import TimelineArticle from "./TimelineArticle";
 
 const exported = Object.assign("Article", {
