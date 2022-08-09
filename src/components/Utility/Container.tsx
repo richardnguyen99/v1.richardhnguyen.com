@@ -11,8 +11,9 @@ import { StyledContainer } from "./style";
 
 const Container: React.FC<React.PropsWithChildren<ContainerProps>> = ({
   children,
+  ...rest
 }) => {
-  return <StyledContainer>{children}</StyledContainer>;
+  return <StyledContainer {...rest}>{children}</StyledContainer>;
 };
 
 export default Container;

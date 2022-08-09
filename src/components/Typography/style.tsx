@@ -29,7 +29,11 @@ export const StyledHeroHeadline = styled.h1`
     letter-spacing: -0.05em;
     padding-top: 116px;
     padding-bottom: 116px;
-    margin-bottom: 64px;
+
+    #readme & {
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
   }
 `;
 

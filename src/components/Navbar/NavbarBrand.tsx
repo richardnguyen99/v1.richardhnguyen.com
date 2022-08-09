@@ -16,7 +16,7 @@ const NavbarBrand: React.FC = () => {
   const matchPageWithColor = (tab: string) => {
     const pageToColor = {
       articles: "green",
-      about: "red",
+      readme: "red",
       projects: "indigo",
     };
 

@@ -8,6 +8,7 @@ import GithubIcon from "./Github";
 import RSSIcon from "./RSS";
 import SunIcon from "./Sun";
 import PathIcon from "./Path";
+import Hey from "./Hey";
 
 const exported = Object.assign("SVG", {
   Github: GithubIcon,
@@ -15,6 +16,7 @@ const exported = Object.assign("SVG", {
   Sun: SunIcon,
   Commit: CommitIcon,
   Path: PathIcon,
+  Hey,
 });
 
 export default exported;

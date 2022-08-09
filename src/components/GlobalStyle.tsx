@@ -63,6 +63,47 @@ const GlobalStyle = createGlobalStyle`
       justify-content: center;
     }
   }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  hr {
+    opacity: 0.16;
+  }
+
+  #readme {
+    p {
+      font-family: Georgia, ui-serif, serif;
+      font-size: 20px;
+      line-height: 1.2em;
+      text-transform: none;
+    }
+  }
+
+  #hey-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 64px;
+      font-family: Georgia, ui-serif, serif;
+      font-weight: 900;
+      letter-spacing: -0.055em;
+    }
+
+    p {
+      font-weight: 500;
+      padding: 0;
+      margin: 0;
+    }
+  }
 `;
 
 export default GlobalStyle;
