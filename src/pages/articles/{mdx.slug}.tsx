@@ -50,12 +50,11 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
       featuredImageAlt,
       series,
       part,
-      article,
       tags,
       displayTOC,
+      description,
     },
     timeToRead,
-    excerpt,
     body,
     tableOfContents,
   } = data.mdx;
@@ -78,7 +77,7 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
           timeToRead={timeToRead}
           updated={update}
         />
-        <Content.Description>{excerpt}</Content.Description>
+        <Content.Description>{description}</Content.Description>
         {tags ? (
           <Content.LabelContainer>
             {tags.map((tag, idx) => (
@@ -94,14 +93,14 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
             alt={featuredImageAlt}
             style={{ width: "100%", marginRight: "auto", marginLeft: "auto" }}
           />
+          <hr />
         </Content.Thumbnail>
       ) : (
         <Content.Dots />
       )}
-
       <Content.Grid style={{ marginTop: "66px" }}>
         <Content.Side>
-          {series && <Content.Chapter name={article} currentChapter={part} />}
+          {series && <Content.Chapter name={series} currentChapter={part} />}
         </Content.Side>
         <Container>
           <Content>
@@ -127,7 +126,7 @@ export const query = graphql`
       tableOfContents(maxDepth: 3)
       frontmatter {
         displayTOC
-        categories
+        description
         author
         created(formatString: "YYYY-MM-DD")
         description
@@ -136,11 +135,10 @@ export const query = graphql`
         update
         series
         chapter
-        article
         part
         featuredImage {
           childImageSharp {
-            gatsbyImageData(layout: FIXED, quality: 100, width: 980)
+            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
           }
         }
         featuredImageAlt

@@ -45,7 +45,7 @@ const IndexPage: React.FC = ({ data }: PageProps<IndexPageData>) => {
             <Content.Thumbnail
               style={{
                 padding: 0,
-                paddingTop: "1rem",
+                paddingTop: "3rem",
               }}
             >
               <GatsbyImage

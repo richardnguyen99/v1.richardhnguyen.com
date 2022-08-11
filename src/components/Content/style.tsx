@@ -76,6 +76,19 @@ export const StyledThumbnail = styled.div`
     border-radius: 6px;
     border-style: none;
   }
+
+  & > hr {
+    opacity: 1;
+    background: linear-gradient(
+      -70deg,
+      rgb(4, 160, 82) 0%,
+      var(--systemColor-green) 100%
+    );
+    height: 5px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 3rem;
+  }
 `;
 
 export const StyledDescription = styled.p`

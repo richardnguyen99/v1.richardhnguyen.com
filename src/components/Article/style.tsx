@@ -44,7 +44,7 @@ export const StyledTimelineArticle = styled.article`
   }
 
   @media (min-width: 768px) {
-    &:before {
+    &::before {
       top: 72px;
     }
   }
@@ -65,9 +65,11 @@ export const StyledTimelineStickyHeader = styled.div`
   top: 96px;
   position: sticky;
   padding-left: 48px;
+  padding-top: 32px;
 
   @media (min-width: 768px) {
     padding-left: 52px;
+    padding-top: 0px;
   }
 
   & > svg {

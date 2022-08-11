@@ -21,7 +21,7 @@ const Chapter: React.FC<ChapterProps> = ({ name, currentChapter, ...rest }) => {
         edges {
           node {
             frontmatter {
-              article
+              series
               chapter
               part
               series
@@ -35,7 +35,7 @@ const Chapter: React.FC<ChapterProps> = ({ name, currentChapter, ...rest }) => {
   `);
 
   const relatedChapters = chaptersInfo.allMdx.edges
-    .filter((edge) => edge.node.frontmatter.article === name)
+    .filter((edge) => edge.node.frontmatter.series === name)
     .sort((e1, e2) => e1.node.frontmatter.part - e2.node.frontmatter.part);
 
   return (
