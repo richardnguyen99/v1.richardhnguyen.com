@@ -269,7 +269,7 @@ export const StyledContent = styled.main`
     font-family: Inconsolata, SF Mono, Menlo, Consolas, Liberation Mono,
       monospace;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: 16px;
     padding: 4px 6px;
     background: #eff2ff;
   }

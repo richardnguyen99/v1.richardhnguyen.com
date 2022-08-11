@@ -51,13 +51,6 @@ const config: GatsbyConfig = {
         path: `${__dirname}/blog`,
       },
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "review",
-        path: `${__dirname}/blog/review`,
-      },
-    },
     "gatsby-plugin-netlify",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",

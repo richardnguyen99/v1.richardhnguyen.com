@@ -16,22 +16,22 @@ const ReadmePage: React.FC = () => {
   return (
     <Layout.Page id="readme" className="bg-gray-7" title="README">
       <Utility.Container>
-        <Typography.HeroHeadline>
-          <Typography.UnderlineText color="red">
-            README
-          </Typography.UnderlineText>
-        </Typography.HeroHeadline>
-        <hr />
         <div id="hey-image">
           <SVG.Hey />
           <div>
-            <h1>I&apos;m Richard Nguyen</h1>
+            <h1>
+              I&apos;m&nbsp;
+              <Typography.UnderlineText color="red">
+                Richard Nguyen
+              </Typography.UnderlineText>
+            </h1>
             <p>
               A fourth-year CS undergraduate at{" "}
               <a href="https://www.seattleu.edu">Seattle University.</a>
             </p>
           </div>
         </div>
+        <hr />
         <h1 id="about-me">👨‍💻 About me</h1>
         <p>
           A Vietnamese boy who has nothing more than passion about technologies,

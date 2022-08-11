@@ -5,14 +5,66 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 import * as React from "react";
+import { graphql, PageProps } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import Layout from "@components/Layout";
 import Typography from "@components/Typography";
 import Select from "@components/Select";
 import Utility from "@components/Utility";
 import Article from "@components/Article";
+import Content from "@components/Content";
 
-const IndexPage: React.FC = () => {
+type IndexPageData = Queries.IndexPageQuery;
+
+const IndexPage: React.FC = ({ data }: PageProps<IndexPageData>) => {
+  const mdxNodes = data.allMdx.edges;
+
+  const renderNode = (mdxNode: typeof mdxNodes[0], _key: number) => {
+    const {
+      created,
+      description,
+      previewFeaturedImage,
+      featuredImageAlt,
+      title,
+      tags,
+      articleUrl,
+    } = mdxNode.node.frontmatter;
+
+    return (
+      <Article.Timeline
+        key={_key}
+        title={title}
+        time={created}
+        tags={tags}
+        articleUrl={articleUrl}
+      >
+        <Article.Content>
+          {description}
+          {previewFeaturedImage && (
+            <Content.Thumbnail
+              style={{
+                padding: 0,
+                paddingTop: "1rem",
+              }}
+            >
+              <GatsbyImage
+                alt={featuredImageAlt}
+                image={previewFeaturedImage.childImageSharp.gatsbyImageData}
+                style={{
+                  width: "100%",
+                  marginRight: "auto",
+                  marginLeft: "auto",
+                  boxShadow: "0 22px 70px 4px rgba(0, 0, 0, 0.56)",
+                }}
+              />
+            </Content.Thumbnail>
+          )}
+        </Article.Content>
+      </Article.Timeline>
+    );
+  };
+
   return (
     <Layout.Page className="bg-gray-7" title="Home">
       <Utility.Container>
@@ -35,49 +87,7 @@ const IndexPage: React.FC = () => {
 
       <Utility.Container>
         <Article.Container>
-          <Article.Timeline
-            title="The standard Lorem Ipsum passage, used since the 1500s"
-            time="14 Jun, 2022"
-          >
-            <p>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </p>
-          </Article.Timeline>
-          <Article.Timeline
-            title="The standard Lorem Ipsum passage, used since the 1500s"
-            time="14 Jun, 2022"
-          >
-            <p>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </p>
-          </Article.Timeline>
-          <Article.Timeline
-            title="The standard Lorem Ipsum passage, used since the 1500s"
-            time="14 Jun, 2022"
-            last
-          >
-            <p>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </p>
-          </Article.Timeline>
+          {mdxNodes && mdxNodes.map((mdxNode, idx) => renderNode(mdxNode, idx))}
         </Article.Container>
 
         <h1>The standard Lorem Ipsum passage, used since the 1500s</h1>
@@ -142,5 +152,31 @@ const IndexPage: React.FC = () => {
     </Layout.Page>
   );
 };
+
+export const query = graphql`
+  query IndexPage {
+    allMdx(sort: { fields: frontmatter___created, order: DESC }) {
+      edges {
+        node {
+          excerpt(pruneLength: 200, truncate: true)
+          frontmatter {
+            description
+            created(formatString: "MMMM Do, YYYY")
+            update
+            title
+            tags
+            articleUrl
+            featuredImageAlt
+            previewFeaturedImage {
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage;

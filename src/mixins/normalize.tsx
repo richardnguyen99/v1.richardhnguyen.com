@@ -97,6 +97,29 @@ const NormalizeCSS = css`
   }
 
   /**
+   * 1. Remove default style and let components define their own.
+   */
+  ol,
+  ul {
+    padding-left: 0; /* 1 */
+    margin-top: 0; /* 1 */
+    margin-bottom: 0; /* 1 */
+  }
+
+  /**
+   * 1. Remove unnecessary styles and let components define their own.
+  */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  /**
  * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
