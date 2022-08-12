@@ -244,3 +244,57 @@ For example, `insert(v.begin() + 3, 4)`:
     A simple illustration how inserting an element anywhere works
   </figcaption>
 </figure>
+
+# How does deleting work?
+
+Deleting works somewhat similar to inserting. When deleting elements at ends, it guarantees to have constant time complexity $O(1)$. However, when deleting elements at other positions, shifting elements to the left will occur.
+
+## Delete at the end
+
+`vector::erase()` can be used in both cases. The function is passed with a position `pos`, which is a _const iterator_. When `pos == cend() - 1`, which points to the last element in the vector, deleting at end will happen.
+
+1. `_finish` is decremented and now pointing to the last element.
+2. Destroy the element pointed by `_finish`.[`std::allocator_traits<std::allocator<T>>::destroy()`](https://en.cppreference.com/w/cpp/memory/allocator_traits/destroy) is used to perform this task internally.
+
+<figure>
+  <img
+    alt="Vector delete 10 (end() - 1)"
+    src="./images/vector-delete-at-end-1.png"
+  />
+  <img alt="Move _finish backward" src="./images/vector-delete-at-end-2.png" />
+  <img alt="Destroy element" src="./images/vector-delete-at-end-3.png" />
+  <figcaption>Vector delete at end</figcaption>
+</figure>
+
+Thanks to the internal pointer `_finish`, deleting at end will be always $O(1)$ because it directly destroys the element pointed by `_finish` without knowing how many elements are stored before.
+
+## Delete anywhere
+
+Things are getting a bit tricky when deleting an element somewhere else except the end. Deleting a random element will leave a hole in the array and that will break the contiguity of array. This is when shifting happens.
+
+Again, `vector::erase()` will take the parameter `pos`. When `pos != cend() - 1`, which points to everywhere except the last element, this case will occur.
+
+1. Move elements in the range `[pos + 1, cend())` to to a new range start at `pos`. This taks can be achieved with [`std::move`](https://en.cppreference.com/w/cpp/algorithm/move).
+2. `_finish` is decremented and now pointing to the last element.
+3. Destroy the element pointed by `_finish`.[`std::allocator_traits<std::allocator<T>>::destroy()`](https://en.cppreference.com/w/cpp/memory/allocator_traits/destroy) is used to perform this task internally.
+
+<figure>
+  <img
+    alt="Vector delete 6 (cbegin() + 5)"
+    src="./images/vector-delete-at-everywhere-1.png"
+  />
+  <img src="./images/vector-delete-at-everywhere-2.png" />
+  <img
+    alt="Move elements from [pos + 1, cend()) to pos"
+    src="./images/vector-delete-at-everywhere-2.5.png"
+  />
+  <img
+    alt="Move _finish backward"
+    src="./images/vector-delete-at-everywhere-3.png"
+  />
+  <img
+    alt="Destroy element at _finish"
+    src="./images/vector-delete-at-everywhere-4.png"
+  />
+  <figcaption>Vector delete everywhere</figcaption>
+</figure>

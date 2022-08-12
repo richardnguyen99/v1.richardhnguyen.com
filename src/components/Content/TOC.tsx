@@ -52,7 +52,6 @@ const TOC: React.FC<TOCProps> = ({ toc, ...rest }) => {
         const id = entry.target.getAttribute("id");
 
         if (id) {
-          console.log(entry.intersectionRect.top);
           if (
             entry.intersectionRect.top > 0 ||
             entry.intersectionRect.bottom > 0

@@ -340,6 +340,13 @@ export const StyledContent = styled.main`
       margin-top: 1rem;
     }
   }
+
+  ul,
+  ol {
+    padding-left: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 export const StyledChapterActiveLine = styled.div<{
