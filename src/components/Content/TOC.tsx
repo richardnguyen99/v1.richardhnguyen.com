@@ -95,8 +95,16 @@ const TOC: React.FC<TOCProps> = ({ toc, ...rest }) => {
       observer.observe(elm);
     });
 
+    document.querySelectorAll("h2[id]").forEach((elm) => {
+      observer.observe(elm);
+    });
+
     return () => {
       document.querySelectorAll("h1[id]").forEach((elm) => {
+        observer.unobserve(elm);
+      });
+
+      document.querySelectorAll("h2[id]").forEach((elm) => {
         observer.unobserve(elm);
       });
     };
@@ -116,23 +124,28 @@ const TOC: React.FC<TOCProps> = ({ toc, ...rest }) => {
         end={position.end}
       >
         {(toc.items as ItemArrayProps).map((entry, i) => (
-          <StyledChapterItem
-            key={i}
-            className={`${activeId === entry.url ? "active" : ""}`}
-          >
-            <Link data-toc={entry.url} to={entry.url}>
-              {entry.title}
-            </Link>
+          <>
+            <StyledChapterItem
+              key={i}
+              className={`${activeId === entry.url ? "active" : ""}`}
+            >
+              <Link data-toc={entry.url} to={entry.url}>
+                {entry.title}
+              </Link>
+            </StyledChapterItem>
 
             {entry.items &&
-              entry.items.map((item, i) => (
-                <StyledChapterItem key={i} className="sub">
+              entry.items.map((item, j) => (
+                <StyledChapterItem
+                  key={j}
+                  className={`${activeId === item.url ? "active" : ""} sub`}
+                >
                   <Link data-toc={item.url} to={item.url}>
                     {item.title}
                   </Link>
                 </StyledChapterItem>
               ))}
-          </StyledChapterItem>
+          </>
         ))}
       </StyledChapterActiveLine>
     </StyledChapterNav>

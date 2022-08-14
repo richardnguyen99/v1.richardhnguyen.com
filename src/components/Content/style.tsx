@@ -137,14 +137,13 @@ export const StyledChapterItem = styled.li`
   padding-bottom: 1.25rem;
   margin-left: -1.5rem;
   padding-left: 2.5rem;
+  border-left: 1px solid var(--systemColor-gray-2);
 
-  :not(.sub) {
-    border-left: 1px solid var(--systemColor-gray-2);
-    list-style: circle;
-    padding-left: 1.5rem;
+  &.sub {
+    padding-left: 3.5rem;
   }
 
-  &:not(.sub):hover {
+  &:hover {
     color: var(--systemColor-gray-1);
     border-left: 1px solid var(--systemColor-gray-1);
   }
