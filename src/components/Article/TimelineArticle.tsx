@@ -25,7 +25,6 @@ const TimelineArticle: React.FC<TimelineArticleProps> = ({
   title,
   time = "",
   tags = [],
-  last = false,
   children,
   articleUrl = "#",
   ...rest

@@ -8,7 +8,6 @@ export type BaseTimelineArticleProps = HTMLAttributes<HTMLDivElement> & {
   title: string;
   time?: string;
   tags?: readonly string[];
-  last?: boolean;
   articleUrl?: string;
 };
 
