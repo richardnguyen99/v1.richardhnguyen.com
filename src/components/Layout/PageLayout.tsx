@@ -13,6 +13,7 @@ import SVG from "@components/Svg";
 import Navbar from "@components/Navbar";
 import Seo from "@components/SEO";
 import Tooltip from "@components/Tooltip";
+import Footer from "@components/Footer";
 
 const PageLayout: React.FC<PageLayoutProps> = ({
   title,
@@ -63,6 +64,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
             </Navbar>
           </Navbar.Wrapper>
           {children}
+          <Footer> Hello</Footer>
         </Navbar.Provider>
       </RootLayout>
     </main>
