@@ -95,11 +95,16 @@ export const StyledTimelineHeaderTitle = styled(Link)`
   font-size: 24px;
   line-height: 24px;
   text-decoration: none;
+  font-weight: 800;
+
+  @media (min-width: 480px) {
+    font-size: 48px;
+    line-height: 26px;
+  }
 
   @media (min-width: 768px) {
     font-size: 24px;
     line-height: 28px;
-    font-weight: 800;
   }
 `;
 

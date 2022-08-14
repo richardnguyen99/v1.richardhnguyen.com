@@ -180,7 +180,6 @@ export const StyledChapterIcon = styled.span`
 export const StyledStickySideContent = styled.div`
   height: 100vh;
   position: fixed;
-  display: flex;
   top: 0;
   bottom: 0;
   left: 0;
@@ -188,10 +187,12 @@ export const StyledStickySideContent = styled.div`
   overflow: auto;
   width: 230px;
   background: var(--systemColor-white, #fff);
+  display: none;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  @media (min-width: 768px) {
+  @media (min-width: 1280px) {
+    display: flex;
     position: sticky;
     z-index: auto;
     top: 66px;
@@ -207,15 +208,10 @@ export const StyledContent = styled.main`
   display: block;
   width: 100%;
 
-  @media (min-width: 768px) {
-    width: ${(8 / 12) * 100}%;
+  @media (min-width: 1280px) {
     font-size: 18px;
     line-height: 30px;
     letter-spacing: -0.01em;
-  }
-
-  @media (min-width: 980px) {
-    width: ${(12 / 12) * 100}%;
   }
 
   a {

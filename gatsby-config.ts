@@ -19,7 +19,9 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-styled-components",
       options: {
-        displayName: true,
+        displayName: false,
+        ssr: true,
+        preprocess: false,
       },
     },
     "gatsby-plugin-image",

@@ -64,7 +64,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
             </Navbar>
           </Navbar.Wrapper>
           {children}
-          <Footer> Hello</Footer>
+          <Footer />
         </Navbar.Provider>
       </RootLayout>
     </main>
