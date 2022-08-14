@@ -82,7 +82,7 @@ export const StyledTimelineStickyHeader = styled.div`
     fill: currentColor;
   }
 
-  &.sticky-header::before {
+  ${StyledTimelineArticle}:last-child &::before {
     content: "";
     position: absolute;
     height: 64px;

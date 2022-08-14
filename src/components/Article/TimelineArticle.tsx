@@ -45,7 +45,7 @@ const TimelineArticle: React.FC<TimelineArticleProps> = ({
   return (
     <StyledTimelineArticle {...rest}>
       <StyledTimelineHeader>
-        <StyledTimelineStickyHeader className={`${last && "sticky-header"}`}>
+        <StyledTimelineStickyHeader>
           <SVG.Commit />
           <StyledTimelineHeaderTitle to={articleUrl}>
             <Typography.Gradient>{title}</Typography.Gradient>

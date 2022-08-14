@@ -1,5 +1,5 @@
 /**
- * Root Layout that contains global configurations like styling and global context.
+ * A React component to contain global configurations like styling and global context.
  * It will be used in both layouts, <PageLayout /> and <BlogLayout />
  *
  * @author Richard Nguyen <richard.ng0616@gmail.com>
