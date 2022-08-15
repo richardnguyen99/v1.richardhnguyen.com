@@ -18,6 +18,7 @@ import { InlineMath, BLockMath } from "react-katex";
 import PageLayout from "@components/Layout/PageLayout";
 import Container from "@components/Utility/Container";
 import Content from "@components/Content";
+import MDXComponents from "@components/MDX";
 
 type PostData = {
   mdx: Queries.Mdx;
@@ -38,6 +39,8 @@ const components = {
 
     return <span {...props} />;
   },
+
+  ...MDXComponents,
 };
 
 const BlogPost = ({ data }: PageProps<PostData>) => {
