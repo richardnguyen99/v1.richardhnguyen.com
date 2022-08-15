@@ -8,11 +8,23 @@ import styled from "styled-components";
 
 export const StyledTerminal = styled.div`
   position: relative;
-  background: #f0f6fc;
+  //background: #f0f6fc;
   border: 1px solid rgba(27, 31, 36, 0.25);
   border-radius: 8px;
   color: #161b22;
+  font-weight: 600;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+    Liberation Mono, monospace;
   overflow: clip;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  pre {
+    margin: 0;
+    padding: 1rem 1rem;
+    overflow: scroll;
+    max-height: 640px;
+  }
 `;
 
 export const StyledTerminalToolbar = styled.div`
@@ -30,6 +42,7 @@ export const StyledTerminalBtnGroup = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-left: 8px;
+  margin-right: auto;
 `;
 
 export const StyledTerminalBtn = styled.span`

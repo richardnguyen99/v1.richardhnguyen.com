@@ -29,23 +29,25 @@ const CodeBlock: React.FC<CodeProps> = ({
         console.log(tokens);
 
         return (
-          <pre
-            data-prism-render="true"
-            className={className}
-            style={style}
-            {...rest}
-          >
-            {tokens.map((line, lineNumber) => (
-              <div
-                key={lineNumber}
-                {...getLineProps({ line, key: lineNumber })}
-              >
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            ))}
-          </pre>
+          <Terminal title="Terminal">
+            <pre
+              data-prism-render="true"
+              className={className}
+              style={style}
+              {...rest}
+            >
+              {tokens.map((line, lineNumber) => (
+                <div
+                  key={lineNumber}
+                  {...getLineProps({ line, key: lineNumber })}
+                >
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              ))}
+            </pre>
+          </Terminal>
         );
       }}
     </Highlight>
