@@ -217,6 +217,12 @@ export const StyledContent = styled.main`
     color: var(--systemColor-green);
     text-decoration: none;
 
+    &:hover,
+    &:visited,
+    &:active {
+      color: var(--systemColor-green);
+    }
+
     &:hover {
       text-decoration: underline;
     }

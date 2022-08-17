@@ -18,12 +18,17 @@ export const StyledTerminal = styled.div`
   overflow: clip;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 16px 2px;
 
   pre {
     margin: 0;
     padding: 1rem 1rem;
     overflow: scroll;
     max-height: 640px;
+    font-size: 1em;
+    font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas,
+      Liberation Mono, monospace;
+    font-weight: 600;
   }
 `;
 

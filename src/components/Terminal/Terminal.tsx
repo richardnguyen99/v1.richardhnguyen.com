@@ -29,7 +29,8 @@ const Terminal: React.FC<TerminalProps> = ({
           <StyledTerminalBtn className="min" />
           <StyledTerminalBtn className="max" />
         </StyledTerminalBtnGroup>
-        <StyledTerminalTitle>{title}</StyledTerminalTitle>
+        {/* Blank space is necessary in case there is no title */}
+        <StyledTerminalTitle>{title}&nbsp;</StyledTerminalTitle>
         <span className="empty"></span>
       </StyledTerminalToolbar>
       <StyledTerminalContent>{children}</StyledTerminalContent>

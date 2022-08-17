@@ -14,7 +14,7 @@ articleUrl: /articles/understand-std-vector
 displayTOC: true
 ---
 
-The _C++ Standard Template Library_ (or STL for short) has been around in the C++ comunnity for decades. It provides a set of C++ template classes and functions to support common data structures like `std::vector`.
+The _C++ Standard Template Library_ (or STL for short) has been around in the C++ comunnity for decades. It provides a set of C++ template classes and functions to support common data structures like [`std::vector`](https://en.cppreference.com/w/cpp/container/vector).
 
 # What is vector?
 
@@ -30,9 +30,9 @@ Internally, `std::vector` is built on top of a C-style array. Everything, includ
 
 With that being said, there are two major ways to maintain the necessary information about that array. Both are interchangeable, validated and accepted by many C++ programmers.
 
-```cpp
+```cpp title=vector.h
 // Approach 2
-template <typename T>
+template <typename _Tp>
 class vector {
 public:
     // public member functions
@@ -43,7 +43,7 @@ private:
 };
 
 // Approach 2
-template <typename T>
+template <typename _Tp>
 class vector {
 public:
     // public member functions
@@ -58,42 +58,72 @@ However, the C++ STL vector uses the second approach in the internal implementat
 
 # How is it constructed?
 
-To put it simply, the constructors (a special function to initialize vector objects) will examine the input arguments to get the number of elements. This will be the size of the new vector object. The vector then allocate an array according to the size, and construct elements to fill in the array. Finally, it will update the data members to maintain the array.
+To put it simply, the constructors (a special function to initialize vector objects) will examine the input arguments to get the number of elements. This will be the size of the new vector object. The vector then allocates an array according to the size, and constructs elements to fill in the array. Finally, it will update the data members to maintain the array.
 
 Take an example from the initializer-list constructor provided in `std::vector`:
 
-```cpp
-std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
+```cpp title=main.cpp
+#include <vector>
+
+int main()
+{
+  std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
+}
 ```
 
 First, it will examine how many element there are in the initializer list, which is 8 in this case. This will determine how many space should be allocated for this new vector object. The size can be computed by many ways:
 
 ```cpp
-// std::initialize_list<int> l = { 1, 2, 3, 4, 5, 6, 7, 8 };
+#include <cstddef>
+#include <initializer_list>
+#include <algorithm>
 
-std::size_t n1 = std::distance(l.begin(), l.end());
-std::size_t n2 = l.size();
+{
+  std::initialize_list<int> l = { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+  std::size_t n1 = std::distance(l.begin(), l.end());
+  std::size_t n2 = l.size();
+}
+
 ```
 
-The allocator which is passed as a template argument by users takes the size and determine how many space to allocate for the internal array. This can be achieved through `allocator_traits::allocate()`. Then, it will iterate through the initializer list and construct elements with the same value. This is done by `allocator_traits::construct()`. Finally, it will update the three pointers to manage the internal array.
+The allocator, which is passed as a template argument by users, takes the size and determines how many space to allocate for the internal array. This can be achieved through [`allocator_traits::allocate()`](https://en.cppreference.com/w/cpp/memory/allocator_traits/allocate). Then, it will iterate through the initializer list and construct elements with the same value. This is done by [`allocator_traits::construct()`](https://en.cppreference.com/w/cpp/memory/allocator_traits/construct). Finally, it will update the three pointers to manage the internal array.
 
 Here is the simplified version of initializer-list constructor of vector:
 
-```cpp
-constexpr vector(std::initializer_list<_Tp> init)
-{
-    using traits_t = std::allocator_traits<allocator>;
+```cpp title=vector.h
+#include <memory>
+#include <initializer_list>
 
-    const std::size_t n = init.size();
-    this->_start      = traits_t::allocate(_alloc, n);
-    this->_finish     = _start;
-    for (auto curr = init.begin(); curr != init.end(); curr++)
-    {
-        traits_t::construct(_alloc, std::addressof(*_finish), *curr);
-        _finish++;
-    }
-    _end = _start + n;
-}
+template<typename _Tp>
+class vector
+{
+
+// Other member methods ...
+
+public:
+  constexpr vector(std::initializer_list<_Tp> init)
+  {
+      using traits_t = std::allocator_traits<allocator>;
+
+      // Determine the size to allocate the new array
+      const std::size_t n = init.size();
+
+      // Allocate the new size and _start points to the first item
+      this->_start        = traits_t::allocate(_alloc, n);
+      this->_finish       = _start;
+
+      // Iterate through initializer list
+      for (auto curr = init.begin(); curr != init.end(); curr++)
+      {
+          // Construct new elements
+          traits_t::construct(_alloc, std::addressof(*_finish), *curr);
+          _finish++;
+      }
+
+      _end = _start + n;
+  }
+};
 ```
 
 `std::vector` also has many other constructors to cover all possible use cases. See more [here](https://en.cppreference.com/w/cpp/container/vector/vector).
@@ -121,20 +151,27 @@ In `std::vector`, `begin()` and `end()` are used to indicate the valid range of 
   </figcaption>
 </figure>
 
-```cpp
-std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
+```cpp title="main.cpp"
+#include <iostream>
+#include <vector>
 
-auto prev = v.begin();
+int main()
+{
+  std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
 
-prev++;      // Move one step forward
-prev--;      // Move one step backward
-prev += 3;   // Move three steps forward
-prev -= 3;   // Move three steps backward
+  auto prev = v.begin();
 
-auto curr = prev + 1;  // Move and assign
-auto next = curr + 1;  // Move and assign
+  prev++;      // Move one step forward
+  prev--;      // Move one step backward
+  prev += 3;   // Move three steps forward
+  prev -= 3;   // Move three steps backward
 
-std::cout << *prev << " " << *curr<< " " << *next << "\n";
+  auto curr = prev + 1;  // Move and assign
+  auto next = curr + 1;  // Move and assign
+
+  std::cout << *prev << " " << *curr<< " " << *next << "\n";
+}
+
 // Output: 1 2 3
 ```
 
@@ -142,19 +179,24 @@ std::cout << *prev << " " << *curr<< " " << *next << "\n";
 
 `std::vector` also introduces _const iterators_ via `cbegin()` and `cend()`. A constant iterator in `std::vector` is also a class wrapping around a pointer, but the pointer is a pointer to constant. A _pointer to constant_ allows to modify the pointer itself, but the pointed-to value should not be modified.
 
-```cpp
-std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
+```cpp title=main.cpp
+#include <vector>
 
-auto curr  = v.begin();
-auto ccurr = v.cbegin();
+int main()
+{
+  std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
 
-ccurr++;
-ccurr--;
-ccurr += 3;
-ccurr -= 3;
+  auto curr  = v.begin();
+  auto ccurr = v.cbegin();
 
-*curr  = 3; // Change 1 to 3
-*ccurr = 4; // This will result in compile error
+  ccurr++;
+  ccurr--;
+  ccurr += 3;
+  ccurr -= 3;
+
+  *curr  = 3; // Change 1 to 3
+  *ccurr = 4; // This will result in compile error
+}
 ```
 
 ## Reverse iterator
@@ -174,20 +216,27 @@ Somewhat similar to normal iterator, `rbegin()` will point to the first element 
   </figcaption>
 </figure>
 
-```cpp
-std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
+```cpp title=main.cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-std::cout << "Forward: { ";
-std::for_each(v.begin(), v.end(), [](const auto& e) {
-    std::cout << e << " ";
-});
-std::cout << " }\n";
+int main()
+{
+  std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
 
-std::cout << "Backward: { ";
-std::for_each(v.rbegin(), v.rend(), [](const auto& e) {
-    std::cout << e << " ";
-});
-std::cout << " }\n";
+  std::cout << "Forward: { ";
+  std::for_each(v.begin(), v.end(), [](const auto& e) {
+      std::cout << e << " ";
+  });
+  std::cout << " }\n";
+
+  std::cout << "Backward: { ";
+  std::for_each(v.rbegin(), v.rend(), [](const auto& e) {
+      std::cout << e << " ";
+  });
+  std::cout << " }\n";
+}
 
 // Ouput:
 // Forward: { 1, 2, 3, 4, 5, 6, 7, 8 }
@@ -244,6 +293,26 @@ For example, `insert(v.begin() + 3, 4)`:
     A simple illustration how inserting an element anywhere works
   </figcaption>
 </figure>
+
+## Code implementation
+
+```cpp
+template <typename _Tp>
+class vector
+{
+
+// Other data members and methods ...
+
+public:
+  iterator insert(const_iterator pos, const value_type& x)
+  {
+    const size_type = pos - cbegin();
+
+    if ()
+  }
+
+};
+```
 
 # How does deleting work?
 

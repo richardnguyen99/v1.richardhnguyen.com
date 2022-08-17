@@ -15,7 +15,7 @@ import Terminal from "@components/Terminal/Terminal";
 const CodeBlock: React.FC<CodeProps> = ({
   rawCodeString,
   language,
-  title,
+  title = "",
   ...rest
 }) => {
   return (
@@ -29,7 +29,7 @@ const CodeBlock: React.FC<CodeProps> = ({
         console.log(tokens);
 
         return (
-          <Terminal title="Terminal">
+          <Terminal title={title}>
             <pre
               data-prism-render="true"
               className={className}
