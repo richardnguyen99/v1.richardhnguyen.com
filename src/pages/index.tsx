@@ -66,7 +66,7 @@ const IndexPage: React.FC = ({ data }: PageProps<IndexPageData>) => {
   };
 
   return (
-    <Layout.Page className="bg-gray-3" title="Home">
+    <Layout.Page title="Home">
       <Utility.Container>
         <Typography.HeroHeadline>
           The{" "}

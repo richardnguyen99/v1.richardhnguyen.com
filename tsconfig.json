@@ -22,6 +22,8 @@
     "paths": {
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
+      "@contexts": ["src/contexts"],
+      "@contexts/*": ["src/contexts/*"],
       "@mixins": ["src/mixins"],
       "@mixins/*": ["src/mixins/*"],
       "@hooks/*": ["src/hooks/*"],

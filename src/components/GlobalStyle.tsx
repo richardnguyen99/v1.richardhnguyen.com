@@ -81,6 +81,21 @@ const GlobalStyle = createGlobalStyle`
     --systemColor-purple: rgb(var(--systemColor-purple-raw));
     --systemColor-pink: rgb(var(--systemColor-pink-raw));
     --systemColor-brown: rgb(var(--systemColor-brown-raw));
+
+    --systemColor-bg: var(--systemColor-gray-13);
+    --systemColor-text: var(--systemColor-gray-4);
+    --systemColor-sub-text: var(--systemColor-gray-5);
+    --systemColor-title: var(--systemColor-gray-1);
+    --systemColor-border: var(--systemColor-gray-5);
+    --systemColor-svg: var(--systemColor-gray-8);
+
+    --systemColor-navbar-bg: var(--systemColor-gray-14);
+    --systemColor-navbar-text: var(--systemColor-gray-2);
+    --systemColor-navbar__item-bg: transparent;
+    --systemColor-navbar__item-bg--hover: var(--systemColor-gray-11);
+    --systemColor-navbar__item-text: var(--systemColor-gray-4);
+    --systemColor-navbar__item-text--hover: var(--systemColor-gray-1);
+    --systemColor-navbar-border: var(--systemColor-gray-9);
   }
 
   :root[data-theme="light"] {
@@ -109,6 +124,21 @@ const GlobalStyle = createGlobalStyle`
     --systemColor-purple: rgb(var(--systemColor-purple-raw));
     --systemColor-pink: rgb(var(--systemColor-pink-raw));
     --systemColor-brown: rgb(var(--systemColor-brown-raw));
+
+    --systemColor-bg: var(--systemColor-gray-2);
+    --systemColor-text: var(--systemColor-gray-10);
+    --systemColor-sub-text: var(--systemColor-gray-8);
+    --systemColor-title: var(--systemColor-gray-13);
+    --systemColor-border: var(--systemColor-gray-5);
+    --systemColor-svg: var(--systemColor-gray-10);
+
+    --systemColor-navbar-bg: white;
+    --systemColor-navbar-text: black;
+    --systemColor-navbar__item-bg: transparent;
+    --systemColor-navbar__item-bg--hover: var(--systemColor-gray-3);
+    --systemColor-navbar__item-text: var(--systemColor-gray-10);
+    --systemColor-navbar__item-text--hover: black;
+    --systemColor-navbar-border: var(--systemColor-gray-4);
   }
 
   ${Mixins.Normalize};
@@ -123,12 +153,19 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-family: "Alliance No.1",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    background: var(--systemColor-bg);
+    color: var(--systemColor-text);
   }
 
   html {
     line-height: 1.5;
     font-family: "Alliance No.1",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     scroll-behavior: smooth;
+  }
+
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--systemColor-title);
   }
 
   .anchor.before {

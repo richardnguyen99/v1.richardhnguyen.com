@@ -54,11 +54,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
                       <SVG.RSS size={16} />
                     </Navbar.Item>
                   </Tooltip>
-                  <Tooltip text="Toggle theme" position="bottom-left">
-                    <Navbar.Item id="theme" icon>
-                      <SVG.Sun size={16} />
-                    </Navbar.Item>
-                  </Tooltip>
+                  <Navbar.ThemeToggle />
                 </Navbar.ItemGroup>
               </Navbar.Nav>
             </Navbar>

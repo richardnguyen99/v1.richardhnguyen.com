@@ -9,6 +9,7 @@ import NavbarBrand from "./NavbarBrand";
 import { StyledNavbarItemGroup, StyledNavbarNav } from "./style";
 import NavbarProvider from "./context";
 import NavbarItem from "./NavbarItem";
+import NavbarThemeToggle from "./NavbarThemeToggle";
 
 const exported = Object.assign(Navbar, {
   Provider: NavbarProvider,
@@ -17,6 +18,7 @@ const exported = Object.assign(Navbar, {
   Nav: StyledNavbarNav,
   ItemGroup: StyledNavbarItemGroup,
   Item: NavbarItem,
+  ThemeToggle: NavbarThemeToggle,
 });
 
 export default exported;

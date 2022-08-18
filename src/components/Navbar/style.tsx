@@ -9,8 +9,8 @@ import styled, { css } from "styled-components";
 import { StyledContainer } from "@components/Utility/style";
 
 export const StyledNavbarWrapper = styled.nav`
-  background: rgb(255, 255, 255, 1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+  background: var(--systemColor-navbar-bg);
+  border-bottom: 1px solid var(--systemColor-navbar-border);
 
   @media screen and (min-width: 768px) {
     position: sticky;
@@ -43,6 +43,12 @@ export const StyledNavbarBrand = styled(Link)<{ pageColor: string }>`
   font-weight: 700;
 
   transition: height 200ms ease-in;
+  color: var(--systemColor-title);
+
+  &:link,
+  &:visited {
+    color: var(--systemColor-title);
+  }
 
   @media screen and (min-width: 768px) {
     .scrolled > & {
@@ -101,8 +107,11 @@ export const StyledNavbarItem = styled.div<{ icon: boolean }>`
   align-items: center;
   padding: ${(props) => (props.icon ? css`0.5rem` : css`0.25rem 0.5rem`)};
   border-radius: 6px;
-  opacity: 0.7;
   font-weight: 600;
+
+  background: var(--systemColor-navbar__item-bg);
+  color: var(--systemColor-navbar__item-text);
+  fill: var(--systemColor-navbar__item-text);
 
   & > a {
     text-decoration: none;
@@ -115,7 +124,8 @@ export const StyledNavbarItem = styled.div<{ icon: boolean }>`
 
   &:hover,
   &.active {
-    background: var(--systemColor-gray-3);
-    opacity: 1;
+    background: var(--systemColor-navbar__item-bg--hover);
+    color: var(--systemColor-navbar__item-text--hover);
+    fill: var(--systemColor-navbar__item-text--hover);
   }
 `;

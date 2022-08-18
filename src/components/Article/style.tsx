@@ -36,7 +36,7 @@ export const StyledTimelineArticle = styled.article`
     height: 100%;
     top: 40px;
     left: 0px;
-    border-left: 2px solid var(--systemColor-gray-5);
+    border-left: 2px solid var(--systemColor-border);
   }
 
   &:last-child::before {
@@ -75,8 +75,8 @@ export const StyledTimelineStickyHeader = styled.div`
   & > svg {
     left: -10px;
     position: absolute;
-    background-color: var(--systemColor-gray-3);
-    color: var(--systemColor-gray-9);
+    background-color: var(--systemColor-bg);
+    color: var(--systemColor-svg);
     display: inline-block;
     overflow: visible;
     fill: currentColor;

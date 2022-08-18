@@ -44,7 +44,9 @@ export const StyledFrontMatter = styled.div`
   font-weight: bold;
 
   & > p {
-    color: var(--systemColor-gray-6);
+    color: var(
+      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 5 : 8}`}
+    );
     line-height: 20px;
     font-size: 14px;
 
@@ -97,7 +99,9 @@ export const StyledDescription = styled.p`
   margin-top: 0;
   margin-bottom: 10px;
   font-style: italic;
-  color: var(--systemColor-gray-5);
+  color: var(
+    ${(props) => `--systemColor-gray-${props.theme === "dark" ? 7 : 7}`}
+  );
   width: ${(9 / 12) * 100}%;
 `;
 
@@ -131,23 +135,36 @@ export const StyledChapterNav = styled.nav`
 export const StyledChapterItem = styled.li`
   font-weight: 400;
   font-size: 14px;
-  color: var(--systemColor-gray-7);
+  color: var(
+    ${(props) => `--systemColor-gray-${props.theme === "dark" ? 9 : 7}`}
+  );
   position: relative;
   list-style: none;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   margin-left: -1.5rem;
   padding-left: 2.5rem;
-  border-left: 1px solid var(--systemColor-gray-4);
+  border-left: 1px solid
+    var(${(props) => `--systemColor-gray-${props.theme === "dark" ? 9 : 7}`});
   transition: border 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:link,
+  &:visited {
+    color: var(
+      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 4 : 8}`}
+    );
+  }
 
   &.sub {
     padding-left: 3.5rem;
   }
 
   &:hover {
-    color: var(--systemColor-gray-9);
-    border-left: 1px solid var(--systemColor-gray-9);
+    color: var(
+      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 7 : 5}`}
+    );
+    border-left: 1px solid
+      var(${(props) => `--systemColor-gray-${props.theme === "dark" ? 7 : 5}`});
   }
 
   & > a {
@@ -187,7 +204,6 @@ export const StyledStickySideContent = styled.div`
   z-index: 1000;
   overflow: auto;
   width: 230px;
-  background: var(--systemColor-white, #fff);
   display: none;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -299,7 +315,12 @@ export const StyledContent = styled.main`
       top: 0;
       left: -1rem;
       border-radius: 3px;
-      background-color: var(--systemColor-gray-8);
+      background: var(
+        ${(props) => `--systemColor-gray-${props.theme === "dark" ? 13 : 3}`}
+      );
+      color: var(
+        ${(props) => `--systemColor-gray-${props.theme === "dark" ? 2 : 13}`}
+      );
     }
 
     margin-left: 0;
@@ -309,7 +330,9 @@ export const StyledContent = styled.main`
     font-style: italic;
     position: relative;
 
-    background-color: var(--systemColor-gray-3);
+    background: var(
+      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 13 : 3}`}
+    );
 
     & > p {
       padding: 0;
@@ -327,7 +350,9 @@ export const StyledContent = styled.main`
     padding-top: 2rem;
     padding-bottom: 2rem;
     text-align: center;
-    background: var(--systemColor-gray-3);
+    background: var(
+      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 13 : 3}`}
+    );
     border-radius: 16px;
 
     & > figcaption {
@@ -395,17 +420,22 @@ export const StyledLabel = styled.li`
   align-items: center;
   justify-content: center;
 
-  color: white;
+  color: var(
+    ${(props) => `--systemColor-gray-${props.theme === "dark" ? 11 : 1}`}
+  );
   background: transparent;
   font-size: 14px;
   font-weight: 600;
   clip-path: fill-box;
-  background-color: var(--systemColor-green);
+  background-color: rgba(var(--systemColor-green-raw), 0.85);
 
   &:hover {
-    color: white;
+    color: var(
+      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 13 : 2}`}
+    );
     text-decoration: underline;
     cursor: pointer;
+    background-color: rgba(var(--systemColor-green-raw), 1);
   }
 `;
 

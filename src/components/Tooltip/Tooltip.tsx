@@ -14,6 +14,7 @@ const Tooltip: React.FC<TooltipProps> = ({
   text,
   children,
   position,
+  onClick,
   ...rest
 }) => {
   const wrapperRef = React.useRef<HTMLElement>(null);
@@ -21,6 +22,14 @@ const Tooltip: React.FC<TooltipProps> = ({
   const timeoutRef = React.useRef<NodeJS.Timeout>(null);
 
   const [showing, setShowing] = React.useState(false);
+
+  const handleMouseClick = React.useCallback(
+    (evt: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+      onClick(evt);
+      console.log("???");
+    },
+    [onClick]
+  );
 
   const handleMouseEnter = React.useCallback(() => {
     timeoutRef.current = setTimeout(() => {
@@ -40,6 +49,7 @@ const Tooltip: React.FC<TooltipProps> = ({
           ref: wrapperRef,
           onMouseEnterCallback: handleMouseEnter,
           onMouseLeaveCallback: handleMouseLeave,
+          onClickCallback: handleMouseClick,
         };
         return React.cloneElement(child, childProps);
       }
