@@ -245,9 +245,26 @@ int main()
 
 # How does inserting work?
 
-Unlike C-style arrays which are fixed after initialization, `std::vector` allows users to add as many elements as they want after initialization. It will handle the growing internally and automatically. But at this point, we all know that `std::vector` is built on top of a C-style array. So how does it work?
+Unlike C-style arrays which are fixed after initialization, `std::vector` allows users to add as many elements as they want after initialization. It will handle the growing internally and automatically. But at this point, we all know that `std::vector` is built on top of a C-style array. So how does it work> **TL;DR**
+
+> 1. Check if there is an available space at the end. If yes, go to step 6.
+> 2. If not, determine the new size (the old size is doubled mostly).
+> 3. Allocate the new array according to the new size.
+> 4. Move data from the old one to the new one.
+> 5. Free up the space allocated to the old one.
+> 6. Construct a new element at the end.
+> 7. Update all the necessary data members.?
 
 ## Insert at the end
+
+Inserting at the end is the simplest form of insertion provided by `std::vector`. It also guarantees that the operation only takes _amortized_ constant time, $O(1)$, to perform. That's why it's recommended to use `std::vector` if you only append new items at the end.
+
+The operation can be broken down into these steps:
+
+1. Construct a new element at the end pointed by `_finish`
+2. Increment `_finish` to maintain the new bound
+
+Assume there is enough space for a new element (there is no reallocation), this operation will take only constant time $O(1)$ regardless how many elements are stored previously.
 
 Let's discuss the simplest inserting operation in `std::vector`. Inserting at the end can be done easily by constructing a new object at the pointer `_end`. Simple, right? That's why vector is efficient for pushing new elements to the end because it guarantees that the time complexity is $O(1)$.
 
@@ -258,16 +275,6 @@ Basically, adding new elements to the end of a vector takes a constant time rega
 Then the vector needs determine the new size (`std::vector` simply doubles the old size) and allocates a new array somewhere in memory according to the new size. Then it will move the data from the old array to the newly-allocated array and free the old array. Assume that allocating and dellocating the old array takes constant time (regardless what the old size is), moving each individual item from the old one to the new one takes $O(n)$ in time complexity where $n$ is the size of the old array.
 
 But since this process happens once in while, its _"slowness"_ is diluted away when it's run, say, in a million times. It can be ignored when comparing to the average time taken to perform inserting.
-
-> **TL;DR**
->
-> 1. Check if there is an available space at the end. If yes, go to step 6.
-> 2. If not, determine the new size (the old size is doubled mostly).
-> 3. Allocate the new array according to the new size.
-> 4. Move data from the old one to the new one.
-> 5. Free up the space allocated to the old one.
-> 6. Construct a new element at the end.
-> 7. Update all the necessary data members.
 
 ## Insert anywhere
 
@@ -294,25 +301,26 @@ For example, `insert(v.begin() + 3, 4)`:
   </figcaption>
 </figure>
 
-## Code implementation
+## Deal with reallocation
 
-```cpp
-template <typename _Tp>
-class vector
-{
+In the previous cases, we don't need to worry that our vector objects run out of space for new elements. But that's not why `std::vector` is famous. Growing size is one of the traits that `std::vector` is well-known for.
 
-// Other data members and methods ...
+Like we discussed above, `std::vector` is built on top of a C array. Accessing and writing to the elements outside the bound of an array is considered [_undefined behavior_](https://en.cppreference.com/w/cpp/language/ub).
 
-public:
-  iterator insert(const_iterator pos, const value_type& x)
-  {
-    const size_type = pos - cbegin();
+To put in a simple term, _undefined behaviors_ guarantees programmers nothing. For example, accessing the elements within the bounds of the array guarantees you the correct result or the thing you want to achieve. However, it's undefined what happens if you go out of bounds. It _might work_ today, on your machine, but it doesn't guarantee to work tomorrow, on a different machine. Basically, anything can happen. It can cause crashing, freezing or if you're lucky, it may works correctly.
 
-    if ()
-  }
+Thus, rellocation is necessary when our vector object is running out of space to insert new elements.
 
-};
-```
+Reallocation can be understood as following:
+
+1. Allocate a new array with a new size.
+2. Copy the existing elements from the original array to the new one.
+3. Destroy elements and free the allocated memory in the old array.
+4. Update the three data-member pointers to the new array.
+
+In the first step, the new size can be defined as how you want, but in the implementation of `std::vector`, the new size is a double of the original size.
+
+With the new array which has been allocated, we just simply copy the existing elements to the new one.
 
 # How does deleting work?
 

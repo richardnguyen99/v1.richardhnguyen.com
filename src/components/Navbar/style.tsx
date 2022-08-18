@@ -115,7 +115,7 @@ export const StyledNavbarItem = styled.div<{ icon: boolean }>`
 
   &:hover,
   &.active {
-    background: var(--systemColor-gray-6) 0;
+    background: var(--systemColor-gray-3);
     opacity: 1;
   }
 `;

@@ -25,4 +25,17 @@ export type BaseCodeProps = {
   metaString?: string;
 };
 
+export type BaseAlertProps = {
+  /**
+   * @description A short description or the meaning of this alert.
+   */
+  title?: string;
+
+  /**
+   * @description Color option used to set the theme of the <Alert /> component.
+   */
+  color?: string;
+};
+
 export type CodeProps = HTMLAttributes<HTMLPreElement> & BaseCodeProps;
+export type AlertProps = HTMLAttributes<HTMLDivElement> & BaseAlertProps;

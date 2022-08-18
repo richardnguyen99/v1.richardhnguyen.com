@@ -26,6 +26,12 @@ const COLORS = [
   "gray-5",
   "gray-6",
   "gray-7",
+  "gray-8",
+  "gray-9",
+  "gray-10",
+  "gray-11",
+  "gray-12",
+  "gray-13",
 ];
 
 const matchRootBackgroundColor = (color: string) => `

@@ -11,7 +11,7 @@ import Typography from "@components/Typography";
 
 const ArticlePage: React.FC = () => {
   return (
-    <Layout.Page className="bg-gray-7" title="Articles">
+    <Layout.Page className="bg-gray-3" title="Articles">
       <Typography.HeroHeadline>
         Richard's{" "}
         <Typography.UnderlineText color="green">

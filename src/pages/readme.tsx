@@ -14,7 +14,7 @@ import Content from "@components/Content/Content";
 
 const ReadmePage: React.FC = () => {
   return (
-    <Layout.Page id="readme" className="bg-gray-7" title="README">
+    <Layout.Page id="readme" className="bg-gray-3" title="README">
       <Utility.Container>
         <div id="hey-image">
           <SVG.Hey />

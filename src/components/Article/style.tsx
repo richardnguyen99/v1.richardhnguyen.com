@@ -36,7 +36,7 @@ export const StyledTimelineArticle = styled.article`
     height: 100%;
     top: 40px;
     left: 0px;
-    border-left: 2px solid var(--systemColor-gray-2);
+    border-left: 2px solid var(--systemColor-gray-5);
   }
 
   &:last-child::before {
@@ -75,8 +75,8 @@ export const StyledTimelineStickyHeader = styled.div`
   & > svg {
     left: -10px;
     position: absolute;
-    background-color: var(--systemColor-gray-7);
-    color: var(--systemColor-gray-2);
+    background-color: var(--systemColor-gray-3);
+    color: var(--systemColor-gray-9);
     display: inline-block;
     overflow: visible;
     fill: currentColor;
@@ -88,7 +88,7 @@ export const StyledTimelineStickyHeader = styled.div`
     height: 64px;
     top: -64px;
     left: 0px;
-    border-left: 2px solid var(--systemColor-gray-2);
+    border-left: 2px solid var(--systemColor-gray-5);
   }
 `;
 export const StyledTimelineHeaderTitle = styled(Link)`
@@ -114,12 +114,12 @@ export const StyledTimelineTime = styled.div`
   font-size: 14px;
   line-height: 20px;
   display: block;
-  color: var(--systemColor-gray-2);
+  color: var(--systemColor-gray-6);
 `;
 
 export const StyledTimelineArticleContent = styled.div`
   width: 100%;
-  border-bottom: 1px solid var(--systemColor-gray-1);
+  border-bottom: 1px solid var(--systemColor-gray-5);
   margin-left: 48px;
   padding-bottom: 32px;
   padding-top: 0px;
@@ -151,17 +151,23 @@ export const StyledTimeLineTag = styled.a`
   display: inline-block;
   position: relative;
 
-  background: var(--systemColor-blue);
-  color: var(--systemColor-gray-6);
+  background: rgba(var(--systemColor-blue-raw), 0.8);
+  color: var(--systemColor-gray-1);
 
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
   text-decoration: none;
   font-feature-settings: "ss02" on, "ss01" on;
+
+  &:hover {
+    color: var(--systemColor-gray-3);
+    background: rgba(var(--systemColor-blue-raw), 1);
+  }
 `;
 
 export const StyledArticleContent = styled(StyledContent)`
+  color: var(--systemColor-gray-10);
   img {
     width: 100%;
   }

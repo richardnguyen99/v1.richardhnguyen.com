@@ -44,7 +44,7 @@ export const StyledFrontMatter = styled.div`
   font-weight: bold;
 
   & > p {
-    color: var(--systemColor-gray-1);
+    color: var(--systemColor-gray-6);
     line-height: 20px;
     font-size: 14px;
 
@@ -97,7 +97,7 @@ export const StyledDescription = styled.p`
   margin-top: 0;
   margin-bottom: 10px;
   font-style: italic;
-  color: var(--systemColor-gray-2);
+  color: var(--systemColor-gray-5);
   width: ${(9 / 12) * 100}%;
 `;
 
@@ -131,21 +131,23 @@ export const StyledChapterNav = styled.nav`
 export const StyledChapterItem = styled.li`
   font-weight: 400;
   font-size: 14px;
-  color: var(--systemColor-gray-2);
+  color: var(--systemColor-gray-7);
   position: relative;
   list-style: none;
-  padding-bottom: 1.25rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   margin-left: -1.5rem;
   padding-left: 2.5rem;
-  border-left: 1px solid var(--systemColor-gray-2);
+  border-left: 1px solid var(--systemColor-gray-4);
+  transition: border 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &.sub {
     padding-left: 3.5rem;
   }
 
   &:hover {
-    color: var(--systemColor-gray-1);
-    border-left: 1px solid var(--systemColor-gray-1);
+    color: var(--systemColor-gray-9);
+    border-left: 1px solid var(--systemColor-gray-9);
   }
 
   & > a {
@@ -297,7 +299,7 @@ export const StyledContent = styled.main`
       top: 0;
       left: -1rem;
       border-radius: 3px;
-      background-color: var(--systemColor-gray-1);
+      background-color: var(--systemColor-gray-8);
     }
 
     margin-left: 0;
@@ -307,7 +309,7 @@ export const StyledContent = styled.main`
     font-style: italic;
     position: relative;
 
-    background-color: var(--systemColor-gray-6);
+    background-color: var(--systemColor-gray-3);
 
     & > p {
       padding: 0;
@@ -316,7 +318,7 @@ export const StyledContent = styled.main`
 
     code {
       color: var(--systemColor-green);
-      background: var(--systemColor-gray-5);
+      background: var(--systemColor-gray-3);
     }
   }
 
@@ -325,7 +327,7 @@ export const StyledContent = styled.main`
     padding-top: 2rem;
     padding-bottom: 2rem;
     text-align: center;
-    background: var(--systemColor-gray-6);
+    background: var(--systemColor-gray-3);
     border-radius: 16px;
 
     & > figcaption {
