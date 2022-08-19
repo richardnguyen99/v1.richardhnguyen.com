@@ -7,10 +7,12 @@
 
 import * as React from "react";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
-import lightTheme from "prism-react-renderer/themes/github";
+import lightTheme from "prism-react-renderer/themes/vsLight";
+import darkTheme from "prism-react-renderer/themes/vsDark";
 
 import { CodeProps } from "./type";
 import Terminal from "@components/Terminal/Terminal";
+import { ThemeContext } from "@contexts/Theme";
 
 const CodeBlock: React.FC<CodeProps> = ({
   rawCodeString,
@@ -18,12 +20,14 @@ const CodeBlock: React.FC<CodeProps> = ({
   title = "",
   ...rest
 }) => {
+  const themeContext = React.useContext(ThemeContext);
+
   return (
     <Highlight
       {...defaultProps}
       code={rawCodeString}
       language={language as Language}
-      theme={lightTheme}
+      theme={themeContext.theme === "dark" ? darkTheme : lightTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         console.log(tokens);

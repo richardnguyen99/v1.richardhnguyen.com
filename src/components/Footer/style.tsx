@@ -13,8 +13,8 @@ export const StyledFooterWrapper = styled.div`
   background: rgba(0, 0, 0, 0)
     linear-gradient(
       0deg,
-      var(--systemColor-gray-2) 0%,
-      var(--systemColor-gray-3) 100%
+      var(--systemColor-footer-bg-1) 0%,
+      var(--systemColor-footer-bg-2) 100%
     )
     repeat scroll 0% 0%;
 `;

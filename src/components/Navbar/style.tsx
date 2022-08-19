@@ -32,7 +32,6 @@ export const StyledNavbarBrand = styled(Link)<{ pageColor: string }>`
   align-items: center;
   text-decoration: none;
   white-space: nowrap;
-  opacity: 0.88;
   cursor: pointer;
   height: 64px;
   margin-right: 1rem;
@@ -46,7 +45,8 @@ export const StyledNavbarBrand = styled(Link)<{ pageColor: string }>`
   color: var(--systemColor-title);
 
   &:link,
-  &:visited {
+  &:visited,
+  &:active {
     color: var(--systemColor-title);
   }
 

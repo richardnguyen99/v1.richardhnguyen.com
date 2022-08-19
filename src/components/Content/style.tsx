@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /**
  * Styling for MDX contents.
  *
@@ -45,7 +46,7 @@ export const StyledFrontMatter = styled.div`
 
   & > p {
     color: var(
-      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 5 : 8}`}
+      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 5 : 8}`}
     );
     line-height: 20px;
     font-size: 14px;
@@ -100,7 +101,7 @@ export const StyledDescription = styled.p`
   margin-bottom: 10px;
   font-style: italic;
   color: var(
-    ${(props) => `--systemColor-gray-${props.theme === "dark" ? 7 : 7}`}
+    ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 7 : 7}`}
   );
   width: ${(9 / 12) * 100}%;
 `;
@@ -136,7 +137,7 @@ export const StyledChapterItem = styled.li`
   font-weight: 400;
   font-size: 14px;
   color: var(
-    ${(props) => `--systemColor-gray-${props.theme === "dark" ? 9 : 7}`}
+    ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 9 : 7}`}
   );
   position: relative;
   list-style: none;
@@ -145,13 +146,15 @@ export const StyledChapterItem = styled.li`
   margin-left: -1.5rem;
   padding-left: 2.5rem;
   border-left: 1px solid
-    var(${(props) => `--systemColor-gray-${props.theme === "dark" ? 9 : 7}`});
+    var(
+      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 9 : 7}`}
+    );
   transition: border 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &:link,
   &:visited {
     color: var(
-      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 4 : 8}`}
+      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 4 : 8}`}
     );
   }
 
@@ -161,10 +164,13 @@ export const StyledChapterItem = styled.li`
 
   &:hover {
     color: var(
-      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 7 : 5}`}
+      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 7 : 5}`}
     );
     border-left: 1px solid
-      var(${(props) => `--systemColor-gray-${props.theme === "dark" ? 7 : 5}`});
+      var(
+        ${(props) =>
+          `--systemColor-gray-${props.theme.mode === "dark" ? 7 : 5}`}
+      );
   }
 
   & > a {
@@ -301,9 +307,14 @@ export const StyledContent = styled.main`
     font-family: Inconsolata, SF Mono, Menlo, Consolas, Liberation Mono,
       monospace;
     font-weight: 600;
-    border-radius: 16px;
+    border-radius: 6px;
     padding: 4px 6px;
-    background: #eff2ff;
+    background: var(
+      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 10 : 3}`}
+    );
+    color: var(
+      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 2 : 13}`}
+    );
   }
 
   blockquote {
@@ -316,10 +327,12 @@ export const StyledContent = styled.main`
       left: -1rem;
       border-radius: 3px;
       background: var(
-        ${(props) => `--systemColor-gray-${props.theme === "dark" ? 13 : 3}`}
+        ${(props) =>
+          `--systemColor-gray-${props.theme.mode === "dark" ? 7 : 3}`}
       );
       color: var(
-        ${(props) => `--systemColor-gray-${props.theme === "dark" ? 2 : 13}`}
+        ${(props) =>
+          `--systemColor-gray-${props.theme.mode === "dark" ? 1 : 13}`}
       );
     }
 
@@ -331,12 +344,20 @@ export const StyledContent = styled.main`
     position: relative;
 
     background: var(
-      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 13 : 3}`}
+      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 10 : 3}`}
+    );
+    color: var(
+      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 1 : 13}`}
     );
 
     & > p {
       padding: 0;
       margin: 0;
+      padding-bottom: 1rem;
+    }
+
+    & > ol > li {
+      padding-bottom: 1rem;
     }
 
     code {
@@ -350,9 +371,9 @@ export const StyledContent = styled.main`
     padding-top: 2rem;
     padding-bottom: 2rem;
     text-align: center;
-    background: var(
-      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 13 : 3}`}
-    );
+    background: ${(props) =>
+      props.theme.mode === "dark" ? "rgb(30, 30, 30)" : "rgb(229, 229, 234)"};
+    color: var(--systemColor-gray-7);
     border-radius: 16px;
 
     & > figcaption {
@@ -421,7 +442,7 @@ export const StyledLabel = styled.li`
   justify-content: center;
 
   color: var(
-    ${(props) => `--systemColor-gray-${props.theme === "dark" ? 11 : 1}`}
+    ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 11 : 1}`}
   );
   background: transparent;
   font-size: 14px;
@@ -431,7 +452,7 @@ export const StyledLabel = styled.li`
 
   &:hover {
     color: var(
-      ${(props) => `--systemColor-gray-${props.theme === "dark" ? 13 : 2}`}
+      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 13 : 2}`}
     );
     text-decoration: underline;
     cursor: pointer;

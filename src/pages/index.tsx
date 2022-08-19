@@ -55,7 +55,7 @@ const IndexPage: React.FC = ({ data }: PageProps<IndexPageData>) => {
                   width: "100%",
                   marginRight: "auto",
                   marginLeft: "auto",
-                  boxShadow: "0 22px 70px 4px rgba(0, 0, 0, 0.56)",
+                  boxShadow: "0 22px 70px 4px var(--timeline-boxShadow)",
                 }}
               />
             </Content.Thumbnail>

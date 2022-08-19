@@ -32,7 +32,7 @@ const ThemeProvider: React.FC<ThemeContextProps> = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ theme: value, toggleTheme }}>
-      <SCThemeProvider theme={{ theme: value }}>{children}</SCThemeProvider>
+      <SCThemeProvider theme={{ mode: value }}>{children}</SCThemeProvider>
     </ThemeContext.Provider>
   );
 };

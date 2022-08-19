@@ -24,6 +24,10 @@ export const StyledArticleContainer = styled.div`
 `;
 
 export const StyledTimelineArticle = styled.article`
+  --timeline-boxShadow: var(
+    --systemColor-gray-${(props) => (props.theme.mode === "dark" ? 12 : 6)}
+  );
+
   display: flex;
   position: relative;
   flex-wrap: wrap;
@@ -88,7 +92,7 @@ export const StyledTimelineStickyHeader = styled.div`
     height: 64px;
     top: -64px;
     left: 0px;
-    border-left: 2px solid var(--systemColor-gray-5);
+    border-left: 2px solid var(--systemColor-border);
   }
 `;
 export const StyledTimelineHeaderTitle = styled(Link)`
@@ -114,12 +118,12 @@ export const StyledTimelineTime = styled.div`
   font-size: 14px;
   line-height: 20px;
   display: block;
-  color: var(--systemColor-gray-6);
+  color: var(--systemColor-sub-text);
 `;
 
 export const StyledTimelineArticleContent = styled.div`
   width: 100%;
-  border-bottom: 1px solid var(--systemColor-gray-5);
+  border-bottom: 1px solid var(--systemColor-border);
   margin-left: 48px;
   padding-bottom: 32px;
   padding-top: 0px;
@@ -167,7 +171,7 @@ export const StyledTimeLineTag = styled.a`
 `;
 
 export const StyledArticleContent = styled(StyledContent)`
-  color: var(--systemColor-gray-10);
+  color: var(--systemColor-text);
   img {
     width: 100%;
   }

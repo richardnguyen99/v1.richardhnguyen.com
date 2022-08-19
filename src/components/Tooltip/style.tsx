@@ -11,8 +11,9 @@ import { TooltipPosition } from "./type";
 export const StyledBaseTooltip = styled.span<{ position: TooltipPosition }>`
   position: absolute;
   white-space: nowrap;
-  color: #ddd; // TODO: Implement the background for light theme
-  background: #141413; // TODO: Implement the color for dark theme
+  color: ${(props) => (props.theme.mode === "dark" ? "#141413" : "#dddddd")};
+  background: ${(props) =>
+    props.theme.mode === "dark" ? " #dddddd" : "#141413"};
   //border-radius: 0.3rem;
   text-align: center;
   border-radius: 6px;
@@ -42,7 +43,9 @@ export const StyledBaseTooltip = styled.span<{ position: TooltipPosition }>`
       css`
         top: -40%;
         left: 50%;
-        border-color: transparent transparent #141413 transparent;
+        border-color: transparent transparent
+          ${(props) => (props.theme.mode === "dark" ? " #dddddd" : "#141413")}
+          transparent;
       `}
 
     ${(props) =>
@@ -50,7 +53,9 @@ export const StyledBaseTooltip = styled.span<{ position: TooltipPosition }>`
       css`
         top: -40%;
         left: 75%;
-        border-color: transparent transparent #141413 transparent;
+        border-color: transparent transparent
+          ${(props) => (props.theme.mode === "dark" ? " #dddddd" : "#141413")}
+          transparent;
       `}
 
     ${(props) =>
@@ -58,7 +63,9 @@ export const StyledBaseTooltip = styled.span<{ position: TooltipPosition }>`
       css`
         top: -40%;
         left: 25%;
-        border-color: transparent transparent #141413 transparent;
+        border-color: transparent transparent
+          ${(props) => (props.theme.mode === "dark" ? " #dddddd" : "#141413")}
+          transparent;
       `}
   }
 `;

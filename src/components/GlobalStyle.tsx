@@ -84,10 +84,10 @@ const GlobalStyle = createGlobalStyle`
 
     --systemColor-bg: var(--systemColor-gray-13);
     --systemColor-text: var(--systemColor-gray-4);
-    --systemColor-sub-text: var(--systemColor-gray-5);
-    --systemColor-title: var(--systemColor-gray-1);
-    --systemColor-border: var(--systemColor-gray-5);
-    --systemColor-svg: var(--systemColor-gray-8);
+    --systemColor-sub-text: var(--systemColor-gray-7);
+    --systemColor-title: var(--systemColor-gray-0);
+    --systemColor-border: var(--systemColor-gray-9);
+    --systemColor-svg: var(--systemColor-gray-3);
 
     --systemColor-navbar-bg: var(--systemColor-gray-14);
     --systemColor-navbar-text: var(--systemColor-gray-2);
@@ -95,7 +95,10 @@ const GlobalStyle = createGlobalStyle`
     --systemColor-navbar__item-bg--hover: var(--systemColor-gray-11);
     --systemColor-navbar__item-text: var(--systemColor-gray-4);
     --systemColor-navbar__item-text--hover: var(--systemColor-gray-1);
-    --systemColor-navbar-border: var(--systemColor-gray-9);
+    --systemColor-navbar-border: var(--systemColor-gray-11);
+
+    --systemColor-footer-bg-1: var(--systemColor-gray-13);
+    --systemColor-footer-bg-2: var(--systemColor-gray-14);
   }
 
   :root[data-theme="light"] {
@@ -125,7 +128,7 @@ const GlobalStyle = createGlobalStyle`
     --systemColor-pink: rgb(var(--systemColor-pink-raw));
     --systemColor-brown: rgb(var(--systemColor-brown-raw));
 
-    --systemColor-bg: var(--systemColor-gray-2);
+    --systemColor-bg: var(--systemColor-gray-1);
     --systemColor-text: var(--systemColor-gray-10);
     --systemColor-sub-text: var(--systemColor-gray-8);
     --systemColor-title: var(--systemColor-gray-13);
@@ -139,6 +142,9 @@ const GlobalStyle = createGlobalStyle`
     --systemColor-navbar__item-text: var(--systemColor-gray-10);
     --systemColor-navbar__item-text--hover: black;
     --systemColor-navbar-border: var(--systemColor-gray-4);
+
+    --systemColor-footer-bg-1: var(--systemColor-gray-2);
+    --systemColor-footer-bg-2: var(--systemColor-gray-3);
   }
 
   ${Mixins.Normalize};
@@ -155,6 +161,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Alliance No.1",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     background: var(--systemColor-bg);
     color: var(--systemColor-text);
+
+    transition: background 200ms cubic-bezier(0.075, 0.82, 0.165, 1), color 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   html {

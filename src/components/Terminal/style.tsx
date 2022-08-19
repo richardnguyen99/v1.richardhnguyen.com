@@ -38,8 +38,9 @@ export const StyledTerminalToolbar = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  background: #e2e6f0;
-  color: #24292f;
+  background: ${(props) =>
+    props.theme.mode === "dark" ? "rgb(25, 25, 25)" : "#e2e6f0"};
+  color: var(--systemColor-text);
 `;
 
 export const StyledTerminalBtnGroup = styled.div`

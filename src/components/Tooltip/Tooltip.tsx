@@ -26,7 +26,6 @@ const Tooltip: React.FC<TooltipProps> = ({
   const handleMouseClick = React.useCallback(
     (evt: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
       onClick(evt);
-      console.log("???");
     },
     [onClick]
   );
