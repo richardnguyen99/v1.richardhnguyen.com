@@ -28,7 +28,7 @@ Finally, vectors will manage allocation and dellocation internally when it deals
 
 Internally, `std::vector` is built on top of a C-style array. Everything, including data members and methods, is structured and operated around this one array.
 
-With that being said, there are two major ways to maintain the necessary information about that array. Both are interchangeable, validated and accepted by many C++ programmers.
+However, there are two major ways to maintain the necessary information about that array. Both are interchangeable, validated and accepted by many C++ programmers.
 
 ```cpp title=vector.h
 // Approach 2
@@ -54,7 +54,15 @@ private:
 };
 ```
 
-However, the C++ STL vector uses the second approach in the internal implementation. Thus, it will be the main approach in this artcile.
+<Alert title="Which one to choose?" status="primary" icon="information">
+  <p>
+    Although both cases are validated and used interchangeably,&nbsp;
+    <code>std::vector</code> uses the second approach in its implementation. Personally,
+    the second approach will allow you to work directly with pointers to access the
+    array instead of using offset (offsets will still be used but minimized). Therefore,
+    the article will focues primarily on this.
+  </p>
+</Alert>
 
 # How is it constructed?
 
@@ -141,10 +149,7 @@ Without too many details, a random access iterator will support overloaded opera
 In `std::vector`, `begin()` and `end()` are used to indicate the valid range of a vector object. `begin()` will return an iterator pointing to the first element while `end()` will return a iterator pointing to one past the last element.
 
 <figure>
-  <img
-    src="https://upload.cppreference.com/mwiki/images/1/1b/range-begin-end.svg"
-    alt="STL C++ vector iterator"
-  />
+  <img src="./images/range-begin-end.png" alt="STL C++ vector iterator" />
   <figcaption>
     Source:&nbsp;
     <a href="https://en.cppreference.com">https://en.cppreference.com</a>
@@ -207,7 +212,7 @@ Somewhat similar to normal iterator, `rbegin()` will point to the first element 
 
 <figure>
   <img
-    src="https://upload.cppreference.com/mwiki/images/3/39/range-rbegin-rend.svg"
+    src="./images/range-rbegin-rend.png"
     alt="STL C++ vector reverse iterator"
   />
   <figcaption>

@@ -231,9 +231,12 @@ export const StyledContent = styled.main`
   display: block;
   width: 100%;
 
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: -0.016em;
+
   @media (min-width: 1280px) {
     font-size: 18px;
-    line-height: 30px;
     letter-spacing: -0.01em;
   }
 
@@ -326,14 +329,8 @@ export const StyledContent = styled.main`
       top: 0;
       left: -1rem;
       border-radius: 3px;
-      background: var(
-        ${(props) =>
-          `--systemColor-gray-${props.theme.mode === "dark" ? 7 : 3}`}
-      );
-      color: var(
-        ${(props) =>
-          `--systemColor-gray-${props.theme.mode === "dark" ? 1 : 13}`}
-      );
+      background: ${(props) =>
+        props.theme.mode === "dark" ? "rgb(49, 49, 49)" : "rgb(229, 229, 234)"};
     }
 
     margin-left: 0;
@@ -343,9 +340,8 @@ export const StyledContent = styled.main`
     font-style: italic;
     position: relative;
 
-    background: var(
-      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 10 : 3}`}
-    );
+    background: ${(props) =>
+      props.theme.mode === "dark" ? "rgb(30, 30, 30)" : "rgb(229, 229, 234)"};
     color: var(
       ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 1 : 13}`}
     );
@@ -353,10 +349,6 @@ export const StyledContent = styled.main`
     & > p {
       padding: 0;
       margin: 0;
-      padding-bottom: 1rem;
-    }
-
-    & > ol > li {
       padding-bottom: 1rem;
     }
 
@@ -395,6 +387,10 @@ export const StyledContent = styled.main`
     padding-left: 3rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
+
+    & > li {
+      padding-bottom: 1rem;
+    }
   }
 `;
 

@@ -9,6 +9,8 @@ import RSSIcon from "./RSS";
 import SunIcon from "./Sun";
 import PathIcon from "./Path";
 import Hey from "./Hey";
+import AlertCheckmark from "./AlertCheckmark";
+import AlertInfo from "./AlertInfo";
 
 const exported = Object.assign("SVG", {
   Github: GithubIcon,
@@ -17,6 +19,8 @@ const exported = Object.assign("SVG", {
   Commit: CommitIcon,
   Path: PathIcon,
   Hey,
+  AlertCheckmark,
+  AlertInfo,
 });
 
 export default exported;

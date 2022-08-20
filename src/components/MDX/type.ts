@@ -4,6 +4,20 @@
 
 import { HTMLAttributes } from "react";
 
+export type AlertStatus =
+  | "primary"
+  | "default"
+  | "danger"
+  | "warning"
+  | "success";
+
+export type AlertIconType =
+  | "checkmark"
+  | "question"
+  | "danger"
+  | "warning"
+  | "information";
+
 export type BaseCodeProps = {
   /**
    * @description rawCodeString is the raw string of in a code block that will
@@ -32,9 +46,15 @@ export type BaseAlertProps = {
   title?: string;
 
   /**
-   * @description Color option used to set the theme of the <Alert /> component.
+   * @description Status option used to set the theme of the <Alert />
+   * component.
    */
-  color?: string;
+  status?: AlertStatus;
+
+  /**
+   * @description Icon option used to set what icon to use for <Alert />.
+   */
+  icon?: AlertIconType;
 };
 
 export type CodeProps = HTMLAttributes<HTMLPreElement> & BaseCodeProps;
