@@ -24,10 +24,6 @@ export const StyledArticleContainer = styled.div`
 `;
 
 export const StyledTimelineArticle = styled.article`
-  --timeline-boxShadow: var(
-    --systemColor-gray-${(props) => (props.theme.mode === "dark" ? 12 : 6)}
-  );
-
   display: flex;
   position: relative;
   flex-wrap: wrap;
@@ -40,7 +36,7 @@ export const StyledTimelineArticle = styled.article`
     height: 100%;
     top: 40px;
     left: 0px;
-    border-left: 2px solid var(--systemColor-border);
+    border-left: 2px solid var(--systemColor-timeline-border);
   }
 
   &:last-child::before {
@@ -80,7 +76,7 @@ export const StyledTimelineStickyHeader = styled.div`
     left: -10px;
     position: absolute;
     background-color: var(--systemColor-bg);
-    color: var(--systemColor-svg);
+    color: var(--systemColor-timeline__svg);
     display: inline-block;
     overflow: visible;
     fill: currentColor;
@@ -92,7 +88,7 @@ export const StyledTimelineStickyHeader = styled.div`
     height: 64px;
     top: -64px;
     left: 0px;
-    border-left: 2px solid var(--systemColor-border);
+    border-left: 2px solid var(--systemColor-timeline-border);
   }
 `;
 export const StyledTimelineHeaderTitle = styled(Link)`
@@ -118,7 +114,7 @@ export const StyledTimelineTime = styled.div`
   font-size: 14px;
   line-height: 20px;
   display: block;
-  color: var(--systemColor-sub-text);
+  color: var(--systemColor-timeline-sub-text);
 `;
 
 export const StyledTimelineArticleContent = styled.div`
@@ -155,8 +151,11 @@ export const StyledTimeLineTag = styled.a`
   display: inline-block;
   position: relative;
 
-  background: rgba(var(--systemColor-blue-raw), 0.8);
-  color: var(--systemColor-gray-1);
+  background: rgba(
+    var(--systemColor-timeline__pill-color),
+    var(--systemColor-timeline__pill-opacity)
+  );
+  color: var(--systemColor-timeline__pill-text);
 
   font-size: 14px;
   line-height: 20px;
@@ -165,13 +164,21 @@ export const StyledTimeLineTag = styled.a`
   font-feature-settings: "ss02" on, "ss01" on;
 
   &:hover {
-    color: var(--systemColor-gray-3);
-    background: rgba(var(--systemColor-blue-raw), 1);
+    color: var(--systemColor-timeline__pill-text--hover);
+    background: rgba(
+      var(--systemColor-timeline__pill-color),
+      var(--systemColor-timeline__pill-opacity--hover)
+    );
   }
 `;
 
 export const StyledArticleContent = styled(StyledContent)`
-  color: var(--systemColor-text);
+  color: var(--systemColor-timeline-text);
+
+  .gatsby-image-wrapper {
+    box-shadow: 0 22px 70px 4px var(--systemColor-timeline-boxShadow);
+  }
+
   img {
     width: 100%;
   }
@@ -179,7 +186,6 @@ export const StyledArticleContent = styled(StyledContent)`
 
 export const StyledArticleSeeMore = styled(Link)`
   display: inline-block;
-  color: #4c4c4c;
   font-size: 1em;
   font-weight: 700;
   text-decoration: none;
@@ -187,10 +193,6 @@ export const StyledArticleSeeMore = styled(Link)`
   transition: all 0.2s;
   letter-spacing: -0.033em;
   margin-top: 16px;
-
-  &:hover {
-    color: #808080;
-  }
 
   .main-text {
     display: flex;

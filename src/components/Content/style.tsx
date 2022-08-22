@@ -312,12 +312,20 @@ export const StyledContent = styled.main`
     font-weight: 600;
     border-radius: 6px;
     padding: 4px 6px;
+    margin-left: 4px;
+    margin-right: 4px;
     background: var(
       ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 10 : 3}`}
     );
     color: var(
       ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 2 : 13}`}
     );
+  }
+
+  a > code {
+    color: var(--systemColor-green);
+    border: 1px solid var(--systemColor-green);
+    background: rgba(var(--systemColor-teal-raw), 0.2);
   }
 
   blockquote {
@@ -437,14 +445,13 @@ export const StyledLabel = styled.li`
   align-items: center;
   justify-content: center;
 
-  color: var(
-    ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 11 : 1}`}
-  );
+  color: var(--systemColor-green);
   background: transparent;
   font-size: 14px;
   font-weight: 600;
   clip-path: fill-box;
-  background-color: rgba(var(--systemColor-green-raw), 0.85);
+  background-color: rgba(var(--systemColor-green-raw), 0.2);
+  border-color: var(--systemColor-green);
 
   &:hover {
     color: var(
