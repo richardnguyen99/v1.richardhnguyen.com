@@ -98,6 +98,29 @@ const RootVariables = css`
     --systemColor-timeline__pill-text: var(--systemColor-gray-1);
     --systemColor-timeline__pill-text--hover: var(--systemColor-gray-3);
 
+    --systemColor-content-text: var(--systemColor-text);
+    --systemColor-content-sub-text: var(--systemColor-gray-5);
+    --systemColor-content-description: var(--systemColor-gray-7);
+    --systemColor-content__inline-code-bg: var(--systemColor-gray-10);
+    --systemColor-content__inline-code-text: var(--systemColor-gray-2);
+    --systemColor-content__chapter-item: var(--systemColor-gray-9);
+    --systemColor-content__chapter-item--hover: var(--systemColor-gray-7);
+    --systemColor-content__chapter-border: var(--systemColor-gray-9);
+    --systemColor-content__chapter-border--hover: var(--systemColor-gray-7);
+    --systemColor-content__blockquote-bg: rgb(30, 30, 30);
+    --systemColor-content__blockquote-text: var(--systemColor-gray-1);
+    --systemColor-content__blockquote-border: rgb(49, 49, 49);
+    --systemColor-content__figure-bg: rgb(30, 30, 30);
+    --systemColor-content__figure-text: var(--systemColor-gray-7);
+    --systemColor-content__label-bg: rgba(var(--systemColor-green-raw), 0.2);
+    --systemColor-content__label-bg--hover: rgba(
+      var(--systemColor-green-raw),
+      1
+    );
+    --systemColor-content__label-text: var(--systemColor-green);
+    --systemColor-content__label-text--hover: var(--systemColor-gray-13);
+    --systemColor-content__label-border: var(--systemColor-green);
+
     --systemColor-navbar-bg: var(--systemColor-gray-14);
     --systemColor-navbar-text: var(--systemColor-gray-2);
     --systemColor-navbar__item-bg: transparent;
@@ -154,6 +177,29 @@ const RootVariables = css`
     --systemColor-timeline__pill-opacity--hover: 1;
     --systemColor-timeline__pill-text: var(--systemColor-gray-1);
     --systemColor-timeline__pill-text--hover: var(--systemColor-gray-3);
+
+    --systemColor-content-text: var(--systemColor-text);
+    --systemColor-content-sub-text: var(--systemColor-gray-8);
+    --systemColor-content-description: var(--systemColor-gray-7);
+    --systemColor-content__inline-code-bg: var(--systemColor-gray-3);
+    --systemColor-content__inline-code-text: var(--systemColor-gray-13);
+    --systemColor-content__chapter-item: var(--systemColor-gray-7);
+    --systemColor-content__chapter-item--hover: var(--systemColor-gray-5);
+    --systemColor-content__chapter-border: var(--systemColor-gray-7);
+    --systemColor-content__chapter-border--hover: var(--systemColor-gray-5);
+    --systemColor-content__blockquote-bg: rgb(229, 229, 234);
+    --systemColor-content__blockquote-text: var(--systemColor-gray-13);
+    --systemColor-content__blockquote-border: rgb(229, 229, 234);
+    --systemColor-content__figure-bg: rgb(229, 229, 234);
+    --systemColor-content__figure-text: var(--systemColor-gray-7);
+    --systemColor-content__label-bg: rgba(var(--systemColor-green-raw), 0.2);
+    --systemColor-content__label-bg--hover: rgba(
+      var(--systemColor-green-raw),
+      1
+    );
+    --systemColor-content__label-text: var(--systemColor-green);
+    --systemColor-content__label-text--hover: var(--systemColor-gray-2);
+    --systemColor-content__label-border: var(--systemColor-green);
 
     --systemColor-navbar-bg: white;
     --systemColor-navbar-text: black;

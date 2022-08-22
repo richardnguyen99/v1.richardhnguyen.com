@@ -21,18 +21,18 @@ export const StyledSectionHeader = styled.section`
 export const StyledHeader = styled.h1`
   margin-top: 0;
   margin-bottom: 4px;
-  font-size: 28px;
+  font-size: 48px;
   line-height: 32px;
   font-weight: 800px;
 
   @media (min-width: 768px) {
     margin-bottom: 16px;
-    font-size: 40px;
+    font-size: 56px;
     line-height: 44px;
   }
 
   @media (min-width: 980px) {
-    font-size: 48px;
+    font-size: 64px;
     line-height: 52px;
     letter-spacing: -0.03em;
   }
@@ -45,9 +45,7 @@ export const StyledFrontMatter = styled.div`
   font-weight: bold;
 
   & > p {
-    color: var(
-      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 5 : 8}`}
-    );
+    color: var(--systemColor-content-sub-text);
     line-height: 20px;
     font-size: 14px;
 
@@ -100,9 +98,7 @@ export const StyledDescription = styled.p`
   margin-top: 0;
   margin-bottom: 10px;
   font-style: italic;
-  color: var(
-    ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 7 : 7}`}
-  );
+  color: var(--systemColor-content-description);
   width: ${(9 / 12) * 100}%;
 `;
 
@@ -136,41 +132,30 @@ export const StyledChapterNav = styled.nav`
 export const StyledChapterItem = styled.li`
   font-weight: 400;
   font-size: 14px;
-  color: var(
-    ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 9 : 7}`}
-  );
+  color: var(--systemColor-content__chapter-item);
   position: relative;
   list-style: none;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   margin-left: -1.5rem;
   padding-left: 2.5rem;
-  border-left: 1px solid
-    var(
-      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 9 : 7}`}
-    );
+  border-left: 1px solid var(--systemColor-content__chapter-border);
   transition: border 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-  &:link,
-  &:visited {
-    color: var(
-      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 4 : 8}`}
-    );
-  }
+  // &:link,
+  // &:visited {
+  // color: var(
+  // ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 4 : 8}`}
+  // );
+  // }
 
   &.sub {
     padding-left: 3.5rem;
   }
 
   &:hover {
-    color: var(
-      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 7 : 5}`}
-    );
-    border-left: 1px solid
-      var(
-        ${(props) =>
-          `--systemColor-gray-${props.theme.mode === "dark" ? 7 : 5}`}
-      );
+    color: var(--systemColor-content__chapter-item--hover);
+    border-left: 1px solid var(--systemColor-content__chapter-border--hover);
   }
 
   & > a {
@@ -314,12 +299,8 @@ export const StyledContent = styled.main`
     padding: 4px 6px;
     margin-left: 4px;
     margin-right: 4px;
-    background: var(
-      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 10 : 3}`}
-    );
-    color: var(
-      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 2 : 13}`}
-    );
+    background: var(--systemColor-content__inline-code-bg);
+    color: var(--systemColor-content__inline-code-text);
   }
 
   a > code {
@@ -337,8 +318,7 @@ export const StyledContent = styled.main`
       top: 0;
       left: -1rem;
       border-radius: 3px;
-      background: ${(props) =>
-        props.theme.mode === "dark" ? "rgb(49, 49, 49)" : "rgb(229, 229, 234)"};
+      background: var(--systemColor-content__blockquote-border);
     }
 
     margin-left: 0;
@@ -348,11 +328,8 @@ export const StyledContent = styled.main`
     font-style: italic;
     position: relative;
 
-    background: ${(props) =>
-      props.theme.mode === "dark" ? "rgb(30, 30, 30)" : "rgb(229, 229, 234)"};
-    color: var(
-      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 1 : 13}`}
-    );
+    background: var(--systemColor-content__blockquote-bg);
+    color: var(--systemColor-content__blockquote-text);
 
     & > p {
       padding: 0;
@@ -371,9 +348,8 @@ export const StyledContent = styled.main`
     padding-top: 2rem;
     padding-bottom: 2rem;
     text-align: center;
-    background: ${(props) =>
-      props.theme.mode === "dark" ? "rgb(30, 30, 30)" : "rgb(229, 229, 234)"};
-    color: var(--systemColor-gray-7);
+    background: var(--systemColor-content__figure-bg);
+    color: var(--systemColor-content__figure-text);
     border-radius: 16px;
 
     & > figcaption {
@@ -445,21 +421,18 @@ export const StyledLabel = styled.li`
   align-items: center;
   justify-content: center;
 
-  color: var(--systemColor-green);
-  background: transparent;
+  color: var(--systemColor-content__label-text);
   font-size: 14px;
   font-weight: 600;
   clip-path: fill-box;
-  background-color: rgba(var(--systemColor-green-raw), 0.2);
-  border-color: var(--systemColor-green);
+  background-color: var(--systemColor-content__label-bg);
+  border-color: var(--systemColor-content__label-border);
 
   &:hover {
-    color: var(
-      ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 13 : 2}`}
-    );
+    color: var(--systemColor-content__label-text--hover);
     text-decoration: underline;
     cursor: pointer;
-    background-color: rgba(var(--systemColor-green-raw), 1);
+    background-color: var(--systemColor-content__label-bg--hover);
   }
 `;
 
