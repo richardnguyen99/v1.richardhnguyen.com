@@ -22,8 +22,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   ...rest
 }) => {
   return (
-    <main className={className} {...rest}>
-      <RootLayout>
+    <RootLayout>
+      <main className={className} {...rest}>
         <Seo title={title} lang="en" />
         <Navbar.Provider>
           <Navbar.Wrapper>
@@ -62,8 +62,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({
           {children}
           <Footer />
         </Navbar.Provider>
-      </RootLayout>
-    </main>
+      </main>
+    </RootLayout>
   );
 };
 

@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 export const StyledTerminal = styled.div`
   position: relative;
-  //background: #f0f6fc;
+  background: #f0f6fc;
   border: 1px solid rgba(27, 31, 36, 0.25);
   border-radius: 8px;
   color: #161b22;

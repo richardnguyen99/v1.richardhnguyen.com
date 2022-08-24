@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   ${Mixins.SystemColor};
   ${Mixins.Spacing};
 
-  a:hover, a:active, a:visited {
+  a, a:hover, a:active, a:visited {
     color: inherit;
   }
 

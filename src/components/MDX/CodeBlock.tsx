@@ -7,7 +7,7 @@
 
 import * as React from "react";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
-import lightTheme from "prism-react-renderer/themes/vsLight";
+import lightTheme from "prism-react-renderer/themes/github";
 import darkTheme from "prism-react-renderer/themes/vsDark";
 
 import { CodeProps } from "./type";
@@ -30,8 +30,6 @@ const CodeBlock: React.FC<CodeProps> = ({
       theme={themeContext.theme === "dark" ? darkTheme : lightTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
-        console.log(tokens);
-
         return (
           <Terminal title={title}>
             <pre

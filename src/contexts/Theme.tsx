@@ -17,22 +17,31 @@ export const ThemeContext = React.createContext<IThemeContext>(
 ThemeContext.displayName = "MainThemeContext";
 
 const ThemeProvider: React.FC<ThemeContextProps> = ({ children }) => {
-  const [value, setValue] = hook.useLocalStorage<ThemeValue>("theme", "light");
+  const [localValue, setlocalValue] = hook.useLocalStorage<ThemeValue>(
+    "theme",
+    "light"
+  );
+
+  const [theme, setTheme] = React.useState<ThemeValue>("dark");
 
   const toggleTheme = React.useCallback(() => {
-    if (value === "light") setValue("dark");
-    else setValue("light");
-  }, [setValue, value]);
+    if (localValue === "light") setlocalValue("dark");
+    else setlocalValue("light");
+  }, [setlocalValue, localValue]);
 
   React.useEffect(() => {
     if (typeof document !== "undefined") {
-      document.documentElement.setAttribute("data-theme", value);
+      document.documentElement.setAttribute("data-theme", localValue);
     }
-  }, [value]);
+  }, [localValue]);
+
+  React.useEffect(() => {
+    setTheme(localValue);
+  }, [localValue]);
 
   return (
-    <ThemeContext.Provider value={{ theme: value, toggleTheme }}>
-      <SCThemeProvider theme={{ mode: value }}>{children}</SCThemeProvider>
+    <ThemeContext.Provider value={{ theme: theme, toggleTheme }}>
+      <SCThemeProvider theme={{ mode: theme }}>{children}</SCThemeProvider>
     </ThemeContext.Provider>
   );
 };

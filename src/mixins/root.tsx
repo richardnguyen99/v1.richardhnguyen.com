@@ -110,8 +110,8 @@ const RootVariables = css`
     --systemColor-content__blockquote-bg: rgb(30, 30, 30);
     --systemColor-content__blockquote-text: var(--systemColor-gray-1);
     --systemColor-content__blockquote-border: rgb(49, 49, 49);
-    --systemColor-content__figure-bg: rgb(30, 30, 30);
-    --systemColor-content__figure-text: var(--systemColor-gray-7);
+    --systemColor-content__figure-bg: rgb(229, 229, 234);
+    --systemColor-content__figure-text: var(--systemColor-gray-10);
     --systemColor-content__label-bg: rgba(var(--systemColor-green-raw), 0.2);
     --systemColor-content__label-bg--hover: rgba(
       var(--systemColor-green-raw),
@@ -120,6 +120,8 @@ const RootVariables = css`
     --systemColor-content__label-text: var(--systemColor-green);
     --systemColor-content__label-text--hover: var(--systemColor-gray-13);
     --systemColor-content__label-border: var(--systemColor-green);
+
+    --systemColor-terminal__toolbar-bg: rgb(25, 25, 25);
 
     --systemColor-navbar-bg: var(--systemColor-gray-14);
     --systemColor-navbar-text: var(--systemColor-gray-2);
@@ -191,7 +193,7 @@ const RootVariables = css`
     --systemColor-content__blockquote-text: var(--systemColor-gray-13);
     --systemColor-content__blockquote-border: rgb(229, 229, 234);
     --systemColor-content__figure-bg: rgb(229, 229, 234);
-    --systemColor-content__figure-text: var(--systemColor-gray-7);
+    --systemColor-content__figure-text: var(--systemColor-gray-10);
     --systemColor-content__label-bg: rgba(var(--systemColor-green-raw), 0.2);
     --systemColor-content__label-bg--hover: rgba(
       var(--systemColor-green-raw),
