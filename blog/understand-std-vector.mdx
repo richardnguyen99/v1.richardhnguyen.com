@@ -1,7 +1,7 @@
 ---
 title: "Understand std::vector"
 created: 2022-07-20
-update: ""
+update: 2022-08-24
 author: "Richard Nguyen"
 description: "Vector has been one of the most used data structures by C++ programmers. It's properly the first template class that everyone programming in C++ would touch. It provides extremely efficient accessing elements (just as arrays) and relatively efficient adding or removing elements at its end. But do you know it works under the hood?"
 tags:
@@ -15,6 +15,8 @@ displayTOC: true
 ---
 
 The _C++ Standard Template Library_ (or STL for short) has been around in the C++ comunnity for decades. It provides a set of C++ template classes and functions to support common data structures like [`std::vector`](https://en.cppreference.com/w/cpp/container/vector).
+
+`std::vector` has been used by many C++ programmers in many aspects of development. It provides safer memory management and automatic resizing when need. Let's find out how it works!
 
 # What is vector?
 
@@ -306,9 +308,9 @@ For example, `insert(v.begin() + 3, 4)`:
   </figcaption>
 </figure>
 
-## Deal with reallocation
+## Rellocation for new size
 
-In the previous cases, we don't need to worry that our vector objects run out of space for new elements. But that's not why `std::vector` is famous. Growing size is one of the traits that `std::vector` is well-known for.
+Now, let's talk about the elephant in the roow: **_reallocation_ when a vector object grows**.
 
 Like we discussed above, `std::vector` is built on top of a C array. Accessing and writing to the elements outside the bound of an array is considered [_undefined behavior_](https://en.cppreference.com/w/cpp/language/ub).
 
@@ -323,9 +325,21 @@ Reallocation can be understood as following:
 3. Destroy elements and free the allocated memory in the old array.
 4. Update the three data-member pointers to the new array.
 
-In the first step, the new size can be defined as how you want, but in the implementation of `std::vector`, the new size is a double of the original size.
+In the first step, the new size can be defined as how you want. To keep it simple, let's just double the original size (this is how `std::vector` handles the new size).
 
-With the new array which has been allocated, we just simply copy the existing elements to the new one.
+With the new array which has been allocated, we just simply copy the existing elements to the new one. However, since the new array doesn't have any element in it yet, we can avoid repeating the process of copying then shifting. Instead, we will copy elements before `pos`, insert `value` into `pos` and continue to copy the rest to the new array.
+
+<figure>
+  <img
+    alt="Vector reallocate a new array"
+    src="./images/vector-reallocation-1.png"
+  />
+  <img
+    alt="A new array is allocated with doubled size"
+    src="./images/vector-reallocation-2.png"
+  />
+  <figcaption>Reallocation for new size</figcaption>
+</figure>
 
 # How does deleting work?
 

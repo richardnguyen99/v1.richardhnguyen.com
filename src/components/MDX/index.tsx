@@ -17,6 +17,7 @@ import * as React from "react";
 
 import CodeBlock from "./CodeBlock";
 import Alert from "./Alert";
+import Summary from "./Summary";
 
 const MDXComponents = {
   pre: (preProps) => {
@@ -47,6 +48,7 @@ const MDXComponents = {
   },
 
   Alert,
+  Summary,
 };
 
 export default MDXComponents;

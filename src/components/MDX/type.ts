@@ -39,6 +39,14 @@ export type BaseCodeProps = {
   metaString?: string;
 };
 
+export type BaseSummaryProps = {
+  /**
+   * @description summary will display the a short description for what content
+   * is about.
+   */
+  summary: string;
+};
+
 export type BaseAlertProps = {
   /**
    * @description A short description or the meaning of this alert.
@@ -57,5 +65,7 @@ export type BaseAlertProps = {
   icon?: AlertIconType;
 };
 
+export type SummaryProps = HTMLAttributes<HTMLDetailsElement> &
+  BaseSummaryProps;
 export type CodeProps = HTMLAttributes<HTMLPreElement> & BaseCodeProps;
 export type AlertProps = HTMLAttributes<HTMLDivElement> & BaseAlertProps;

@@ -57,3 +57,28 @@ export const StyledAlertTitle = styled.div`
 
   color: var(--systemColor-title);
 `;
+
+export const StyledSummaryWrapper = styled.details`
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+
+  width: auto;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+
+  background-color: var(--systemColor-content__summary-bg);
+  color: var(--systemColor-content__summary-text);
+`;
+
+export const StyledSummaryHeader = styled.summary`
+  display: inline;
+  font-weight: 500;
+  color: var(--systemColor-green);
+`;
