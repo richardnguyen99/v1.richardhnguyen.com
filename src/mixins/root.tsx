@@ -120,7 +120,7 @@ const RootVariables = css`
     --systemColor-content__label-text: var(--systemColor-green);
     --systemColor-content__label-text--hover: var(--systemColor-gray-13);
     --systemColor-content__label-border: var(--systemColor-green);
-    --systemColor-content__summary-bg: var(--systemColor-gray-10);
+    --systemColor-content__summary-bg: var(--systemColor-gray-12);
     --systemColor-content__sumarry-text: var(--systemColor-gray-2);
 
     --systemColor-terminal__toolbar-bg: rgb(25, 25, 25);

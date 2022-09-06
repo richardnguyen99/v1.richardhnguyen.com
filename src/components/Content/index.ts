@@ -20,6 +20,7 @@ import {
 import Chapter from "./Chapter";
 import TOC from "./TOC";
 import Dots from "./Dots";
+import Pagination from "./Pagination";
 
 const exported = Object.assign(Content, {
   Header: ContentTitle,
@@ -33,6 +34,7 @@ const exported = Object.assign(Content, {
   Label: StyledLabel,
   TOC,
   Dots,
+  Pagination,
 });
 
 export default exported;

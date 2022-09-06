@@ -29,6 +29,9 @@ const Alert: React.FC<AlertProps> = ({
     switch (_icon) {
       case "checkmark":
         return <SVG.AlertCheckmark />;
+      case "danger":
+      case "warning":
+        return <SVG.AlertWarning />;
       case "information":
       default:
         return <SVG.AlertInfo />;
@@ -36,7 +39,7 @@ const Alert: React.FC<AlertProps> = ({
   };
 
   return (
-    <StyledAlertWrapper data-status={status} className={status} {...rest}>
+    <StyledAlertWrapper data-alert-status={status} className={status} {...rest}>
       <StyledAlertPanel>
         <StyledAlertIcon>{renderAlertIcon(icon)}</StyledAlertIcon>
         <StyledAlertTitle>{title}</StyledAlertTitle>

@@ -5,6 +5,7 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 
+import { Link } from "gatsby";
 import styled from "styled-components";
 
 export const StyledSectionHeader = styled.section`
@@ -142,13 +143,6 @@ export const StyledChapterItem = styled.li`
   border-left: 1px solid var(--systemColor-content__chapter-border);
   transition: border 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-  // &:link,
-  // &:visited {
-  // color: var(
-  // ${(props) => `--systemColor-gray-${props.theme.mode === "dark" ? 4 : 8}`}
-  // );
-  // }
-
   &.sub {
     padding-left: 3.5rem;
   }
@@ -167,7 +161,18 @@ export const StyledChapterItem = styled.li`
   }
 
   &:first-of-type {
-    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 24px;
+      background: var(--systemColor-border);
+      top: -24px;
+      bottom: 0;
+      left: -1px;
+    }
   }
 
   &:last-of-type {
@@ -184,6 +189,7 @@ export const StyledChapterIcon = styled.span`
   margin-left: -37px;
   margin-right: 7px;
   vertical-align: middle;
+  position: relative;
 `;
 
 export const StyledStickySideContent = styled.div`
@@ -446,4 +452,74 @@ export const StyledDots = styled.span`
   padding-bottom: 100px;
   line-height: 0;
   letter-spacing: 32px;
+`;
+
+export const StyledPagination = styled.nav`
+  @media screen and (min-width: 578px) {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    margin-top: 5rem;
+    margin-bottom: 15rem;
+  }
+`;
+
+export const StyledPaginationLinkContainer = styled.div`
+  &[aria-label="pagination-next"] {
+    text-align: right;
+  }
+
+  &[aria-label="pagination-prev"] {
+  }
+
+  @media screen and (min-width: 578px) {
+    width: 48%;
+    margin-top: 0rem;
+  }
+`;
+
+export const StyledPaginationLink = styled(Link)`
+  border-bottom: 0px none;
+  text-decoration: none;
+  word-break: break-word;
+`;
+
+export const StyledPaginationLinkSub = styled.h3`
+  color: var(--systemColor-sub-text);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  margin-top: 0rem;
+  text-decoration: none;
+`;
+
+export const StyledPaginationLinkContent = styled.span`
+  color: var(--systemColor-green);
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+
+  svg {
+    fill: currentColor;
+  }
+
+  [aria-label="pagination-prev"] & {
+    margin-left: -1.5em;
+
+    svg {
+      flex-shrink: 0;
+      margin-right: 0.5em;
+    }
+  }
+
+  [aria-label="pagination-next"] & {
+    margin-right: -1.5rem;
+
+    svg {
+      flex-shrink: 0;
+      margin-left: 0.5em;
+    }
+  }
 `;

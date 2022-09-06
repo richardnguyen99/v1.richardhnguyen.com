@@ -39,15 +39,24 @@ const GlobalStyle = createGlobalStyle`
     color: var(--systemColor-title);
   }
 
+  /**
+   *This class is for the anchor svg before every major headings in the
+   * content used by the 'gatsby-remark-autolink-headers' plugin.
+   */
   .anchor.before {
-    transform: translateX(-100%) translateY(50%);
     padding-right: 1rem;
+    fill: currentColor;
+    color: inherit;
+  }
 
-    & > svg {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  .custom-anchor {
+    transform: translate(-100%, -25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    fill: currentColor;
+    height: 100%;
   }
 
   .bold {

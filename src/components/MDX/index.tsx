@@ -48,6 +48,7 @@ const MDXComponents = {
   },
 
   Alert,
+  CodeBlock,
   Summary,
 };
 

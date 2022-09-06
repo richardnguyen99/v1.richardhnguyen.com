@@ -11,6 +11,9 @@ import PathIcon from "./Path";
 import Hey from "./Hey";
 import AlertCheckmark from "./AlertCheckmark";
 import AlertInfo from "./AlertInfo";
+import AlertWarning from "./AlertWarning";
+import ArrowRight from "./ArrowRight";
+import ArrowLeft from "./ArrowLeft";
 
 const exported = Object.assign("SVG", {
   Github: GithubIcon,
@@ -21,6 +24,9 @@ const exported = Object.assign("SVG", {
   Hey,
   AlertCheckmark,
   AlertInfo,
+  AlertWarning,
+  ArrowRight,
+  ArrowLeft,
 });
 
 export default exported;

@@ -52,7 +52,14 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
       featuredImage,
       featuredImageAlt,
       series,
-      part,
+      chapter,
+      chapterName,
+      nextChapter,
+      nextChapterName,
+      nextChapterUrl,
+      prevChapter,
+      prevChapterName,
+      prevChapterUrl,
       tags,
       displayTOC,
       description,
@@ -62,19 +69,9 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
     tableOfContents,
   } = data.mdx;
 
-  const getFullTitle = () => {
-    let fullTitle = "";
-
-    if (series) fullTitle = fullTitle + `${series}: `;
-
-    fullTitle = fullTitle + title;
-
-    return fullTitle;
-  };
-
   return (
-    <PageLayout title={getFullTitle()}>
-      <Content.Header title={getFullTitle()}>
+    <PageLayout title={title}>
+      <Content.Header title={title}>
         <Content.FrontMatter
           created={created}
           timeToRead={timeToRead}
@@ -103,7 +100,7 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
       )}
       <Content.Grid style={{ marginTop: "66px" }}>
         <Content.Side>
-          {series && <Content.Chapter name={series} currentChapter={part} />}
+          {series && <Content.Chapter name={series} currentChapter={chapter} />}
         </Content.Side>
         <Container>
           <Content>
@@ -111,6 +108,10 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
               <MDXRenderer>{body}</MDXRenderer>
             </MDXProvider>
           </Content>
+          <Content.Pagination
+            next={{ url: nextChapterUrl, title: nextChapterName }}
+            prev={{ url: prevChapterUrl, title: prevChapterName }}
+          />
         </Container>
         {displayTOC && (
           <Content.Side>
@@ -138,6 +139,7 @@ export const query = graphql`
         update
         series
         chapter
+        chapterName
         part
         featuredImage {
           childImageSharp {
@@ -145,6 +147,12 @@ export const query = graphql`
           }
         }
         featuredImageAlt
+        nextChapter
+        nextChapterName
+        nextChapterUrl
+        prevChapter
+        prevChapterName
+        prevChapterUrl
       }
       timeToRead
       excerpt

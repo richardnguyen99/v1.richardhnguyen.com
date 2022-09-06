@@ -23,6 +23,16 @@ export type ChapterProps = HTMLAttributes<HTMLElement> & {
   currentChapter: number;
 };
 
+export type PageProps = {
+  url: string;
+  title: string;
+};
+
+export type PaginationProps = HTMLAttributes<HTMLDivElement> & {
+  next?: PageProps;
+  prev?: PageProps;
+};
+
 export type TOCProps = PropsWithChildren<
   HTMLAttributes<HTMLElement> & {
     toc: Record<string, unknown>;

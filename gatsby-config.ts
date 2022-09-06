@@ -78,8 +78,8 @@ const config: GatsbyConfig = {
           {
             resolve: "gatsby-remark-autolink-headers",
             options: {
-              offsetY: "100",
               elements: ["h1", "h2"],
+              className: "custom-anchor",
             },
           },
         ],

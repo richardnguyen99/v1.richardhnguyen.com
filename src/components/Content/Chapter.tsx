@@ -23,7 +23,7 @@ const Chapter: React.FC<ChapterProps> = ({ name, currentChapter, ...rest }) => {
             frontmatter {
               series
               chapter
-              part
+              chapterName
               series
               title
             }
@@ -36,7 +36,9 @@ const Chapter: React.FC<ChapterProps> = ({ name, currentChapter, ...rest }) => {
 
   const relatedChapters = chaptersInfo.allMdx.edges
     .filter((edge) => edge.node.frontmatter.series === name)
-    .sort((e1, e2) => e1.node.frontmatter.part - e2.node.frontmatter.part);
+    .sort(
+      (e1, e2) => e1.node.frontmatter.chapter - e2.node.frontmatter.chapter
+    );
 
   return (
     <StyledChapterNav {...rest}>
@@ -51,11 +53,12 @@ const Chapter: React.FC<ChapterProps> = ({ name, currentChapter, ...rest }) => {
         <StyledChapterItem
           key={i}
           className={
-            currentChapter === chapter.node.frontmatter.part ? "active" : ""
+            currentChapter === chapter.node.frontmatter.chapter ? "active" : ""
           }
         >
           <Link to={`/articles/${chapter.node.slug}`}>
-            {chapter.node.frontmatter.title}
+            {chapter.node.frontmatter.chapter}.&nbsp;
+            {chapter.node.frontmatter.chapterName}
           </Link>
         </StyledChapterItem>
       ))}

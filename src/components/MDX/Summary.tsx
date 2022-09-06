@@ -13,7 +13,9 @@ import { SummaryProps } from "./type";
 const Summary: React.FC<SummaryProps> = ({ summary, children, ...rest }) => {
   return (
     <StyledSummaryWrapper {...rest}>
-      <StyledSummaryHeader>{summary}</StyledSummaryHeader>
+      <StyledSummaryHeader>
+        <em>{summary}</em>
+      </StyledSummaryHeader>
       {children}
     </StyledSummaryWrapper>
   );
