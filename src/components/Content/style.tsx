@@ -254,23 +254,27 @@ export const StyledContent = styled.main`
 
   & > h1 {
     margin-top: 3rem;
+    margin-bottom: 2.5rem;
     letter-spacing: 0;
     line-height: 28px;
   }
 
   & > h2 {
     margin-top: 2.5rem;
+    margin-bottom: 2rem;
     line-height: 24px;
     letter-spacing: 0;
   }
   & > h3 {
     margin-top: 2rem;
+    margin-bottom: 1.25rem;
     line-height: 20px;
     letter-spacing: 0;
   }
 
   & > h4 {
     margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
     line-height: 16px;
   }
 
