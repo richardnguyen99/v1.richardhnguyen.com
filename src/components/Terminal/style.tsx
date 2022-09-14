@@ -25,10 +25,19 @@ export const StyledTerminal = styled.div`
     padding: 1rem 1rem;
     overflow: scroll;
     max-height: 640px;
-    font-size: 1em;
+    font-size: 14px;
     font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas,
       Liberation Mono, monospace;
-    font-weight: 600;
+    font-weight: 500;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 18px;
+      font-weight: 600;
+    }
   }
 `;
 

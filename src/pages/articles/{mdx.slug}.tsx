@@ -9,8 +9,8 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 import * as React from "react";
+import { graphql, PageProps, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { graphql, PageProps } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { InlineMath, BLockMath } from "react-katex";
@@ -40,6 +40,7 @@ const components = {
     return <span {...props} />;
   },
 
+  Link,
   ...MDXComponents,
 };
 

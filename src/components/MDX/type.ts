@@ -36,6 +36,13 @@ export type BaseCodeProps = {
    */
   withLineNumbers?: boolean;
 
+  /**
+   * @description An option to determine the font size of code block.
+   *
+   * @default 18
+   */
+  fontSize?: number;
+
   metaString?: string;
 };
 

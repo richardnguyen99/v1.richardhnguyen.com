@@ -18,6 +18,7 @@ const CodeBlock: React.FC<CodeProps> = ({
   rawCodeString,
   language,
   title = "",
+  fontSize = 18,
   ...rest
 }) => {
   const themeContext = React.useContext(ThemeContext);
@@ -35,7 +36,7 @@ const CodeBlock: React.FC<CodeProps> = ({
             <pre
               data-prism-render="true"
               className={className}
-              style={style}
+              style={{ fontSize: `${fontSize}px`, ...style }}
               {...rest}
             >
               {tokens.map((line, lineNumber) => (

@@ -269,6 +269,11 @@ export const StyledContent = styled.main`
     letter-spacing: 0;
   }
 
+  & > h4 {
+    margin-top: 1.5rem;
+    line-height: 16px;
+  }
+
   & > pre {
     width: 100%;
     background: #eff2ff;
@@ -335,12 +340,12 @@ export const StyledContent = styled.main`
     position: relative;
 
     background: var(--systemColor-content__blockquote-bg);
-    color: var(--systemColor-content__blockquote-text);
+    color: var(--systemColor-sub-text);
 
     & > p {
       padding: 0;
       margin: 0;
-      padding-bottom: 1rem;
+      font-size: 16px;
     }
 
     code {

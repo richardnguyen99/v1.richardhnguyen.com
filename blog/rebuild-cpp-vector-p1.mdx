@@ -15,7 +15,7 @@ series: "Rebuild C++ Vector"
 chapter: 1
 chapterName: "Introduction"
 nextChapter: 2
-nextChapterName: "Iterator"
+nextChapterName: "Constructor"
 nextChapterUrl: /articles/rebuild-cpp-vector-p2
 displayTOC: true
 ---
@@ -146,6 +146,9 @@ Member types are a set of [`typedefs`](https://en.cppreference.com/w/cpp/languag
 Here are some common member types used in vector:
 
 ```cpp title=vector.h
+#include <memory>   // std::alocator, std::allocator_traits
+#include <iterator> // std::reverse_iterator
+
 template <typename T>
 class vector
 {
@@ -159,8 +162,13 @@ public:
     using size_type       = typename allocator_traits::size_type;
     using difference_type = typename allocator_traits::difference_type;
 
-    using reference       = value_type&
-    using const_reference = const value_type&;
+    using reference         = value_type&;
+    using const_reference   = const value_type&;
+    using iterator          = T *;
+    using const_iterator    = const T *;
+    using reverse_iterator  = std::reverse_iterator<iterator>;
+    using const_reverse_iterator =
+      std::reverse_iterator<const_iterator>;
     ...
 
 private:
@@ -202,7 +210,7 @@ T sum(const std::deque<T>& cont)
 
 They look indentical except for the type of the container parameter. Imagine you have to create many more versions of `sum()` for different containers. This is when generic programming comes to play. Instead of making the type of elements generic, we make the whole container type generic.
 
-But hey, if you make the container type generic, how do we know what type of the underlying elements is? This is when the member types save you:
+But if you make the container type generic, how do we know what type of the underlying elements is? This is when the member types save you:
 
 ```cpp
 template <typename Container>
@@ -220,10 +228,10 @@ sum(const Container &cont)
 With this version, you can use `sum()` on any container that supports iteration and its elements supports the addition and assignment operators. An example is:
 
 ```cpp
-#include <deque>
-#include <forward_list>
-#include <iostream>
-#include <vector>
+#include <deque>          // std::deque
+#include <forward_list>   // std::forward_List
+#include <iostream>       // std::cout
+#include <vector>         // std::vector
 
 template <typename Container>
 typename Container::value_type
@@ -281,7 +289,9 @@ main(int argc, const char **argv)
 
 # Conclusion
 
-At this point, we have set up all the basic requirements to build our own vector. There are still more complicated member types such as iterators to add. In fact, that will be the next concept to cover.
+At this point, we have set up all the basic requirements to build our own vector. In this next article, we will discover how to initialize vector objects in many different ways.
+
+The code for this part can be found [here](https://gist.github.com/richardnguyen99/8d175dba04fab801f61adf8f0dcb3308/f8a652102c3d750c74cbedca9fae80babcfabd26).
 
 # References
 
