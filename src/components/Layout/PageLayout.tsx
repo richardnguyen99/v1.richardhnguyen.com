@@ -19,13 +19,18 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   title,
   className = "",
   children,
+  hideNavbar = false,
+  hideNavbarOffset = 64,
   ...rest
 }) => {
   return (
     <RootLayout>
       <main className={className} {...rest}>
         <Seo title={title} lang="en" />
-        <Navbar.Provider>
+        <Navbar.Provider
+          hideNavbar={hideNavbar}
+          hideNavbarOffset={hideNavbarOffset}
+        >
           <Navbar.Wrapper>
             <Navbar>
               <Navbar.Brand />

@@ -8,6 +8,8 @@
 import { Link } from "gatsby";
 import styled from "styled-components";
 
+import Utility from "@components/Utility";
+
 export const StyledSectionHeader = styled.section`
   padding-top: 65px;
   padding-bottom: 40px;
@@ -17,6 +19,10 @@ export const StyledSectionHeader = styled.section`
     padding-top: 100px;
     padding-bottom: 100px;
   }
+`;
+
+export const StyledSectionHeaderContainer = styled(Utility.Container)`
+  max-width: 980px;
 `;
 
 export const StyledHeader = styled.h1`
@@ -225,6 +231,9 @@ export const StyledContent = styled.main`
   font-size: 16px;
   line-height: 30px;
   letter-spacing: -0.016em;
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
 
   @media (min-width: 1280px) {
     font-size: 18px;

@@ -24,6 +24,8 @@ export const StyledNavbarWrapper = styled.nav`
 export const StyledNavbar = styled(StyledContainer)`
   display: flex;
   align-items: center;
+
+  max-width: 980px;
 `;
 
 export const StyledNavbarBrand = styled(Link)<{ pageColor: string }>`

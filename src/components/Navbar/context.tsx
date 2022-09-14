@@ -10,15 +10,21 @@ export const NavbarContext = React.createContext<NavbarContextProps>(
   {} as NavbarContextProps
 );
 
-const NavbarProvider: React.FC<NavbarProps> = ({ children }) => {
+const NavbarProvider: React.FC<NavbarProps> = ({
+  children,
+  hideNavbar = false,
+  hideNavbarOffset = 64,
+}) => {
   const [activeTab, setActiveTab] = React.useState("");
 
   const contextValue = React.useMemo(
     () => ({
       activeTab,
       toggleActiveTab: setActiveTab,
+      hideNavbar,
+      hideNavbarOffset,
     }),
-    [activeTab]
+    [activeTab, hideNavbar, hideNavbarOffset]
   );
 
   return (

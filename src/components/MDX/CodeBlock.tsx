@@ -18,7 +18,7 @@ const CodeBlock: React.FC<CodeProps> = ({
   rawCodeString,
   language,
   title = "",
-  fontSize = 18,
+  fontSize = 15,
   ...rest
 }) => {
   const themeContext = React.useContext(ThemeContext);

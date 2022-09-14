@@ -8,6 +8,8 @@ import { HTMLAttributes, PropsWithChildren } from "react";
 export interface BasePageLayoutProps extends HTMLAttributes<HTMLElement> {
   title: string;
   className?: string;
+  hideNavbar?: boolean;
+  hideNavbarOffset?: number;
 }
 
 export type LayoutPropsWithChildren = PropsWithChildren<

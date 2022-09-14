@@ -12,7 +12,10 @@ export type ButtonMouseEvent = ReactMouseEvent<
   MouseEvent
 >;
 
-type BaseNavbarProps = React.HTMLAttributes<HTMLElement>;
+type BaseNavbarProps = React.HTMLAttributes<HTMLElement> & {
+  hideNavbar?: boolean;
+  hideNavbarOffset?: number;
+};
 
 type BaseNavbarItemProps = BaseNavbarProps & {
   id?: string;
@@ -26,6 +29,8 @@ type BaseNavbarItemProps = BaseNavbarProps & {
 export type NavbarContextProps = {
   activeTab: string;
   toggleActiveTab: React.Dispatch<React.SetStateAction<string>>;
+  hideNavbar: boolean;
+  hideNavbarOffset: number;
 };
 
 export type NavbarProps = React.PropsWithChildren<BaseNavbarProps>;

@@ -71,7 +71,7 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
   } = data.mdx;
 
   return (
-    <PageLayout title={title}>
+    <PageLayout title={title} hideNavbar>
       <Content.Header title={title}>
         <Content.FrontMatter
           created={created}
