@@ -174,7 +174,7 @@ export const StyledChapterItem = styled.li`
       position: absolute;
       width: 1px;
       height: 24px;
-      background: var(--systemColor-border);
+      background: var(--systemColor-content__chapter-border);
       top: -24px;
       bottom: 0;
       left: -1px;
@@ -501,6 +501,12 @@ export const StyledPaginationLink = styled(Link)`
   border-bottom: 0px none;
   text-decoration: none;
   word-break: break-word;
+
+  ${StyledContent} &:hover,
+  ${StyledContent} &:active,
+  ${StyledContent} &:visited {
+    text-decoration: none;
+  }
 `;
 
 export const StyledPaginationLinkSub = styled.h3`

@@ -108,11 +108,11 @@ const BlogPost = ({ data }: PageProps<PostData>) => {
             <MDXProvider components={{ ...components }}>
               <MDXRenderer>{body}</MDXRenderer>
             </MDXProvider>
+            <Content.Pagination
+              next={{ url: nextChapterUrl, title: nextChapterName }}
+              prev={{ url: prevChapterUrl, title: prevChapterName }}
+            />
           </Content>
-          <Content.Pagination
-            next={{ url: nextChapterUrl, title: nextChapterName }}
-            prev={{ url: prevChapterUrl, title: prevChapterName }}
-          />
         </Container>
         {displayTOC && (
           <Content.Side>
