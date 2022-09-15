@@ -25,8 +25,56 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] =
     });
   };
 
-export const createPages: GatsbyNode["createPages"] = async ({ actions }) => {
+export const createPages: GatsbyNode["createPages"] = async ({
+  actions,
+  graphql,
+  reporter,
+}) => {
   const { createPage } = actions;
+
+  const tagTemplate = path.resolve("src/templates/tags.tsx");
+
+  const result = await graphql(`
+    query {
+      allMdx(
+        limit: 2000
+        sort: { fields: [frontmatter___created], order: DESC }
+      ) {
+        totalCount
+        edges {
+          node {
+            slug
+            frontmatter {
+              tags
+            }
+          }
+        }
+      }
+      tagsGroup: allMdx(limit: 2000) {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    reporter.panicOnBuild("Error while querying GraphQL");
+    return;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const tags = (result.data as any).tagsGroup.group;
+
+  tags.forEach((tag) => {
+    createPage({
+      path: `/tags/${tag.fieldValue}`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
+      },
+    });
+  });
 
   createPage({
     path: "/using-dsg",
