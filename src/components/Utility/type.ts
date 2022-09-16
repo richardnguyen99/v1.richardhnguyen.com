@@ -6,4 +6,5 @@
 
 import { HTMLAttributes, PropsWithChildren } from "react";
 
+export type WrapperProps = PropsWithChildren<HTMLAttributes<HTMLDivElement>>;
 export type ContainerProps = PropsWithChildren<HTMLAttributes<HTMLDivElement>>;

@@ -15,3 +15,12 @@ export const StyledContainer = styled.div`
 
   max-width: 980px;
 `;
+
+export const StyledWrapper = styled.div`
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+`;
