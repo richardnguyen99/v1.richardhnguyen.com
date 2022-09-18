@@ -63,11 +63,15 @@ const Featured: React.FC<FeaturedDataProps> = ({ allMdx }) => {
         />
       </StyledCardFeaturedImage>
       <StyledCardFeaturedContent
-        style={{
-          backfaceVisibility: "hidden",
-          transform: `translateY(${transform.content}px)`,
-          boxShadow: `0 12px ${transform.content}px 2px var(--systemColor-green)`,
-        }}
+        style={
+          {
+            backfaceVisibility: "hidden",
+            transform: `translateY(${transform.content}px)`,
+            "--featured-scroll-value": `${transform.content}px`,
+            // This explicit type-cast is to bypass Typescript checking so that
+            // I can add a custom variable with `style` props.
+          } as React.CSSProperties
+        }
       >
         <div className="wrapper">
           <p className="wrapper__date">{mdxNode.frontmatter.created}</p>

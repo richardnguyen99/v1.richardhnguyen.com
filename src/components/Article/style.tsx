@@ -175,8 +175,12 @@ export const StyledTimeLineTag = styled.a`
 export const StyledArticleContent = styled(StyledContent)`
   color: var(--systemColor-timeline-text);
 
+  // #040d21
   .gatsby-image-wrapper {
-    box-shadow: 0 22px 70px 4px var(--systemColor-timeline-boxShadow);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 34px 65px #051029dd,
+      0 2.75px 2.21px rgba(0, 0, 0, 0.07), 0 6.65px 5.32px rgba(0, 0, 0, 0.043),
+      0 12.5px 10px rgba(0, 0, 0, 0.03), 0 22px 18px rgba(0, 0, 0, 0.03),
+      0 42px 33.4px rgba(0, 0, 0, 0.02), 0 100px 80px rgba(0, 0, 0, 0.017);
   }
 
   img {
@@ -192,7 +196,7 @@ export const StyledArticleSeeMore = styled(Link)`
   position: relative;
   transition: all 0.2s;
   letter-spacing: -0.033em;
-  margin-top: 16px;
+  margin-top: 32px;
 
   .main-text {
     display: flex;

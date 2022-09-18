@@ -28,13 +28,6 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "images",
-        path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
         name: "inline-images",
         path: `${__dirname}/blog/images`,
       },
@@ -51,6 +44,13 @@ const config: GatsbyConfig = {
       options: {
         name: "blog",
         path: `${__dirname}/blog`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "asset",
+        path: `${__dirname}/src/assets`,
       },
     },
     "gatsby-plugin-netlify",

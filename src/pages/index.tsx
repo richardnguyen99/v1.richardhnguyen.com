@@ -57,6 +57,18 @@ const IndexPage: React.FC = ({ data }: PageProps<IndexPageData>) => {
                   marginLeft: "auto",
                 }}
               />
+              <img
+                alt={data.file.name}
+                src={data.file.publicURL}
+                style={{
+                  top: "50%",
+                  position: "absolute",
+                  zIndex: -1,
+                  transform: "translateY(-50%)",
+                  width: "110%",
+                  margin: "0px -3.35%",
+                }}
+              />
             </Content.Thumbnail>
           )}
         </Article.Content>
@@ -95,6 +107,11 @@ const IndexPage: React.FC = ({ data }: PageProps<IndexPageData>) => {
 
 export const query = graphql`
   query IndexPage {
+    file(name: { eq: "repo-editor-glow" }) {
+      id
+      name
+      publicURL
+    }
     allMdx(sort: { fields: frontmatter___created, order: DESC }) {
       edges {
         node {

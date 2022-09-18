@@ -44,6 +44,18 @@ export const StyledCardFeaturedImage = styled.div`
 `;
 
 export const StyledCardFeaturedContent = styled.div`
+  &::after {
+    content: "";
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    z-index: -1;
+    border-radius: 50%;
+    background-color: transparent;
+    opacity: 0.2;
+    box-shadow: 0 20px var(--featured-scroll-value) 2px var(--systemColor-green);
+  }
+
   position: relative;
   margin-top: -225px;
   overflow: hidden;
@@ -51,7 +63,6 @@ export const StyledCardFeaturedContent = styled.div`
   align-self: flex-start;
   background: var(--systemColor-green);
   border-radius: 12px;
-  box-shadow: 0 22px 70px 4px var(--systemColor-green);
 
   .wrapper {
     letter-spacing: -1px;
@@ -72,6 +83,11 @@ export const StyledCardFeaturedContent = styled.div`
     font-size: 48px;
     font-weight: 600;
     line-height: 108%;
+
+    > a {
+      color: white;
+      text-decoration: none;
+    }
   }
 
   .wrapper__description {
