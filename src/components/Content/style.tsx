@@ -439,6 +439,8 @@ export const StyledLabel = styled.li`
   padding-bottom: 7px;
   border-radius: 16px;
   border: 1px solid transparent;
+  letter-spacing: unset;
+  line-height: 1;
 
   display: inline-flex;
   position: relative;

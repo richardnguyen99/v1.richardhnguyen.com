@@ -75,6 +75,16 @@ export const StyledCardFeaturedContent = styled.div`
   align-self: flex-start;
   z-index: 1;
 
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.slide-in {
+    opacity: 1;
+    transform: scale(1) translateX(0px);
+  }
+
   .wrapper {
     letter-spacing: -1px;
     line-height: 125%;

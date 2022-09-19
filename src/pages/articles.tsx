@@ -17,9 +17,9 @@ type ArticlePageData = Queries.ArticlePageQuery;
 const ArticlePage = ({ data }: PageProps<ArticlePageData>) => {
   return (
     <Layout.Page title="Articles" hideNavbar>
-      <Utility.Container>
-        <Typography.HeroHeadline>
-          <Typography.Gradient color="green">Article</Typography.Gradient> from{" "}
+      <Utility.Container style={{ maxWidth: "1280px" }}>
+        <Typography.HeroHeadline style={{ fontSize: "9.5rem" }}>
+          <Typography.Gradient color="green">Articles</Typography.Gradient> from{" "}
           <Typography.UnderlineText color="green">
             Richard
           </Typography.UnderlineText>

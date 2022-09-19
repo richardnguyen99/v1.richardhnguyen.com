@@ -17,17 +17,17 @@ export const ThemeContext = React.createContext<IThemeContext>(
 ThemeContext.displayName = "MainThemeContext";
 
 const ThemeProvider: React.FC<ThemeContextProps> = ({ children }) => {
-  const [localValue, setlocalValue] = hook.useLocalStorage<ThemeValue>(
+  const [localValue, setLocalValue] = hook.useLocalStorage<ThemeValue>(
     "theme",
-    "light"
+    "dark"
   );
 
   const [theme, setTheme] = React.useState<ThemeValue>("dark");
 
   const toggleTheme = React.useCallback(() => {
-    if (localValue === "light") setlocalValue("dark");
-    else setlocalValue("light");
-  }, [setlocalValue, localValue]);
+    if (localValue === "light") setLocalValue("dark");
+    else setLocalValue("light");
+  }, [setLocalValue, localValue]);
 
   React.useEffect(() => {
     if (typeof document !== "undefined") {

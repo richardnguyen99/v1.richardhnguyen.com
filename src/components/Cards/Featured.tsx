@@ -14,6 +14,7 @@ import {
   StyledCardFeaturedSection,
   StyledCardFeaturedTitle,
 } from "./style";
+import Content from "@components/Content";
 
 type FeaturedDataProps = {
   data: Queries.ArticlePageQuery;
@@ -39,7 +40,7 @@ const Featured: React.FC<FeaturedDataProps> = ({ data }) => {
 
       setTransform({
         image: imageTransform > 300 ? 300 : imageTransform,
-        content: contentTransform > 50 ? 50 : contentTransform,
+        content: contentTransform,
         title: titleTransform > 100 ? 100 : titleTransform,
       });
     }
@@ -88,9 +89,11 @@ const Featured: React.FC<FeaturedDataProps> = ({ data }) => {
         />
       </StyledCardFeaturedImage>
       <StyledCardFeaturedContent
+        className={
+          transform.content >= 50 && transform.content < 190 ? "slide-in" : ""
+        }
         style={{
           backfaceVisibility: "hidden",
-          transform: `translateY(${transform.content}px)`,
         }}
       >
         <div className="wrapper">
@@ -101,6 +104,10 @@ const Featured: React.FC<FeaturedDataProps> = ({ data }) => {
           <p className="wrapper__description">
             {mdxNode.frontmatter.description}
           </p>
+          <Content.LabelContainer>
+            <Content.Label>C++</Content.Label>
+            <Content.Label>Gatsby</Content.Label>
+          </Content.LabelContainer>
         </div>
         <img alt={data.file.name} src={data.file.publicURL} className="glow" />
       </StyledCardFeaturedContent>
