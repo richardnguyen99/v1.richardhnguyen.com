@@ -11,12 +11,14 @@ import {
 } from "./style";
 
 import Featured from "./Featured";
+import Posts from "./Posts";
 
 const exported = Object.assign("Card", {
   FeaturedSection: StyledCardFeaturedSection,
   FeaturedImage: StyledCardFeaturedImage,
   FeaturedContent: StyledCardFeaturedContent,
   Featured,
+  Posts,
 });
 
 export default exported;

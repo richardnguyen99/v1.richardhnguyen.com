@@ -30,6 +30,7 @@ const ArticlePage = ({ data }: PageProps<ArticlePageData>) => {
           <Card.Featured data={data} />
         </Utility.Wrapper>
       </section>
+      <Card.Posts data={data.allMdx.edges.slice(1)} glow={data.file} />
     </Layout.Page>
   );
 };
@@ -41,7 +42,7 @@ export const query = graphql`
       name
       publicURL
     }
-    allMdx(sort: { fields: frontmatter___created, order: DESC }, limit: 1) {
+    allMdx(sort: { fields: frontmatter___created, order: DESC }, limit: 10) {
       edges {
         node {
           slug
