@@ -58,29 +58,16 @@ const Featured: React.FC<FeaturedDataProps> = ({ data }) => {
     <StyledCardFeaturedSection
       style={
         {
-          "--featured-scroll-value": `${transform.content}`,
+          "--featuredContent-scroll-value": `${transform.content}`,
+          "--featuredImage-scroll-value": `${transform.image}`,
+          "--featuredTitle-scroll-value": `${transform.title}`,
           // This explicit type-cast is to bypass Typescript checking so that
           // I can add a custom variable with `style` props.
         } as React.CSSProperties
       }
     >
-      <StyledCardFeaturedTitle
-        style={
-          {
-            transform: `translateY(${50 + transform.title / 10}px)`,
-            "--featuredTitle-scroll-value": `${transform.title}`,
-          } as React.CSSProperties
-        }
-      >
-        Most recent
-      </StyledCardFeaturedTitle>
-      <StyledCardFeaturedImage
-        style={{
-          backfaceVisibility: "hidden",
-          transform: `translateY(${transform.image}px)`,
-          opacity: `${1 - transform.image / 600}`,
-        }}
-      >
+      <StyledCardFeaturedTitle>Most recent</StyledCardFeaturedTitle>
+      <StyledCardFeaturedImage>
         <GatsbyImage
           alt={mdxNode.frontmatter.featuredImageAlt}
           image={
@@ -92,9 +79,6 @@ const Featured: React.FC<FeaturedDataProps> = ({ data }) => {
         className={
           transform.content >= 50 && transform.content < 190 ? "slide-in" : ""
         }
-        style={{
-          backfaceVisibility: "hidden",
-        }}
       >
         <div className="wrapper">
           <p className="wrapper__date">{mdxNode.frontmatter.created}</p>

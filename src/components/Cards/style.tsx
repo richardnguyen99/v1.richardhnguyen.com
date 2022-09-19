@@ -35,6 +35,9 @@ export const StyledCardFeaturedTitle = styled.h1`
   position: relative;
   display: inline-flex;
   opacity: calc(var(--featuredTitle-scroll-value) / 25 - 0.25);
+  transform: translateY(
+    calc(50px + (var(--featuredTitle-scroll-value) * 1px / 10))
+  );
 
   &::before {
     content: "";
@@ -55,10 +58,10 @@ export const StyledCardFeaturedImage = styled.div`
   overflow: hidden;
   z-index: 0;
   border-radius: 12px;
-  box-shadow: 0 0 0 1px rgba(53, 72, 91, 0.14),
-    0 2.75px 2.21px rgba(0, 0, 0, 0.07), 0 6.65px 5.32px rgba(0, 0, 0, 0.043),
-    0 12.5px 10px rgba(0, 0, 0, 0.03), 0 22px 18px rgba(0, 0, 0, 0.03),
-    0 42px 33.4px rgba(0, 0, 0, 0.02), 0 100px 80px rgba(0, 0, 0, 0.017) !important;
+  backface-visibility: hidden;
+
+  transform: translateY(calc(var(--featuredImage-scroll-value) * 1px));
+  opacity: calc(1 - var(--featuredImage-scroll-value) / 600);
 
   & > img,
   & > .gatsby-image-wrapper {
@@ -74,6 +77,7 @@ export const StyledCardFeaturedContent = styled.div`
   max-width: 680px;
   align-self: flex-start;
   z-index: 1;
+  backface-visibility: hidden;
 
   opacity: 0;
   transform: translateX(-24px);
