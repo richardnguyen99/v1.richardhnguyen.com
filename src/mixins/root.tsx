@@ -124,6 +124,8 @@ const RootVariables = css`
     --systemColor-content__sumarry-text: var(--systemColor-gray-2);
 
     --systemColor-terminal__toolbar-bg: rgb(25, 25, 25);
+    --systemColor-cards__featured-bg: var(--systemColor-gray-13);
+    --systemColor-cards__featured-text: var(--systemColor-white);
 
     --systemColor-navbar-bg: var(--systemColor-gray-14);
     --systemColor-navbar-text: var(--systemColor-gray-2);
@@ -206,6 +208,9 @@ const RootVariables = css`
     --systemColor-content__label-border: var(--systemColor-green);
     --systemColor-content__summary-bg: var(--systemColor-gray-3);
     --systemColor-content__sumarry-text: var(--systemColor-gray-12);
+
+    --systemColor-cards__featured-bg: var(--systemColor-gray-2);
+    --systemColor-cards__featured-text: var(--systemColor-gray-12);
 
     --systemColor-navbar-bg: white;
     --systemColor-navbar-text: black;

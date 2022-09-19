@@ -12,16 +12,20 @@ import {
   StyledCardFeaturedContent,
   StyledCardFeaturedImage,
   StyledCardFeaturedSection,
+  StyledCardFeaturedTitle,
 } from "./style";
 
-type FeaturedDataProps = Queries.ArticlePageQuery;
+type FeaturedDataProps = {
+  data: Queries.ArticlePageQuery;
+};
 
-const Featured: React.FC<FeaturedDataProps> = ({ allMdx }) => {
-  const { node: mdxNode } = allMdx.edges[0];
+const Featured: React.FC<FeaturedDataProps> = ({ data }) => {
+  const { node: mdxNode } = data.allMdx.edges[0];
 
   const [transform, setTransform] = React.useState({
     image: 0,
     content: 0,
+    title: 0,
   });
 
   const parallaxScrolling = React.useCallback(() => {
@@ -29,12 +33,14 @@ const Featured: React.FC<FeaturedDataProps> = ({ allMdx }) => {
       const top = window.pageYOffset || document.documentElement.scrollTop;
       const topDist = top - document.documentElement.clientTop;
 
-      const imageTransform = topDist ? topDist * 0.5 : 0;
-      const contentTransform = topDist ? topDist * 0.13 : 0;
+      const imageTransform = topDist > 0 ? topDist * 0.5 : 0;
+      const contentTransform = topDist > 0 ? topDist * 0.13 : 0;
+      const titleTransform = contentTransform;
 
       setTransform({
         image: imageTransform > 300 ? 300 : imageTransform,
         content: contentTransform > 50 ? 50 : contentTransform,
+        title: titleTransform > 100 ? 100 : titleTransform,
       });
     }
   }, []);
@@ -48,11 +54,30 @@ const Featured: React.FC<FeaturedDataProps> = ({ allMdx }) => {
   }, [parallaxScrolling]);
 
   return (
-    <StyledCardFeaturedSection>
+    <StyledCardFeaturedSection
+      style={
+        {
+          "--featured-scroll-value": `${transform.content}`,
+          // This explicit type-cast is to bypass Typescript checking so that
+          // I can add a custom variable with `style` props.
+        } as React.CSSProperties
+      }
+    >
+      <StyledCardFeaturedTitle
+        style={
+          {
+            transform: `translateY(${50 + transform.title / 10}px)`,
+            "--featuredTitle-scroll-value": `${transform.title}`,
+          } as React.CSSProperties
+        }
+      >
+        Most recent
+      </StyledCardFeaturedTitle>
       <StyledCardFeaturedImage
         style={{
           backfaceVisibility: "hidden",
           transform: `translateY(${transform.image}px)`,
+          opacity: `${1 - transform.image / 600}`,
         }}
       >
         <GatsbyImage
@@ -63,15 +88,10 @@ const Featured: React.FC<FeaturedDataProps> = ({ allMdx }) => {
         />
       </StyledCardFeaturedImage>
       <StyledCardFeaturedContent
-        style={
-          {
-            backfaceVisibility: "hidden",
-            transform: `translateY(${transform.content}px)`,
-            "--featured-scroll-value": `${transform.content}px`,
-            // This explicit type-cast is to bypass Typescript checking so that
-            // I can add a custom variable with `style` props.
-          } as React.CSSProperties
-        }
+        style={{
+          backfaceVisibility: "hidden",
+          transform: `translateY(${transform.content}px)`,
+        }}
       >
         <div className="wrapper">
           <p className="wrapper__date">{mdxNode.frontmatter.created}</p>
@@ -82,6 +102,7 @@ const Featured: React.FC<FeaturedDataProps> = ({ allMdx }) => {
             {mdxNode.frontmatter.description}
           </p>
         </div>
+        <img alt={data.file.name} src={data.file.publicURL} className="glow" />
       </StyledCardFeaturedContent>
     </StyledCardFeaturedSection>
   );

@@ -27,7 +27,7 @@ const ArticlePage = ({ data }: PageProps<ArticlePageData>) => {
       </Utility.Container>
       <section id="landing-section">
         <Utility.Wrapper>
-          <Card.Featured allMdx={data.allMdx} />
+          <Card.Featured data={data} />
         </Utility.Wrapper>
       </section>
     </Layout.Page>
@@ -36,6 +36,11 @@ const ArticlePage = ({ data }: PageProps<ArticlePageData>) => {
 
 export const query = graphql`
   query ArticlePage {
+    file(name: { eq: "codespaces-glow" }) {
+      id
+      name
+      publicURL
+    }
     allMdx(sort: { fields: frontmatter___created, order: DESC }, limit: 1) {
       edges {
         node {
