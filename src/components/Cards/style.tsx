@@ -4,7 +4,7 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const StyledCardFeaturedSection = styled.div`
   display: flex;
@@ -179,6 +179,15 @@ export const StyledCardPostWrapper = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;
   letter-spacing: -0.8px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.reveal {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 `;
 
 export const StyledCardPost = styled.div`
@@ -245,11 +254,15 @@ export const StyledCardPost = styled.div`
   }
 
   .date {
-    margin-top: 16px;
+    margin-top: 6px;
     margin-bottom: 4px;
     font-weight: 600;
     font-size: 24px;
     line-height: 125%;
+  }
+
+  .read {
+    font-weight: bold;
   }
 
   .heading {

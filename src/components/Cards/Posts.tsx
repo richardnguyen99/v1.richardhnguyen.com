@@ -22,13 +22,46 @@ type PostsProps = {
 };
 
 const Posts: React.FC<PostsProps> = ({ data }) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  const formatTimeToRead = (num: number) => `${num} min${num > 1 && "s"}`;
+
+  const revealOnScroll = React.useCallback(() => {
+    if (ref && ref.current) {
+      const winHeight = window.innerHeight;
+      const cardPosts = document.querySelectorAll("[data-card-post-order]");
+      const elmVisible = 150;
+      const postSectionTop = ref.current.getBoundingClientRect().top;
+
+      if (postSectionTop < winHeight - elmVisible) {
+        cardPosts.forEach((_c, idx) => {
+          setTimeout(() => {
+            _c.classList.add("reveal");
+          }, idx * 200);
+        });
+      } else {
+        cardPosts.forEach((_c, idx) => {
+          _c.classList.remove("reveal");
+        });
+      }
+    }
+  }, []);
+
+  React.useEffect(() => {
+    window.addEventListener("scroll", revealOnScroll);
+
+    return () => {
+      window.removeEventListener("scroll", revealOnScroll);
+    };
+  }, [revealOnScroll]);
+
   return (
-    <StyledPostSection>
+    <StyledPostSection ref={ref}>
       <StyledPostGroup>
         <h1>Other posts</h1>
         <StyledPostContainer>
           {data.slice(0, 2).map((post, key) => (
-            <StyledCardPostWrapper key={key}>
+            <StyledCardPostWrapper key={key} data-card-post-order={key + 1}>
               <StyledCardPost>
                 <Link className="image" to={post.node.slug}>
                   <GatsbyImage
@@ -44,7 +77,10 @@ const Posts: React.FC<PostsProps> = ({ data }) => {
                   <Link to={post.node.slug}>{post.node.frontmatter.title}</Link>
                 </h3>
                 <p className="description">
-                  {post.node.frontmatter.description}
+                  {post.node.frontmatter.description} &mdash;{" "}
+                  <span className="read">
+                    {formatTimeToRead(post.node.timeToRead)}
+                  </span>
                 </p>
               </StyledCardPost>
             </StyledCardPostWrapper>
