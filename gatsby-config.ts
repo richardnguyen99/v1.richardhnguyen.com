@@ -24,7 +24,6 @@ const config: GatsbyConfig = {
         preprocess: false,
       },
     },
-    "gatsby-plugin-image",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -53,15 +52,11 @@ const config: GatsbyConfig = {
         path: `${__dirname}/src/assets`,
       },
     },
+    "gatsby-plugin-image",
     "gatsby-plugin-netlify",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [],
-      },
-    },
+    "gatsby-transformer-remark",
     "gatsby-remark-images",
     {
       resolve: "gatsby-plugin-mdx",
@@ -75,11 +70,17 @@ const config: GatsbyConfig = {
               backgroundColor: "transparent",
             },
           },
+
+          // This plugin will generate a link to the headings in markdown and
+          // MDX contents.
           {
             resolve: "gatsby-remark-autolink-headers",
             options: {
+              // Only heading 1 & heading 2 are supposed to have links.
               elements: ["h1", "h2"],
+              // Custom class to define custom styles.
               className: "custom-anchor",
+              // Custom link icon.
               icon: "<p>#</p>",
             },
           },
@@ -107,7 +108,6 @@ const config: GatsbyConfig = {
         icon: "src/images/gatsby-icon.png", // This path is relative to the root of the site.
       },
     },
-    "gatsby-plugin-netlify",
     // `gatsby-plugin-offline`,
   ],
 };

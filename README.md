@@ -3,7 +3,7 @@
 Main page for Richard H. Nguyen, where you can find
 
 - Articles: I write technical stuff such as technologies and programming.
-- Myself: I write about myself and some of works.
+- README: I write about myself and some of works.
 - Projects: I love messing around with Typescript, React, Python, C++ and more.
 
 Url: [https://richardhnguyen.com/](https://richardhnguyen.com/)
@@ -18,4 +18,4 @@ However, I'm all open to hear feedback and comments to improve the project. Feel
 
 ## License
 
-[richardhnguyen.com](richardhnguyen.com/) is [MIT licensed](https://github.com/richardnguyen99/richardhnguyen.com/blob/main/README.md)
+[richardhnguyen.com](richardhnguyen.com/) is [MIT licensed](https://github.com/richardnguyen99/richardhnguyen.com/blob/main/README.md) (i.e you can do whatever you want with this repository).

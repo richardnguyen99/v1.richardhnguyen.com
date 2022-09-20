@@ -9,6 +9,9 @@ import path from "path";
 import { GatsbyNode } from "gatsby";
 
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] =
+  // This configuration will allow me to create a shortcut for each folder in
+  // src/. Instead of adding a prefix "./src/something", now I can just use
+  // "@something".
   async ({ actions }) => {
     actions.setWebpackConfig({
       resolve: {
@@ -30,10 +33,13 @@ export const createPages: GatsbyNode["createPages"] = async ({
   graphql,
   reporter,
 }) => {
+  // This will create pages dynamically depending on what type of page I
+  // specify.
   const { createPage } = actions;
 
+  // The page component used to render the page and consume the data
+  // accordingly.
   const tagTemplate = path.resolve("src/templates/tags.tsx");
-
   const result = await graphql(`
     query {
       allMdx(
@@ -70,16 +76,11 @@ export const createPages: GatsbyNode["createPages"] = async ({
     createPage({
       path: `/tags/${tag.fieldValue}`,
       component: tagTemplate,
+      // context props will be used to pass down to graphql used by that page
+      // as variables.
       context: {
         tag: tag.fieldValue,
       },
     });
-  });
-
-  createPage({
-    path: "/using-dsg",
-    component: path.resolve("./src/templates/using-dsg.tsx"),
-    context: {},
-    defer: true,
   });
 };
