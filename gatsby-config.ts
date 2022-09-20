@@ -20,8 +20,6 @@ const config: GatsbyConfig = {
       resolve: "gatsby-plugin-styled-components",
       options: {
         displayName: false,
-        ssr: true,
-        preprocess: false,
       },
     },
     {
@@ -42,6 +40,12 @@ const config: GatsbyConfig = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "blog",
+        path: `${__dirname}/blog`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
         path: `${__dirname}/blog`,
       },
     },
@@ -106,6 +110,62 @@ const config: GatsbyConfig = {
         background_color: "#663399",
         display: "minimal-ui",
         icon: "src/images/gatsby-icon.png", // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: "gatsby-plugin-feed",
+      options: {
+        query: `#graphql
+        {
+          site {
+            siteMetadata {
+              title
+              description
+              siteUrl
+              site_url: siteUrl
+            }
+          }
+        }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map((edge) => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.frontmatter.description,
+                  date: edge.node.frontmatter.created,
+                  url: site.siteMetadata.siteUrl + "/articles" + edge.node.slug,
+                  guid:
+                    site.siteMetadata.siteUrl + "/articles" + edge.node.slug,
+                  custom_elements: [{ "content:encoded": edge.node.body }],
+                });
+              });
+            },
+
+            query: `#graphql
+            {
+              allMdx(
+                sort: { order: DESC, fields: [frontmatter___created]},
+              ) {
+                edges {
+                  node {
+                    body
+                    slug
+                    frontmatter {
+                      title
+                      created
+                      description
+                    }
+                  }
+                }
+              }
+            }
+            `,
+            output: "/rss.xml",
+            title: "Richard H. Nguyen",
+            match: "^/articles/",
+          },
+        ],
       },
     },
     // `gatsby-plugin-offline`,

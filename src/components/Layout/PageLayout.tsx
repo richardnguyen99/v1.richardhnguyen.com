@@ -56,7 +56,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({
                   </Tooltip>
                   <Tooltip text="RSS" position="bottom-center">
                     <Navbar.Item id="rss" icon>
-                      <SVG.RSS size={16} />
+                      <a href="/rss.xml">
+                        <SVG.RSS size={16} />
+                      </a>
                     </Navbar.Item>
                   </Tooltip>
                   <Navbar.ThemeToggle />
