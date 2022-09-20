@@ -57,6 +57,13 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     fill: currentColor;
     height: 100%;
+    font-weight: bold;
+    opacity: 0;
+  }
+
+  h1[id]:hover .custom-anchor,
+  h2[id]:hover .custom-anchor {
+    opacity: 1;
   }
 
   .bold {

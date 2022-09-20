@@ -80,6 +80,7 @@ const config: GatsbyConfig = {
             options: {
               elements: ["h1", "h2"],
               className: "custom-anchor",
+              icon: "<p>#</p>",
             },
           },
         ],
