@@ -10,7 +10,6 @@ import { TooltipPosition } from "./type";
 
 export const StyledBaseTooltip = styled.span<{ position: TooltipPosition }>`
   position: absolute;
-  white-space: nowrap;
   color: ${(props) => (props.theme.mode === "dark" ? "#141413" : "#dddddd")};
   background: ${(props) =>
     props.theme.mode === "dark" ? " #dddddd" : "#141413"};
@@ -23,10 +22,9 @@ export const StyledBaseTooltip = styled.span<{ position: TooltipPosition }>`
   align-items: center;
   justify-content: center;
   transition: opacity 200ms ease, scale 200ms ease;
-  font-size: 0.75rem;
-  letter-spacing: 0.075em;
+  font-size: 12px;
   font-family: sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   padding: 0.75rem 0.5rem;
   z-index: 100;
 

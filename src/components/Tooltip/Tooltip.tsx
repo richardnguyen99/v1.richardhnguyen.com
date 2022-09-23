@@ -33,7 +33,7 @@ const Tooltip: React.FC<TooltipProps> = ({
   const handleMouseEnter = React.useCallback(() => {
     timeoutRef.current = setTimeout(() => {
       setShowing(true);
-    }, 500);
+    }, 250);
   }, []);
 
   const handleMouseLeave = React.useCallback(() => {
