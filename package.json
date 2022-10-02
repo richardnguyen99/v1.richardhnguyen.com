@@ -43,6 +43,7 @@
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
     "react-katex": "^2.0.2",
+    "react-transition-group": "^4.4.5",
     "rehype-katex": "^6.0.2",
     "remark-math": "^3.0.1",
     "styled-components": "^5.3.5"
