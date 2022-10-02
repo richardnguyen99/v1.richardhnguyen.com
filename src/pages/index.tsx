@@ -88,14 +88,6 @@ const IndexPage: React.FC = ({ data }: PageProps<IndexPageData>) => {
         </Typography.HeroHeadline>
       </Utility.Container>
 
-      <div className="py-4 border-bottom">
-        <Utility.Container>
-          <Select>
-            <option>All categories</option>
-          </Select>
-        </Utility.Container>
-      </div>
-
       <Utility.Container>
         <Article.Container>
           {mdxNodes && mdxNodes.map((mdxNode, idx) => renderNode(mdxNode, idx))}

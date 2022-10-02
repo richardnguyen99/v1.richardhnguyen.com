@@ -39,7 +39,7 @@ const Seo: React.FC<SEOProps> = ({
         lang,
       }}
       title={title}
-      titleTemplate={`%s / ${defaultTitle}`}
+      titleTemplate={`%s | ${defaultTitle}`}
       meta={[
         {
           name: "description",

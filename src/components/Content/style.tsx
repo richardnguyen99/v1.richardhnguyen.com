@@ -417,7 +417,9 @@ export const StyledChapterActiveLine = styled.div<{
     left: 6px;
     z-index: 100;
     overflow-y: hidden;
+  }
 
+  &.mounted::before {
     transition: all 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
 `;

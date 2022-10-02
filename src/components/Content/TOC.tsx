@@ -45,6 +45,73 @@ const TOC: React.FC<TOCProps> = ({ toc, ...rest }) => {
   });
 
   const [activeId, setActiveId] = React.useState("test");
+  const [mounted, setMounted] = React.useState(false);
+
+  const isInViewport = (elm: Element) => {
+    const rect = elm.getBoundingClientRect();
+
+    if (elm.getAttribute("id") === "fill-constructor") {
+      console.log(rect);
+    }
+
+    return (
+      rect.top >= -2 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
+
+  React.useEffect(() => {
+    if (!position.display) {
+      document.querySelectorAll("h1[id]").forEach((elm) => {
+        const elmId = elm.getAttribute("id");
+
+        if (isInViewport(elm)) {
+          const toc = document.querySelector(`a[data-toc='#${elmId}']`);
+          setPosition((old) => ({
+            ...old,
+            start:
+              toc.getBoundingClientRect().top -
+              tocRef.current.getBoundingClientRect().top,
+            end:
+              toc.getBoundingClientRect().bottom -
+              tocRef.current.getBoundingClientRect().top,
+            display: true,
+          }));
+
+          setActiveId("#" + elmId);
+        }
+      });
+
+      document.querySelectorAll("h2[id]").forEach((elm) => {
+        const elmId = elm.getAttribute("id");
+
+        if (isInViewport(elm)) {
+          const toc = document.querySelector(`a[data-toc='#${elmId}']`);
+          setPosition((old) => ({
+            ...old,
+            start:
+              toc.getBoundingClientRect().top -
+              tocRef.current.getBoundingClientRect().top,
+            end:
+              toc.getBoundingClientRect().bottom -
+              tocRef.current.getBoundingClientRect().top,
+            display: true,
+          }));
+
+          setActiveId("#" + elmId);
+        }
+      });
+    }
+  }, []);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setMounted(true);
+    }, 500);
+  }, [position.display]);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,6 +124,7 @@ const TOC: React.FC<TOCProps> = ({ toc, ...rest }) => {
             entry.intersectionRect.bottom > 0
           ) {
             const element = document.querySelector(`a[data-toc='#${id}']`);
+
             if (element) {
               // getBoundingClientRect is relative to the viewport. To make sure
               // that the active line is correct, use the toc container as the
@@ -71,7 +139,7 @@ const TOC: React.FC<TOCProps> = ({ toc, ...rest }) => {
                 end:
                   element.getBoundingClientRect().bottom -
                   tocRef.current.getBoundingClientRect().top,
-                display: !old.display ? true : true,
+                display: true,
               }));
 
               // This setState will update the new header id if and only if there
@@ -120,6 +188,7 @@ const TOC: React.FC<TOCProps> = ({ toc, ...rest }) => {
 
       <StyledChapterActiveLine
         display
+        className={mounted && "mounted"}
         start={position.start}
         end={position.end}
       >
