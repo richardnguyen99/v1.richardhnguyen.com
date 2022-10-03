@@ -5,7 +5,11 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 import * as React from "react";
-import { StyledGradientBlueText, StyledGradientGreenText } from "./style";
+import {
+  StyledGradientBlueText,
+  StyledGradientGreenText,
+  StyledGradientRedText,
+} from "./style";
 import { GradientTextProps } from "./type";
 
 const Gradient: React.FC<GradientTextProps> = ({
@@ -15,6 +19,8 @@ const Gradient: React.FC<GradientTextProps> = ({
 }) => {
   const getGradientColor = () => {
     switch (color) {
+      case "red":
+        return StyledGradientRedText;
       case "green":
         return StyledGradientGreenText;
       default:

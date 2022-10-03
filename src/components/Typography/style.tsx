@@ -68,6 +68,28 @@ export const StyledGradientGreenText = styled.span`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  //box-decoration-break: none;
+  //-webkit-box-decoration-break: none;
+  position: relative;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: currentcolor;
+    text-decoration-thickness: auto;
+    text-decoration-thickness: 0.1em;
+    text-decoration-color: var(--systemColor-green);
+  }
+`;
+
+export const StyledGradientRedText = styled.span`
+  background: linear-gradient(
+    -70deg,
+    var(--systemColor-pink) 0%,
+    var(--systemColor-red) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   box-decoration-break: none;
   -webkit-box-decoration-break: none;
   position: relative;
@@ -77,7 +99,7 @@ export const StyledGradientGreenText = styled.span`
     text-decoration-color: currentcolor;
     text-decoration-thickness: auto;
     text-decoration-thickness: 0.1em;
-    text-decoration-color: var(--systemColor-green);
+    text-decoration-color: var(--systemColor-red);
   }
 `;
 

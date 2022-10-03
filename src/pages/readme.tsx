@@ -11,16 +11,13 @@ import Typography from "@components/Typography";
 import Utility from "@components/Utility";
 import SVG from "@components/Svg";
 import Content from "@components/Content/Content";
-import Section from "@components/Section";
+
+import Features from "@features/readme";
 
 const ReadmePage: React.FC = () => {
   return (
     <Layout.Page id="readme" title="README">
-      <Section.Landing>
-        <Utility.Container>
-          <h1>Hello</h1>
-        </Utility.Container>
-      </Section.Landing>
+      <Features.Hero />
       <Utility.Container>
         <div id="hey-image">
           <SVG.Hey />
