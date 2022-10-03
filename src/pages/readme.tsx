@@ -18,6 +18,7 @@ const ReadmePage: React.FC = () => {
   return (
     <Layout.Page id="readme" title="README">
       <Features.Hero />
+      <Features.AboutMe />
       <Utility.Container>
         <div id="hey-image">
           <SVG.Hey />

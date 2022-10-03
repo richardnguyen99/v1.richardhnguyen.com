@@ -5,9 +5,11 @@
  */
 
 import Hero from "./Hero";
+import AboutMe from "./AboutMe";
 
 const exported = Object.assign("Readme", {
   Hero,
+  AboutMe,
 });
 
 export default exported;

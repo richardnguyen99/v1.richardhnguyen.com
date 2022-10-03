@@ -74,15 +74,6 @@ const GlobalStyle = createGlobalStyle`
     opacity: 0.16;
   }
 
-  #readme {
-    p {
-      font-family: Georgia, ui-serif, serif;
-      font-size: 20px;
-      line-height: 1.2em;
-      text-transform: none;
-    }
-  }
-
   #hey-image {
     display: flex;
     align-items: center;

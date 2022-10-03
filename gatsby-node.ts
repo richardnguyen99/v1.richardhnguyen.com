@@ -12,7 +12,20 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] =
   // This configuration will allow me to create a shortcut for each folder in
   // src/. Instead of adding a prefix "./src/something", now I can just use
   // "@something".
-  async ({ actions }) => {
+  async ({ actions, stage, loaders }) => {
+    if (stage === "build-html") {
+      actions.setWebpackConfig({
+        module: {
+          rules: [
+            {
+              test: /scrollreveal/,
+              use: loaders.null(),
+            },
+          ],
+        },
+      });
+    }
+
     actions.setWebpackConfig({
       resolve: {
         alias: {

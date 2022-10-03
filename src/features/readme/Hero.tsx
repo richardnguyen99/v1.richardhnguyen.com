@@ -7,7 +7,7 @@
 import * as React from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-import { StyledGreetingText, StyledReadme } from "./style";
+import { StyledGreetingText, StyledIntroText, StyledReadme } from "./style";
 
 import Section from "@components/Section";
 import Utility from "@components/Utility";
@@ -20,19 +20,27 @@ const Hero: React.FC = () => {
   const [mounted, setMounted] = React.useState(false);
 
   const Greeting = () => (
-    <StyledGreetingText style={{ transitionDelay: "100ms" }}>
-      Hello, my name is
+    <StyledGreetingText style={{ transitionDelay: "150ms" }}>
+      Hi, my name is
     </StyledGreetingText>
   );
 
   const Gradient = () => (
-    <div style={{ transitionDelay: "200ms" }}>
+    <div style={{ transitionDelay: "300ms" }}>
       <RedGradient>Richard Nguyen</RedGradient>
       <span className="waving">👋</span>
     </div>
   );
 
-  const transitionComponents = [Greeting, Gradient];
+  const Intro = () => (
+    <StyledIntroText style={{ transitionDelay: "450ms" }}>
+      <p>
+        <span className="line" /> A Computer Science undergraduate @SeattleU.
+      </p>
+    </StyledIntroText>
+  );
+
+  const transitionComponents = [Greeting, Gradient, Intro];
 
   React.useEffect(() => {
     const timeout = setTimeout(() => setMounted(true), 1000);

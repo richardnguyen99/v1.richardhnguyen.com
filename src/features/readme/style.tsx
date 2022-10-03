@@ -4,16 +4,35 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 
-import * as React from "react";
 import styled, { keyframes } from "styled-components";
 
 export const StyledGreetingText = styled.h1`
-  color: var(--systemColor-text);
   margin: 0px;
   font-size: 2rem;
   font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas,
     Liberation Mono, monospace;
   font-weight: 500;
+  letter-spacing: normal;
+`;
+
+export const StyledIntroText = styled.p`
+  &::before {
+    content: "";
+  }
+
+  .line {
+    display: inline-block;
+    width: 64px;
+    height: 5px;
+    border-bottom: 4px solid var(--systemColor-text);
+    margin-bottom: 9px;
+  }
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 60%;
+  font-size: 32px;
   letter-spacing: normal;
 `;
 
@@ -52,5 +71,49 @@ export const StyledReadme = styled.div`
     animation-delay: 400ms;
     transform-origin: 70% 70%;
     display: inline-block;
+  }
+`;
+
+export const StyledHeading = styled.h3`
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: var(--systemColor-text);
+
+  &:before {
+    counter-increment: section;
+    content: "0" counter(section) ".";
+    margin-right: 0.75rem;
+    font-size: 0.75rem;
+    font-family: var(--system-font-mono);
+    font-weight: normal;
+    color: var(--systemColor-text);
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--systemColor-text);
+    position: relative;
+    top: 2px;
+    margin-left: 20px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 1.5rem;
+
+    &::before {
+      font-size: 1.25rem;
+    }
+
+    &::after {
+      width: 20rem;
+    }
   }
 `;

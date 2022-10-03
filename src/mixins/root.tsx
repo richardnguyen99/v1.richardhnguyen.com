@@ -8,6 +8,13 @@ import { css } from "styled-components";
 
 const RootVariables = css`
   :root {
+    --system-font-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo,
+      Consolas, Liberation Mono, monospace;
+    --system-font-serif: Georgia, ui-serif, serif;
+    --system-font-sans: "Alliance No.1", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol";
+
     --systemColor-red-light: 255, 59, 48;
     --systemColor-red-dark: 255, 69, 58;
     --systemColor-yellow-light: 255, 204, 0;
