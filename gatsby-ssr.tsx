@@ -11,15 +11,6 @@
 import * as React from "react";
 import type { GatsbySSR } from "gatsby";
 
-import Context from "./src/contexts";
-
-export const onRenderBody: GatsbySSR["onRenderBody"] = (
-  { setPostBodyComponents },
-  _pluginOptions
-) => {
-  setPostBodyComponents([<div key="portal" id="modal" />]);
-};
-
 export const wrapRootElement: GatsbySSR["wrapRootElement"] = ({ element }) => {
-  return <Context.Theme>{element}</Context.Theme>;
+  return <>{element}</>;
 };
