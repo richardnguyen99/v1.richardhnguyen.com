@@ -22,20 +22,10 @@
     "paths": {
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
-      "@features": ["src/features"],
-      "@features/*": ["src/features/*"],
-      "@contexts": ["src/contexts"],
-      "@contexts/*": ["src/contexts/*"],
       "@mixins": ["src/mixins"],
       "@mixins/*": ["src/mixins/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@hooks": ["src/hooks"],
-      "@helper/*": ["src/helper/*"],
-      "@helper": ["src/helper"],
       "@pages/*": ["src/pages/*"],
-      "@pages": ["src/pages"],
-      "@generated/*": ["src/generated/*"],
-      "@generated": ["src/generated"]
+      "@pages": ["src/pages"]
     }
   },
   "include": [
@@ -43,7 +33,7 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "./src/**/*",
-    "./gatsby-node.ts",
+    "gatsby-node.ts",
     "./gatsby-config.ts",
     "./plugins/**/*"
   ],

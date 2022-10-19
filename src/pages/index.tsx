@@ -5,8 +5,15 @@
  */
 import * as React from "react";
 
+import GlobalStyle from "@components/GlobalStyle";
+
 const IndexPage = () => {
-  return <div>Hello, World</div>;
+  return (
+    <>
+      <GlobalStyle />
+      <div>Hello, World</div>
+    </>
+  );
 };
 
 export default IndexPage;

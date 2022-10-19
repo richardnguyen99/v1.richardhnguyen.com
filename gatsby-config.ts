@@ -15,7 +15,7 @@ const config: GatsbyConfig = {
     siteUrl: "https://richardhnguyen.com",
     email: "richard@richardnguyen.com",
   },
-  plugins: [],
+  plugins: ["gatsby-plugin-styled-components"],
 };
 
 export default config;
