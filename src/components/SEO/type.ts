@@ -11,8 +11,10 @@ import React, { HTMLAttributes } from "react";
  * include with React.PropsWithChildren to make a complete type.
  */
 export type BasedSEOProps = {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  pathname?: string;
 };
 
 export type SEOProps = BasedSEOProps &

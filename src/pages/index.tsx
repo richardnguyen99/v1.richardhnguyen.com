@@ -7,7 +7,6 @@ import * as React from "react";
 
 import GlobalStyle from "@components/GlobalStyle";
 import SEO from "@components/SEO";
-import useSiteMetadata from "@hooks/useSiteMetadata";
 
 const IndexPage = () => {
   return (
@@ -20,17 +19,6 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const Head = () => {
-  const {
-    site: {
-      siteMetadata: { title, description },
-    },
-  } = useSiteMetadata();
-
-  return (
-    <SEO title={`Home — ${title}`} description={description}>
-      <link rel="preconnect" href="https://rsms.me/" />
-      <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-    </SEO>
-  );
-};
+export const Head = () => (
+  <SEO title={"Home"} description="The latest from Richard H. Nguyen" />
+);

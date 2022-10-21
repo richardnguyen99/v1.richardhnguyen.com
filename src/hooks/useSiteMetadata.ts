@@ -24,6 +24,9 @@ export const query = graphql`
         email
         siteUrl
         title
+        titleTemplate
+        image
+        twitterUsername
       }
     }
   }
