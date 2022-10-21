@@ -51,8 +51,7 @@ const normalizeCSS = css`
   body {
     margin: 0; /* 1 */
     padding: 0;
-    font-family:
-      /* Insert Inter Var font here */ system-ui, -apple-system,
+    font-family: "Inter var", Inter, system-ui, -apple-system,
       /* Firefox supports this but not yet "system-ui" */ "Segoe UI", Roboto,
       Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; /* 2 */
   }

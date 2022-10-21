@@ -25,7 +25,9 @@
       "@mixins": ["src/mixins"],
       "@mixins/*": ["src/mixins/*"],
       "@pages/*": ["src/pages/*"],
-      "@pages": ["src/pages"]
+      "@pages": ["src/pages"],
+      "@hooks/*": ["src/hooks/*"],
+      "@hooks": ["src/hooks"]
     }
   },
   "include": [
