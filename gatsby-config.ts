@@ -90,6 +90,12 @@ const config: GatsbyConfig = {
         crossOrigin: "use-credentials",
       },
     },
+    {
+      resolve: "gatsby-plugin-offline",
+      options: {
+        precachePages: ["/"],
+      },
+    },
   ],
 };
 
