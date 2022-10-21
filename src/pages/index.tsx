@@ -6,6 +6,7 @@
 import * as React from "react";
 
 import GlobalStyle from "@components/GlobalStyle";
+import SEO from "@components/SEO";
 
 const IndexPage = () => {
   return (
@@ -17,3 +18,10 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const Head = () => (
+  <SEO title="Home — Richard H. Nguyen" description="The latest from Richard">
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  </SEO>
+);
