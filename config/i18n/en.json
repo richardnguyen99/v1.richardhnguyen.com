@@ -1,0 +1,30 @@
+{
+  "pages": [
+    {
+      "page": "index",
+      "title": "Home",
+      "titleTemplate": " - Richard H. Nguyen",
+      "components": {
+        "headline": {
+          "normal": "The latest from ",
+          "gradient": "Richard H. Nguyen"
+        }
+      }
+    },
+    {
+      "page": "about",
+      "title": "About",
+      "titleTemplate": " - Richard H. Nguyen",
+      "components": {
+        "sections": [
+          {
+            "id": 1
+          },
+          {
+            "id": 2
+          }
+        ]
+      }
+    }
+  ]
+}

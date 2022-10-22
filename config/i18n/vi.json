@@ -1,0 +1,30 @@
+{
+  "pages": [
+    {
+      "page": "index",
+      "title": "Trang chủ",
+      "titleTemplate": " - Richard H. Nguyen",
+      "components": {
+        "headline": {
+          "normal": "Tin công nghệ mới nhất từ ",
+          "gradient": "Richard H. Nguyen"
+        }
+      }
+    },
+    {
+      "page": "about",
+      "title": "Trang chủ",
+      "titleTemplate": " - Richard H. Nguyen",
+      "components": {
+        "sections": [
+          {
+            "id": 1
+          },
+          {
+            "id": 2
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -11,6 +11,16 @@
 import * as React from "react";
 import type { GatsbySSR } from "gatsby";
 
-export const wrapRootElement: GatsbySSR["wrapRootElement"] = ({ element }) => {
-  return <>{element}</>;
+import RootLayout from "./src/components/layout/Root";
+
+export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({
+  element,
+  props,
+}) => {
+  return (
+    // Fix this one
+    <RootLayout pageContext={props.pageContext as { lang: string }}>
+      {element}
+    </RootLayout>
+  );
 };

@@ -1,7 +1,7 @@
 /**
  * A React component to display a Not Found page in Gatsby site.
  *
- * @author Richard Nguyen <richard.ng0616@gmail.com>
+ * @author Richard Nguyen <richard@richardhnguyen.com>
  */
 import * as React from "react";
 

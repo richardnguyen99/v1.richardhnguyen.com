@@ -19,7 +19,15 @@ const config: GatsbyConfig = {
     image: "/icon-512.png",
   },
   plugins: [
+    "gatsby-transformer-json",
     "gatsby-plugin-styled-components",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/config/i18n`,
+        name: "i18n",
+      },
+    },
     {
       resolve: "gatsby-plugin-manifest",
       options: {

@@ -4,15 +4,20 @@
  * @author Richard Nguyen <richard@richardhnguyen.com>
  */
 import * as React from "react";
+import { PageProps } from "gatsby";
 
 import GlobalStyle from "@components/GlobalStyle";
 import SEO from "@components/SEO";
 
-const IndexPage = () => {
+import useTranslation from "@hooks/useTranslation";
+
+const IndexPage = ({ pageContext }: PageProps) => {
+  const translations = useTranslation("index");
+
   return (
     <>
       <GlobalStyle />
-      <div>Hello, World</div>
+      <div>{translations.components.headline.normal}</div>
     </>
   );
 };

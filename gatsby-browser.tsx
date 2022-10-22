@@ -10,8 +10,16 @@
 import * as React from "react";
 import { GatsbyBrowser } from "gatsby";
 
+import RootLayout from "./src/components/layout/Root";
+
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
   element,
+  props,
 }) => {
-  return <>{element}</>;
+  return (
+    // Fix this one
+    <RootLayout pageContext={props.pageContext as { lang: string }}>
+      {element}
+    </RootLayout>
+  );
 };
