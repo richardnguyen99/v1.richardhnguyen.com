@@ -19,6 +19,12 @@ const config: GatsbyConfig = {
     image: "/icon-512.png",
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-google-gtag",
+      options: {
+        trackingIds: ["G-1WSKJFCD4F"],
+      },
+    },
     "gatsby-transformer-json",
     "gatsby-plugin-styled-components",
     {
