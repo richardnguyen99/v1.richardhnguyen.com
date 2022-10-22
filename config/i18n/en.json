@@ -25,6 +25,15 @@
           }
         ]
       }
+    },
+    {
+      "page": "404",
+      "title": "Page not found",
+      "titleTemplate": " - Richard H. Nguyen",
+      "components": {
+        "message": "You just hit the route that doesn't exist... Just sadness",
+        "contact": "If you think the page you just enter is valid, please let me know at:"
+      }
     }
   ]
 }

@@ -7,22 +7,16 @@
 import * as React from "react";
 import { graphql, HeadFC, PageProps } from "gatsby";
 
-import GlobalStyle from "@components/GlobalStyle";
 import SEO from "@components/SEO";
 import useTranslation from "@hooks/useTranslation";
 
 type QueryReturnType = Queries.IndexQuery;
 
-const IndexPage: React.FC<PageProps<QueryReturnType>> = ({ data }) => {
+const IndexPage: React.FC<PageProps<QueryReturnType>> = () => {
   const translations = useTranslation("index");
-
-  React.useEffect(() => {
-    console.log(data);
-  }, []);
 
   return (
     <>
-      <GlobalStyle />
       <div>{translations.components.headline.normal}</div>
     </>
   );

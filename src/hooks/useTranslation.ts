@@ -42,6 +42,8 @@ export const query = graphql`
               title
               titleTemplate
               components {
+                message
+                contact
                 headline {
                   gradient
                   normal

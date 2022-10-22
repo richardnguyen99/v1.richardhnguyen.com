@@ -25,6 +25,15 @@
           }
         ]
       }
+    },
+    {
+      "page": "404",
+      "title": "Không tìm thấy",
+      "titleTemplate": " - Richard H. Nguyen",
+      "components": {
+        "message": "Bạn đã vào trang không tồn tại... Thật là buồn!",
+        "contact": "Nếu bạn nghĩ trang bạn vừa nhập là đúng, hãy cho mình biết tại:"
+      }
     }
   ]
 }
