@@ -3,16 +3,22 @@
  *
  * @author Richard Nguyen <richard@richardhnguyen.com>
  */
+
 import * as React from "react";
-import { PageProps } from "gatsby";
+import { graphql, HeadFC, PageProps } from "gatsby";
 
 import GlobalStyle from "@components/GlobalStyle";
 import SEO from "@components/SEO";
-
 import useTranslation from "@hooks/useTranslation";
 
-const IndexPage = ({ pageContext }: PageProps) => {
+type QueryReturnType = Queries.IndexQuery;
+
+const IndexPage: React.FC<PageProps<QueryReturnType>> = ({ data }) => {
   const translations = useTranslation("index");
+
+  React.useEffect(() => {
+    console.log(data);
+  }, []);
 
   return (
     <>
@@ -24,6 +30,32 @@ const IndexPage = ({ pageContext }: PageProps) => {
 
 export default IndexPage;
 
-export const Head = () => (
-  <SEO title={"Home"} description="The latest from Richard H. Nguyen" />
-);
+export const Head: HeadFC<QueryReturnType> = ({ data }) => {
+  const headPage = data.file.childI18NJson.pages.filter(
+    (i18nChild) => i18nChild.page === "index"
+  )[0];
+
+  return (
+    <SEO
+      title={headPage.title}
+      description="The latest from Richard H. Nguyen"
+    />
+  );
+};
+
+export const query = graphql`
+  query Index($lang: String!) {
+    file(fields: { lang: { eq: $lang } }) {
+      fields {
+        lang
+      }
+      childI18NJson {
+        pages {
+          page
+          title
+          titleTemplate
+        }
+      }
+    }
+  }
+`;

@@ -53,3 +53,10 @@ export const onCreatePage: GatsbyNode["onCreatePage"] = ({ page, actions }) => {
     });
   });
 };
+
+export const onCreateNode: GatsbyNode["onCreateNode"] = ({ node, actions }) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === "File" && node.extension === "json")
+    createNodeField({ node, name: "lang", value: node.name });
+};
