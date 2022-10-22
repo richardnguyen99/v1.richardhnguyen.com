@@ -11,7 +11,7 @@ import SEO from "@components/SEO";
 
 type QueryReturnType = Queries.NotFoundQuery;
 
-const NotFoundPage: React.FC<PageProps<QueryReturnType>> = ({ data }) => {
+const NotFoundPage: React.FC<PageProps<QueryReturnType>> = () => {
   const translation = useTranslation("404");
 
   return (

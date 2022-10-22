@@ -34,6 +34,15 @@
         "message": "You just hit the route that doesn't exist... Just sadness",
         "contact": "If you think the page you just enter is valid, please let me know at:"
       }
+    },
+    {
+      "page": "500",
+      "title": "Internal Server Error",
+      "titleTemplate": " - Richard H. Nguyen",
+      "components": {
+        "message": "Oops... Something went wrong internally",
+        "contact": "Please refresh the page and if the error continues, let me know at:"
+      }
     }
   ]
 }

@@ -34,6 +34,15 @@
         "message": "Bạn đã vào trang không tồn tại... Thật là buồn!",
         "contact": "Nếu bạn nghĩ trang bạn vừa nhập là đúng, hãy cho mình biết tại:"
       }
+    },
+    {
+      "page": "500",
+      "title": "Lỗi hệ thống",
+      "titleTemplate": " - Richard H. Nguyen",
+      "components": {
+        "message": "Ồ... Có gì đó sai sai trong hệ thống",
+        "contact": "Hãy thử tải lại trang, và nếu lỗi vẫn tiếp tục, hãy liên hệ mình tại:"
+      }
     }
   ]
 }
