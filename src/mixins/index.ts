@@ -6,7 +6,9 @@
  */
 
 import normalizeCSS from "./normalize";
+import themeCSS from "./theme";
 
 export default Object.assign("Mixins", {
   Normalize: normalizeCSS,
+  Theme: themeCSS,
 });

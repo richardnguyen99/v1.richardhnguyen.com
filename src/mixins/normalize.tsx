@@ -32,28 +32,28 @@ const normalizeCSS = css`
   */
 
   html {
+    height: 100%;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+      "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", "Noto Color Emoji";
     line-height: 1.5; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
     -moz-tab-size: 4; /* 3 */
     tab-size: 4; /* 3 */
   }
 
-  /*
-  Sections
-  ========
-  */
-
-  /**
-  1. Remove the margin in all browsers.
-  2. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
-  */
-
   body {
-    margin: 0; /* 1 */
+    margin: 0;
     padding: 0;
-    font-family: "Inter var", Inter, system-ui, -apple-system,
-      /* Firefox supports this but not yet "system-ui" */ "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; /* 2 */
+    min-height: 100%;
+    line-height: inherit;
+    background: var(--rc-color-slate-900);
+    color: var(--rc-color-slate-400);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /*
