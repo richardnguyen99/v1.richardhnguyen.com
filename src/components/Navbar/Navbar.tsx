@@ -11,21 +11,28 @@ import { CFC } from "@config/react";
 import {
   StyledNavbar,
   StyledNavbarContainer as Container,
-  StyledNavbarFlex as FlexContainer,
+  StyledNavbarNav as Nav,
   StyledNavbarWrapper as Wrapper,
   StyledNavbarBrand as Brand,
-  StyledNavbarList as NavList,
+  StyledNavbarTabList as NavList,
+  StyledNavbarIconList as IconList,
+  StyledNavbarListIcon as Icon,
+  StyledNavbarListIconText as IconText,
+  StyledNavbarListIconContainer as IconContainer,
   StyledNavbarListItem as Item,
   StyledNavbarListLink as ItemLink,
 } from "./style";
 import Svg from "./Svg";
+import { Github } from "./Github";
+import { RSS } from "./RSS";
+import { Moon } from "./Moon";
 
-const Navbar: CFC<HTMLDivElement> = ({ children, ...rest }) => {
+const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
   return (
     <StyledNavbar id="navbar" aria-label="navbar" {...rest}>
       <Container>
         <Wrapper>
-          <FlexContainer>
+          <Nav>
             <Brand to="/">
               <Svg />
             </Brand>
@@ -36,11 +43,35 @@ const Navbar: CFC<HTMLDivElement> = ({ children, ...rest }) => {
               <Item>
                 <ItemLink to="#">About</ItemLink>
               </Item>
+              <Item>
+                <ItemLink to="#">Projects</ItemLink>
+              </Item>
             </NavList>
-            <Item>
-              <ItemLink to="#">Projects</ItemLink>
-            </Item>
-          </FlexContainer>
+            <IconList>
+              <Icon>
+                <IconContainer>
+                  <a
+                    target="_blank"
+                    href="https://github.com/richardnguyen99/richardhnguyen.com"
+                    rel="noreferrer"
+                  >
+                    <Github />
+                  </a>
+                </IconContainer>
+              </Icon>
+              <Icon>
+                <IconContainer>
+                  <RSS />
+                </IconContainer>
+              </Icon>
+              <Icon>
+                <IconContainer>
+                  <Moon />
+                  <IconText>Light</IconText>
+                </IconContainer>
+              </Icon>
+            </IconList>
+          </Nav>
         </Wrapper>
       </Container>
     </StyledNavbar>
