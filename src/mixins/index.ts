@@ -7,8 +7,10 @@
 
 import normalizeCSS from "./normalize";
 import themeCSS from "./theme";
+import mediaCSS from "./media";
 
 export default Object.assign("Mixins", {
   Normalize: normalizeCSS,
   Theme: themeCSS,
+  Media: mediaCSS,
 });

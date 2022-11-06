@@ -20,10 +20,13 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
       alias: {
         "@mixins": path.resolve(__dirname, "src", "mixins"),
         "@components": path.resolve(__dirname, "src", "components"),
+        "@features": path.resolve(__dirname, "src", "features"),
         "@pages": path.resolve(__dirname, "src", "pages"),
         "@hooks": path.resolve(__dirname, "src", "hooks"),
         "@utils": path.resolve(__dirname, "src", "utils"),
+        "@config": path.resolve(__dirname, "src", "config"),
         "@contexts": path.resolve(__dirname, "src", "contexts"),
+        "@constants": path.resolve(__dirname, "src", "constants"),
       },
     },
   });

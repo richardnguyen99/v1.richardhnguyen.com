@@ -7,8 +7,9 @@
 import * as React from "react";
 import { graphql, HeadFC, PageProps } from "gatsby";
 
-import SEO from "@components/SEO";
 import useTranslation from "@hooks/useTranslation";
+import { PageNavbar } from "@features";
+import { SEO } from "@components";
 
 type QueryReturnType = Queries.IndexQuery;
 
@@ -17,6 +18,7 @@ const IndexPage: React.FC<PageProps<QueryReturnType>> = () => {
 
   return (
     <>
+      <PageNavbar />
       <div>{translations.components.headline.normal}</div>
     </>
   );
