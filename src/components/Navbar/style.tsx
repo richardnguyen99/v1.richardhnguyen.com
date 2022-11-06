@@ -5,6 +5,7 @@
  */
 
 import styled from "styled-components";
+import { Link } from "gatsby";
 
 export const StyledNavbar = styled.nav`
   position: sticky;
@@ -22,4 +23,44 @@ export const StyledNavbarContainer = styled.div`
   max-width: 90rem;
   margin-left: auto;
   margin-right: auto;
+`;
+
+export const StyledNavbarWrapper = styled.div`
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @media screen and (min-width: 1024px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+`;
+
+export const StyledNavbarFlex = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+export const StyledNavbarBrand = styled(Link)`
+  margin-right: 0.75rem;
+  width: 2rem;
+  flex: none;
+  overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+    width: auto;
+  }
+`;
+
+export const StyledNavbarSvg = styled.svg`
+  display: block;
+  height: 1.5rem;
+  width: auto;
+  color: rgba(var(--rc-rgb-white), 1);
+
+  &:hover {
+    color: rgba(var(--rc-rgb-white), 0.7);
+  }
 `;

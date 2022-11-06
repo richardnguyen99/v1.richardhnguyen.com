@@ -18,6 +18,12 @@ const themeCSS = css`
     // If the opacity value is 1, it's equivalent to the hex value.
     --rc-text-opacity: var(--rc-color-default-opacity);
 
+    --rc-color-white: #ffffff;
+    --rc-rgb-white: 255, 255, 255;
+
+    --rc-color-black: #000000;
+    --rc-rgb-black: 0, 0, 0;
+
     --rc-color-slate-50: #f8fafc;
     --rc-rgb-slate-50: 248, 250, 252;
 
