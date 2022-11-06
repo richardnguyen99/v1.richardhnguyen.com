@@ -64,3 +64,33 @@ export const StyledNavbarSvg = styled.svg`
     color: rgba(var(--rc-rgb-white), 0.7);
   }
 `;
+
+export const StyledNavbarList = styled.ul`
+  position: relative;
+  display: none;
+  align-items: center;
+
+  line-height: 1.5rem;
+  font-weight: 600;
+
+  margin-left: 2rem;
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+  }
+`;
+
+export const StyledNavbarListItem = styled.li`
+  margin-right: 0;
+  margin-left: 32px;
+
+  &:nth-of-type(1) {
+    margin-left: 0;
+  }
+`;
+
+export const StyledNavbarListLink = styled(Link)`
+  &:hover {
+    color: rgba(var(--rc-rgb-sky-400), 1);
+  }
+`;

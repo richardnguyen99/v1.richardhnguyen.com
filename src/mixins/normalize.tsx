@@ -71,10 +71,26 @@ const normalizeCSS = css`
     color: inherit; /* 2 */
   }
 
+  /**
+   Remove default styles for list elements.
+   */
+  menu,
+  ul,
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
   /*
   Text-level semantics
   ====================
   */
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
 
   /**
   Add the correct text decoration in Chrome, Edge, and Safari.

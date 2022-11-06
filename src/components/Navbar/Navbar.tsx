@@ -14,6 +14,9 @@ import {
   StyledNavbarFlex as FlexContainer,
   StyledNavbarWrapper as Wrapper,
   StyledNavbarBrand as Brand,
+  StyledNavbarList as NavList,
+  StyledNavbarListItem as Item,
+  StyledNavbarListLink as ItemLink,
 } from "./style";
 import Svg from "./Svg";
 
@@ -26,6 +29,17 @@ const Navbar: CFC<HTMLDivElement> = ({ children, ...rest }) => {
             <Brand to="/">
               <Svg />
             </Brand>
+            <NavList>
+              <Item>
+                <ItemLink to="#">Blog</ItemLink>
+              </Item>
+              <Item>
+                <ItemLink to="#">About</ItemLink>
+              </Item>
+            </NavList>
+            <Item>
+              <ItemLink to="#">Projects</ItemLink>
+            </Item>
           </FlexContainer>
         </Wrapper>
       </Container>
