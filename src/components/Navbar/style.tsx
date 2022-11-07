@@ -17,6 +17,8 @@ export const StyledNavbar = styled.nav`
 
   background-color: transparent;
   border-color: rgba(var(--rc-rgb-slate-50), 0.06);
+  border-width: 1px;
+  border-style: solid;
 `;
 
 export const StyledNavbarContainer = styled.div`
@@ -48,10 +50,7 @@ export const StyledNavbarBrand = styled(Link)`
   width: 2rem;
   flex: none;
   overflow: hidden;
-
-  @media screen and (min-width: 768px) {
-    width: auto;
-  }
+  width: auto;
 `;
 
 export const StyledNavbarSvg = styled.svg`
@@ -73,10 +72,14 @@ export const StyledNavbarTabList = styled.ul`
   line-height: 1.5rem;
   font-weight: 600;
 
-  margin-left: 2rem;
+  margin-left: auto;
 
   @media screen and (min-width: 640px) {
     display: flex;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-left: 2rem;
   }
 `;
 
@@ -140,12 +143,9 @@ export const StyledNavbarListIconContainer = styled.div`
     color: rgba(var(--rc-rgb-white), 1);
   }
 
-  & > a {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-
-  & > a > svg {
+  div,
+  a,
+  svg {
     width: 1.25rem;
     height: 1.25rem;
   }
@@ -157,4 +157,14 @@ export const StyledNavbarListIconText = styled.p`
 
   margin: 8px;
   margin-right: 4px;
+`;
+
+export const StyledNavbarCollapse = styled(StyledNavbarListIcon)`
+  display: block;
+
+  margin-left: auto !important;
+
+  @media screen and (min-width: 640px) {
+    display: none;
+  }
 `;

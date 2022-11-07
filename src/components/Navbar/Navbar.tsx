@@ -8,6 +8,10 @@ import * as React from "react";
 
 import { CFC } from "@config/react";
 
+import Svg from "./Svg";
+import { Github } from "./Github";
+import { RSS } from "./RSS";
+import { Moon } from "./Moon";
 import {
   StyledNavbar,
   StyledNavbarContainer as Container,
@@ -21,11 +25,9 @@ import {
   StyledNavbarListIconContainer as IconContainer,
   StyledNavbarListItem as Item,
   StyledNavbarListLink as ItemLink,
+  StyledNavbarCollapse as Collapse,
 } from "./style";
-import Svg from "./Svg";
-import { Github } from "./Github";
-import { RSS } from "./RSS";
-import { Moon } from "./Moon";
+import { ThreeBars } from "./ThreeBars";
 
 const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
   return (
@@ -71,6 +73,11 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
                 </IconContainer>
               </Icon>
             </IconList>
+            <Collapse>
+              <IconContainer>
+                <ThreeBars />
+              </IconContainer>
+            </Collapse>
           </Nav>
         </Wrapper>
       </Container>
