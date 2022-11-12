@@ -13,6 +13,13 @@ import type { GatsbySSR } from "gatsby";
 
 import RootLayout from "./src/components/layout/Root";
 
+export const onRenderBody: GatsbySSR["onRenderBody"] = (
+  { setPostBodyComponents },
+  _pluginOptions
+) => {
+  setPostBodyComponents([<div key="portal" id="modal" />]);
+};
+
 export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({
   element,
   props,
