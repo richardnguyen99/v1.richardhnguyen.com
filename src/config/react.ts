@@ -7,5 +7,5 @@
 import { PropsWithChildren, FC, HTMLAttributes } from "react";
 
 export type CFC<E = HTMLElement, P = unknown> = FC<
-  PropsWithChildren<HTMLAttributes<E> & P>
+  PropsWithChildren<HTMLAttributes<E>> & P
 >;

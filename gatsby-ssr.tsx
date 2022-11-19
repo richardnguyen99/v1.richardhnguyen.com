@@ -17,7 +17,11 @@ export const onRenderBody: GatsbySSR["onRenderBody"] = (
   { setPostBodyComponents },
   _pluginOptions
 ) => {
-  setPostBodyComponents([<div key="portal" id="modal" />]);
+  setPostBodyComponents([
+    <div key="modal" id="modal" />,
+    <div key="menu" id="menu" />,
+    <div key="tooltip" id="tooltip" />,
+  ]);
 };
 
 export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({

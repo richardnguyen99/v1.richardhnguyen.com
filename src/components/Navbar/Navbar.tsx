@@ -7,6 +7,7 @@
 import * as React from "react";
 
 import { CFC } from "@config/react";
+import Tooltip from "@components/Tooltip/Tooltip";
 
 import Svg from "./Svg";
 import { Github } from "./Github";
@@ -28,6 +29,7 @@ import {
   StyledNavbarCollapse as Collapse,
 } from "./style";
 import { ThreeBars } from "./ThreeBars";
+import NavbarIcon from "./Icon";
 
 const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
   return (
@@ -50,8 +52,8 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
               </Item>
             </NavList>
             <IconList>
-              <Icon>
-                <IconContainer>
+              <Tooltip text="Github">
+                <NavbarIcon>
                   <a
                     target="_blank"
                     href="https://github.com/richardnguyen99/richardhnguyen.com"
@@ -59,19 +61,18 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
                   >
                     <Github />
                   </a>
-                </IconContainer>
-              </Icon>
-              <Icon>
-                <IconContainer>
+                </NavbarIcon>
+              </Tooltip>
+              <Tooltip text="RSS">
+                <NavbarIcon>
                   <RSS />
-                </IconContainer>
-              </Icon>
-              <Icon>
-                <IconContainer>
+                </NavbarIcon>
+              </Tooltip>
+              <Tooltip text="Theme">
+                <NavbarIcon>
                   <Moon />
-                  <IconText>Light</IconText>
-                </IconContainer>
-              </Icon>
+                </NavbarIcon>
+              </Tooltip>
             </IconList>
             <Collapse>
               <IconContainer>
