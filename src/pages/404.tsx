@@ -5,18 +5,39 @@
  */
 import * as React from "react";
 import { graphql, PageProps, HeadFC } from "gatsby";
+import { navigate } from "@reach/router";
 
 import useTranslation from "@hooks/useTranslation";
 import SEO from "@components/SEO";
+import Locale from "@contexts/Locale";
 
 type QueryReturnType = Queries.NotFoundQuery;
 
-const NotFoundPage: React.FC<PageProps<QueryReturnType>> = () => {
+const NotFoundPage: React.FC<PageProps<QueryReturnType>> = ({
+  pageContext,
+}) => {
+  const [redirected, setRedirected] = React.useState(false);
+  const localeContext = React.useContext(Locale.Context);
   const { translations } = useTranslation("404");
+
+  React.useEffect(() => {
+    let redirectPath = "/404.html";
+
+    if (!redirected && typeof window !== "undefined") {
+      const lang = window.location.href.split("/").at(3);
+
+      // Move to use `in` when there are multiple languages
+      if (lang === "vi") redirectPath = `/${lang}${redirectPath}`;
+
+      navigate(redirectPath);
+
+      setRedirected(true);
+    }
+  }, [localeContext.lang, redirected]);
 
   return (
     <>
-      <h1>404: {translations.notFoundHeadline}</h1>
+      <h1>{translations.notFoundHeadline}</h1>
       <p>{translations.notFoundMessage}</p>
       <p>
         {translations.notFoundSuggest} <u>richard@richardhnguyen.com</u>

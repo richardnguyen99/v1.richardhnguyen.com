@@ -17,7 +17,7 @@ const RuntimeError = () => {
 
   return (
     <>
-      <h1>500: {translations.serverHeadline}</h1>
+      <h1>{translations.serverHeadline}</h1>
       <p>{translations.serverMessage}</p>
       <p>
         {translations.serverSuggest} <u>richard@richardhnguyen.com</u>
