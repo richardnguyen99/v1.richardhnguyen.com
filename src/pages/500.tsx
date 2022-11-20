@@ -13,14 +13,14 @@ import useTranslation from "@hooks/useTranslation";
 type QueryReturnType = Queries.InternalServerQuery;
 
 const RuntimeError = () => {
-  const translations = useTranslation("500");
+  const { translations } = useTranslation("500");
 
   return (
     <>
-      <h1>500: {translations.title}</h1>
-      <p>{translations.components.message}</p>
+      <h1>500: {translations.serverHeadline}</h1>
+      <p>{translations.serverMessage}</p>
       <p>
-        {translations.components.contact} <u>richard@richardhnguyen.com</u>
+        {translations.serverSuggest} <u>richard@richardhnguyen.com</u>
       </p>
     </>
   );
@@ -47,8 +47,17 @@ export const query = graphql`
           page
           title
           titleTemplate
+          translations {
+            ...InternalErrorTranslations
+          }
         }
       }
     }
+  }
+
+  fragment InternalErrorTranslations on I18NJsonPagesTranslations {
+    serverHeadline
+    serverMessage
+    serverSuggest
   }
 `;

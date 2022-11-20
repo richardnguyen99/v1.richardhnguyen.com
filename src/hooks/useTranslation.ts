@@ -41,21 +41,30 @@ export const query = graphql`
               page
               title
               titleTemplate
-              components {
-                message
-                contact
-                headline {
-                  gradient
-                  normal
-                }
-                sections {
-                  id
-                }
+              translations {
+                ...Translations
               }
             }
           }
         }
       }
     }
+  }
+
+  fragment Translations on I18NJsonPagesTranslations {
+    indexHeadline
+    indexAuthor
+    aboutHeadline
+    aboutAuthor
+    blogHeadline
+    blogAuthor
+    projectHeadline
+    projectAuthor
+    notFoundHeadline
+    notFoundMessage
+    notFoundSuggest
+    serverHeadline
+    serverMessage
+    serverSuggest
   }
 `;

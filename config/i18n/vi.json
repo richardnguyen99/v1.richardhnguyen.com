@@ -4,44 +4,56 @@
       "page": "index",
       "title": "Trang chủ",
       "titleTemplate": " - Richard H. Nguyen",
-      "components": {
-        "headline": {
-          "normal": "Tin công nghệ mới nhất từ ",
-          "gradient": "Richard H. Nguyen"
-        }
+      "translations": {
+        "indexHeadline": "Tin công nghệ mới nhất từ ",
+        "indexAuthor": "Richard H. Nguyen"
       }
     },
     {
       "page": "about",
-      "title": "Trang chủ",
+      "title": "Thông tin",
       "titleTemplate": " - Richard H. Nguyen",
-      "components": {
-        "sections": [
-          {
-            "id": 1
-          },
-          {
-            "id": 2
-          }
-        ]
+      "translations": {
+        "aboutHeadline": "Thêm thông tin về",
+        "aboutAuthor": "Richard H. Nguyen"
+      }
+    },
+    {
+      "page": "blog",
+      "title": "Blog",
+      "titleTemplate": " - Richard H. Nguyen",
+      "translations": {
+        "blogHeadline": "Bài viết mới nhất",
+        "blogAuthor": "từ Richard"
+      }
+    },
+    {
+      "page": "project",
+      "title": "Dự án",
+      "titleTemplate": " - Richard H. Nguyen",
+      "translations": {
+        "projectHeadline": "Dự án",
+        "projectAuthor": "của Richard"
       }
     },
     {
       "page": "404",
       "title": "Không tìm thấy",
       "titleTemplate": " - Richard H. Nguyen",
-      "components": {
-        "message": "Bạn đã vào trang không tồn tại... Thật là buồn!",
-        "contact": "Nếu bạn nghĩ trang bạn vừa nhập là đúng, hãy cho mình biết tại:"
+      "translations": {
+        "notFoundHeadline": "404: Không tìm thấy",
+        "notFoundMessage": "Bạn đã vào trang không tồn tại... Thật là buồn!",
+        "notFoundSuggest": "If you think the page you just enter is valid, please let me know at: "
       }
     },
     {
       "page": "500",
       "title": "Lỗi hệ thống",
       "titleTemplate": " - Richard H. Nguyen",
-      "components": {
-        "message": "Ồ... Có gì đó sai sai trong hệ thống",
-        "contact": "Hãy thử tải lại trang, và nếu lỗi vẫn tiếp tục, hãy liên hệ mình tại:"
+      "translations": {
+        "serverHeadline": "500: Lỗi hệ thống",
+        "serverMessage": "Ồ... Có gì đó sai sai trong hệ thống",
+        "serverSuggest": "Hãy thử tải lại trang, và nếu lỗi vẫn tiếp tục, hãy liên hệ mình tại: "
       }
     }
   ]

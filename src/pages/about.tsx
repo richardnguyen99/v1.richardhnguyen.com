@@ -1,5 +1,5 @@
 /**
- * A React component to display the index page (/)
+ * A React component to display the about page (/about)
  *
  * @author Richard Nguyen <richard@richardhnguyen.com>
  */
@@ -10,35 +10,30 @@ import { graphql, HeadFC, PageProps } from "gatsby";
 import useTranslation from "@hooks/useTranslation";
 import { SEO } from "@components";
 
-type QueryReturnType = Queries.IndexQuery;
+type QueryReturnType = Queries.AboutQuery;
 
-const IndexPage: React.FC<PageProps<QueryReturnType>> = () => {
-  const { translations } = useTranslation("index");
+const AboutPage: React.FC<PageProps<QueryReturnType>> = () => {
+  const { translations } = useTranslation("about");
 
   return (
     <>
-      <div>{translations.indexHeadline}</div>
+      <div>{translations.aboutHeadline}</div>
     </>
   );
 };
 
-export default IndexPage;
+export default AboutPage;
 
 export const Head: HeadFC<QueryReturnType> = ({ data }) => {
   const headPage = data.file.childI18NJson.pages.filter(
-    (i18nChild) => i18nChild.page === "index"
+    (i18nChild) => i18nChild.page === "about"
   )[0];
 
-  return (
-    <SEO
-      title={headPage.title}
-      description="The latest from Richard H. Nguyen"
-    />
-  );
+  return <SEO title={headPage.title} description="About this page" />;
 };
 
 export const query = graphql`
-  query Index($lang: String!) {
+  query About($lang: String!) {
     file(fields: { lang: { eq: $lang } }) {
       fields {
         lang
@@ -49,15 +44,15 @@ export const query = graphql`
           title
           titleTemplate
           translations {
-            ...IndexTranslations
+            ...AboutTranslations
           }
         }
       }
     }
   }
 
-  fragment IndexTranslations on I18NJsonPagesTranslations {
-    indexHeadline
-    indexAuthor
+  fragment AboutTranslations on I18NJsonPagesTranslations {
+    aboutHeadline
+    aboutAuthor
   }
 `;

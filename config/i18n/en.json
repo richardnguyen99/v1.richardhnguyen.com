@@ -4,44 +4,56 @@
       "page": "index",
       "title": "Home",
       "titleTemplate": " - Richard H. Nguyen",
-      "components": {
-        "headline": {
-          "normal": "The latest from ",
-          "gradient": "Richard H. Nguyen"
-        }
+      "translations": {
+        "indexHeadline": "The latest from  ",
+        "indexAuthor": "Richard H. Nguyen"
+      }
+    },
+    {
+      "page": "blog",
+      "title": "Blog",
+      "titleTemplate": " - Richard H. Nguyen",
+      "translations": {
+        "blogHeadline": "Latest articles",
+        "blogAuthor": "from Richard"
       }
     },
     {
       "page": "about",
       "title": "About",
       "titleTemplate": " - Richard H. Nguyen",
-      "components": {
-        "sections": [
-          {
-            "id": 1
-          },
-          {
-            "id": 2
-          }
-        ]
+      "translations": {
+        "aboutHeadline": "About",
+        "aboutAuthor": "Richard H. Nguyen"
+      }
+    },
+    {
+      "page": "project",
+      "title": "Projects",
+      "titleTemplate": " - Richard H. Nguyen",
+      "translations": {
+        "projectHeadline": "Projects done",
+        "projectAuthor": "by Richard"
       }
     },
     {
       "page": "404",
       "title": "Page not found",
       "titleTemplate": " - Richard H. Nguyen",
-      "components": {
-        "message": "You just hit the route that doesn't exist... Just sadness",
-        "contact": "If you think the page you just enter is valid, please let me know at:"
+      "translations": {
+        "notFoundHeadline": "404: Page not found",
+        "notFoundMessage": "You just hit the route that doesn't exist... Just sadness",
+        "notFoundSuggest": "If you think the page you just enter is valid, please let me know at: "
       }
     },
     {
       "page": "500",
       "title": "Internal Server Error",
       "titleTemplate": " - Richard H. Nguyen",
-      "components": {
-        "message": "Oops... Something went wrong internally",
-        "contact": "Please refresh the page and if the error continues, let me know at:"
+      "translations": {
+        "serverHeadline": "500: Internal Server Error",
+        "serverMessage": "Oops... Something went wrong internally",
+        "serverSuggest": "Please refresh the page and if the error continues, let me know at: "
       }
     }
   ]

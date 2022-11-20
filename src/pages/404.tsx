@@ -12,14 +12,14 @@ import SEO from "@components/SEO";
 type QueryReturnType = Queries.NotFoundQuery;
 
 const NotFoundPage: React.FC<PageProps<QueryReturnType>> = () => {
-  const translation = useTranslation("404");
+  const { translations } = useTranslation("404");
 
   return (
     <>
-      <h1>404: {translation.title}</h1>
-      <p>{translation.components.message}</p>
+      <h1>404: {translations.notFoundHeadline}</h1>
+      <p>{translations.notFoundMessage}</p>
       <p>
-        {translation.components.contact} <u>richard@richardhnguyen.com</u>
+        {translations.notFoundSuggest} <u>richard@richardhnguyen.com</u>
       </p>
     </>
   );
@@ -46,8 +46,17 @@ export const query = graphql`
           page
           title
           titleTemplate
+          translations {
+            ...NotFoundTranslations
+          }
         }
       }
     }
+  }
+
+  fragment NotFoundTranslations on I18NJsonPagesTranslations {
+    notFoundHeadline
+    notFoundMessage
+    notFoundSuggest
   }
 `;

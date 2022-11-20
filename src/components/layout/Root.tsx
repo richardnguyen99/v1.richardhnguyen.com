@@ -6,7 +6,7 @@
 
 import * as React from "react";
 
-import GlobalStyle from "@components/GlobalStyle";
+import { GlobalStyle, Navbar } from "@components";
 import { Locale } from "@contexts";
 
 type Props = {
@@ -20,7 +20,10 @@ const RootLayout: React.FC<Props> = ({ children, pageContext }) => {
   return (
     <>
       <GlobalStyle />
-      <Locale.Provider lang={pageContext.lang}>{children}</Locale.Provider>
+      <Locale.Provider lang={pageContext.lang}>
+        <Navbar />
+        {children}
+      </Locale.Provider>
     </>
   );
 };
