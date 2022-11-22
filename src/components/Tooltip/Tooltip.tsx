@@ -5,6 +5,7 @@
 import { CFC } from "@config/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import Popup from "./Popup";
 
 export type TooltipProps = {
   children: React.ReactNode;
@@ -14,7 +15,7 @@ export type TooltipProps = {
 };
 
 const Tooltip: CFC<HTMLElement, TooltipProps> = ({ children, text = "" }) => {
-  const childRef = React.useRef<HTMLElement>(null);
+  const triggerRef = React.useRef<HTMLElement>(null);
   const [visible, setVisible] = React.useState(false);
 
   const onMouseEnter = React.useCallback(() => {
@@ -25,7 +26,7 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({ children, text = "" }) => {
     setVisible(false);
   }, []);
 
-  const Prompt = <div>{text}</div>;
+  const Prompt = <Popup triggerNode={triggerRef.current}>{text}</Popup>;
 
   const portal = visible
     ? ReactDOM.createPortal(Prompt, document.querySelector("#tooltip"))
@@ -37,15 +38,15 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({ children, text = "" }) => {
       React.cloneElement(children as React.ReactElement<any>, {
         onMouseEnterCallback: onMouseEnter,
         onMouseLeaveCallback: onMouseLeave,
-        ref: childRef,
+        ref: triggerRef,
       })
     : children;
   /* eslint-enable indent */
 
   React.useEffect(() => {
-    if (childRef && childRef.current) {
+    if (triggerRef && triggerRef.current) {
       // TODO: Remove console.log
-      console.log(childRef.current);
+      console.log(triggerRef.current);
     }
   }, []);
 
