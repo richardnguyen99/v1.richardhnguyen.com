@@ -2,15 +2,19 @@
  * Tooltip
  */
 
+import { CFC } from "@config/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 export type TooltipProps = {
   children: React.ReactNode;
+
+  // TODO: Update text to popup to more generic
   text?: string;
 };
 
-const Tooltip: React.FC<TooltipProps> = ({ children, text = "" }) => {
+const Tooltip: CFC<HTMLElement, TooltipProps> = ({ children, text = "" }) => {
+  const childRef = React.useRef<HTMLElement>(null);
   const [visible, setVisible] = React.useState(false);
 
   const onMouseEnter = React.useCallback(() => {
@@ -33,9 +37,17 @@ const Tooltip: React.FC<TooltipProps> = ({ children, text = "" }) => {
       React.cloneElement(children as React.ReactElement<any>, {
         onMouseEnterCallback: onMouseEnter,
         onMouseLeaveCallback: onMouseLeave,
+        ref: childRef,
       })
     : children;
   /* eslint-enable indent */
+
+  React.useEffect(() => {
+    if (childRef && childRef.current) {
+      // TODO: Remove console.log
+      console.log(childRef.current);
+    }
+  }, []);
 
   return (
     <>

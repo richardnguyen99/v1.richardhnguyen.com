@@ -13,32 +13,43 @@ import {
 export interface IconProps {
   onMouseEnterCallback?: (e: React.MouseEvent<HTMLLIElement>) => void;
   onMouseLeaveCallback?: (e: React.MouseEvent<HTMLLIElement>) => void;
+  children: React.ReactNode;
 }
 
-const Icon: CFC<HTMLLIElement, IconProps> = ({
-  children,
-  onMouseEnterCallback,
-  onMouseLeaveCallback,
-}) => {
-  const onMouseEnter = React.useCallback(
-    (e: React.MouseEvent<HTMLLIElement>) => {
-      onMouseEnterCallback(e);
-    },
-    [onMouseEnterCallback]
-  );
+export type IconRef = { focus: () => void } & HTMLLIElement;
 
-  const onMouseLeave = React.useCallback(
-    (e: React.MouseEvent<HTMLLIElement>) => {
-      onMouseLeaveCallback(e);
-    },
-    [onMouseLeaveCallback]
-  );
+const Icon = React.forwardRef<IconRef, IconProps>(
+  ({ children, onMouseEnterCallback, onMouseLeaveCallback }, ref) => {
+    const inputRef = React.useRef<HTMLLIElement>(null);
 
-  return (
-    <IconWrapper onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      <IconContainer>{children}</IconContainer>
-    </IconWrapper>
-  );
-};
+    React.useImperativeHandle(ref, () => inputRef.current, [inputRef]);
+
+    const onMouseEnter = React.useCallback(
+      (e: React.MouseEvent<HTMLLIElement>) => {
+        onMouseEnterCallback(e);
+      },
+      [onMouseEnterCallback]
+    );
+
+    const onMouseLeave = React.useCallback(
+      (e: React.MouseEvent<HTMLLIElement>) => {
+        onMouseLeaveCallback(e);
+      },
+      [onMouseLeaveCallback]
+    );
+
+    return (
+      <IconWrapper
+        ref={inputRef}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        <IconContainer>{children}</IconContainer>
+      </IconWrapper>
+    );
+  }
+);
+
+Icon.displayName = "NavbarIcon";
 
 export default Icon;
