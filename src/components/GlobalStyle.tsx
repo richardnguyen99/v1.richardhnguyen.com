@@ -12,6 +12,7 @@ import mixins from "@mixins";
 const GlobalStyle = createGlobalStyle`
   ${mixins.Theme}
   ${mixins.Normalize}
+  ${mixins.Animation}
 `;
 
 export default GlobalStyle;

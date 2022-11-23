@@ -8,9 +8,11 @@
 import normalizeCSS from "./normalize";
 import themeCSS from "./theme";
 import mediaCSS from "./media";
+import animationCSS from "./animation";
 
 export default Object.assign("Mixins", {
   Normalize: normalizeCSS,
   Theme: themeCSS,
   Media: mediaCSS,
+  Animation: animationCSS,
 });

@@ -54,6 +54,7 @@ const Popup: CFC<HTMLDivElement, PopupProps> = ({ children, triggerNode }) => {
       innerRef.current.style.transformOrigin = "50% 28px 0px";
       innerRef.current.style.pointerEvents = "none";
 
+      // bottom
       innerRef.current.style.top =
         triggerRect.top + triggerRect.height + MARGIN + "px";
       innerRef.current.style.left =

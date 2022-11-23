@@ -2,9 +2,12 @@
  * Tooltip
  */
 
-import { CFC } from "@config/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { CSSTransition } from "react-transition-group";
+
+import { CFC } from "@config/react";
+
 import Popup from "./Popup";
 
 export type TooltipProps = {
@@ -12,6 +15,18 @@ export type TooltipProps = {
 
   // TODO: Update text to popup to more generic
   text?: string;
+};
+
+const Portal: CFC<HTMLElement, { visible: boolean }> = ({
+  visible,
+  children,
+}) => {
+  return (
+    <>
+      {visible &&
+        ReactDOM.createPortal(children, document.querySelector("#tooltip"))}
+    </>
+  );
 };
 
 const Tooltip: CFC<HTMLElement, TooltipProps> = ({ children, text = "" }) => {
@@ -25,12 +40,6 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({ children, text = "" }) => {
   const onMouseLeave = React.useCallback(() => {
     setVisible(false);
   }, []);
-
-  const Prompt = <Popup triggerNode={triggerRef.current}>{text}</Popup>;
-
-  const portal = visible
-    ? ReactDOM.createPortal(Prompt, document.querySelector("#tooltip"))
-    : null;
 
   /* eslint-disable indent */
   const cloneChild = React.isValidElement(children)
@@ -53,7 +62,16 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({ children, text = "" }) => {
   return (
     <>
       {cloneChild}
-      {portal}
+      <CSSTransition
+        in={visible}
+        timeout={200}
+        classNames="tooltip"
+        unmountOnExit
+      >
+        <Portal visible={visible}>
+          <Popup triggerNode={triggerRef.current}>{text}</Popup>
+        </Portal>
+      </CSSTransition>
     </>
   );
 };
