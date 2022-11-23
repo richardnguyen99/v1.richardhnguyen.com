@@ -1,5 +1,7 @@
 /**
- * A React Component to serve as
+ * A React Component that allows actions, events and choices by clicking.
+ *
+ * @author Richard Nguyen <richard@richardhguyen.com>
  */
 
 import * as React from "react";
@@ -27,19 +29,21 @@ export interface ButtonProps {
 export type ButtonRef = HTMLButtonElement;
 // prop types ends =========================================================== /
 
-export const StyledButtonAnchor = styled.a`
+// Style begins ============================================================== /
+const StyledButtonAnchor = styled.a`
   display: flex;
   align-items: center;
   flex: none;
 `;
+// Style ends ================================================================ /
 
-export const StyledButtonLink = styled(Link)`
+const StyledButtonLink = styled(Link)`
   display: flex;
   flex: none;
   align-items: center;
 `;
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -55,10 +59,11 @@ export const StyledButton = styled.button`
   }
 `;
 
-export const StyledButtonInner = styled.div`
+const StyledButtonInner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 4px;
 
   height: 2rem;
   min-width: 2rem;

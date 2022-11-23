@@ -50,7 +50,7 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
               </Item>
             </NavList>
             <IconList>
-              <Tooltip text="Github">
+              <Tooltip text="Github" placement="bottom-left">
                 <Button
                   href="https://github.com/richardnguyen99/richardhnguyen.com"
                   transparent
@@ -63,7 +63,7 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
                   <RSS />
                 </Button>
               </Tooltip>
-              <Tooltip text="Theme">
+              <Tooltip text="Theme" placement="bottom-right">
                 <Button transparent>
                   <Moon />
                   Light

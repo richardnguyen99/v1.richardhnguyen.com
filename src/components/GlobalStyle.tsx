@@ -13,6 +13,13 @@ const GlobalStyle = createGlobalStyle`
   ${mixins.Theme}
   ${mixins.Normalize}
   ${mixins.Animation}
+
+  #tooltip {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+  }
 `;
 
 export default GlobalStyle;

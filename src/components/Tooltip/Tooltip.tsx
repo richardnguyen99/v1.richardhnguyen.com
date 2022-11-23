@@ -9,12 +9,14 @@ import { CSSTransition } from "react-transition-group";
 import { CFC } from "@config/react";
 
 import Popup from "./Popup";
+import type { PopupPlacement } from "./Popup";
 
 export type TooltipProps = {
   children: React.ReactNode;
 
   // TODO: Update text to popup to more generic
   text?: string;
+  placement?: PopupPlacement;
 };
 
 const Portal: CFC<HTMLElement, { visible: boolean }> = ({
@@ -29,7 +31,11 @@ const Portal: CFC<HTMLElement, { visible: boolean }> = ({
   );
 };
 
-const Tooltip: CFC<HTMLElement, TooltipProps> = ({ children, text = "" }) => {
+const Tooltip: CFC<HTMLElement, TooltipProps> = ({
+  children,
+  text = "",
+  placement,
+}) => {
   const triggerRef = React.useRef<HTMLElement>(null);
   const [visible, setVisible] = React.useState(false);
 
@@ -69,7 +75,9 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({ children, text = "" }) => {
         unmountOnExit
       >
         <Portal visible={visible}>
-          <Popup triggerNode={triggerRef.current}>{text}</Popup>
+          <Popup triggerNode={triggerRef.current} placement={placement}>
+            {text}
+          </Popup>
         </Portal>
       </CSSTransition>
     </>
