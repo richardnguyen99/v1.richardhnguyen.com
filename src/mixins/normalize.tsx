@@ -174,6 +174,7 @@ const normalizeCSS = css`
   /**
   1. Change the font styles in all browsers.
   2. Remove the margin in Firefox and Safari.
+  3. Remove the default outline and border.
   */
 
   button,
@@ -185,6 +186,8 @@ const normalizeCSS = css`
     font-size: 100%; /* 1 */
     line-height: 1.15; /* 1 */
     margin: 0; /* 2 */
+    border: none;
+    outline: none;
   }
 
   /**

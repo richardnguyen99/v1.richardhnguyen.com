@@ -51,14 +51,14 @@ const Popup: CFC<HTMLDivElement, PopupProps> = ({ children, triggerNode }) => {
       const popupRect = innerRef.current.getBoundingClientRect();
 
       innerRef.current.style.position = "absolute";
-      innerRef.current.style.transformOrigin = "50% 28px 0px";
+      innerRef.current.style.transformOrigin = "";
       innerRef.current.style.pointerEvents = "none";
 
       // bottom
       innerRef.current.style.top =
         triggerRect.top + triggerRect.height + MARGIN + "px";
       innerRef.current.style.left =
-        triggerRect.left - (popupRect.width - triggerRect.width) / 2 + "px";
+        triggerRect.left + (triggerRect.width - popupRect.width) / 2 + "px";
     }
   }, [triggerNode]);
 

@@ -10,9 +10,10 @@ import { CFC } from "@config/react";
 import Tooltip from "@components/Tooltip/Tooltip";
 
 import Svg from "./Svg";
-import { Github } from "./Github";
-import { RSS } from "./RSS";
-import { Moon } from "./Moon";
+import { Github } from "../Icon/Github";
+import { RSS } from "../Icon/RSS";
+import { Moon } from "../Icon/Moon";
+import Button from "../Button";
 import {
   StyledNavbar,
   StyledNavbarContainer as Container,
@@ -21,15 +22,12 @@ import {
   StyledNavbarBrand as Brand,
   StyledNavbarTabList as NavList,
   StyledNavbarIconList as IconList,
-  StyledNavbarListIcon as Icon,
-  StyledNavbarListIconText as IconText,
   StyledNavbarListIconContainer as IconContainer,
   StyledNavbarListItem as Item,
   StyledNavbarListLink as ItemLink,
   StyledNavbarCollapse as Collapse,
 } from "./style";
-import { ThreeBars } from "./ThreeBars";
-import NavbarIcon from "./Icon";
+import { ThreeBars } from "../Icon/ThreeBars";
 
 const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
   return (
@@ -53,25 +51,23 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
             </NavList>
             <IconList>
               <Tooltip text="Github">
-                <NavbarIcon>
-                  <a
-                    target="_blank"
-                    href="https://github.com/richardnguyen99/richardhnguyen.com"
-                    rel="noreferrer"
-                  >
-                    <Github />
-                  </a>
-                </NavbarIcon>
+                <Button
+                  href="https://github.com/richardnguyen99/richardhnguyen.com"
+                  transparent
+                >
+                  <Github />
+                </Button>
               </Tooltip>
               <Tooltip text="RSS">
-                <NavbarIcon>
+                <Button transparent>
                   <RSS />
-                </NavbarIcon>
+                </Button>
               </Tooltip>
               <Tooltip text="Theme">
-                <NavbarIcon>
+                <Button transparent>
                   <Moon />
-                </NavbarIcon>
+                  Light
+                </Button>
               </Tooltip>
             </IconList>
             <Collapse>
