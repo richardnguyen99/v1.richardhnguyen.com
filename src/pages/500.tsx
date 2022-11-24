@@ -7,6 +7,7 @@
 import * as React from "react";
 import { graphql, HeadFC } from "gatsby";
 
+import Page from "@components/layout/Page";
 import SEO from "@components/SEO";
 import useTranslation from "@hooks/useTranslation";
 
@@ -16,13 +17,13 @@ const RuntimeError = () => {
   const { translations } = useTranslation("500");
 
   return (
-    <>
+    <Page>
       <h1>{translations.serverHeadline}</h1>
       <p>{translations.serverMessage}</p>
       <p>
         {translations.serverSuggest} <u>richard@richardhnguyen.com</u>
       </p>
-    </>
+    </Page>
   );
 };
 

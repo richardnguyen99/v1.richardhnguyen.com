@@ -20,10 +20,7 @@ const RootLayout: React.FC<Props> = ({ children, pageContext }) => {
   return (
     <>
       <GlobalStyle />
-      <Locale.Provider lang={pageContext.lang}>
-        <Navbar />
-        {children}
-      </Locale.Provider>
+      <Locale.Provider lang={pageContext.lang}>{children}</Locale.Provider>
     </>
   );
 };

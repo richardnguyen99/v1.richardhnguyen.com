@@ -5,85 +5,15 @@
  */
 
 import * as React from "react";
-import styled from "styled-components";
-import { Link } from "gatsby";
 
-// prop types begins ========================================================= /
-export interface ButtonProps {
-  href?: string;
-  to?: string;
-  target?: string;
-  disabled?: boolean;
-  isLoading?: boolean;
-  iconPlacement?: "left" | "right";
-  icon?: React.ReactNode;
-  transparent?: boolean;
-  flat?: boolean;
-  border?: boolean;
-  onMouseEnterCallback?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onMouseLeaveCallback?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onClickCallback?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  children: React.ReactNode | React.ReactNode[];
-}
+import type { ButtonProps, ButtonRef } from "./type";
+import {
+  StyledButton,
+  StyledButtonInner,
+  StyledButtonAnchor,
+  StyledButtonLink,
+} from "./style";
 
-export type ButtonRef = HTMLButtonElement;
-// prop types ends =========================================================== /
-
-// Style begins ============================================================== /
-const StyledButtonAnchor = styled.a`
-  display: flex;
-  align-items: center;
-  flex: none;
-`;
-// Style ends ================================================================ /
-
-const StyledButtonLink = styled(Link)`
-  display: flex;
-  flex: none;
-  align-items: center;
-`;
-
-const StyledButton = styled.button`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-left: 8px;
-
-  &.transparent {
-    background: transparent;
-  }
-
-  &:hover {
-    background-color: rgba(var(--rc-rgb-slate-300), 0.1);
-  }
-`;
-
-const StyledButtonInner = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-
-  height: 2rem;
-  min-width: 2rem;
-  padding: 0.25rem;
-
-  color: rgba(var(--rc-rgb-slate-400), 1);
-
-  &:hover {
-    color: rgba(var(--rc-rgb-white), 1);
-  }
-
-  div,
-  a,
-  svg {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-`;
-
-// Component definition begins =============================================== /
 const Button = React.forwardRef<ButtonRef, ButtonProps>(
   (
     {
@@ -94,9 +24,6 @@ const Button = React.forwardRef<ButtonRef, ButtonProps>(
       isLoading,
       transparent,
       flat,
-      border,
-      icon,
-      iconPlacement = "left",
       children,
       onMouseEnterCallback,
       onMouseLeaveCallback,
@@ -107,6 +34,7 @@ const Button = React.forwardRef<ButtonRef, ButtonProps>(
   ) => {
     const inputRef = React.useRef<HTMLButtonElement>(null);
 
+    // If some components such as Tooltip need to know the DOM node of Button.
     React.useImperativeHandle(ref, () => inputRef.current, [inputRef]);
 
     const onMouseEnter = React.useCallback(
@@ -134,23 +62,22 @@ const Button = React.forwardRef<ButtonRef, ButtonProps>(
       if (transparent) return "transparent";
       if (flat) return "flat";
 
-      return "full";
+      return "active";
     };
 
     const getClassName = () => {
       return [getBtnType()].join(" ");
     };
+    const styles = {
+      "--btn-opacity": disabled || isLoading ? 0.7 : 1,
+    } as React.CSSProperties; // add this so Typescript won't complain.
 
     const btn = (
       <StyledButton
         {...rest}
         ref={inputRef}
         onClick={onClick}
-        style={
-          {
-            "--btn-opacity": disabled || isLoading ? 0.7 : 1,
-          } as React.CSSProperties
-        }
+        style={styles}
         className={getClassName()}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
@@ -158,6 +85,9 @@ const Button = React.forwardRef<ButtonRef, ButtonProps>(
         <StyledButtonInner>{children}</StyledButtonInner>
       </StyledButton>
     );
+
+    // Anchor tag and Gatsby Link should wrap around the original button so that
+    // link will work.
 
     if (href)
       return (
@@ -176,6 +106,5 @@ const Button = React.forwardRef<ButtonRef, ButtonProps>(
 );
 
 Button.displayName = "Button";
-// Component definition ends ================================================= /
 
 export default Object.assign(Button, {});

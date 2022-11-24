@@ -7,15 +7,14 @@ import * as React from "react";
 import { graphql, PageProps, HeadFC } from "gatsby";
 import { navigate } from "@reach/router";
 
-import useTranslation from "@hooks/useTranslation";
+import Page from "@components/layout/Page";
 import SEO from "@components/SEO";
 import Locale from "@contexts/Locale";
+import useTranslation from "@hooks/useTranslation";
 
 type QueryReturnType = Queries.NotFoundQuery;
 
-const NotFoundPage: React.FC<PageProps<QueryReturnType>> = ({
-  pageContext,
-}) => {
+const NotFoundPage: React.FC<PageProps<QueryReturnType>> = () => {
   const [redirected, setRedirected] = React.useState(false);
   const localeContext = React.useContext(Locale.Context);
   const { translations } = useTranslation("404");
@@ -36,13 +35,13 @@ const NotFoundPage: React.FC<PageProps<QueryReturnType>> = ({
   }, [localeContext.lang, redirected]);
 
   return (
-    <>
+    <Page>
       <h1>{translations.notFoundHeadline}</h1>
       <p>{translations.notFoundMessage}</p>
       <p>
         {translations.notFoundSuggest} <u>richard@richardhnguyen.com</u>
       </p>
-    </>
+    </Page>
   );
 };
 

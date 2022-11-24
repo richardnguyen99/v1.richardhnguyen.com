@@ -20,3 +20,5 @@ export const RSS = () => (
     ></path>
   </svg>
 );
+
+export default RSS;

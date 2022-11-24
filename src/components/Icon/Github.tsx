@@ -1,5 +1,5 @@
 /**
- * Github icon
+ * A React component that display a GitHub svg.
  *
  * @author Richard Nguyen <richard@richardhnguyen.com>
  */
@@ -20,3 +20,5 @@ export const Github = () => (
     ></path>
   </svg>
 );
+
+export default Github;

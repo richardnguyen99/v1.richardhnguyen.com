@@ -7,8 +7,9 @@
 import * as React from "react";
 import { graphql, HeadFC, PageProps } from "gatsby";
 
-import useTranslation from "@hooks/useTranslation";
 import { SEO } from "@components";
+import Page from "@components/layout/Page";
+import useTranslation from "@hooks/useTranslation";
 
 type QueryReturnType = Queries.BlogQuery;
 
@@ -16,9 +17,9 @@ const BlogPage: React.FC<PageProps<QueryReturnType>> = () => {
   const { translations } = useTranslation("blog");
 
   return (
-    <>
+    <Page>
       <div>{translations.blogHeadline}</div>
-    </>
+    </Page>
   );
 };
 

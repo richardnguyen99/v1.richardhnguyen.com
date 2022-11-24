@@ -51,16 +51,16 @@ export const StyledNavbarBrand = styled(Link)`
   flex: none;
   overflow: hidden;
   width: auto;
-`;
 
-export const StyledNavbarSvg = styled.svg`
-  display: block;
-  height: 1.5rem;
-  width: auto;
-  color: rgba(var(--rc-rgb-white), 1);
+  svg {
+    display: block;
+    height: 1.5rem;
+    width: auto;
+    color: rgba(var(--rc-rgb-white), 1);
 
-  &:hover {
-    color: rgba(var(--rc-rgb-white), 0.7);
+    &:hover {
+      color: rgba(var(--rc-rgb-white), 0.7);
+    }
   }
 `;
 

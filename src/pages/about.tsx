@@ -7,8 +7,9 @@
 import * as React from "react";
 import { graphql, HeadFC, PageProps } from "gatsby";
 
-import useTranslation from "@hooks/useTranslation";
 import { SEO } from "@components";
+import Page from "@components/layout/Page";
+import useTranslation from "@hooks/useTranslation";
 
 type QueryReturnType = Queries.AboutQuery;
 
@@ -16,9 +17,9 @@ const AboutPage: React.FC<PageProps<QueryReturnType>> = () => {
   const { translations } = useTranslation("about");
 
   return (
-    <>
+    <Page>
       <div>{translations.aboutHeadline}</div>
-    </>
+    </Page>
   );
 };
 

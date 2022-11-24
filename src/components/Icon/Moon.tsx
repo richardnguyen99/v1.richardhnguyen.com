@@ -1,5 +1,5 @@
 /**
- * Moon Icon
+ * A React component that displays Moon svg.
  *
  * @author Richard Nguyen <richard@richardhnguyen.com>
  */
@@ -20,3 +20,5 @@ export const Moon = () => (
     ></path>
   </svg>
 );
+
+export default Moon;

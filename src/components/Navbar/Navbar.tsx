@@ -8,12 +8,9 @@ import * as React from "react";
 
 import { CFC } from "@config/react";
 import Tooltip from "@components/Tooltip/Tooltip";
+import Icon from "@components/Icon";
+import Button from "@components/Button";
 
-import Svg from "./Svg";
-import { Github } from "../Icon/Github";
-import { RSS } from "../Icon/RSS";
-import { Moon } from "../Icon/Moon";
-import Button from "../Button";
 import {
   StyledNavbar,
   StyledNavbarContainer as Container,
@@ -27,7 +24,6 @@ import {
   StyledNavbarListLink as ItemLink,
   StyledNavbarCollapse as Collapse,
 } from "./style";
-import { ThreeBars } from "../Icon/ThreeBars";
 
 const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
   return (
@@ -36,7 +32,7 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
         <Wrapper>
           <Nav>
             <Brand to="/">
-              <Svg />
+              <Icon.Brand />
             </Brand>
             <NavList>
               <Item>
@@ -55,24 +51,24 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
                   href="https://github.com/richardnguyen99/richardhnguyen.com"
                   transparent
                 >
-                  <Github />
+                  <Icon.Github />
                 </Button>
               </Tooltip>
               <Tooltip text="RSS">
                 <Button transparent>
-                  <RSS />
+                  <Icon.RSS />
                 </Button>
               </Tooltip>
               <Tooltip text="Theme" placement="bottom-right">
                 <Button transparent>
-                  <Moon />
+                  <Icon.Moon />
                   Light
                 </Button>
               </Tooltip>
             </IconList>
             <Collapse>
               <IconContainer>
-                <ThreeBars />
+                <Icon.ThreeBars />
               </IconContainer>
             </Collapse>
           </Nav>

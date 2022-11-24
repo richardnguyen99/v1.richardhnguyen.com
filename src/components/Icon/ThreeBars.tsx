@@ -20,3 +20,5 @@ export const ThreeBars = () => (
     ></path>
   </svg>
 );
+
+export default ThreeBars;
