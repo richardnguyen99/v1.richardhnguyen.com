@@ -9,15 +9,7 @@ import { CSSTransition } from "react-transition-group";
 import { CFC } from "@config/react";
 
 import Popup from "./Popup";
-import type { PopupPlacement } from "./Popup";
-
-export type TooltipProps = {
-  children: React.ReactNode;
-
-  // TODO: Update text to popup to more generic
-  text?: string;
-  placement?: PopupPlacement;
-};
+import type { TooltipProps } from "./type";
 
 const Portal: CFC<HTMLElement, { visible: boolean }> = ({
   visible,
@@ -33,8 +25,8 @@ const Portal: CFC<HTMLElement, { visible: boolean }> = ({
 
 const Tooltip: CFC<HTMLElement, TooltipProps> = ({
   children,
-  text = "",
-  placement,
+  content,
+  placement = "bottom",
 }) => {
   const triggerRef = React.useRef<HTMLElement>(null);
   const [visible, setVisible] = React.useState(false);
@@ -58,13 +50,6 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({
     : children;
   /* eslint-enable indent */
 
-  React.useEffect(() => {
-    if (triggerRef && triggerRef.current) {
-      // TODO: Remove console.log
-      console.log(triggerRef.current);
-    }
-  }, []);
-
   return (
     <>
       {cloneChild}
@@ -76,7 +61,7 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({
       >
         <Portal visible={visible}>
           <Popup triggerNode={triggerRef.current} placement={placement}>
-            {text}
+            {content}
           </Popup>
         </Portal>
       </CSSTransition>

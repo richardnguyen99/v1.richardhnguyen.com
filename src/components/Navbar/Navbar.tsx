@@ -7,9 +7,7 @@
 import * as React from "react";
 
 import { CFC } from "@config/react";
-import Tooltip from "@components/Tooltip/Tooltip";
-import Icon from "@components/Icon";
-import Button from "@components/Button";
+import { Tooltip, Icon, Button } from "@components";
 
 import {
   StyledNavbar,
@@ -46,7 +44,7 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
               </Item>
             </NavList>
             <IconList>
-              <Tooltip text="Github" placement="bottom-left">
+              <Tooltip content="Github" placement="bottom-left">
                 <Button
                   href="https://github.com/richardnguyen99/richardhnguyen.com"
                   transparent
@@ -54,12 +52,12 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
                   <Icon.Github />
                 </Button>
               </Tooltip>
-              <Tooltip text="RSS">
+              <Tooltip content="RSS">
                 <Button transparent>
                   <Icon.RSS />
                 </Button>
               </Tooltip>
-              <Tooltip text="Theme" placement="bottom-right">
+              <Tooltip content="Theme" placement="bottom-right">
                 <Button transparent>
                   <Icon.Moon />
                   Light

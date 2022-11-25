@@ -9,5 +9,8 @@
 import Navbar from "./Navbar";
 import SEO from "./SEO";
 import GlobalStyle from "./GlobalStyle";
+import Icon from "./Icon";
+import Button from "./Button";
+import Tooltip from "./Tooltip";
 
-export { Navbar, SEO, GlobalStyle };
+export { Navbar, SEO, Icon, Button, Tooltip, GlobalStyle };
