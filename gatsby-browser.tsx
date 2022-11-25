@@ -11,15 +11,11 @@ import * as React from "react";
 import { GatsbyBrowser } from "gatsby";
 
 import RootLayout from "./src/components/layout/Root";
+import type { PageContext } from "./src/components/layout/type";
 
-export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
-  element,
-  props,
-}) => {
-  return (
-    // Fix this one
-    <RootLayout pageContext={props.pageContext as { lang: string }}>
-      {element}
-    </RootLayout>
-  );
+export const wrapPageElement: GatsbyBrowser<
+  Record<string, unknown>,
+  PageContext
+>["wrapPageElement"] = ({ element, props }) => {
+  return <RootLayout pageContext={props.pageContext}>{element}</RootLayout>;
 };

@@ -6,6 +6,8 @@
 
 import * as React from "react";
 
+import { CMouseEvCallback } from "@config/react";
+
 export type ButtonVariants =
   | "active"
   | "transparent"
@@ -100,7 +102,7 @@ export interface ButtonProps {
    * Button component will call a function specified by `onMouseEnterCallback`
    * prop during its own Mouse Enter Event.
    */
-  onMouseEnterCallback?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseEnterCallback?: CMouseEvCallback<HTMLButtonElement>;
 
   /**
    * @description Specify a callback on mouse leave event.
@@ -109,7 +111,7 @@ export interface ButtonProps {
    * Button component will call a function specified by `onMouseLeaveCallback`
    * prop during its own Mouse Leave Event.
    */
-  onMouseLeaveCallback?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseLeaveCallback?: CMouseEvCallback<HTMLButtonElement>;
 
   /**
    * @description Specify a callback on mouse click event.
@@ -118,14 +120,5 @@ export interface ButtonProps {
    * Button component will call a function specified by `onMouseClickCallback`
    * prop during its own Mouse Click Event.
    */
-  onClickCallback?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-
-  /**
-   * @description Specify child components as the content for button component.
-   *
-   * Button has no style declared for the child components themselves except for
-   * their container. It's up to the usage to declare how child components look
-   * like inside Button.
-   */
-  children: React.ReactNode | React.ReactNode[];
+  onClickCallback?: CMouseEvCallback<HTMLButtonElement>;
 }

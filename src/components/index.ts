@@ -12,5 +12,6 @@ import GlobalStyle from "./GlobalStyle";
 import Icon from "./Icon";
 import Button from "./Button";
 import Tooltip from "./Tooltip";
+import Portal from "./Portal";
 
-export { Navbar, SEO, Icon, Button, Tooltip, GlobalStyle };
+export { Navbar, SEO, Icon, Button, Tooltip, GlobalStyle, Portal };

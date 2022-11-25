@@ -6,6 +6,8 @@
 
 import * as React from "react";
 
+import { CForwardRefFunc } from "@config/react";
+
 import type { ButtonProps, ButtonRef } from "./type";
 import {
   StyledButton,
@@ -14,97 +16,103 @@ import {
   StyledButtonLink,
 } from "./style";
 
-const Button = React.forwardRef<ButtonRef, ButtonProps>(
-  (
-    {
-      href,
-      to,
-      target,
-      disabled,
-      isLoading,
-      transparent,
-      flat,
-      children,
-      onMouseEnterCallback,
-      onMouseLeaveCallback,
-      onClickCallback,
-      ...rest
+const ButtonRefRenderFunction: CForwardRefFunc<
+  HTMLButtonElement,
+  ButtonRef,
+  ButtonProps
+> = (
+  {
+    href = "",
+    to = "",
+    target = "",
+    disabled = false,
+    isLoading = false,
+    transparent = false,
+    flat = false,
+    border = false,
+    variant = "active",
+    children,
+    onMouseEnterCallback,
+    onMouseLeaveCallback,
+    onClickCallback,
+    ...rest
+  },
+  ref
+) => {
+  const inputRef = React.useRef<HTMLButtonElement>(null);
+
+  // If some components such as Tooltip need to know the DOM node of Button.
+  React.useImperativeHandle(ref, () => inputRef.current, [inputRef]);
+
+  const onMouseEnter = React.useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (onMouseEnterCallback) onMouseEnterCallback(e);
     },
-    ref
-  ) => {
-    const inputRef = React.useRef<HTMLButtonElement>(null);
+    [onMouseEnterCallback]
+  );
 
-    // If some components such as Tooltip need to know the DOM node of Button.
-    React.useImperativeHandle(ref, () => inputRef.current, [inputRef]);
+  const onMouseLeave = React.useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (onMouseLeaveCallback) onMouseLeaveCallback(e);
+    },
+    [onMouseLeaveCallback]
+  );
 
-    const onMouseEnter = React.useCallback(
-      (e: React.MouseEvent<HTMLButtonElement>) => {
-        if (onMouseEnterCallback) onMouseEnterCallback(e);
-      },
-      [onMouseEnterCallback]
-    );
+  const onClick = React.useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (onClickCallback) onClickCallback(e);
+    },
+    [onClickCallback]
+  );
 
-    const onMouseLeave = React.useCallback(
-      (e: React.MouseEvent<HTMLButtonElement>) => {
-        if (onMouseLeaveCallback) onMouseLeaveCallback(e);
-      },
-      [onMouseLeaveCallback]
-    );
+  const getBtnType = (): string => {
+    if (transparent) return "transparent";
+    if (flat) return "flat";
+    if (border) return "border";
 
-    const onClick = React.useCallback(
-      (e: React.MouseEvent<HTMLButtonElement>) => {
-        if (onClickCallback) onClickCallback(e);
-      },
-      [onClickCallback]
-    );
+    return variant;
+  };
 
-    const getBtnType = (): string => {
-      if (transparent) return "transparent";
-      if (flat) return "flat";
+  const getClassName = () => {
+    return [getBtnType()].join(" ");
+  };
+  const btnVars = {
+    "--btn-opacity": disabled || isLoading ? 0.7 : 1,
+  } as React.CSSProperties; // add this so Typescript won't complain.
 
-      return "active";
-    };
+  const btn = (
+    <StyledButton
+      {...rest}
+      ref={inputRef}
+      onClick={onClick}
+      style={btnVars}
+      className={getClassName()}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <StyledButtonInner>{children}</StyledButtonInner>
+    </StyledButton>
+  );
 
-    const getClassName = () => {
-      return [getBtnType()].join(" ");
-    };
-    const styles = {
-      "--btn-opacity": disabled || isLoading ? 0.7 : 1,
-    } as React.CSSProperties; // add this so Typescript won't complain.
+  // Anchor tag and Gatsby Link should wrap around the original button so that
+  // link will work.
 
-    const btn = (
-      <StyledButton
-        {...rest}
-        ref={inputRef}
-        onClick={onClick}
-        style={styles}
-        className={getClassName()}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
+  if (href)
+    return (
+      <StyledButtonAnchor
+        href={href}
+        target={target || "_blank"}
+        rel={!target ? "noopener noreferrer" : undefined}
       >
-        <StyledButtonInner>{children}</StyledButtonInner>
-      </StyledButton>
+        {btn}
+      </StyledButtonAnchor>
     );
+  else if (to) return <StyledButtonLink to={to}>{btn}</StyledButtonLink>;
 
-    // Anchor tag and Gatsby Link should wrap around the original button so that
-    // link will work.
+  return btn;
+};
 
-    if (href)
-      return (
-        <StyledButtonAnchor
-          href={href}
-          target={target || "_blank"}
-          rel={!target ? "noopener noreferrer" : undefined}
-        >
-          {btn}
-        </StyledButtonAnchor>
-      );
-    else if (to) return <StyledButtonLink to={to}>{btn}</StyledButtonLink>;
-
-    return btn;
-  }
-);
-
+const Button = React.forwardRef(ButtonRefRenderFunction);
 Button.displayName = "Button";
 
-export default Object.assign(Button, {});
+export default Button;

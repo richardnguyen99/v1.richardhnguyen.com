@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   ${mixins.Normalize}
   ${mixins.Animation}
 
-  #tooltip {
+  #tooltip, #modal, #menu {
     position: absolute;
     top: 0px;
     left: 0px;

@@ -6,17 +6,16 @@
 
 import * as React from "react";
 
-import { GlobalStyle, Navbar } from "@components";
+import { GlobalStyle } from "@components";
 import { Locale } from "@contexts";
+import { CFC } from "@config/react";
 
-type Props = {
-  children?: React.ReactNode | React.ReactNode[];
-  pageContext: {
-    lang: string;
-  };
-};
+import type { LayoutProps } from "./type";
 
-const RootLayout: React.FC<Props> = ({ children, pageContext }) => {
+const RootLayout: CFC<HTMLElement, LayoutProps> = ({
+  children,
+  pageContext,
+}) => {
   return (
     <>
       <GlobalStyle />

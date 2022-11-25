@@ -3,25 +3,13 @@
  */
 
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
 import { CFC } from "@config/react";
+import { Portal } from "@components";
 
 import Popup from "./Popup";
 import type { TooltipProps } from "./type";
-
-const Portal: CFC<HTMLElement, { visible: boolean }> = ({
-  visible,
-  children,
-}) => {
-  return (
-    <>
-      {visible &&
-        ReactDOM.createPortal(children, document.querySelector("#tooltip"))}
-    </>
-  );
-};
 
 const Tooltip: CFC<HTMLElement, TooltipProps> = ({
   children,
@@ -59,7 +47,7 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({
         classNames="tooltip"
         unmountOnExit
       >
-        <Portal visible={visible}>
+        <Portal visible={visible} portalId="#tooltip">
           <Popup triggerNode={triggerRef.current} placement={placement}>
             {content}
           </Popup>
