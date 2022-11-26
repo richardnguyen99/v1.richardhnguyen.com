@@ -4,8 +4,6 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 
-import * as React from "react";
-
 import { CMouseEvCallback } from "@config/react";
 
 export type ButtonVariants =

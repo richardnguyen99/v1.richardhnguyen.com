@@ -22,6 +22,7 @@ import {
   StyledNavbarListLink as ItemLink,
   StyledNavbarCollapse as Collapse,
 } from "./style";
+import Dropdown from "@components/Dropdown";
 
 const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
   return (
@@ -65,9 +66,11 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
               </Tooltip>
             </IconList>
             <Collapse>
-              <IconContainer>
-                <Icon.ThreeBars />
-              </IconContainer>
+              <Dropdown content="Menu">
+                <Button transparent>
+                  <Icon.ThreeBars />
+                </Button>
+              </Dropdown>
             </Collapse>
           </Nav>
         </Wrapper>

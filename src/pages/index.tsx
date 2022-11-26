@@ -7,9 +7,10 @@
 import * as React from "react";
 import { graphql, HeadFC, PageProps } from "gatsby";
 
-import { SEO } from "@components";
+import { Button, Icon, SEO } from "@components";
 import Page from "@components/layout/Page";
 import useTranslation from "@hooks/useTranslation";
+import Dropdown from "@components/Dropdown";
 
 type QueryReturnType = Queries.IndexQuery;
 
@@ -19,6 +20,13 @@ const IndexPage: React.FC<PageProps<QueryReturnType>> = () => {
   return (
     <Page>
       <div>{translations.indexHeadline}</div>
+      <div>
+        <Dropdown content="Menu" placement="bottom-left" width="85px">
+          <Button transparent>
+            <Icon.ThreeBars />
+          </Button>
+        </Dropdown>
+      </div>
     </Page>
   );
 };
