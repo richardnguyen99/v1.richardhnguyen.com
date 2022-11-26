@@ -6,6 +6,8 @@
 
 import React from "react";
 
+import type { CFC } from "@config/react";
+
 export type PopupPlacement =
   | "bottom"
   | "bottom-left"
@@ -58,4 +60,6 @@ export interface DropdownProps {
   placement?: PopupPlacement;
 
   width?: string | number;
+  Overlay?: CFC<HTMLElement>;
+  action?: string;
 }

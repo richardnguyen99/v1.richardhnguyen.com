@@ -47,7 +47,7 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({
         classNames="tooltip"
         unmountOnExit
       >
-        <Portal visible={visible} portalId="#tooltip">
+        <Portal portalId="#tooltip">
           <Popup triggerNode={triggerRef.current} placement={placement}>
             {content}
           </Popup>

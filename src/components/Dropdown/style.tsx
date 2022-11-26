@@ -1,7 +1,20 @@
 import styled from "styled-components";
 
+export const StyledDropdownOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  backdrop-filter: blur(6px);
+
+  &.no-overlay {
+    display: none;
+  }
+`;
+
 export const StyledDropdown = styled.div`
-  position: absolute;
+  position: relative;
   display: flex;
   border-radius: 0.5rem;
   padding: 1rem;
@@ -11,17 +24,19 @@ export const StyledDropdown = styled.div`
   box-shadow: 0px 1px 3px rgba(var(--rc-rgb-black), 0.24),
     0px 10px 28px -4px rgba(var(--rc-rgb-black), 0.48);
   height: auto;
-`;
-
-export const StyledDropdownInner = styled.div`
-  position: relative;
-  display: flex;
-  width: 85vw;
-  flex-direction: column;
-  font-size: 14px;
+  top: 5rem;
+  left: 0.5rem;
+  width: calc(100vw - 1rem);
 
   @media screen and (min-width: 680px) {
     width: 264px;
     width: var(--dropdown-width);
   }
+`;
+
+export const StyledDropdownInner = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
 `;

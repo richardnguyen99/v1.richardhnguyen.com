@@ -128,29 +128,6 @@ export const StyledNavbarListIcon = styled.li`
   }
 `;
 
-export const StyledNavbarListIconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 2rem;
-  min-width: 2rem;
-  padding: 0.25rem;
-
-  color: rgba(var(--rc-rgb-slate-400), 1);
-
-  &:hover {
-    color: rgba(var(--rc-rgb-white), 1);
-  }
-
-  div,
-  a,
-  svg {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-`;
-
 export const StyledNavbarListIconText = styled.p`
   font-weight: 600;
   line-height: 1.5;
@@ -159,7 +136,7 @@ export const StyledNavbarListIconText = styled.p`
   margin-right: 4px;
 `;
 
-export const StyledNavbarCollapse = styled(StyledNavbarListIcon)`
+export const StyledNavbarCollapse = styled(StyledNavbarIconList)`
   display: block;
 
   margin-left: auto !important;
@@ -167,4 +144,16 @@ export const StyledNavbarCollapse = styled(StyledNavbarListIcon)`
   @media screen and (min-width: 640px) {
     display: none;
   }
+`;
+
+export const StyledNavbarOverlayDropdown = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  outline: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-color: rgba(var(--rc-rgb-slate-900), 0.85);
 `;

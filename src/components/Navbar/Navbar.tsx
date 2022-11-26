@@ -17,7 +17,6 @@ import {
   StyledNavbarBrand as Brand,
   StyledNavbarTabList as NavList,
   StyledNavbarIconList as IconList,
-  StyledNavbarListIconContainer as IconContainer,
   StyledNavbarListItem as Item,
   StyledNavbarListLink as ItemLink,
   StyledNavbarCollapse as Collapse,
@@ -66,7 +65,7 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
               </Tooltip>
             </IconList>
             <Collapse>
-              <Dropdown content="Menu">
+              <Dropdown content="Menu" action="click">
                 <Button transparent>
                   <Icon.ThreeBars />
                 </Button>

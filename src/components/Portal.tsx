@@ -15,14 +15,6 @@ import { CFC } from "@config/react";
 
 export interface PortalProps {
   /**
-   * @description State to determine whether the portal component should be rendered or not.
-   *
-   * `visible` prop is passed from the parent component's state to determine
-   * when the portal component should be rendered.
-   */
-  visible: boolean;
-
-  /**
    * @description Id to DOM node that contains the portal component as children.
    *
    * Refer to `gatsby-ssr.tsx` to know how many DOM nodes are created outside
@@ -31,17 +23,8 @@ export interface PortalProps {
   portalId: string;
 }
 
-const Portal: CFC<HTMLElement, PortalProps> = ({
-  visible,
-  children,
-  portalId,
-}) => {
-  return (
-    <>
-      {visible &&
-        ReactDOM.createPortal(children, document.querySelector(portalId))}
-    </>
-  );
+const Portal: CFC<HTMLElement, PortalProps> = ({ children, portalId }) => {
+  return ReactDOM.createPortal(children, document.querySelector(portalId));
 };
 
 export default Portal;
