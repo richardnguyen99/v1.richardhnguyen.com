@@ -1,17 +1,27 @@
 import * as React from "react";
 
-import { CFC, CMouseEv, CMouseEvCallback } from "@config/react";
+import { CFC, CMouseEv } from "@config/react";
 
 import {
   StyledDropdown,
   StyledDropdownOverlay,
   StyledDropdownInner,
 } from "./style";
+import type { ModalProps } from "./type";
+import Panel from "./Panel";
 
-const Modal: CFC<
-  HTMLDivElement,
-  { width: string; onClickCallback: CMouseEvCallback<HTMLDivElement> }
-> = ({ children, width, onClickCallback, ...rest }) => {
+const Modal: CFC<HTMLDivElement, ModalProps> = ({
+  children,
+  width,
+  title,
+  onCloseCallback,
+  onClickCallback,
+  ...rest
+}) => {
+  const onDropdownClick = React.useCallback((e: CMouseEv<HTMLDivElement>) => {
+    e.stopPropagation();
+  }, []);
+
   const getDropdownVars = () =>
     ({
       "--dropdown-width": width,
@@ -22,9 +32,12 @@ const Modal: CFC<
       <StyledDropdown
         className="dropdown"
         style={getDropdownVars()}
-        onClick={(e: CMouseEv<HTMLDivElement>) => e.stopPropagation()}
+        onClick={onDropdownClick}
       >
-        <StyledDropdownInner>{children}</StyledDropdownInner>
+        <StyledDropdownInner>
+          <Panel title={title} onCloseCallback={onCloseCallback} />
+          {children}
+        </StyledDropdownInner>
       </StyledDropdown>
     </StyledDropdownOverlay>
   );

@@ -9,6 +9,7 @@ import Moon from "./Moon";
 import RSS from "./RSS";
 import ThreeBars from "./ThreeBars";
 import Brand from "./Brand";
+import XFillCircle from "./XFillCircle";
 
 const exported = {
   Github,
@@ -16,6 +17,7 @@ const exported = {
   RSS,
   ThreeBars,
   Brand,
+  XFillCircle,
 };
 
 export default exported;

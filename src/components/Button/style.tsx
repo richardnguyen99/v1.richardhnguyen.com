@@ -25,6 +25,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
   border-radius: 5px;
   margin-left: 8px;
+  padding: 0;
 
   &.transparent {
     background: transparent;

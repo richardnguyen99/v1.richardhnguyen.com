@@ -63,6 +63,7 @@ const Dropdown: CFC<HTMLElement, DropdownProps> = ({
           <Modal
             width={getDropdownWidth()}
             onClickCallback={() => setVisible(false)}
+            onCloseCallback={() => setVisible(false)}
           >
             {content}
           </Modal>

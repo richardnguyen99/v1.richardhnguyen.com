@@ -6,9 +6,9 @@
 
 import React from "react";
 
-import type { CFC } from "@config/react";
+import type { CFC, CMouseEvCallback } from "@config/react";
 
-export type PopupPlacement =
+export type ModalPlacement =
   | "bottom"
   | "bottom-left"
   | "bottom-right"
@@ -22,24 +22,29 @@ export type PopupPlacement =
   | "left-top"
   | "left-bottom";
 
-export interface PopupProps {
+export interface ModalProps {
   /**
    * @description DOM node of the trigger component.
    *
    * DOM node of the trigger component is the anchor of the tooltip component.
    */
-  triggerNode: HTMLElement;
+  triggerNode?: HTMLElement;
 
   /**
    * @description Position of tooltip around trigger.
    * @default "bottom"
    */
-  placement?: PopupPlacement;
+  placement?: ModalPlacement;
 
   /**
    * @description Content of tooltip.
    */
   children: React.ReactNode;
+  width: string;
+  title?: string;
+
+  onCloseCallback?: CMouseEvCallback<HTMLButtonElement>;
+  onClickCallback?: CMouseEvCallback<HTMLDivElement>;
 }
 
 export interface DropdownProps {
@@ -57,9 +62,11 @@ export interface DropdownProps {
    * @description Position of tooltip around trigger.
    * @default "bottom"
    */
-  placement?: PopupPlacement;
+  placement?: ModalPlacement;
 
   width?: string | number;
   Overlay?: CFC<HTMLElement>;
   action?: string;
 }
+
+export type PanelProps = Pick<ModalProps, "title" | "onCloseCallback">;

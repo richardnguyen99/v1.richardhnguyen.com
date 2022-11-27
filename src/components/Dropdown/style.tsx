@@ -1,3 +1,8 @@
+import {
+  StyledNavbar,
+  StyledNavbarContainer,
+  StyledNavbarWrapper,
+} from "@components/Navbar/style";
 import styled from "styled-components";
 
 export const StyledDropdownOverlay = styled.div`
@@ -39,4 +44,33 @@ export const StyledDropdownInner = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 14px;
+  width: 100%;
+`;
+
+export const StyledDropdownPanel = styled(StyledNavbar)`
+  border: none;
+  margin-bottom: 1rem;
+`;
+
+export const StyledDropdownPanelContainer = styled(StyledNavbarContainer)`
+  max-width: 64rem;
+`;
+
+export const StyledDropdownPanelInner = styled(StyledNavbarWrapper)`
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(var(--rc-rgb-slate-700), 0.35);
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    color: var(--rc-color-white);
+  }
+
+  button {
+    margin-left: auto;
+  }
 `;
