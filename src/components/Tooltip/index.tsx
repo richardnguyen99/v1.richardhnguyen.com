@@ -5,7 +5,7 @@
 import * as React from "react";
 import { CSSTransition } from "react-transition-group";
 
-import { CFC } from "@config/react";
+import { CFC, CMouseEv } from "@config/react";
 import { Portal } from "@components";
 
 import Popup from "./Popup";
@@ -15,17 +15,28 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({
   children,
   content,
   placement = "bottom",
+  isModalVisible = false,
+  onClickCallback,
 }) => {
   const triggerRef = React.useRef<HTMLElement>(null);
   const [visible, setVisible] = React.useState(false);
 
   const onMouseEnter = React.useCallback(() => {
-    setVisible(true);
-  }, []);
+    if (!isModalVisible) setVisible(true);
+  }, [isModalVisible]);
 
   const onMouseLeave = React.useCallback(() => {
     setVisible(false);
   }, []);
+
+  const onClick = React.useCallback(
+    (e: CMouseEv<HTMLButtonElement>) => {
+      if (onClickCallback) onClickCallback(e);
+
+      setVisible(false);
+    },
+    [onClickCallback]
+  );
 
   /* eslint-disable indent */
   const cloneChild = React.isValidElement(children)
@@ -33,14 +44,18 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({
       React.cloneElement(children as React.ReactElement<any>, {
         onMouseEnterCallback: onMouseEnter,
         onMouseLeaveCallback: onMouseLeave,
+        onClickCallback: onClick,
         ref: triggerRef,
       })
     : children;
   /* eslint-enable indent */
 
+  React.useEffect(() => {
+    if (isModalVisible) setVisible(false);
+  }, [isModalVisible]);
+
   return (
     <>
-      {cloneChild}
       <CSSTransition
         in={visible}
         timeout={200}
@@ -53,6 +68,7 @@ const Tooltip: CFC<HTMLElement, TooltipProps> = ({
           </Popup>
         </Portal>
       </CSSTransition>
+      {cloneChild}
     </>
   );
 };

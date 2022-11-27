@@ -19,6 +19,7 @@ const Dropdown: CFC<HTMLElement, DropdownProps> = ({
   content,
   placement = "bottom",
   width,
+  title,
   action = "hover",
 }) => {
   const triggerRef = React.useRef<HTMLElement>(null);
@@ -43,6 +44,7 @@ const Dropdown: CFC<HTMLElement, DropdownProps> = ({
         onMouseEnterCallback: action === "hover" ? onMouseEnter : undefined,
         onMouseLeaveCallback: action === "hover" ? onMouseLeave : undefined,
         onClickCallback: action === "click" ? onClick : undefined,
+        isModalVisible: visible,
         ref: triggerRef,
       })
     : children;
@@ -61,6 +63,7 @@ const Dropdown: CFC<HTMLElement, DropdownProps> = ({
       <CSSTransition in={visible} timeout={200} classNames="menu" unmountOnExit>
         <Portal portalId="#menu">
           <Modal
+            title={title}
             width={getDropdownWidth()}
             onClickCallback={() => setVisible(false)}
             onCloseCallback={() => setVisible(false)}

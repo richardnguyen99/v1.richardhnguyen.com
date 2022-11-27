@@ -42,9 +42,8 @@ const Popup: CFC<HTMLDivElement, PopupProps> = ({
         innerRef.current.style.top =
           triggerRect.top + triggerRect.height + MARGIN + "px";
         innerRef.current.style.left =
-          triggerRect.right -
-          popupRect.width -
-          parseInt(triggerStyle.marginLeft) +
+          triggerRect.left -
+          (parseInt(popupStyle.width) - parseInt(triggerStyle.width)) +
           "px";
       } else if (placement === "top") {
         innerRef.current.style.top =

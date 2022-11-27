@@ -4,6 +4,7 @@
  * @author Richard Nguyen <richard.ng0616@gmail.com>
  */
 
+import { CMouseEvCallback } from "@config/react";
 import React from "react";
 
 export type PopupPlacement =
@@ -56,4 +57,8 @@ export interface TooltipProps {
    * @default "bottom"
    */
   placement?: PopupPlacement;
+
+  isModalVisible?: boolean;
+
+  onClickCallback?: CMouseEvCallback<HTMLButtonElement>;
 }

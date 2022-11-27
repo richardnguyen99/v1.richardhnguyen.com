@@ -65,10 +65,12 @@ const Navbar: CFC<HTMLDivElement> = ({ ...rest }) => {
               </Tooltip>
             </IconList>
             <Collapse>
-              <Dropdown content="Menu" action="click">
-                <Button transparent>
-                  <Icon.ThreeBars />
-                </Button>
+              <Dropdown title="Menu" content="Menu" action="click">
+                <Tooltip content="Menu" placement="bottom-right">
+                  <Button transparent>
+                    <Icon.ThreeBars />
+                  </Button>
+                </Tooltip>
               </Dropdown>
             </Collapse>
           </Nav>

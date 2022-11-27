@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { CFC } from "@config/react";
-import { Icon, Button } from "@components";
+import { Icon, Button, Tooltip } from "@components";
 
 import {
   StyledDropdownPanel,
@@ -22,9 +22,15 @@ const Panel: CFC<HTMLDivElement, PanelProps> = ({
           <StyledDropdownPanelContainer>
             <StyledDropdownPanelInner>
               <h1>{title || "Modal"}</h1>
-              <Button transparent onClickCallback={onCloseCallback}>
-                <Icon.XFillCircle />
-              </Button>
+              <Tooltip
+                placement="bottom-right"
+                content={`Close ${title}`}
+                onClickCallback={onCloseCallback}
+              >
+                <Button transparent>
+                  <Icon.XFillCircle />
+                </Button>
+              </Tooltip>
             </StyledDropdownPanelInner>
           </StyledDropdownPanelContainer>
         </StyledDropdownPanel>
