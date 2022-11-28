@@ -10,6 +10,8 @@ import RSS from "./RSS";
 import ThreeBars from "./ThreeBars";
 import Brand from "./Brand";
 import XFillCircle from "./XFillCircle";
+import ShadedBook from "./ShadedBook";
+import ShadedQuestion from "./ShadedQuestion";
 
 const exported = {
   Github,
@@ -18,6 +20,8 @@ const exported = {
   ThreeBars,
   Brand,
   XFillCircle,
+  ShadedBook,
+  ShadedQuestion,
 };
 
 export default exported;

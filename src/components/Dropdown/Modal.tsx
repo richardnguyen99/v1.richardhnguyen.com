@@ -9,6 +9,7 @@ import {
 } from "./style";
 import type { ModalProps } from "./type";
 import Panel from "./Panel";
+import { Icon } from "@components";
 
 const Modal: CFC<HTMLDivElement, ModalProps> = ({
   children,
@@ -36,7 +37,22 @@ const Modal: CFC<HTMLDivElement, ModalProps> = ({
       >
         <StyledDropdownInner>
           <Panel title={title} onCloseCallback={onCloseCallback} />
-          {children}
+          <ul>
+            <li
+              style={{ display: "flex", alignItems: "center" }}
+              className="parent"
+            >
+              <Icon.ShadedBook color="sky" />
+              <h3>Blog</h3>
+            </li>
+            <li
+              style={{ display: "flex", alignItems: "center" }}
+              className="parent"
+            >
+              <Icon.ShadedQuestion color="violet" />
+              <h3>About</h3>
+            </li>
+          </ul>
         </StyledDropdownInner>
       </StyledDropdown>
     </StyledDropdownOverlay>
