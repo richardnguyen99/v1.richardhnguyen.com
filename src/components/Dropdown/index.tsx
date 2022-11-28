@@ -9,15 +9,15 @@ import { CSSTransition } from "react-transition-group";
 
 import { CFC } from "@config/react";
 import { Portal } from "@components";
-import Popup from "@components/Tooltip/Popup";
 
 import type { DropdownProps } from "./type";
 import Modal from "./Modal";
+import Item from "./Item";
 
 const Dropdown: CFC<HTMLElement, DropdownProps> = ({
   children,
   content,
-  placement = "bottom",
+  placement: _placement = "bottom",
   width,
   title,
   action = "hover",
@@ -68,7 +68,20 @@ const Dropdown: CFC<HTMLElement, DropdownProps> = ({
             onClickCallback={() => setVisible(false)}
             onCloseCallback={() => setVisible(false)}
           >
-            {content}
+            {content.map(
+              ({ href, to, target, color, title, icon, colorTextOn }, key) => (
+                <Item
+                  href={href}
+                  to={to}
+                  target={target}
+                  color={color}
+                  title={title}
+                  icon={icon}
+                  key={key}
+                  colorTextOn={colorTextOn}
+                />
+              )
+            )}
           </Modal>
         </Portal>
       </CSSTransition>

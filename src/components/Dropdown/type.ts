@@ -7,20 +7,18 @@
 import React from "react";
 
 import type { CFC, CMouseEvCallback } from "@config/react";
+import { IsLinkProps } from "@config/link";
+import { ColorSystem } from "@config/color";
+import { Placement } from "@config/placement";
 
-export type ModalPlacement =
-  | "bottom"
-  | "bottom-left"
-  | "bottom-right"
-  | "top"
-  | "top-left"
-  | "top-right"
-  | "right"
-  | "right-top"
-  | "right-bottom"
-  | "left"
-  | "left-top"
-  | "left-bottom";
+export type ModalPlacement = Placement;
+
+export interface DropdownItemProps extends IsLinkProps {
+  color?: ColorSystem;
+  icon?: "ShadedBook" | "ShadedQuestion";
+  title?: string;
+  colorTextOn?: "hover" | "active";
+}
 
 export interface ModalProps {
   /**
@@ -56,7 +54,7 @@ export interface DropdownProps {
   /**
    * @description Content of tooltip
    */
-  content: React.ReactNode;
+  content: DropdownItemProps[];
 
   /**
    * @description Position of tooltip around trigger.

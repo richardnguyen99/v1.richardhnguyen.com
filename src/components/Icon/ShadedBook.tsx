@@ -50,7 +50,7 @@ const StyledShadedBook = styled.div<ShadedBookProps>`
   }
 `;
 
-const ShadedBook: CFC<HTMLOrSVGElement, ShadedBookProps> = ({
+const ShadedBook: CFC<HTMLDivElement, ShadedBookProps> = ({
   color,
   ...rest
 }) => {

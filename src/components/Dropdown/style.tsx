@@ -1,9 +1,25 @@
+import styled from "styled-components";
+import { Link } from "gatsby";
+
 import {
   StyledNavbar,
   StyledNavbarContainer,
   StyledNavbarWrapper,
 } from "@components/Navbar/style";
-import styled from "styled-components";
+
+export const StyledA = styled.a`
+  display: flex;
+  align-items: center;
+  flex: none;
+  width: 100%;
+`;
+
+export const StyledL = styled(Link)`
+  display: flex;
+  align-items: center;
+  flex: none;
+  width: 100%;
+`;
 
 export const StyledDropdownOverlay = styled.div`
   position: fixed;
@@ -90,6 +106,10 @@ export const StyledDropdownItem = styled.li`
 
   transition: all 0.1s ease-out;
 
+  a & {
+    width: 100%;
+  }
+
   > div {
     margin-right: 1rem;
   }
@@ -105,5 +125,9 @@ export const StyledDropdownItem = styled.li`
 
   &:hover > h3 {
     color: rgba(var(--text--hover), 1);
+  }
+
+  &.hover:hover > h3 {
+    color: var(--dropdownItem-color);
   }
 `;
