@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "gatsby";
 
 import { CFC, CMouseEv } from "@config/react";
 
@@ -6,6 +7,7 @@ import {
   StyledDropdown,
   StyledDropdownOverlay,
   StyledDropdownInner,
+  StyledDropdownItem,
 } from "./style";
 import type { ModalProps } from "./type";
 import Panel from "./Panel";
@@ -38,20 +40,16 @@ const Modal: CFC<HTMLDivElement, ModalProps> = ({
         <StyledDropdownInner>
           <Panel title={title} onCloseCallback={onCloseCallback} />
           <ul>
-            <li
-              style={{ display: "flex", alignItems: "center" }}
-              className="parent"
-            >
-              <Icon.ShadedBook color="sky" />
-              <h3>Blog</h3>
-            </li>
-            <li
-              style={{ display: "flex", alignItems: "center" }}
-              className="parent"
-            >
+            <Link to="#">
+              <StyledDropdownItem className="parent">
+                <Icon.ShadedBook color="sky" />
+                <h3>Blog</h3>
+              </StyledDropdownItem>
+            </Link>
+            <StyledDropdownItem className="parent">
               <Icon.ShadedQuestion color="violet" />
               <h3>About</h3>
-            </li>
+            </StyledDropdownItem>
           </ul>
         </StyledDropdownInner>
       </StyledDropdown>

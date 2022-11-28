@@ -19,13 +19,18 @@ export const StyledDropdownOverlay = styled.div`
 `;
 
 export const StyledDropdown = styled.div`
+  --bg: var(--rc-rgb-slate-800);
+  --bg--hover: var(--rc-rgb-slate-700);
+  --text: var(--rc-rgb-slate-400);
+  --text--hover: var(--rc-rgb-slate-100);
+
   position: relative;
   display: flex;
   border-radius: 0.5rem;
   padding: 1rem;
   opacity: 1;
   z-index: 1050;
-  background-color: rgba(var(--rc-rgb-slate-800), 1);
+  background-color: rgba(var(--bg), 1);
   box-shadow: 0px 1px 3px rgba(var(--rc-rgb-black), 0.24),
     0px 10px 28px -4px rgba(var(--rc-rgb-black), 0.48);
   height: auto;
@@ -72,5 +77,33 @@ export const StyledDropdownPanelInner = styled(StyledNavbarWrapper)`
 
   button {
     margin-left: auto;
+  }
+`;
+
+export const StyledDropdownItem = styled.li`
+  display: flex;
+  align-items: center;
+
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  transition: all 0.1s ease-out;
+
+  > div {
+    margin-right: 1rem;
+  }
+
+  > h3 {
+    padding: 0;
+    margin: 0;
+  }
+
+  &:hover {
+    background: rgba(var(--bg--hover), 1);
+  }
+
+  &:hover > h3 {
+    color: rgba(var(--text--hover), 1);
   }
 `;
