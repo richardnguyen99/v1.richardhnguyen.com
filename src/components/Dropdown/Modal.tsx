@@ -1,3 +1,10 @@
+/**
+ * A React component that displays a solid foundation component for dialogs,
+ * popovers, forms, etc.
+ *
+ * @author Richard Nguyen <richard@richardhnguyen.com>
+ */
+
 import * as React from "react";
 
 import { CFC, CMouseEv } from "@config/react";
@@ -14,6 +21,7 @@ const Modal: CFC<HTMLDivElement, ModalProps> = ({
   children,
   width,
   title,
+  overlay,
   onCloseCallback,
   onClickCallback,
   ...rest
@@ -28,7 +36,11 @@ const Modal: CFC<HTMLDivElement, ModalProps> = ({
     } as React.CSSProperties);
 
   return (
-    <StyledDropdownOverlay {...rest} onClick={onClickCallback}>
+    <StyledDropdownOverlay
+      {...rest}
+      className={!overlay && "no-overlay"}
+      onClick={onClickCallback}
+    >
       <StyledDropdown
         className="dropdown"
         style={getDropdownVars()}

@@ -1,7 +1,7 @@
 /**
- * Prop types and interfaces for Dropdown component
+ * Prop types and interfaces for Dropdown component.
  *
- * @author Richard Nguyen <richard.ng0616@gmail.com>
+ * @author Richard Nguyen <richard@richardhnguyen.com>
  */
 
 import React from "react";
@@ -40,6 +40,7 @@ export interface ModalProps {
   children: React.ReactNode;
   width: string;
   title?: string;
+  overlay?: boolean;
 
   onCloseCallback?: CMouseEvCallback<HTMLButtonElement>;
   onClickCallback?: CMouseEvCallback<HTMLDivElement>;
@@ -63,8 +64,8 @@ export interface DropdownProps {
   placement?: ModalPlacement;
 
   width?: string | number;
-  Overlay?: CFC<HTMLElement>;
-  action?: string;
+  overlay?: boolean;
+  action?: "click" | "hover";
 }
 
 export type PanelProps = Pick<ModalProps, "title" | "onCloseCallback">;

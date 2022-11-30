@@ -32,7 +32,7 @@ const NavbarDropdown: CFC<HTMLElement> = () => {
   ];
 
   return (
-    <Dropdown title="Menu" content={getDropdownContent} action="click">
+    <Dropdown title="Menu" content={getDropdownContent} action="click" overlay>
       <Tooltip content="Menu" placement="bottom-right">
         <Button transparent>
           <Icon.ThreeBars />

@@ -1,3 +1,11 @@
+/**
+ * A React component that displays a small heading panel for Modal components.
+ * A Panel may contain a heading and/or a closing button if one of them is
+ * specified by the Modal component.
+ *
+ * @author Richard Nguyen <richard@richardhnguyen.com>
+ */
+
 import * as React from "react";
 
 import { CFC } from "@config/react";

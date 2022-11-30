@@ -1,3 +1,9 @@
+/**
+ * A React component that displays an item for dropdown components.
+ *
+ * @author Richard Nguyen <richard@richardhnguyen.com>
+ */
+
 import * as React from "react";
 
 import { CFC } from "@config/react";

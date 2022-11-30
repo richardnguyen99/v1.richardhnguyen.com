@@ -1,7 +1,7 @@
 /**
  * A React component that displays a dropdown menu with more items.
  *
- * @author Richard Nguyen <richard.ng0616@gmail.com>
+ * @author Richard Nguyen <richard@richardhnguyen.com>
  */
 
 import * as React from "react";
@@ -21,6 +21,7 @@ const Dropdown: CFC<HTMLElement, DropdownProps> = ({
   width,
   title,
   action = "hover",
+  overlay = false,
 }) => {
   const triggerRef = React.useRef<HTMLElement>(null);
   const [visible, setVisible] = React.useState(false);
@@ -63,6 +64,7 @@ const Dropdown: CFC<HTMLElement, DropdownProps> = ({
       <CSSTransition in={visible} timeout={200} classNames="menu" unmountOnExit>
         <Portal portalId="#menu">
           <Modal
+            overlay={overlay}
             title={title}
             width={getDropdownWidth()}
             onClickCallback={() => setVisible(false)}

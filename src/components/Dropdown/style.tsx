@@ -1,3 +1,9 @@
+/**
+ * Style definitions for Dropdown components and its children.
+ *
+ * @author Richard Nguyen <richard@richardhnguyen.com>
+ */
+
 import styled from "styled-components";
 import { Link } from "gatsby";
 
@@ -106,6 +112,7 @@ export const StyledDropdownItem = styled.li`
 
   transition: all 0.1s ease-out;
 
+  // In case an item is wrapped by an anchor tag
   a & {
     width: 100%;
   }
