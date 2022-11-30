@@ -20,7 +20,7 @@ export const StyledPopup = styled.div`
   padding: 0;
   position: absolute;
   visibility: visible;
-  z-index: 1070;
+  z-index: 9999;
   pointer-events: none;
 `;
 

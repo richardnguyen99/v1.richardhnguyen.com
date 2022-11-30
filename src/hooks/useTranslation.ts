@@ -53,6 +53,7 @@ export const query = graphql`
 
   fragment Translations on I18NJsonPagesTranslations {
     indexHeadline
+    indexBridge
     indexAuthor
     aboutHeadline
     aboutAuthor

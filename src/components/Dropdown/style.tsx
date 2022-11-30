@@ -34,6 +34,7 @@ export const StyledDropdownOverlay = styled.div`
   bottom: 0;
   right: 0;
   backdrop-filter: blur(6px);
+  z-index: 9997;
 
   &.no-overlay {
     display: none;

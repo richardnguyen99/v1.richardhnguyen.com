@@ -5,7 +5,8 @@
       "title": "Home",
       "titleTemplate": " - Richard H. Nguyen",
       "translations": {
-        "indexHeadline": "The latest from  ",
+        "indexHeadline": "The latest",
+        "indexBridge": "from",
         "indexAuthor": "Richard H. Nguyen"
       }
     },

@@ -5,7 +5,8 @@
       "title": "Trang chủ",
       "titleTemplate": " - Richard H. Nguyen",
       "translations": {
-        "indexHeadline": "Tin công nghệ mới nhất từ ",
+        "indexHeadline": "Tin mới nhất ",
+        "indexBridge": "từ ",
         "indexAuthor": "Richard H. Nguyen"
       }
     },

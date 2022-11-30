@@ -10,6 +10,10 @@ import { graphql, HeadFC, PageProps } from "gatsby";
 import { SEO } from "@components";
 import Page from "@components/layout/Page";
 import useTranslation from "@hooks/useTranslation";
+import { StyledHeroHeadline } from "@components/Typography/Hero";
+import UnderlineText from "@components/Typography/Underline";
+import Gradient from "@components/Typography/Gradient";
+import Container from "@components/Utility/Container";
 
 type QueryReturnType = Queries.IndexQuery;
 
@@ -18,7 +22,13 @@ const IndexPage: React.FC<PageProps<QueryReturnType>> = () => {
 
   return (
     <Page>
-      <div>{translations.indexHeadline}</div>
+      <Container>
+        <StyledHeroHeadline>
+          <UnderlineText>{translations.indexHeadline}</UnderlineText>{" "}
+          {translations.indexBridge}{" "}
+          <Gradient>{translations.indexAuthor}</Gradient>
+        </StyledHeroHeadline>
+      </Container>
     </Page>
   );
 };
@@ -59,6 +69,7 @@ export const query = graphql`
 
   fragment IndexTranslations on I18NJsonPagesTranslations {
     indexHeadline
+    indexBridge
     indexAuthor
   }
 `;
