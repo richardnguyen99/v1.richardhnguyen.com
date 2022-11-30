@@ -13,6 +13,7 @@ import {
   StyledDropdown,
   StyledDropdownOverlay,
   StyledDropdownInner,
+  StyledDropdownList,
 } from "./style";
 import type { ModalProps } from "./type";
 import Panel from "./Panel";
@@ -48,7 +49,7 @@ const Modal: CFC<HTMLDivElement, ModalProps> = ({
       >
         <StyledDropdownInner>
           <Panel title={title} onCloseCallback={onCloseCallback} />
-          <ul>{children}</ul>
+          <StyledDropdownList>{children}</StyledDropdownList>
         </StyledDropdownInner>
       </StyledDropdown>
     </StyledDropdownOverlay>

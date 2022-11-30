@@ -102,6 +102,11 @@ export const StyledDropdownPanelInner = styled(StyledNavbarWrapper)`
   }
 `;
 
+export const StyledDropdownList = styled.ul`
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(var(--rc-rgb-slate-700), 0.35);
+`;
+
 export const StyledDropdownItem = styled.li`
   display: flex;
   align-items: center;
