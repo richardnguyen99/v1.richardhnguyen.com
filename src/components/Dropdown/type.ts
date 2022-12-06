@@ -6,7 +6,7 @@
 
 import React from "react";
 
-import type { CFC, CMouseEvCallback } from "@config/react";
+import type { CMouseEvCallback } from "@config/react";
 import { IsLinkProps } from "@config/link";
 import { ColorSystem } from "@config/color";
 import { Placement } from "@config/placement";

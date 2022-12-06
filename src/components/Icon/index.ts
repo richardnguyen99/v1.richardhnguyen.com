@@ -10,6 +10,7 @@ import RSS from "./RSS";
 import ThreeBars from "./ThreeBars";
 import Brand from "./Brand";
 import XFillCircle from "./XFillCircle";
+import Commit from "./Commit";
 import ShadedBook from "./ShadedBook";
 import ShadedQuestion from "./ShadedQuestion";
 
@@ -20,6 +21,7 @@ const exported = {
   ThreeBars,
   Brand,
   XFillCircle,
+  Commit,
   ShadedBook,
   ShadedQuestion,
 };

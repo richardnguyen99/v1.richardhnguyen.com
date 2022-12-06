@@ -1,7 +1,7 @@
 /**
  * Style definitions for Button components.
  *
- * @author Richard Nguyen <richard.ng0616@gmail.com>
+ * @author Richard Nguyen <richard@richardhnguyen.com>
  */
 
 import styled from "styled-components";

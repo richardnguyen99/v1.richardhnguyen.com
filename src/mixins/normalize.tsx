@@ -49,7 +49,7 @@ const normalizeCSS = css`
     padding: 0;
     min-height: 100%;
     line-height: inherit;
-    background: var(--rc-color-slate-900);
+    background: #0d1117;
     color: var(--rc-color-slate-400);
 
     -webkit-font-smoothing: antialiased;
