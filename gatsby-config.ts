@@ -29,6 +29,7 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-styled-components",
       options: {
+        // Hash styled-components css when it hits production.
         displayName: process.env.NODE_ENV !== "production",
       },
     },
