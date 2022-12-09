@@ -19,13 +19,13 @@ const config: GatsbyConfig = {
     image: "/icon-512.png",
   },
   plugins: [
+    "gatsby-transformer-json",
     {
       resolve: "gatsby-plugin-google-gtag",
       options: {
         trackingIds: ["G-1WSKJFCD4F"],
       },
     },
-    "gatsby-transformer-json",
     {
       resolve: "gatsby-plugin-styled-components",
       options: {
@@ -40,6 +40,24 @@ const config: GatsbyConfig = {
         name: "i18n",
       },
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "content",
+        path: `${__dirname}/content`,
+      },
+    },
+    //{
+    //resolve: "gatsby-plugin-page-creator",
+    //options: {
+    //path: `${__dirname}/content`,
+    //},
+    //},
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-transformer-remark",
+    "gatsby-plugin-mdx",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
