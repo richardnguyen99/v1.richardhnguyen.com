@@ -9,14 +9,11 @@
  */
 import * as React from "react";
 import { GatsbyBrowser } from "gatsby";
-import "katex/dist/katex.min.css";
-
-import Context from "./src/contexts";
 
 import "./fonts/fonts.css";
 
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
   element,
 }) => {
-  return <Context.Theme>{element}</Context.Theme>;
+  return <>{element}</>;
 };
