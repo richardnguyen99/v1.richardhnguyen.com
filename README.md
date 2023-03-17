@@ -1,5 +1,9 @@
 # [richardhnguyen.com](richardhnguyen.com/) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/richardnguyen99/richardhnguyen.com/blob/main/README.md)
 
+<p align="center">
+  <img src="https://github.com/richardnguyen99/richardhnguyen.com/blog/main/static/brand-128.png"/>
+</p>
+
 Main page for Richard H. Nguyen, where you can find
 
 - Articles: I write technical stuff such as technologies and programming.
