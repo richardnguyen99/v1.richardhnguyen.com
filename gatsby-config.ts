@@ -17,6 +17,16 @@ const config: GatsbyConfig = {
   plugins: [
     // For TailwindCSS
     "gatsby-plugin-postcss",
+
+    // For React and SVG
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
   ],
 };
 
