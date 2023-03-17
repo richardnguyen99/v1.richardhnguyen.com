@@ -14,7 +14,10 @@ const config: GatsbyConfig = {
     author: "@richardnguyen99",
     siteUrl: "http://richardhnguyen.com",
   },
-  plugins: [],
+  plugins: [
+    // For TailwindCSS
+    "gatsby-plugin-postcss",
+  ],
 };
 
 export default config;

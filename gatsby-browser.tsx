@@ -11,6 +11,7 @@ import * as React from "react";
 import { GatsbyBrowser } from "gatsby";
 
 import "./fonts/fonts.css";
+import "./src/styles/global.css";
 
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
   element,
