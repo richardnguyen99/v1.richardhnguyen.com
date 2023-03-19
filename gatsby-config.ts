@@ -15,6 +15,10 @@ const config: GatsbyConfig = {
     siteUrl: "http://richardhnguyen.com",
   },
   plugins: [
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+
     // For TailwindCSS
     "gatsby-plugin-postcss",
 
