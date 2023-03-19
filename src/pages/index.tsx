@@ -1,14 +1,10 @@
 import * as React from "react";
 
-import components from "@components";
-
-const { Header } = components;
-
 const IndexPage: React.FC = () => {
   return (
-    <main>
-      <Header>Hello</Header>
-    </main>
+    <div>
+      <h1>Hello, World</h1>
+    </div>
   );
 };
 
