@@ -24,7 +24,7 @@ const Item: React.FC<Props> = ({ name, to }) => {
   return (
     <Link
       to={to}
-      className="inline-block relative p-5 font-semibold text-lg leading-6 text-zinc-50 hover:text-indigo-500"
+      className="inline-block relative p-5 font-semibold text-lg leading-6 text-zinc-50 hover:text-violet-500"
     >
       <div>{name}</div>
     </Link>

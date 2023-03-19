@@ -4,6 +4,15 @@ import PageNavigator from "./PageNavigator";
 
 export type Props = React.PropsWithChildren<object>;
 
+/**
+ * A standalone component that allows visitors to navigate to different pages.
+ *
+ * This component encapsulates all the links and functionalities so there is no
+ * need to pass data or props to it. Everything is handled either by Gatsby or
+ * through contexts.
+ *
+ * @returns React.FC
+ */
 const Header: React.FC<Props> = () => {
   return (
     <header
