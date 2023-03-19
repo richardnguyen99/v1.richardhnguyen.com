@@ -10,8 +10,11 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   siteMetadata: {
     title: "Richard H. Nguyen",
+    titleTemplate: "Richard H. Nguyen",
     description: "Main page for Richard H. Nguyen",
+    twitterUsername: "@richardmhnguyen",
     author: "@richardnguyen99",
+    image: "static/brand-16.png",
     siteUrl: "http://richardhnguyen.com",
   },
   plugins: [
