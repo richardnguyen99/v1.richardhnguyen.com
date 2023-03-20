@@ -1,10 +1,12 @@
 import { SEO } from "@components/SEO";
+import TypeWriter from "@components/Typewritter";
 import * as React from "react";
 
 const IndexPage: React.FC = () => {
   return (
     <div>
       <h1>Hello, World</h1>
+      <TypeWriter />
     </div>
   );
 };

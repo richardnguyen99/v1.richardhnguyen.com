@@ -19,7 +19,39 @@ module.exports = {
         "monospace",
       ],
     },
-    extend: {},
+    extend: {
+      animation: {
+        "swapOut-running":
+          "kf-swapOut 400ms cubic-bezier(0.75, 0, 0.25, 1) 150ms both running",
+        "swapOut-paused":
+          "kf-swapOut 400ms cubic-bezier(0.75, 0, 0.25, 1) 150ms both paused",
+        "swapIn-running":
+          "kf-swapIn 400ms cubic-bezier(0.75, 0, 0.25, 1) 150ms both running",
+      },
+      keyframes: {
+        "kf-swapOut": {
+          from: {
+            transform: "translateY(0)",
+            opacity: "1",
+          },
+          to: {
+            transform: "translateY(-100%)",
+            opacity: "0",
+          },
+        },
+
+        "kf-swapIn": {
+          from: {
+            transform: "translateY(0)",
+            opacity: "0",
+          },
+          to: {
+            transform: "translateY(-100%)",
+            opacity: "1",
+          },
+        },
+      },
+    },
   },
   plugins: [],
 };
