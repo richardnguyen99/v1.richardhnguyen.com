@@ -19,9 +19,6 @@ type Props = {
 const Swapper: React.FC<Props> = ({
   typing,
   swapping,
-  typingDuration = 30,
-  swappingDuration = 400,
-  swappingDelay = 150,
   children,
   onSwappingDone,
 }) => {

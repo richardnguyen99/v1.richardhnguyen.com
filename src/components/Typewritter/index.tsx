@@ -2,19 +2,17 @@ import * as React from "react";
 import Swapper from "./Swapper";
 import Typer from "./Typer";
 
-const TEXT = "Hi, I'm Richard! I'm writing about tech.";
-
 const TypeWriter = () => {
   const [state, setState] = React.useState(0);
 
   const next = React.useCallback(() => setState((s) => s + 1), []);
 
   return (
-    <div className="max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl mx-auto flex items-center pt-24">
+    <div className="max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl mx-auto flex items-center py-12 md:py-16 lg:py-20 xl:py-24">
       <h1 className="box-content flex text-5xl md:text-6xl lg:h-[286px] lg:text-[64px] xl:text-[78px] lg:leading-[96px] tracking-tighter flex-nowrap">
         <span className="inline lg:hidden motion-reduce:inline">
           <p>
-            Hi, <span>I&apos;m Richard!</span>
+            Hi, <span className="font-extrabold">I&apos;m Richard!</span>
           </p>
           <p>
             This is my digital{" "}
@@ -33,7 +31,9 @@ const TypeWriter = () => {
               typing="**I'm Richard!**"
               swapping="I'm Richard!"
               onSwappingDone={next}
-            ></Swapper>
+            >
+              <span className="font-extrabold">I&apos;m Richard!</span>
+            </Swapper>
           )}
           <br />
           {state >= 2 && (
@@ -47,7 +47,7 @@ const TypeWriter = () => {
           <br />
           {state >= 4 && <Typer text="I write about " onTypingDone={next} />}
           {state >= 5 && (
-            <Swapper typing="{ %tech }" swapping="notes" onSwappingDone={next}>
+            <Swapper typing="`tech`" swapping="notes" onSwappingDone={next}>
               <>
                 <span className="font-mono font-medium text-blue-400">
                   tech
