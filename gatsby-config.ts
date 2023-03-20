@@ -4,7 +4,12 @@
  * @see https://www.gatsbyjs.com/docs/
  */
 
+import dotenv from "dotenv";
 import { GatsbyConfig } from "gatsby";
+
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 const config: GatsbyConfig = {
   graphqlTypegen: true,
@@ -33,6 +38,23 @@ const config: GatsbyConfig = {
         rule: {
           include: /assets/,
         },
+      },
+    },
+
+    // For connecting with Github Source GraphQL
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "GitHub",
+        fieldName: "github",
+        url: "https://api.github.com/graphql",
+        // HTTP headers
+        headers: {
+          // Learn about environment variables: https://gatsby.dev/env-vars
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        },
+        // Additional options to pass to node-fetch
+        fetchOptions: {},
       },
     },
 
