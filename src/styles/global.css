@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
+
+#arrow,
+#arrow::before {
+  @apply absolute bg-inherit w-3 h-3;
+}
+
+#arrow {
+  @apply invisible;
+}
+
+#arrow::before {
+  @apply visible content-[''] rotate-45;
+}
+
+#tooltip[data-popper-placement^="top"] #arrow {
+  @apply -bottom-1;
+}
+
+#tooltip[data-popper-placement^="bottom"] #arrow {
+  @apply -top-1.5;
+}
+#tooltip[data-popper-placement^="bottom"] #arrow::before {
+  @apply border-t border-l dark:border-slate-600;
+}
+
+#tooltip[data-popper-placement^="left"] #arrow {
+  @apply -right-1;
+}
+
+#tooltip[data-popper-placement^="right"] #arrow {
+  @apply -left-1;
+}
+
 @tailwind utilities;

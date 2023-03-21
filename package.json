@@ -13,7 +13,9 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@headlessui/react": "^1.7.13",
     "@heroicons/react": "^2.0.16",
+    "@popperjs/core": "^2.11.6",
     "@primer/octicons-react": "^18.2.0",
     "classnames": "^2.3.2",
     "gatsby": "^5.7.0",
@@ -25,7 +27,8 @@
     "gatsby-source-graphql": "^5.7.0",
     "gatsby-transformer-sharp": "^5.7.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-popper": "^2.3.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.55.0",
