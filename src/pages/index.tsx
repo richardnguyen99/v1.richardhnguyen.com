@@ -9,6 +9,8 @@ const IndexPage: React.FC = () => {
       <TypeWriter />
       <div className="mt-12" />
       <SwipeButton />
+
+      <div className="my-16 w-56 h-4 bg-gradient-to-tr from-sky-400 to-blue-500" />
     </div>
   );
 };
