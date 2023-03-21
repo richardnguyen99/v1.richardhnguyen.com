@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
     >
       <div
         id="footer-container"
-        className="w-full mx-auto px-6 py-16 max-w-6xl"
+        className="w-full mx-auto px-10 py-16 xl:max-w-6xl "
       >
         <div className="flex">
           <div className="w-5/12">

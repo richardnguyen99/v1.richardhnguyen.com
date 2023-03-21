@@ -16,7 +16,7 @@ const PageNavigator: React.FC = () => {
   return (
     <div
       id="header-page-navigator"
-      className="flex-grow-[2] flex items-center mx-6"
+      className="flex-grow-[2] flex items-center mr-6"
     >
       <Link to="/">
         <Brand />

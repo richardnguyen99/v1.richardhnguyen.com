@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import PageNavigator from "./PageNavigator";
+import ToolBar from "./ToolBar";
 
 export type Props = React.PropsWithChildren<object>;
 
@@ -21,10 +22,11 @@ const Header: React.FC<Props> = () => {
     >
       <div
         id="header-container"
-        className="mx-auto box-content max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl px-10"
+        className="mx-auto max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl px-10"
       >
         <nav id="header-flex" className="flex items-center h-full">
           <PageNavigator />
+          <ToolBar />
         </nav>
       </div>
     </header>
