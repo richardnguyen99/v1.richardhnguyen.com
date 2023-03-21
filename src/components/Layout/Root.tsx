@@ -1,3 +1,4 @@
+import Footer from "@components/Footer";
 import Header from "@components/Header";
 import * as React from "react";
 
@@ -14,6 +15,7 @@ const RootLayout: React.FC<Props> = ({ children, ...rest }) => {
     >
       <Header />
       <div className="pt-16">{children}</div>
+      <Footer />
     </main>
   );
 };
