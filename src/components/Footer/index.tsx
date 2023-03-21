@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 const Footer: React.FC = () => {
   const {
     file: {
-      childImageSharp: { fixed, gatsbyImageData },
+      childImageSharp: { gatsbyImageData },
     },
   } = useStaticQuery<Queries.FooterQuery>(query);
 
