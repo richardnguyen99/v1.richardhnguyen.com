@@ -20,6 +20,9 @@ module.exports = {
       ],
     },
     extend: {
+      colors: {
+        gatsby: "#663399",
+      },
       animation: {
         "swapOut-running":
           "kf-swapOut 400ms cubic-bezier(0.75, 0, 0.25, 1) 150ms both running",
