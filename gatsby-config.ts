@@ -35,6 +35,29 @@ const config: GatsbyConfig = {
       },
     },
 
+    // For markdowns
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        footnotes: true,
+        gfm: true,
+        jsFrontmatterEngine: false,
+        excerpt_separator: "<!-- end -->",
+        tableOfContents: {
+          maxDepth: 1,
+        },
+        // Add your gatsby-remark-* plugins here
+        plugins: [],
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "content",
+        path: `${__dirname}/content`,
+      },
+    },
+
     // For TailwindCSS
     "gatsby-plugin-postcss",
 
