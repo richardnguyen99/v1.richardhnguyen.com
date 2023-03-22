@@ -22,7 +22,7 @@ const Header: React.FC<Props> = () => {
     >
       <div
         id="header-container"
-        className="mx-auto max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl px-10"
+        className="px-6 md:mx-auto md:max-w-3xl lg:max-w-4xl xl:max-w-6xl md:px-10"
       >
         <nav id="header-flex" className="flex items-center h-full">
           <PageNavigator />

@@ -18,17 +18,20 @@ const PageNavigator: React.FC = () => {
       id="header-page-navigator"
       className="flex-grow-[2] flex items-center mr-6"
     >
-      <Link to="/">
+      <Link to="/" className="flex items-center h-16">
         <Brand />
       </Link>
-      <Item id="header-page-posts-link" to="/posts" name="Posts" />
-      <Item
-        id="header-page-categories-link"
-        to="/categories"
-        name="Categories"
-      />
-      <Item id="header-page-about-link" to="/about" name="About" />
-      <Item id="header-page-projects-link" to="/projects" name="Projects" />
+      <div className="hidden md:flex">
+        <Item id="header-page-posts-link" to="/posts" name="Posts" />
+
+        <Item
+          id="header-page-categories-link"
+          to="/categories"
+          name="Categories"
+        />
+        <Item id="header-page-about-link" to="/about" name="About" />
+        <Item id="header-page-projects-link" to="/projects" name="Projects" />
+      </div>
     </div>
   );
 };
