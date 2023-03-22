@@ -43,9 +43,6 @@ const config: GatsbyConfig = {
         gfm: true,
         jsFrontmatterEngine: false,
         excerpt_separator: "<!-- end -->",
-        tableOfContents: {
-          maxDepth: 1,
-        },
         // Add your gatsby-remark-* plugins here
         plugins: [],
       },
