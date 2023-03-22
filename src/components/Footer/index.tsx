@@ -1,6 +1,7 @@
 import * as React from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import Column from "./Column";
 
 const Footer: React.FC = () => {
   const {
@@ -39,76 +40,96 @@ const Footer: React.FC = () => {
               id="footer-column-container"
               className="grid gap-4 grid-cols-4"
             >
-              <div>
-                <h2 className="font-semibold text-3xl text-sky-400 dark:hover:text-sky-500 pb-6">
-                  Categories
-                </h2>
-                <ul>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    Tutorial
-                  </li>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    News
-                  </li>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    Sharing
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h2 className="font-semibold text-3xl text-sky-400 dark:hover:text-sky-500 pb-6">
-                  Tags
-                </h2>
-                <ul>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    Python
-                  </li>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    C++
-                  </li>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    React
-                  </li>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    TypeScript
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h2 className="font-semibold text-3xl text-sky-400 dark:hover:text-sky-500 pb-6">
-                  About
-                </h2>
-                <ul>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    I/Me/Myself
-                  </li>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    This site
-                  </li>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    Projects
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h2 className="font-semibold text-3xl text-sky-400 dark:hover:text-sky-500 pb-6">
-                  Connect
-                </h2>
-                <ul>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    Discord
-                  </li>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    Twitter
-                  </li>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    Github
-                  </li>
-                  <li className="font-medium opacity-40 hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white">
-                    StackOverflow
-                  </li>
-                </ul>
-              </div>
+              <Column
+                title="Categories"
+                items={[
+                  {
+                    type: "gatsby-link",
+                    href: "/categories/tutorial",
+                    name: "Tutorial",
+                  },
+                  {
+                    type: "gatsby-link",
+                    href: "/categories/news",
+                    name: "News",
+                  },
+                  {
+                    type: "gatsby-link",
+                    href: "/categories/sharing",
+                    name: "Sharing",
+                  },
+                ]}
+              />
+              <Column
+                title="Tags"
+                items={[
+                  {
+                    type: "gatsby-link",
+                    href: "/tags/python",
+                    name: "Python",
+                  },
+                  {
+                    type: "gatsby-link",
+                    href: "/tags/cpp",
+                    name: "C++",
+                  },
+                  {
+                    type: "gatsby-link",
+                    href: "/tags/react",
+                    name: "React",
+                  },
+                  {
+                    type: "gatsby-link",
+                    href: "/tags/typescript",
+                    name: "TypeScript",
+                  },
+                ]}
+              />
+              <Column
+                title="About"
+                items={[
+                  {
+                    type: "gatsby-link",
+                    href: "/about/me",
+                    name: "I/Me/Myself",
+                  },
+                  {
+                    type: "gatsby-link",
+                    href: "/site",
+                    name: "Site",
+                  },
+                  {
+                    type: "gatsby-link",
+                    href: "/projects",
+                    name: "Projects",
+                  },
+                ]}
+              />
+              <Column
+                title="Connect"
+                items={[
+                  {
+                    type: "a",
+                    href: "richard@richardhnguyen.com",
+                    name: "Email",
+                  },
+                  {
+                    type: "a",
+                    href: "https://twitter.com/richardmhnguyen",
+                    name: "Twitter",
+                  },
+                  {
+                    type: "a",
+                    href: "https://stackoverflow.com/users/12915739/richard-h-nguyen",
+                    name: "GitHub",
+                  },
+                  {
+                    type: "a",
+                    href: "https://github.com/richardnguyen99",
+                    name: "StackOverflow",
+                  },
+                ]}
+              />
             </div>
           </div>
         </div>
