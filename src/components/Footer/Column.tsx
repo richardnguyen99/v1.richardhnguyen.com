@@ -31,10 +31,10 @@ const Column: React.FC<Props> = ({ title, items, ...rest }) => {
 
   return (
     <div {...rest}>
-      <h2 className="font-semibold text-3xl text-sky-400 dark:hover:text-sky-500 pb-6">
+      <h2 className="font-extrabold text-xl lg:text-2xl xl:text-3xl text-sky-400 dark:hover:text-sky-500 pb-6">
         {title}
       </h2>
-      <ul>
+      <ul className="flex items-center gap-6 md:block">
         {items.map((item, i) => (
           <li
             key={`footer-item-${i}`}

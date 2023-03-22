@@ -1,6 +1,8 @@
 import * as React from "react";
+import clsx from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+
 import Column from "./Column";
 import LegalNotice from "./LegalNotice";
 import BuiltByGatsby from "./BuiltByGatsby";
@@ -19,10 +21,14 @@ const Footer: React.FC = () => {
     >
       <div
         id="footer-container"
-        className="w-full mx-auto px-10 py-16 xl:max-w-6xl "
+        className={clsx("px-6", {
+          "md:mx-auto md:max-w-3xl md:px-10": true,
+          "lg:max-w-4xl": true,
+          "xl:max-w-6xl": true,
+        })}
       >
-        <div className="flex">
-          <div className="w-5/12">
+        <div className="block md:flex">
+          <div className="mb-6 md:w-5/12 md:mb-0">
             <div className="flex items-center">
               <GatsbyImage image={gatsbyImageData} alt="brand-64" />
               <h2 className="text-7xl leading-none font-bold pl-4">Blog</h2>
@@ -36,11 +42,11 @@ const Footer: React.FC = () => {
           </div>
           <div
             id="footer-flex-container"
-            className="flex flex-grow-[2] flex-col"
+            className="block md:flex flex-grow-[2] flex-col"
           >
             <div
               id="footer-column-container"
-              className="grid gap-4 grid-cols-4"
+              className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
             >
               <Column
                 title="Categories"
@@ -92,7 +98,7 @@ const Footer: React.FC = () => {
                 items={[
                   {
                     type: "gatsby-link",
-                    href: "/about/me",
+                    href: "/about",
                     name: "I/Me/Myself",
                   },
                   {
