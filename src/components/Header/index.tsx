@@ -1,4 +1,5 @@
 import * as React from "react";
+import clsx from "classnames";
 
 import PageNavigator from "./PageNavigator";
 import ToolBar from "./ToolBar";
@@ -18,11 +19,18 @@ const Header: React.FC<Props> = () => {
   return (
     <header
       id="global-header"
-      className="w-full fixed z-10 bg-zinc-50 dark:bg-zinc-900 border-b border-gray-700"
+      className={clsx("", {
+        "w-full fixed z-10 border-b": true, // Layout
+        "bg-zinc-50 dark:bg-zinc-900 border-gray-700": true, // Style
+      })}
     >
       <div
         id="header-container"
-        className="px-6 md:mx-auto md:max-w-3xl lg:max-w-4xl xl:max-w-6xl md:px-10"
+        className={clsx("px-6", {
+          "md:mx-auto md:max-w-3xl md:px-10": true,
+          "lg:max-w-4xl": true,
+          "xl:max-w-6xl": true,
+        })}
       >
         <nav id="header-flex" className="flex items-center h-full">
           <PageNavigator />

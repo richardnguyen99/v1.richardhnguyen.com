@@ -1,4 +1,5 @@
 import * as React from "react";
+import clsx from "classnames";
 import { Link } from "gatsby";
 
 type Internal = {
@@ -24,7 +25,11 @@ const Item: React.FC<Props> = ({ name, to }) => {
   return (
     <Link
       to={to}
-      className="inline-block relative p-5 font-semibold text-lg leading-6 text-zinc-50 hover:text-sky-500"
+      className={clsx("", {
+        "inline-block relative": true,
+        "p-5 font-semibold text-lg leading-6": true,
+        "text-zinc-50 hover:text-sky-500": true,
+      })}
     >
       <div>{name}</div>
     </Link>
