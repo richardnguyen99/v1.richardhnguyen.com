@@ -4,6 +4,7 @@ import clsx from "classnames";
 import SwipeButton from "@components/Button/SwipeButton";
 import { SEO } from "@components/SEO";
 import TypeWriter from "@components/Typewritter";
+import Articles from "@components/Article";
 
 const IndexPage: React.FC = () => {
   return (
@@ -19,6 +20,8 @@ const IndexPage: React.FC = () => {
       <SwipeButton />
 
       <div className="my-16 w-56 h-4 bg-gradient-to-tr from-sky-400 to-blue-500" />
+
+      <Articles />
     </div>
   );
 };
