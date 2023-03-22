@@ -1,7 +1,9 @@
 import * as React from "react";
-import { graphql, Link, useStaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Column from "./Column";
+import LegalNotice from "./LegalNotice";
+import BuiltByGatsby from "./BuiltByGatsby";
 
 const Footer: React.FC = () => {
   const {
@@ -138,54 +140,8 @@ const Footer: React.FC = () => {
           className="flex mt-10 pt-10 border-t dark:border-zinc-700"
         >
           <div className="flex-grow-[2]">
-            <p className="text-sm pb-4 italic">
-              <span className="underline dark:text-zinc-100 dark:hover:text-white">
-                richardhnguyen.com
-              </span>{" "}
-              is powered by{" "}
-              <a
-                className="hover:underline text-gatsby"
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.gatsbyjs.com/"
-              >
-                GatsbyJS
-              </a>{" "}
-              and is hosted on{" "}
-              <a
-                className="hover:underline text-gatsby"
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.gatsbyjs.com/dashboard"
-              >
-                Gatsby Cloud
-              </a>
-              . More info{" "}
-              <Link className="font-bold hover:underline" to="/about-this-page">
-                here
-              </Link>
-              .
-            </p>
-            <nav
-              id="legal-links"
-              aria-label="legal"
-              className="flex justify-between"
-            >
-              <span>© 2023 richardhnguyen.com. All Rights Reserved.</span>
-              <div className="flex justify-start items-start">
-                <Link className="hover:underline" to="/privacy">
-                  Privacy Notice
-                </Link>
-                <span className="px-3">·</span>
-                <Link className="hover:underline" to="/terms">
-                  Terms of service
-                </Link>
-                <span className="px-3">·</span>
-                <Link className="hover:underline" to="/cookies">
-                  Cookie preferences
-                </Link>
-              </div>
-            </nav>
+            <BuiltByGatsby />
+            <LegalNotice />
           </div>
         </div>
       </div>
