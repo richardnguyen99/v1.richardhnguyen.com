@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { SEO } from "@components/SEO";
+
 const AboutPage: React.FC = () => {
   return (
     <div>
@@ -9,3 +11,5 @@ const AboutPage: React.FC = () => {
 };
 
 export default AboutPage;
+
+export const Head = () => <SEO title="About" />;

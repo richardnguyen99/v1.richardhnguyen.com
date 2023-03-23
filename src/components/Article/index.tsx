@@ -1,5 +1,4 @@
 import { graphql, useStaticQuery } from "gatsby";
-import { IGatsbyImageData } from "gatsby-plugin-image";
 import * as React from "react";
 import ArticleCard from "./ArticleCard";
 
@@ -21,6 +20,7 @@ const ArticleContainer: React.FC = () => {
       tags: node.frontmatter.tags as string[],
       categories: node.frontmatter.categories[0],
       excerpt: node.excerpt,
+      slug: node.fields.slug,
       gatsbyImageData:
         node.frontmatter.thumbnail.childImageSharp.gatsbyImageData,
     };
@@ -48,6 +48,9 @@ export const query = graphql`
         node {
           id
           excerpt(format: MARKDOWN)
+          fields {
+            slug
+          }
           frontmatter {
             title
             created(formatString: "MMM DD, YYYY")

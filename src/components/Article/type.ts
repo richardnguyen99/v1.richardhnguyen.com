@@ -7,5 +7,6 @@ export type ArticleProps = {
   excerpt: string;
   tags: Array<string>;
   categories: string;
+  slug: string;
   gatsbyImageData: IGatsbyImageData;
 };

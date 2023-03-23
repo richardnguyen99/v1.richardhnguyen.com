@@ -7,6 +7,7 @@
 
 import path from "path";
 import { GatsbyNode } from "gatsby";
+import { createFilePath } from "gatsby-source-filesystem";
 
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] =
   // This configuration will allow me to create a shortcut for each folder in
@@ -24,3 +25,20 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] =
       },
     });
   };
+
+export const onCreateNode: GatsbyNode["onCreateNode"] = ({
+  node,
+  actions,
+  getNode,
+}) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === "MarkdownRemark") {
+    const slug = createFilePath({ node, getNode, basePath: "pages" });
+    createNodeField({
+      node,
+      name: "slug",
+      value: `${slug}`,
+    });
+  }
+};

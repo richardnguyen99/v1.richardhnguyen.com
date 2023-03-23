@@ -47,7 +47,7 @@ const AnimatedBrand: React.FC = () => {
           </g>
           <g
             id="title"
-            className="fill-gray-800 group-hover:fill-gray-900 dark:fill-gray-50 group-hover:dark:fill-gray-100"
+            className="fill-gray-800 group-hover:fill-gray-900 dark:fill-gray-50 dark:group-hover:fill-gray-100"
           >
             <path
               className="group-hover:translate-x-0"

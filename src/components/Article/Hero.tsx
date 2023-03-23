@@ -26,18 +26,20 @@ const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
 
       <div className="py-10 flex flex-col md:flex-row-reverse -mx-6">
         <div className="w-full lg:w-8/12 px-6">
-          <GatsbyImage
-            aria-label="article-thumbnail"
-            alt={data.title}
-            image={data.gatsbyImageData}
-            className="rounded-lg"
-            imgClassName="rounded-lg hover:scale-[1.05]"
-          />
+          <Link to={`/posts${data.slug}`}>
+            <GatsbyImage
+              aria-label="article-thumbnail"
+              alt={data.title}
+              image={data.gatsbyImageData}
+              className="rounded-lg"
+              imgClassName="rounded-lg hover:scale-[1.05]"
+            />
+          </Link>
         </div>
         <div className="flex flex-col justify-between w-full lg:w-4/12 px-6">
           <div>
             <h3 className="mt-4 mb-6 lg:mt-3 lg:mb-0 text-3xl lg:text-4xl font-extrabold tracking-tight dark:hover:text-sky-500 cursor-pointer">
-              <Link to="#">{data.title}</Link>
+              <Link to={`/posts${data.slug}`}>{data.title}</Link>
             </h3>
 
             <p className="dark:text-neutral-400 mt-3">{content}</p>

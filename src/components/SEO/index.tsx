@@ -32,7 +32,11 @@ export const SEO: SEOComponentType = ({
 
   return (
     <>
-      <html data-mode="dark" lang="en-US" />
+      <html
+        data-mode="dark"
+        lang="en-US"
+        className="transition-colors duration-700"
+      />
       <title>
         {formattedTitle()} {defaultTitle}
       </title>
