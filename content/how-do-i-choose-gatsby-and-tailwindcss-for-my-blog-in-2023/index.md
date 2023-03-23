@@ -9,6 +9,7 @@ tags:
   - GatsbyJS
   - React
   - TypeScript
+thumbnail: ./mock.webp
 ---
 
 Despite the rise of `NextJS`, `Vite`, and `Svelte`, despite the fact that

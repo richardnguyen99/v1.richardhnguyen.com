@@ -33,4 +33,10 @@
   @apply -left-1;
 }
 
+.gatsby-image-wrapper [data-main-image][aria-label="article-thumbnail"] {
+  @apply opacity-0;
+  @apply duration-500;
+  @apply transition-all;
+}
+
 @tailwind utilities;
