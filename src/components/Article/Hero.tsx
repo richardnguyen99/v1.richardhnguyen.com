@@ -36,14 +36,17 @@ const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
         </div>
         <div className="flex flex-col justify-between w-full lg:w-4/12 px-6">
           <div>
-            <h3 className="mb-3 text-4xl font-extrabold tracking-tight dark:hover:text-sky-500 cursor-pointer">
+            <h3 className="mt-4 mb-6 lg:mt-3 lg:mb-0 text-3xl lg:text-4xl font-extrabold tracking-tight dark:hover:text-sky-500 cursor-pointer">
               <Link to="#">{data.title}</Link>
             </h3>
 
             <p className="dark:text-neutral-400">{content}</p>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="font-bold">{data.author} &mdash;</span>
+          <div className="mt-3 lg:mt-0 flex items-center justify-between">
+            <span className="flex gap-1 font-bold">
+              {data.author}
+              <span className="hidden lg:block">&mdash;</span>
+            </span>
             <span>{data.created}</span>
           </div>
         </div>
