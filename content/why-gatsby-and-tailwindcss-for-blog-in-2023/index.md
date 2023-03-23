@@ -9,7 +9,7 @@ tags:
   - GatsbyJS
   - React
   - TypeScript
-thumbnail: ./mock.webp
+thumbnail: ./why-gatsby-and-tailwind-in-2023.png
 ---
 
 Despite the rise of `NextJS`, `Vite`, and `Svelte`, despite the fact that

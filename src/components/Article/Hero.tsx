@@ -40,7 +40,7 @@ const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
               <Link to="#">{data.title}</Link>
             </h3>
 
-            <p className="dark:text-neutral-400">{content}</p>
+            <p className="dark:text-neutral-400 mt-3">{content}</p>
           </div>
           <div className="mt-3 lg:mt-0 flex items-center justify-between">
             <span className="flex gap-1 font-bold">

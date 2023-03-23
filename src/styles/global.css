@@ -34,6 +34,8 @@
 }
 
 .gatsby-image-wrapper [data-main-image][aria-label="article-thumbnail"] {
+  @apply scale-100;
+  @apply hover:scale-105;
   @apply opacity-0;
   @apply duration-500;
   @apply transition-all;
