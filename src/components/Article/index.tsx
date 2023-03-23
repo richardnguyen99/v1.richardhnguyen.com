@@ -50,7 +50,7 @@ export const query = graphql`
           excerpt(format: MARKDOWN)
           frontmatter {
             title
-            created
+            created(formatString: "MMM DD, YYYY")
             author
             tags
             categories

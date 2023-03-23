@@ -1,6 +1,6 @@
+import * as React from "react";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import * as React from "react";
 
 import type { ArticleProps } from "./type";
 
@@ -14,7 +14,7 @@ type Props = React.PropsWithChildren<
 
 const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
   return (
-    <article {...rest} className="block w-full px-6">
+    <article {...rest} className="group block w-full px-6">
       <div className="border-t border-zinc-700" />
 
       <div className="py-10 flex flex-col md:flex-row-reverse -mx-6">
@@ -27,7 +27,19 @@ const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
             imgClassName="rounded-lg hover:scale-[1.05]"
           />
         </div>
-        <div className="w-full lg:w-4/12 px-6">{data.title}</div>
+        <div className="flex flex-col justify-between w-full lg:w-4/12 px-6">
+          <div>
+            <h3 className="mb-3 text-4xl font-extrabold tracking-tight dark:hover:text-sky-500 cursor-pointer">
+              <Link to="#">{data.title}</Link>
+            </h3>
+
+            <p className="dark:text-neutral-400">{data.excerpt}</p>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="font-bold">{data.author} &mdash;</span>
+            <span>{data.created}</span>
+          </div>
+        </div>
       </div>
     </article>
   );
