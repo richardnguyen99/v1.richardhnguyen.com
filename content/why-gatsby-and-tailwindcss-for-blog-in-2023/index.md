@@ -1,5 +1,5 @@
 ---
-title: "How do I choose GatsbyJS and TailwindCSS for my blog in 2023?"
+title: "Why Gatsby and TailwindCSS for blog in 2023?"
 created: 2023-03-22
 updated: 2023-03-22
 author: "Richard Nguyen"
