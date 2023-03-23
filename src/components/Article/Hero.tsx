@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useRemark } from "react-remark";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
@@ -13,6 +14,12 @@ type Props = React.PropsWithChildren<
 >;
 
 const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
+  const [content, setContent] = useRemark();
+
+  React.useEffect(() => {
+    setContent(data.excerpt);
+  }, [data.excerpt, setContent]);
+
   return (
     <article {...rest} className="group block w-full px-6">
       <div className="border-t border-zinc-700" />
@@ -33,7 +40,7 @@ const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
               <Link to="#">{data.title}</Link>
             </h3>
 
-            <p className="dark:text-neutral-400">{data.excerpt}</p>
+            <p className="dark:text-neutral-400">{content}</p>
           </div>
           <div className="flex items-center justify-between">
             <span className="font-bold">{data.author} &mdash;</span>
