@@ -30,7 +30,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-popper": "^2.3.0",
-    "react-remark": "^2.1.0"
+    "react-remark": "^2.1.0",
+    "unist-util-visit": "^2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.55.0",

@@ -44,7 +44,12 @@ const config: GatsbyConfig = {
         jsFrontmatterEngine: false,
         excerpt_separator: "<!-- end -->",
         // Add your gatsby-remark-* plugins here
-        plugins: [],
+        plugins: [
+          {
+            resolve: "gatsby-remark-callout",
+            options: {},
+          },
+        ],
       },
     },
     {

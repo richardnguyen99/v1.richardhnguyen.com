@@ -21,3 +21,11 @@ still pick `Gatsby` to be the main framework for my blog.
 # Why is Gatsby?
 
 Nothing
+
+> [!info] blockquote
+>
+> Another paragraph.
+>
+> ```
+> Nested code
+> ```
