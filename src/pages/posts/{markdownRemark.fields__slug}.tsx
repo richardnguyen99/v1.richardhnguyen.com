@@ -2,19 +2,12 @@ import * as React from "react";
 import { graphql, HeadFC, PageProps } from "gatsby";
 
 import { SEO } from "@components/SEO";
+import Content from "@components/Content";
 
 type PostTemplateProps = Queries.PostTemplateQuery;
 
-const PostTemplate: React.FC<PageProps<PostTemplateProps>> = ({
-  data: _queriedData,
-}) => {
-  const data = _queriedData.markdownRemark;
-
-  return (
-    <div id={data.id}>
-      <div id="content" dangerouslySetInnerHTML={{ __html: data.html }} />
-    </div>
-  );
+const PostTemplate: React.FC<PageProps<PostTemplateProps>> = ({ data }) => {
+  return <Content data={data} />;
 };
 
 export const query = graphql`

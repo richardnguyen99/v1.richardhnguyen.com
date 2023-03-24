@@ -1,0 +1,76 @@
+import * as React from "react";
+import clsx from "classnames";
+import { GatsbyImage } from "gatsby-plugin-image";
+
+type Props = {
+  data: Queries.PostTemplateQuery;
+};
+
+const Content: React.FC<React.HTMLAttributes<HTMLDivElement> & Props> = ({
+  data: { markdownRemark: _data },
+  ...rest
+}) => {
+  const formatTimeToRead = (time: number) => {
+    return `${time} min${time > 1 ? "s" : ""}`;
+  };
+
+  return (
+    <div {...rest} id={_data.id} className="">
+      <div id="banner" className="py-12 md:py-14 lg:py-16 xl:py-18">
+        <div
+          className={clsx("px-6", {
+            "md:mx-auto md:max-w-3xl md:px-10": true,
+            "lg:max-w-4xl": true,
+            "xl:max-w-6xl": true,
+          })}
+        >
+          <h1
+            id="title"
+            className={clsx("", {
+              "text-3xl md:text-4xl lg:text-5xl xl:text-6xl": true,
+              "font-extrabold lg:font-black": true,
+              "tracking-tight lg:tracking-tighter": true,
+              "text-sky-400 hover:text-sky-500": true,
+            })}
+          >
+            {_data.frontmatter.title}
+          </h1>
+          <div id="frontmatter" className="w-full mt-4 md:mt-5 lg:mt-6 xl:mt-7">
+            <div className="flex items-center gap-3 w-6/12 md:w-5/12 whitespace-nowrap">
+              <p>{_data.frontmatter.created}</p>
+              <p>·</p>
+              <p>{formatTimeToRead(_data.timeToRead)}</p>
+              <p>·</p>
+              <p>
+                By{" "}
+                <span className="font-bold border-b hover:border-b-4 cursor-pointer border-sky-500 transition-all">
+                  {_data.frontmatter.author}
+                </span>
+              </p>
+            </div>
+            <GatsbyImage
+              alt={_data.frontmatter.title}
+              imgClassName="rounded-lg"
+              className="rounded-lg my-6 lg:my-12 md:max-h-[480px] lg:max-h-[600px]"
+              image={
+                _data.frontmatter.thumbnail.childImageSharp.gatsbyImageData
+              }
+            />
+            <hr className="h-[1px] rounded-xl dark:bg-zinc-700 border-none" />
+          </div>
+        </div>
+      </div>
+      <div
+        id="content"
+        className={clsx("my-6 px-6", {
+          "md:mx-auto md:max-w-3xl md:px-10": true,
+          "lg:max-w-4xl lg:my-12": true,
+          "xl:max-w-6xl": true,
+        })}
+        dangerouslySetInnerHTML={{ __html: _data.html }}
+      />
+    </div>
+  );
+};
+
+export default Content;

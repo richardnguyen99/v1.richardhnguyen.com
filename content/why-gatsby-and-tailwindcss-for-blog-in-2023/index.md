@@ -20,6 +20,8 @@ still pick `Gatsby` to be the main framework for my blog.
 
 # Why is Gatsby?
 
+[GatsbyJS](https://www.gatsbyjs.com/)
+
 Nothing
 
 > [!info] blockquote

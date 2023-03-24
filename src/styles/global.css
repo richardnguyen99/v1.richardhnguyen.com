@@ -49,4 +49,23 @@
   @apply rounded-md;
 }
 
+#content {
+  @apply text-lg;
+  @apply dark:text-zinc-300;
+}
+
+#content code {
+  @apply text-base;
+}
+
+#content a {
+  @apply font-bold;
+  @apply border-b;
+  @apply hover:border-b-4;
+  @apply cursor-pointer;
+  @apply border-sky-500;
+  @apply dark:text-zinc-50;
+  @apply transition-all;
+}
+
 @tailwind utilities;
