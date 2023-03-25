@@ -99,4 +99,32 @@
   @apply transition-all;
 }
 
+#content .callout {
+  @apply overflow-hidden;
+  @apply flex;
+  @apply flex-col;
+  @apply items-start;
+  @apply relative;
+  @apply w-auto;
+  @apply mt-6;
+  @apply rounded-lg;
+  @apply border;
+  @apply p-6;
+  @apply dark:bg-zinc-800;
+  @apply dark:border-zinc-500;
+}
+
+#content .info {
+  @apply dark:bg-sky-500/20;
+  @apply dark:border-sky-600;
+}
+
+#content .callout > h3 {
+  @apply mt-0;
+}
+
+#content .info > h3 {
+  @apply dark:text-sky-500;
+}
+
 @tailwind utilities;
