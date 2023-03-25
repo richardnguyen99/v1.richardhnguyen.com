@@ -17,7 +17,7 @@ module.exports = async ({ markdownAST }, pluginOptions) => {
 
     let type = rawType.slice(2, rawType.length - 1);
     node.children[0].type = "heading";
-    node.children[0].depth = 1;
+    node.children[0].depth = 3;
     node.children[0].children[0].value = title;
     node.children[0].data = node.children[0].data || {};
     node.children[0].data.hProperties = {

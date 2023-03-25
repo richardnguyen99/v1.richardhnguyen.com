@@ -22,7 +22,7 @@ still pick `Gatsby` to be the main framework for my blog.
 
 [GatsbyJS](https://www.gatsbyjs.com/)
 
-Nothing
+Nothing is `here`.
 
 > [!info] blockquote
 >

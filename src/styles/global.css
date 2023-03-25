@@ -54,8 +54,39 @@
   @apply dark:text-zinc-300;
 }
 
-#content code {
+#content p {
+  @apply mt-6;
+}
+
+#content h1 {
+  @apply text-5xl;
+  @apply font-black;
+  @apply mt-16;
+}
+
+#content h2 {
+  @apply text-3xl;
+  @apply font-extrabold;
+  @apply mt-12;
+}
+
+#content h3 {
+  @apply text-xl;
+  @apply font-bold;
+  @apply mt-8;
+}
+
+/* Style code tags that are not inside the pre tags */
+
+#content code:not(pre > code) {
   @apply text-base;
+  @apply text-pink-400;
+  @apply p-1;
+  @apply px-2;
+  @apply rounded-lg;
+  @apply dark:bg-zinc-800;
+  @apply font-mono;
+  @apply font-medium;
 }
 
 #content a {
