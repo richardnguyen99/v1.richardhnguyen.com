@@ -43,7 +43,7 @@ export default ArticleContainer;
 
 export const query = graphql`
   query Articles {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: { frontmatter: { created: DESC } }) {
       edges {
         node {
           id
