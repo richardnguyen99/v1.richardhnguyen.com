@@ -76,6 +76,10 @@
   @apply mt-8;
 }
 
+#content pre {
+  @apply mt-6;
+}
+
 /* Style code tags that are not inside the pre tags */
 
 #content code:not(pre > code) {
@@ -97,6 +101,17 @@
   @apply border-sky-500;
   @apply dark:text-zinc-50;
   @apply transition-all;
+}
+
+#content ul {
+  @apply mt-6;
+  @apply pl-12;
+}
+
+#content ul li {
+  @apply mt-3;
+  @apply list-item;
+  @apply list-disc;
 }
 
 #content .callout {
