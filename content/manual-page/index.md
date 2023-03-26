@@ -187,3 +187,31 @@ This will be rendered as:
 > This a danger callout.
 
 If there is no title, the `Danger` title will be used by default.
+
+## Blockquotes
+
+If you want to use blockquotes without any special styles, you can use the `>` syntax as usual:
+
+```md
+> Blockquote
+>
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui
+> mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque
+> eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus
+> molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum
+> feugiat nisl ut dapibus. Maecenas ultricies mi eu turpis hendrerit fringilla.
+> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+> cubilia Curae; Aliquam nibh ante, egestas id dictum a, commodo luctus libero.
+```
+
+This will be rendered as:
+
+> Blockquote
+>
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui
+> mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque
+> eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus
+> molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum
+> feugiat nisl ut dapibus. Maecenas ultricies mi eu turpis hendrerit fringilla.
+> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+> cubilia Curae; Aliquam nibh ante, egestas id dictum a, commodo luctus libero.

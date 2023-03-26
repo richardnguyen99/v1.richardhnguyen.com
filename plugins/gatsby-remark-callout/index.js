@@ -16,6 +16,8 @@ module.exports = async ({ markdownAST }, pluginOptions) => {
     if (!isCorrectType) return;
 
     let type = rawType.slice(2, rawType.length - 1);
+    title = title || type.charAt(0).toUpperCase() + type.slice(1);
+
     node.children[0].type = "heading";
     node.children[0].depth = 3;
     node.children[0].children[0].value = title;
