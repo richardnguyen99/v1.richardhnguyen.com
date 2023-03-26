@@ -9,7 +9,7 @@ tags:
   - GatsbyJS
   - React
   - TypeScript
-thumbnail: ./why-gatsby-and-tailwind-in-2023.png
+thumbnail: ./manual-page.png
 ---
 
 This page is designed to be a test site that demonstrates the features of the blog. Such as **bold texts**, _italic texts_, `inline code` and so on. If you
@@ -215,3 +215,7 @@ This will be rendered as:
 > feugiat nisl ut dapibus. Maecenas ultricies mi eu turpis hendrerit fringilla.
 > Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
 > cubilia Curae; Aliquam nibh ante, egestas id dictum a, commodo luctus libero.
+
+# Credits
+
+- Illustration <a target="_blank" rel="noreferrer" href="https://www.freepik.com/free-vector/magic-spell-books-fantasy-alchemy-grimoires-set_33819338.htm#page=4&query=manual&position=48&from_view=search&track=sph">Image by upklyak</a> on Freepik

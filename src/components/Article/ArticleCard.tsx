@@ -31,7 +31,7 @@ const ArticleCard: React.FC<Props> = ({ data, ...rest }) => {
           imgClassName="rounded-lg hover:scale-[1.05]"
         />
         <h3 className="mt-4 mb-6 text-3xl lg:text-xl hover:text-sky-500 font-bold transition-all">
-          <Link to="#">{data.title}</Link>
+          <Link to={`/posts${data.slug}`}>{data.title}</Link>
         </h3>
         <p className="dark:text-neutral-400">{content}</p>
         <div className="flex items-center justify-between mt-3">

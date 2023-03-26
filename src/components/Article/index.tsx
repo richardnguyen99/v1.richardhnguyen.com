@@ -29,12 +29,12 @@ const ArticleContainer: React.FC = () => {
   return (
     <div id="article-container" className="flex flex-wrap -mx-6 transition-all">
       <HeroArticle data={transformEdge(edges[0].node)} />
-      <ArticleCard data={transformEdge(edges[0].node)} />
-      <ArticleCard data={transformEdge(edges[0].node)} />
-      <ArticleCard data={transformEdge(edges[0].node)} />
-      <ArticleCard data={transformEdge(edges[0].node)} />
-      <ArticleCard data={transformEdge(edges[0].node)} />
-      <ArticleCard data={transformEdge(edges[0].node)} />
+      <ArticleCard data={transformEdge(edges[1].node)} />
+      <ArticleCard data={transformEdge(edges[1].node)} />
+      <ArticleCard data={transformEdge(edges[1].node)} />
+      <ArticleCard data={transformEdge(edges[1].node)} />
+      <ArticleCard data={transformEdge(edges[1].node)} />
+      <ArticleCard data={transformEdge(edges[1].node)} />
     </div>
   );
 };
