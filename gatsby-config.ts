@@ -49,6 +49,10 @@ const config: GatsbyConfig = {
             resolve: "gatsby-remark-callout",
             options: {},
           },
+          {
+            resolve: "gatsby-remark-prismjs",
+            options: {},
+          },
         ],
       },
     },
