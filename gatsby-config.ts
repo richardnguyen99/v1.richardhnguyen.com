@@ -55,7 +55,6 @@ const config: GatsbyConfig = {
               offsetY: "100",
               icon: "<span>#</span>",
               className: "anchor",
-              maintainCase: true,
               removeAccents: true,
               // isIconAfterHeader: true,
               elements: ["h1", "h2", "h3"],

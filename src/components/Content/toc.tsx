@@ -1,16 +1,5 @@
 import * as React from "react";
 
-type ItemProps = {
-  title: string;
-  url: string;
-  items?: Array<{
-    title: string;
-    url: string;
-  }>;
-};
-
-type ItemArrayProps = Array<ItemProps>;
-
 export type TOCProps = React.PropsWithChildren<
   React.HTMLAttributes<HTMLElement> & {
     toc: string;
@@ -19,6 +8,30 @@ export type TOCProps = React.PropsWithChildren<
 
 const Toc: React.FC<TOCProps> = ({ toc, ...rest }) => {
   const tocRef = React.useRef(null);
+
+  // Check if there is any heading visible on the screen on the first load. If yes, then highlight the corresponding TOC link. Use React.useEffect to make sure this is executed only once.
+  React.useEffect(() => {
+    const elements = document.querySelectorAll(
+      "#content h1[id], #content h2[id]"
+    );
+    const tocElements = document.querySelectorAll("#toc a");
+
+    for (let i = 0; i < elements.length; i++) {
+      const element = elements[i];
+      const tocElement = tocElements[i];
+
+      if (element.getBoundingClientRect().top < 0) {
+        if (tocElement) {
+          tocElement.classList.remove("active");
+        }
+      } else {
+        if (tocElement) {
+          tocElement.classList.add("active");
+        }
+        break;
+      }
+    }
+  }, []);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
