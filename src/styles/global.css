@@ -93,7 +93,7 @@
   @apply font-medium;
 }
 
-#content a {
+#content a:not(.anchor) {
   @apply font-bold;
   @apply border-b;
   @apply hover:border-b-4;
@@ -101,6 +101,29 @@
   @apply border-sky-500;
   @apply dark:text-zinc-50;
   @apply transition-all;
+}
+
+#content .anchor {
+  @apply pr-3;
+  @apply font-black;
+  @apply -translate-x-full;
+  @apply dark:hover:text-sky-500;
+  @apply transition-all;
+  @apply opacity-0;
+}
+
+#content h1:hover > .anchor,
+#content h2:hover > .anchor,
+#content h3:hover > .anchor {
+  @apply opacity-100;
+}
+
+#content h2:hover > .anchor {
+  @apply dark:hover:text-lime-500;
+}
+
+#content h3:hover > .anchor {
+  @apply dark:hover:text-indigo-500;
 }
 
 #content ul {

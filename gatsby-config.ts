@@ -50,6 +50,18 @@ const config: GatsbyConfig = {
             options: {},
           },
           {
+            resolve: "gatsby-remark-autolink-headers",
+            options: {
+              offsetY: "100",
+              icon: "<span>#</span>",
+              className: "anchor",
+              maintainCase: true,
+              removeAccents: true,
+              // isIconAfterHeader: true,
+              elements: ["h1", "h2", "h3"],
+            },
+          },
+          {
             resolve: "gatsby-remark-prismjs",
             options: {},
           },
