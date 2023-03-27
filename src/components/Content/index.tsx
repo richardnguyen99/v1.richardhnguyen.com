@@ -62,7 +62,6 @@ const Content: React.FC<React.HTMLAttributes<HTMLDivElement> & Props> = ({
         </div>
       </div>
       <div
-        id="content"
         className={clsx("flex items-start my-6 px-6", {
           "md:mx-auto md:max-w-3xl md:px-10": true,
           "lg:max-w-4xl lg:my-": true,
@@ -70,11 +69,14 @@ const Content: React.FC<React.HTMLAttributes<HTMLDivElement> & Props> = ({
         })}
       >
         <div
-          id="toc"
+          id="content"
           className="w-full xl:w-9/12"
           dangerouslySetInnerHTML={{ __html: _data.html }}
         />
-        <div className="w-0 overflow-y-hidden xl:w-3/12 xl:ml-12 xl:sticky xl:flex xl:top-16 text-sm">
+        <div
+          id="toc"
+          className="w-0 overflow-y-hidden xl:w-3/12 xl:ml-12 xl:sticky xl:flex xl:top-16 text-sm"
+        >
           <Toc toc={_data.tableOfContents} />
         </div>
       </div>

@@ -197,4 +197,12 @@
   @apply dark:text-red-500;
 }
 
+#toc li {
+  @apply mb-2;
+}
+
+#toc li > ul {
+  @apply ml-4;
+}
+
 @tailwind utilities;
