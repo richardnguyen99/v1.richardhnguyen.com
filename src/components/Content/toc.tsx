@@ -1,3 +1,4 @@
+import { start } from "@popperjs/core";
 import * as React from "react";
 
 export type TOCProps = React.PropsWithChildren<
@@ -8,6 +9,12 @@ export type TOCProps = React.PropsWithChildren<
 
 const Toc: React.FC<TOCProps> = ({ toc, ...rest }) => {
   const tocRef = React.useRef(null);
+
+  const [position, setPosition] = React.useState({
+    start: 0,
+    end: 0,
+    display: false,
+  });
 
   // Check if there is any heading visible on the screen on the first load. If yes, then highlight the corresponding TOC link. Use React.useEffect to make sure this is executed only once.
   React.useEffect(() => {
@@ -27,7 +34,19 @@ const Toc: React.FC<TOCProps> = ({ toc, ...rest }) => {
       } else {
         if (tocElement) {
           tocElement.classList.add("active");
+
+          setPosition((old) => ({
+            ...old,
+            start:
+              tocElement.getBoundingClientRect().top -
+              tocRef.current.getBoundingClientRect().top,
+            end:
+              tocElement.getBoundingClientRect().bottom -
+              tocRef.current.getBoundingClientRect().top,
+            display: true,
+          }));
         }
+
         break;
       }
     }
@@ -53,6 +72,17 @@ const Toc: React.FC<TOCProps> = ({ toc, ...rest }) => {
               });
 
               element.classList.add("active");
+
+              setPosition((old) => ({
+                ...old,
+                start:
+                  element.getBoundingClientRect().top -
+                  tocRef.current.getBoundingClientRect().top,
+                end:
+                  element.getBoundingClientRect().bottom -
+                  tocRef.current.getBoundingClientRect().top,
+                display: true,
+              }));
             }
           }
         }
@@ -85,8 +115,20 @@ const Toc: React.FC<TOCProps> = ({ toc, ...rest }) => {
 
   return (
     <div {...rest} ref={tocRef}>
+      <div
+        id="outline-marker"
+        className="absolute z-10 w-px bg-sky-500 transition-all"
+        style={{
+          opacity: position.display ? 1 : 0,
+          top: `${position.start}px`,
+          height: `${position.end - position.start}px`,
+        }}
+      />
       <h1 className="mt-6 mb-6 font-bold text-lg">On this page</h1>
-      <div dangerouslySetInnerHTML={{ __html: toc }}></div>
+      <div
+        className="relative pl-6 border-l dark:border-x-zinc-700"
+        dangerouslySetInnerHTML={{ __html: toc }}
+      ></div>
     </div>
   );
 };

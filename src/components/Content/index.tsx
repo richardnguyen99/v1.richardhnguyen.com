@@ -75,7 +75,7 @@ const Content: React.FC<React.HTMLAttributes<HTMLDivElement> & Props> = ({
         />
         <div
           id="toc"
-          className="w-0 overflow-y-hidden xl:w-3/12 xl:ml-12 xl:sticky xl:flex xl:top-16 text-sm"
+          className="w-0 xl:w-3/12 xl:ml-12 xl:sticky xl:flex xl:top-16 text-sm"
         >
           <Toc toc={_data.tableOfContents} />
         </div>

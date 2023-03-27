@@ -206,6 +206,10 @@
   @apply text-sky-500;
 }
 
+#toc a.active {
+  @apply font-bold;
+}
+
 #toc a.active:hover {
   @apply text-sky-600;
 }
