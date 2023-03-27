@@ -47,6 +47,7 @@ export const query = graphql`
       edges {
         node {
           id
+          tableOfContents(maxDepth: 2)
           excerpt(format: MARKDOWN)
           fields {
             slug

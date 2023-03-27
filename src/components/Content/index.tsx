@@ -1,6 +1,7 @@
 import * as React from "react";
 import clsx from "classnames";
 import { GatsbyImage } from "gatsby-plugin-image";
+import Toc from "./toc";
 
 type Props = {
   data: Queries.PostTemplateQuery;
@@ -74,7 +75,7 @@ const Content: React.FC<React.HTMLAttributes<HTMLDivElement> & Props> = ({
           dangerouslySetInnerHTML={{ __html: _data.html }}
         />
         <div className="w-0 overflow-y-hidden xl:w-3/12 xl:ml-12 xl:sticky xl:flex xl:top-16 text-sm">
-          <p>On this page</p>
+          <Toc toc={_data.tableOfContents} />
         </div>
       </div>
     </div>
