@@ -20,6 +20,7 @@ const Tooltip: React.FC<Props> = ({
   children,
   message,
   placement = "bottom-start",
+  ...rest
 }) => {
   const triggerRef = useRef(null);
   const popperElRef = useRef(null);
@@ -46,7 +47,7 @@ const Tooltip: React.FC<Props> = ({
   }
 
   return (
-    <div>
+    <div {...rest}>
       <div ref={triggerRef} onMouseEnter={openModal} onMouseLeave={closeModal}>
         {children}
       </div>
