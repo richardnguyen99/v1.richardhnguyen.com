@@ -16,7 +16,7 @@ const Content: React.FC<React.HTMLAttributes<HTMLDivElement> & Props> = ({
   };
 
   return (
-    <div {...rest} id={_data.id} className="">
+    <div {...rest} id={_data.id} className="xl:mb-96">
       <div id="banner" className="pt-12 md:pt-14 lg:pt-16 xl:pt-18">
         <div
           className={clsx("px-6", {

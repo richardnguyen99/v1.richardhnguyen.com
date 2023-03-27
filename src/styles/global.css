@@ -198,7 +198,16 @@
 }
 
 #toc li {
-  @apply mb-2;
+  @apply my-2;
+}
+
+#toc a:hover,
+#toc a.active {
+  @apply text-sky-500;
+}
+
+#toc a.active:hover {
+  @apply text-sky-600;
 }
 
 #toc li > ul {
