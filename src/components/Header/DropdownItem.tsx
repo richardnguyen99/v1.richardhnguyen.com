@@ -19,7 +19,14 @@ const DropdownItem: React.FC<Props> = ({
   ...rest
 }) => {
   return (
-    <li {...rest} className={clsx("dark:text-white")}>
+    <li
+      {...rest}
+      className={clsx("dark:text-white dark:hover:text-sky-500", {
+        "flex items-center": true,
+        "p-4 rounded-lg": true,
+        "dark:hover:bg-zinc-700/25": true,
+      })}
+    >
       <Link to={url}>{children}</Link>
     </li>
   );
