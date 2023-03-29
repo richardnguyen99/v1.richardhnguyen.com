@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { SEO } from "@components/SEO";
+
 const ProjectPage: React.FC = () => {
   return (
     <div>
@@ -7,5 +9,7 @@ const ProjectPage: React.FC = () => {
     </div>
   );
 };
+
+export const Head = () => <SEO title="Projects" />;
 
 export default ProjectPage;

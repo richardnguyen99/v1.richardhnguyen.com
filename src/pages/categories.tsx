@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { SEO } from "@components/SEO";
+
 const CategoryPage: React.FC = () => {
   return (
     <div>
@@ -7,5 +9,7 @@ const CategoryPage: React.FC = () => {
     </div>
   );
 };
+
+export const Head = () => <SEO title="Categories" />;
 
 export default CategoryPage;

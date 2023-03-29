@@ -8,4 +8,4 @@ const ErrorPage: React.FC = () => {
 
 export default ErrorPage;
 
-export const Head = () => <SEO title="About" />;
+export const Head = () => <SEO title="Error page not found" />;

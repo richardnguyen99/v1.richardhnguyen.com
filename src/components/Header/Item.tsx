@@ -30,6 +30,7 @@ const Item: React.FC<Props> = ({ name, to }) => {
         "p-5 font-semibold text-lg leading-6": true,
         "text-zinc-50 hover:text-sky-500": true,
       })}
+      activeClassName="dark:text-sky-500"
     >
       <div>{name}</div>
     </Link>

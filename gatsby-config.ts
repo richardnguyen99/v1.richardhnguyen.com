@@ -179,9 +179,7 @@ const config: GatsbyConfig = {
             },
             query: `
               {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___created] },
-                ) {
+                allMarkdownRemark(sort: {frontmatter: {created: DESC}}){
                   nodes {
                     excerpt
                     html
