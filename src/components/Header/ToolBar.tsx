@@ -9,15 +9,23 @@ import {
 
 import Icon from "@components/Button/Icon";
 import Tooltip from "@components/Tooltip";
+import Dropdown from "./Dropdown";
 
 const ToolBar: React.FC = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+  const onCloseCallback = React.useCallback(() => {
+    setIsDropdownOpen((prev) => !prev);
+  }, []);
+
   return (
     <div id="header-toolbar" className="flex items-center justify-center gap-4">
-      <Tooltip className="md:hidden" message="Menu" placement="bottom-end">
-        <Icon onClick={() => console.log("lol")}>
+      <div className="md:hidden">
+        <Icon onClick={onCloseCallback}>
           <ThreeBarsIcon size={16} />
         </Icon>
-      </Tooltip>
+        <Dropdown opening={isDropdownOpen} onClose={onCloseCallback} />
+      </div>
       <div className="hidden sm:block h-4 w-px bg-zinc-600 md:hidden" />
       <div className="hidden sm:flex items-center justify-center gap-4">
         <Tooltip message="Github" placement="bottom-end">
