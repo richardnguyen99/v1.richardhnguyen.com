@@ -15,7 +15,7 @@ const DropdownItem: React.FC<Props> = ({
   url,
   active,
   children,
-  className,
+  className = "",
   ...rest
 }) => {
   return (
@@ -25,9 +25,15 @@ const DropdownItem: React.FC<Props> = ({
         "flex items-center": true,
         "p-4 rounded-lg": true,
         "dark:hover:bg-zinc-700/25": true,
+        [className as string]: className,
       })}
     >
-      <Link to={url}>{children}</Link>
+      <Link
+        to={url}
+        activeClassName="dark:text-sky-500 dark:hover:text-sky-600 font-extrabold"
+      >
+        {children}
+      </Link>
     </li>
   );
 };
