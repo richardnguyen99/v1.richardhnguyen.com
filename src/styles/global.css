@@ -76,6 +76,47 @@
   @apply mt-8;
 }
 
+.gatsby-highlight {
+  @apply w-full;
+  @apply rounded-lg;
+}
+
+.gatsby-highlight pre[class*="language-"] {
+  @apply rounded-lg;
+  @apply mb-0;
+  @apply relative;
+  @apply pt-8;
+  @apply border-t-4;
+}
+
+.gatsby-highlight pre[class*="language-"]::before {
+  @apply rounded-md;
+  @apply rounded-tl-none;
+  @apply rounded-tr-none;
+  @apply text-sm;
+  @apply font-mono;
+  @apply font-normal;
+  @apply tracking-wide;
+  @apply leading-none;
+  @apply px-2;
+  @apply py-1;
+  @apply left-6;
+  @apply text-right;
+  @apply uppercase;
+  @apply top-0;
+  @apply absolute;
+}
+
+.gatsby-highlight pre[class*="language-md"]::before {
+  @apply content-["md"];
+  @apply bg-orange-600;
+  @apply text-white;
+}
+
+.gatsby-highlight pre[class*="language-md"] {
+  @apply border-orange-600;
+}
+
 #content pre {
   @apply mt-6;
 }

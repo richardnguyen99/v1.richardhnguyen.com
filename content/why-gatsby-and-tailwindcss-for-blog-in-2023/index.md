@@ -28,6 +28,6 @@ Nothing is `here`.
 >
 > Another paragraph.
 >
-> ```
+> ```txt
 > Nested code
 > ```
