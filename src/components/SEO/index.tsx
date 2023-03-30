@@ -35,11 +35,25 @@ export const SEO: SEOComponentType = ({
       <html
         data-mode="dark"
         lang="en-US"
-        className="scroll-smooth transition-colors duration-700"
+        className="dark: scroll-smooth transition-colors duration-700"
       />
       <title>
         {formattedTitle()} {defaultTitle}
       </title>
+      <link
+        href="https://fonts.cdnfonts.com/css/league-mono"
+        rel="stylesheet"
+      />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="anonymous"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Fanwood+Text:ital@0;1&display=swap"
+        rel="stylesheet"
+      />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
       <meta name="twitter:card" content="summary_large_image" />
@@ -48,6 +62,7 @@ export const SEO: SEOComponentType = ({
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
       <meta name="twitter:creator" content={seo.twitterUsername} />
+
       {children}
     </>
   );

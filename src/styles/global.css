@@ -45,9 +45,12 @@
   @apply transition-all;
 }
 
+code {
+  @apply font-mono;
+}
+
 #article-container code {
   @apply text-base;
-  @apply font-mono;
   @apply font-medium;
   @apply text-neutral-100;
   @apply rounded-md;
@@ -63,18 +66,21 @@
 }
 
 #content h1 {
+  @apply dark:text-white;
   @apply text-5xl;
   @apply font-black;
   @apply mt-16;
 }
 
 #content h2 {
+  @apply dark:text-white;
   @apply text-3xl;
   @apply font-extrabold;
   @apply mt-12;
 }
 
 #content h3 {
+  @apply dark:text-white;
   @apply text-xl;
   @apply font-bold;
   @apply mt-8;
@@ -91,6 +97,12 @@
   @apply relative;
   @apply pt-8;
   @apply border-t-4;
+}
+
+.gatsby-highlight pre > code {
+  @apply font-mono;
+  @apply text-base;
+  font-feature-settings: "ss01";
 }
 
 .gatsby-highlight pre[class*="language-"]::before {
@@ -121,8 +133,59 @@
   @apply border-orange-600;
 }
 
+.gatsby-highlight pre[class*="language-js"]::before {
+  @apply content-["js"];
+  @apply bg-yellow-400;
+  @apply text-white;
+}
+
+.gatsby-highlight pre[class*="language-js"] {
+  @apply border-yellow-400;
+}
+
+.gatsby-highlight pre[class*="language-ts"]::before {
+  @apply content-["ts"];
+  @apply bg-blue-500;
+  @apply text-white;
+}
+
+.gatsby-highlight pre[class*="language-ts"] {
+  @apply border-blue-500;
+}
+
+.gatsby-highlight pre[class*="language-json"]::before {
+  @apply content-["json"];
+  @apply bg-green-500;
+  @apply text-white;
+}
+
+.gatsby-highlight pre[class*="language-json"] {
+  @apply border-green-500;
+}
+
+.gatsby-highlight pre[class*="language-css"]::before {
+  @apply content-["css"];
+  @apply bg-sky-400;
+  @apply text-white;
+}
+
+.gatsby-highlight pre[class*="language-css"] {
+  @apply border-sky-400;
+}
+
+.gatsby-highlight pre[class*="language-python"]::before {
+  @apply content-["py"];
+  @apply bg-yellow-500;
+  @apply text-white;
+}
+
+.gatsby-highlight pre[class*="language-python"] {
+  @apply border-yellow-500;
+}
+
 #content pre {
   @apply mt-6;
+  @apply dark:bg-neutral-800/25;
 }
 
 #content pre::-webkit-scrollbar {
@@ -134,7 +197,6 @@
   @apply rounded-tl-none;
   @apply rounded-tr-none;
   @apply bg-zinc-100;
-  @apply dark:bg-zinc-800;
 }
 
 #content pre::-webkit-scrollbar-thumb {
