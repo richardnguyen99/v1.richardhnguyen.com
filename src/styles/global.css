@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 
+[data-mode="dark"] {
+  color-scheme: dark;
+}
+
 #arrow,
 #arrow::before {
   @apply absolute bg-inherit w-3 h-3;
@@ -119,6 +123,34 @@
 
 #content pre {
   @apply mt-6;
+}
+
+#content pre::-webkit-scrollbar {
+  @apply h-3;
+}
+
+#content pre::-webkit-scrollbar-track {
+  @apply rounded-lg;
+  @apply rounded-tl-none;
+  @apply rounded-tr-none;
+  @apply bg-zinc-100;
+  @apply dark:bg-zinc-800;
+}
+
+#content pre::-webkit-scrollbar-thumb {
+  background: #e0cbcb;
+  border-radius: 100vh;
+  border: 1px solid #f6f7ed;
+
+  @apply rounded-lg;
+  @apply dark:bg-zinc-700;
+  @apply dark:border-neutral-600;
+  @apply border-2;
+}
+
+#content pre::-webkit-scrollbar-thumb:hover {
+  @apply dark:bg-zinc-600;
+  @apply dark:border-neutral-500;
 }
 
 /* Style code tags that are not inside the pre tags */
