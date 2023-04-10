@@ -1,13 +1,10 @@
 import * as React from "react";
 
 import { SEO } from "@components/SEO";
+import Construction from "@components/Layout/Construction";
 
 const ProjectPage: React.FC = () => {
-  return (
-    <div>
-      <h1>Project page</h1>
-    </div>
-  );
+  return <Construction />;
 };
 
 export const Head = () => <SEO title="Projects" />;

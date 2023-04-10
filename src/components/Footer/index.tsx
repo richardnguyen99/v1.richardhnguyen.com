@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
   return (
     <footer
       id="footer"
-      className="w-full mt-20 bg-gradient-to-b from-zinc-900 to-gray-900 transition-all"
+      className="w-full pt-20 bg-gradient-to-b from-zinc-900 to-gray-900 transition-all"
     >
       <div
         id="footer-container"

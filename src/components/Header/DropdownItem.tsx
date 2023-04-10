@@ -13,7 +13,6 @@ type Props = React.PropsWithChildren<
 
 const DropdownItem: React.FC<Props> = ({
   url,
-  active,
   children,
   className = "",
   ...rest
