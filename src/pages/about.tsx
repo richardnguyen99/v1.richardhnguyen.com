@@ -1,13 +1,10 @@
 import * as React from "react";
 
 import { SEO } from "@components/SEO";
+import Construction from "@components/Layout/Construction";
 
 const AboutPage: React.FC = () => {
-  return (
-    <div>
-      <h1>About page</h1>
-    </div>
-  );
+  return <Construction />;
 };
 
 export default AboutPage;
