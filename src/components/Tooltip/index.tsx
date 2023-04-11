@@ -1,6 +1,7 @@
+import React, { useRef, useState } from "react";
+import clsx from "classnames";
 import { Transition } from "@headlessui/react";
 import { Placement } from "@popperjs/core";
-import React, { useRef, useState } from "react";
 import { usePopper } from "react-popper";
 
 export interface TooltipProps {
@@ -80,7 +81,16 @@ const Tooltip: React.FC<Props> = ({
           leaveTo="transform opacity-0 scale-95"
           unmount={false}
         >
-          <div className="inline-block whitespace-nowrap items-center justify-center rounded-lg p-1.5 text-xs font-bold border dark:bg-zinc-800 dark:border-zinc-600 dark:shadow-zinc-800/60">
+          <div
+            className={clsx("", {
+              "inline-block items-center justify-center": true,
+              "whitespace-nowrap text-xs font-bold": true,
+              "rounded-lg p-1.5  border": true,
+              "bg-zinc-300 dark:bg-zinc-800 ": true,
+              "border-zinc-400/50 dark:border-zinc-600 ": true,
+              "shadow-zinc-800 dark:shadow-zinc-800/60": true,
+            })}
+          >
             {message}
 
             {/**

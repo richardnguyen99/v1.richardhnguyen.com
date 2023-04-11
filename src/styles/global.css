@@ -26,7 +26,7 @@
   @apply -top-1.5;
 }
 #tooltip[data-popper-placement^="bottom"] #arrow::before {
-  @apply border-t border-l dark:border-slate-600;
+  @apply border-t border-l border-zinc-400/50 dark:border-slate-600;
 }
 
 #tooltip[data-popper-placement^="left"] #arrow {

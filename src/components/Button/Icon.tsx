@@ -29,6 +29,7 @@ const Icon: React.FC<Props> = ({
         "w-8 h-8 p-1.5": isSize("base"),
         "w-10 h-10 p-1.5": isSize("large"),
         "dark:hover:bg-zinc-100/25": isVariant("default"),
+        "hover:bg-zinc-400/25": isVariant("default"),
         "dark:hover:bg-blue-500/25": isVariant("primary"),
         "dark:hover:bg-teal-500/25": isVariant("success"),
         "dark:hover:bg-red-500/25": isVariant("danger"),
