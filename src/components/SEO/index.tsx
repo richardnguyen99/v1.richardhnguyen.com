@@ -33,7 +33,6 @@ export const SEO: SEOComponentType = ({
   return (
     <>
       <html
-        data-mode="dark"
         lang="en-US"
         className="dark: scroll-smooth transition-colors duration-700"
       />

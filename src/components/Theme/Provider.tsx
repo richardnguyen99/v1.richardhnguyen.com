@@ -13,6 +13,12 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   }, [setTheme]);
 
+  React.useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-mode", theme);
+    }
+  }, [theme]);
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme: toggleTheme }}>
       {children}
