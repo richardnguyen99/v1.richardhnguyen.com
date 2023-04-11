@@ -11,6 +11,7 @@ import * as React from "react";
 import { GatsbyBrowser } from "gatsby";
 
 import RootLayout from "./src/components/Layout/Root";
+import ThemeProvider from "./src/components/Theme/Provider";
 
 import "prismjs/themes/prism-tomorrow.css";
 import "./fonts/fonts.css";
@@ -19,5 +20,9 @@ import "./src/styles/global.css";
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
   element,
 }) => {
-  return <RootLayout>{element}</RootLayout>;
+  return (
+    <ThemeProvider>
+      <RootLayout>{element}</RootLayout>;
+    </ThemeProvider>
+  );
 };

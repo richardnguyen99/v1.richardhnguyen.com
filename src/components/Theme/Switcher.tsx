@@ -4,22 +4,23 @@ import { MoonIcon, SunIcon } from "@primer/octicons-react";
 import Tooltip from "@components/Tooltip";
 import Icon from "@components/Button/Icon";
 
+import ThemeContext from "./Context";
+
 const ThemeSwitcher: React.FC = () => {
-  // TODO: Implement theme switcher with context
-  const [state, setState] = React.useState<"light" | "dark">("light");
+  const { theme, setTheme } = React.useContext(ThemeContext);
 
   const clickHandler = React.useCallback(() => {
-    setState((prev) => (prev === "light" ? "dark" : "light"));
-  }, []);
+    setTheme();
+  }, [setTheme]);
 
   const getNextTheme = React.useCallback(() => {
-    return state === "light" ? "Dark" : "Light";
-  }, [state]);
+    return theme === "light" ? "Dark" : "Light";
+  }, [theme]);
 
   return (
     <Tooltip message={`Switch to ${getNextTheme()}`} placement="bottom-end">
       <Icon onClick={clickHandler}>
-        {state === "light" ? <SunIcon size={16} /> : <MoonIcon size={16} />}
+        {theme === "light" ? <SunIcon size={16} /> : <MoonIcon size={16} />}
       </Icon>
     </Tooltip>
   );

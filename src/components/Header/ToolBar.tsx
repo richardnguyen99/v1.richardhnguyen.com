@@ -4,8 +4,8 @@ import { MarkGithubIcon, RssIcon, ThreeBarsIcon } from "@primer/octicons-react";
 
 import Icon from "@components/Button/Icon";
 import Tooltip from "@components/Tooltip";
-import ThemeSwitcher from "@components/Button/ThemeSwitcher";
 import Dropdown from "@components/Header/Dropdown";
+import ThemeSwitcher from "@components/Theme/Switcher";
 
 const ToolBar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
