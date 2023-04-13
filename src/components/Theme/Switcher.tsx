@@ -7,11 +7,11 @@ import Icon from "@components/Button/Icon";
 import ThemeContext from "./Context";
 
 const ThemeSwitcher: React.FC = () => {
-  const { theme, setTheme } = React.useContext(ThemeContext);
+  const { theme, toggleTheme } = React.useContext(ThemeContext);
 
   const clickHandler = React.useCallback(() => {
-    setTheme();
-  }, [setTheme]);
+    toggleTheme();
+  }, [toggleTheme]);
 
   const getNextTheme = React.useCallback(() => {
     return theme === "light" ? "Dark" : "Light";

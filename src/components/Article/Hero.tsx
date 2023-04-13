@@ -22,7 +22,7 @@ const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
 
   return (
     <article {...rest} className="group block w-full px-6">
-      <div className="border-t border-zinc-700" />
+      <div className="border-t border-zinc-300 dark:border-zinc-700" />
 
       <div className="py-10 flex flex-col md:flex-row-reverse -mx-6">
         <div className="w-full lg:w-8/12 px-6">

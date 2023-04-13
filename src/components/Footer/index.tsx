@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
   return (
     <footer
       id="footer"
-      className="w-full pt-20 bg-gradient-to-b from-zinc-900 to-gray-900 transition-all"
+      className="w-full pt-20 bg-gradient-to-b from-zinc-200 to-zinc-400 dark:from-zinc-900 dark:to-gray-900 transition-all"
     >
       <div
         id="footer-container"
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
               <h2 className="text-7xl leading-none font-bold pl-4">Blog</h2>
             </div>
             <div className="mt-6  w-9/12">
-              <p className="text-sm text-zinc-400">
+              <p className="text-sm dark:text-zinc-400">
                 Thanks for reading! If you enjoy my posts, consider subscribing
                 to my newsletter for all my latest posts.
               </p>
@@ -143,7 +143,7 @@ const Footer: React.FC = () => {
         </div>
         <div
           id="footer-extra-info-container"
-          className="flex mt-10 pt-10 border-t dark:border-zinc-700"
+          className="flex mt-10 pt-10 border-t border-zinc-400 dark:border-zinc-700"
         >
           <div className="flex-grow-[2]">
             <BuiltByGatsby />

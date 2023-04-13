@@ -22,7 +22,7 @@ const ArticleCard: React.FC<Props> = ({ data, ...rest }) => {
 
   return (
     <article {...rest} className="block w-full md:w-6/12 lg:w-4/12 px-6">
-      <div className="flex flex-col py-4 md:py-6 lg:py-10 border-t border-zinc-700">
+      <div className="flex flex-col py-4 md:py-6 lg:py-10 border-t border-zinc-300 dark:border-zinc-700">
         <GatsbyImage
           aria-label="article-thumbnail"
           alt={data.title}

@@ -22,7 +22,7 @@ export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
 }) => {
   return (
     <ThemeProvider>
-      <RootLayout>{element}</RootLayout>;
+      <RootLayout>{element}</RootLayout>
     </ThemeProvider>
   );
 };

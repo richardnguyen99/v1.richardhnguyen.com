@@ -3,5 +3,6 @@ export type ThemeType = "light" | "dark";
 
 export type ThemeContextType = {
   theme: ThemeType;
-  setTheme: () => void;
+  setTheme: (newTheme: ThemeType) => void;
+  toggleTheme: () => void;
 };

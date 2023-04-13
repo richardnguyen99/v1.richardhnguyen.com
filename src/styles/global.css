@@ -52,7 +52,7 @@ code {
 #article-container code {
   @apply text-base;
   @apply font-medium;
-  @apply text-neutral-100;
+  @apply dark:text-neutral-100;
   @apply rounded-md;
 }
 
