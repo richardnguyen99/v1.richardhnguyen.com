@@ -8,8 +8,6 @@ import {
 } from "@primer/octicons-react";
 
 const SwipeButton = () => {
-  const id = React.useId();
-
   const {
     github: {
       repository: { stargazerCount, forkCount },
@@ -22,9 +20,9 @@ const SwipeButton = () => {
       target="_blank"
       rel="noreferrer"
       className={clsx(
-        "relative leading-[initial] group flex i[#333333]tems-center w-fit cursor-pointer border",
+        "relative leading-[initial] group flex items-center w-fit cursor-pointer border",
         {
-          "bg-zinc-800 hover:bg-neutral-900 border-zinc-800 dark:border-zinc-600":
+          "bg-zinc-800 hover:bg-neutral-900 border-zinc-800 dark:border-zinc-600 text-zinc-100":
             true,
           "p-4 rounded-lg": true,
         }

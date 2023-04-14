@@ -49,14 +49,27 @@ const Content: React.FC<React.HTMLAttributes<HTMLDivElement> & Props> = ({
                 </span>
               </p>
             </div>
-            <GatsbyImage
-              alt={_data.frontmatter.title}
-              imgClassName="rounded-lg"
-              className="rounded-lg my-6 lg:my-12 md:max-h-[480px] lg:max-h-[600px]"
-              image={
-                _data.frontmatter.thumbnail.childImageSharp.gatsbyImageData
-              }
-            />
+            <div>
+              <GatsbyImage
+                alt={_data.frontmatter.title}
+                imgClassName="rounded-lg"
+                className="rounded-lg my-6 lg:mt-12 md:max-h-[480px] lg:max-h-[600px]"
+                image={
+                  _data.frontmatter.thumbnail.childImageSharp.gatsbyImageData
+                }
+              />
+              {_data.frontmatter.thumbnailAuthor && (
+                <div className="text-center mb-6">
+                  Source:{" "}
+                  <a
+                    href={_data.frontmatter.thumbnailAuthorLink}
+                    className="font-bold border-b hover:border-b-4 cursor-pointer border-sky-500 transition-all"
+                  >
+                    {_data.frontmatter.thumbnailAuthor}
+                  </a>
+                </div>
+              )}
+            </div>
             <hr className="h-[1px] rounded-xl dark:bg-zinc-700 border-none" />
           </div>
         </div>

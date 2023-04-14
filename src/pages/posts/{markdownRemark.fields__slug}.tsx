@@ -23,6 +23,8 @@ export const query = graphql`
         updated(formatString: "MMMM DD, YYYY")
         author
         tags
+        thumbnailAuthor
+        thumbnailAuthorLink
         thumbnail {
           childImageSharp {
             gatsbyImageData(

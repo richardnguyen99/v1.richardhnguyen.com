@@ -9,12 +9,14 @@ tags:
   - GatsbyJS
   - React
   - TypeScript
-thumbnail: ./manual-page.png
+thumbnail: ./syd-wachs-slItfWbhijc-unsplash.png
+thumbnailAuthor: Syd Wachs
+thumbnailAuthorLink: https://unsplash.com/photos/slItfWbhijc
 ---
 
-This page is designed to be a test site that demonstrates the features of the blog. Such as **bold texts**, _italic texts_, `inline code` and so on. If you
-want to see how the blog looks like, you can visit this page. Beside that, it
-doesn't have any other purpose!
+This article will explain the whole stack that I use to develop this site. That
+includes libraries, frameworks, tools, frameworks, patterns, designs and so on.
+If you're interested in how I build this site, this article is the right place.
 
 <!-- end -->
 
@@ -218,4 +220,4 @@ This will be rendered as:
 
 # Credits
 
-- Illustration <a target="_blank" rel="noreferrer" href="https://www.freepik.com/free-vector/magic-spell-books-fantasy-alchemy-grimoires-set_33819338.htm#page=4&query=manual&position=48&from_view=search&track=sph">Image by upklyak</a> on Freepik
+- Thumbnail by [Syd Wachs](https://unsplash.com/photos/slItfWbhijc)

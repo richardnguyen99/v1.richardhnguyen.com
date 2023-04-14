@@ -30,7 +30,7 @@ const ArticleCard: React.FC<Props> = ({ data, ...rest }) => {
           className="rounded-lg"
           imgClassName="rounded-lg hover:scale-[1.05]"
         />
-        <h3 className="mt-4 mb-6 text-3xl lg:text-xl hover:text-sky-500 font-bold transition-all">
+        <h3 className="mt-4 mb-6 text-3xl lg:text-xl text-sky-400 hover:text-sky-500 font-bold transition-all">
           <Link to={`/posts${data.slug}`}>{data.title}</Link>
         </h3>
         <p className="dark:text-neutral-400">{content}</p>
