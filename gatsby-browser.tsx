@@ -15,7 +15,7 @@ import ThemeProvider from "./src/components/Theme/Provider";
 
 import "prismjs/themes/prism-tomorrow.css";
 import "./fonts/fonts.css";
-import "./src/styles/global.css";
+import "./src/styles/index.css";
 
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
   element,

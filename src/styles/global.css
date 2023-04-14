@@ -97,6 +97,8 @@ code {
   @apply relative;
   @apply pt-8;
   @apply border-t-4;
+  @apply bg-neutral-300;
+  @apply dark:bg-zinc-800;
 }
 
 .gatsby-highlight pre > code {
@@ -223,6 +225,7 @@ code {
   @apply p-1;
   @apply px-2;
   @apply rounded-lg;
+  @apply bg-neutral-300;
   @apply dark:bg-zinc-800;
   @apply font-mono;
   @apply font-medium;
