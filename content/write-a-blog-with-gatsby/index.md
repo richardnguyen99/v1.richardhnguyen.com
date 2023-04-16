@@ -1,5 +1,5 @@
 ---
-title: "Manual page"
+title: "Write a blog with Gatsby"
 created: 2023-03-25
 updated: 2023-03-25
 author: "Richard Nguyen"

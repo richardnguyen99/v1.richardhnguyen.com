@@ -13,7 +13,6 @@ import { GatsbyBrowser } from "gatsby";
 import RootLayout from "./src/components/Layout/Root";
 import ThemeProvider from "./src/components/Theme/Provider";
 
-import "prismjs/themes/prism-tomorrow.css";
 import "./fonts/fonts.css";
 import "./src/styles/index.css";
 
