@@ -21,7 +21,7 @@ const Header: React.FC<Props> = () => {
       id="global-header"
       className={clsx("", {
         "w-full fixed z-10 border-b": true, // Layout
-        "bg-zinc-200 dark:bg-zinc-900 ": true, // Style
+        "bg-slate-50 dark:bg-[#0B1416] ": true, // Style
         "border-gray-300 dark:border-gray-700": true, // Border
       })}
     >

@@ -1,9 +1,12 @@
 // Manipulate AST
 
-const visit = require("unist-util-visit");
-const toString = require("mdast-util-to-string");
+import { visit } from "unist-util-visit";
+import toString from "mdast-util-to-string";
 
-module.exports = async ({ markdownAST }, pluginOptions) => {
+export default async function gatsbyRemarkCallout(
+  { markdownAST },
+  pluginOptions
+) {
   visit(markdownAST, "blockquote", (node) => {
     let rawTitle = node.children[0].children[0];
 
@@ -33,4 +36,4 @@ module.exports = async ({ markdownAST }, pluginOptions) => {
   });
 
   return markdownAST;
-};
+}

@@ -11,7 +11,7 @@ const RootLayout: React.FC<Props> = ({ children, ...rest }) => {
     <main
       {...rest}
       id="root-layout"
-      className="text-zinc-900 dark:text-gray-50 bg-zinc-200 dark:bg-zinc-900"
+      className="text-zinc-900 dark:text-gray-50 bg-slate-50 dark:bg-[#0B1416]"
     >
       <Header />
       <div className="pt-16">{children}</div>
