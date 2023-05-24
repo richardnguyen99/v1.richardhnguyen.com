@@ -90,7 +90,18 @@ const config: GatsbyConfig = {
     },
     {
       resolve: "gatsby-plugin-mdx",
-      options: {},
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 1024,
+              quality: 90,
+              linkImagesToOriginal: true,
+            },
+          },
+        ],
+      },
     },
 
     // For TailwindCSS

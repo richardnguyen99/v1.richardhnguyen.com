@@ -8,9 +8,7 @@
 import path from "path";
 import { GatsbyNode } from "gatsby";
 import { createFilePath } from "gatsby-source-filesystem";
-import grayMatter from "gray-matter";
-import { unified } from "unified";
-import remarkHtml from "remark-html";
+import readingTime from "reading-time";
 
 const MDX_EXCERPT_SEPARATOR = "{/* Except */}";
 
@@ -43,7 +41,19 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
     const content = node.body as string;
 
     try {
-      const excerpt = content.split(MDX_EXCERPT_SEPARATOR)[0];
+      const [excerpt, rawContent] = content.split(MDX_EXCERPT_SEPARATOR);
+
+      createNodeField({
+        node,
+        name: "markdownBody",
+        value: rawContent,
+      });
+
+      createNodeField({
+        node,
+        name: "timeToRead",
+        value: readingTime(rawContent),
+      });
 
       createNodeField({
         node,
