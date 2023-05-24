@@ -16,7 +16,7 @@ type Props = React.HTMLAttributes<HTMLDivElement> & MdxPageProps;
 
 const MdxRenderer: React.FC<Props> = ({ data: { mdx }, children }) => {
   const formatTimeToRead = (time: number) => {
-    return `${time} min${time > 1 ? "s" : ""}`;
+    return `${Math.ceil(time)} min${time > 1 ? "s" : ""}`;
   };
 
   return (
@@ -60,7 +60,7 @@ const MdxRenderer: React.FC<Props> = ({ data: { mdx }, children }) => {
                   <GatsbyImage
                     alt={mdx.frontmatter.title}
                     imgClassName="rounded-lg"
-                    className="rounded-lg my-6 lg:mt-12 md:max-h-[480px] lg:max-h-[600px]"
+                    className="rounded-lg mt-6 lg:mt-12 md:max-h-[480px] lg:max-h-[600px]"
                     image={
                       mdx.frontmatter.thumbnail.childImageSharp.gatsbyImageData
                     }
@@ -79,7 +79,7 @@ const MdxRenderer: React.FC<Props> = ({ data: { mdx }, children }) => {
                 </>
               )}
             </div>
-            <hr className="h-[1px] rounded-xl dark:bg-zinc-700 border-none" />
+            <hr className="h-[1px] mt-6 lg:mt-12 rounded-xl dark:bg-zinc-700 border-none" />
           </div>
         </div>
       </div>

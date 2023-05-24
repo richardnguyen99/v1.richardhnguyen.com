@@ -100,6 +100,17 @@ const config: GatsbyConfig = {
               linkImagesToOriginal: true,
             },
           },
+          {
+            resolve: "gatsby-remark-autolink-headers",
+            options: {
+              offsetY: "100",
+              icon: "<span>#</span>",
+              className: "anchor",
+              removeAccents: true,
+              // isIconAfterHeader: true,
+              elements: ["h1", "h2", "h3"],
+            },
+          },
         ],
       },
     },
