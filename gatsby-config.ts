@@ -74,6 +74,24 @@ const config: GatsbyConfig = {
         path: `${__dirname}/content`,
       },
     },
+    // For MDX
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "blog",
+        path: `${__dirname}/blog`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/blog/`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {},
+    },
 
     // For TailwindCSS
     "gatsby-plugin-postcss",

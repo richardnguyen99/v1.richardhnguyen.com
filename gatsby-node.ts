@@ -8,6 +8,11 @@
 import path from "path";
 import { GatsbyNode } from "gatsby";
 import { createFilePath } from "gatsby-source-filesystem";
+import grayMatter from "gray-matter";
+import { unified } from "unified";
+import remarkHtml from "remark-html";
+
+const MDX_EXCERPT_SEPARATOR = "{/* Except */}";
 
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] =
   // This configuration will allow me to create a shortcut for each folder in
@@ -30,8 +35,37 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
   node,
   actions,
   getNode,
+  reporter,
 }) => {
   const { createNodeField } = actions;
+
+  if (node.internal.type === "Mdx") {
+    const content = node.body as string;
+
+    try {
+      const excerpt = content.split(MDX_EXCERPT_SEPARATOR)[0];
+
+      createNodeField({
+        node,
+        name: "excerpt",
+        value: excerpt,
+      });
+    } catch (error) {
+      reporter.panicOnBuild(
+        `Error processing Markdown ${
+          node.absolutePath ? `file ${node.absolutePath}` : `in node ${node.id}`
+        }:\n
+      ${error.message}`
+      );
+    }
+
+    const slug = createFilePath({ node, getNode, basePath: "pages" });
+    createNodeField({
+      node,
+      name: "slug",
+      value: `${slug}`,
+    });
+  }
 
   if (node.internal.type === "MarkdownRemark") {
     const slug = createFilePath({ node, getNode, basePath: "pages" });
