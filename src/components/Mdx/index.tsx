@@ -1,20 +1,32 @@
-import * as React from "react";
-import { graphql, HeadFC, PageProps } from "gatsby";
+/**
+ * Main entry point for the Mdx component
+ */
+
+import React from "react";
+import { HeadFC, graphql, PageProps } from "gatsby";
+import { MDXProvider } from "@mdx-js/react";
 
 import { SEO } from "@components/SEO";
-import Content from "@components/Content";
 
-type PostTemplateProps = Queries.MdxPostTemplateQuery;
+export type MdxProps = object;
 
-const PostTemplate: React.FC<PageProps<PostTemplateProps>> = ({ data }) => {
-  return <h1>{data.mdx.fields.markdownBody}</h1>;
+const MdxRenderer: React.FC<PageProps<Queries.MdxPageQuery>> = ({
+  data,
+  children,
+}) => {
+  return <MDXProvider>{children}</MDXProvider>;
 };
 
+export default MdxRenderer;
+
+export const Head: HeadFC<Queries.MdxPageQuery> = ({ data }) => (
+  <SEO title={data.mdx.frontmatter.title} />
+);
+
 export const query = graphql`
-  query MdxPostTemplate($id: String!) {
+  query MdxPage($id: String!) {
     mdx(id: { eq: $id }) {
       id
-      excerpt
       tableOfContents(maxDepth: 2)
       body
       fields {
@@ -49,9 +61,3 @@ export const query = graphql`
     }
   }
 `;
-
-export const Head: HeadFC<PostTemplateProps> = ({ data }) => (
-  <SEO title={data.mdx.frontmatter.title} />
-);
-
-export default PostTemplate;
