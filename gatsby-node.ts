@@ -102,6 +102,9 @@ export const createPages: GatsbyNode["createPages"] = async ({
           fields {
             slug
           }
+          frontmatter {
+            published
+          }
           internal {
             contentFilePath
           }
@@ -118,6 +121,13 @@ export const createPages: GatsbyNode["createPages"] = async ({
   const template = path.resolve("./src/components/Mdx/index.tsx");
 
   posts.forEach((node) => {
+    // Only render ready-to-publish posts in production.
+    if (
+      process.env.NODE_ENV === "production" &&
+      node.frontmatter.published === false
+    )
+      return;
+
     createPage({
       path: `posts${node.fields.slug}`,
       component: `${template}?__contentFilePath=${node.internal.contentFilePath}`,
