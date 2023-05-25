@@ -66,11 +66,11 @@ const MdxRenderer: React.FC<Props> = ({ data: { mdx }, children }) => {
                     }
                   />
                   {mdx.frontmatter.thumbnailAuthor && (
-                    <div className="text-center mb-6">
+                    <div className="text-center mb-6 mt-6">
                       Source:{" "}
                       <a
                         href={mdx.frontmatter.thumbnailAuthorLink}
-                        className="font-bold border-b hover:border-b-4 cursor-pointer border-sky-500 transition-all"
+                        className="font-bold border-b hover:border-b-4 cursor-pointer  border-sky-500 transition-all"
                       >
                         {mdx.frontmatter.thumbnailAuthor}
                       </a>

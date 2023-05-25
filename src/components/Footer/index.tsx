@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
   return (
     <footer
       id="footer"
-      className="w-full pt-20 bg-gradient-to-b from-slate-50 to-slate-300 dark:from-[#0B1416] dark:to-black transition-all"
+      className="w-full pt-20 bg-gradient-to-b from-slate-50 to-slate-300 dark:from-[#0B1416] dark:to-[#070f11] transition-all"
     >
       <div
         id="footer-container"
