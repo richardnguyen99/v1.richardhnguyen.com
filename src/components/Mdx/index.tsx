@@ -36,7 +36,7 @@ const MdxRenderer: React.FC<Props> = ({ data: { mdx }, children }) => {
               "text-transparent bg-clip-text bg-gradient-to-r to-sky-200 from-cyan-500":
                 true,
               "font-extrabold gradient lg:font-black": true,
-              "tracking-tight lg:tracking-tighter": true,
+              "lg:leading-loose tracking-tight lg:tracking-tighter": true,
             })}
           >
             {mdx.frontmatter.title}

@@ -1,0 +1,6 @@
+#content > p {
+  @apply leading-8;
+  @apply tracking-tight;
+
+  @apply mt-8;
+}
