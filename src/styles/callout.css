@@ -1,0 +1,72 @@
+#content blockquote:not(.callout) {
+  @apply leading-8;
+  @apply tracking-tight;
+  @apply italic;
+
+  @apply mt-8;
+  @apply -ml-6;
+  @apply pl-6;
+
+  @apply border-l-[3px];
+  @apply border-slate-800;
+  @apply dark:border-zinc-300;
+}
+
+#content .callout {
+  @apply overflow-hidden;
+  @apply flex;
+  @apply flex-col;
+  @apply items-start;
+  @apply relative;
+  @apply w-auto;
+  @apply mt-6;
+  @apply rounded-lg;
+  @apply border;
+  @apply p-6;
+  @apply dark:bg-zinc-800;
+  @apply dark:border-zinc-500;
+}
+
+#content blockquote > p:first-child {
+  @apply mt-0;
+}
+
+#content .callout > h3 {
+  @apply mt-0;
+}
+
+#content .callout.note {
+  @apply dark:bg-sky-500/20;
+  @apply dark:border-sky-600;
+}
+
+#content .callout.note > h3 {
+  @apply dark:text-sky-500;
+}
+
+#content .callout.tip {
+  @apply dark:bg-lime-500/20;
+  @apply dark:border-lime-600;
+}
+
+#content .callout.tip > h3 {
+  @apply dark:text-lime-500;
+}
+
+#content .callout.warning {
+  @apply dark:bg-yellow-500/20;
+  @apply dark:border-yellow-600;
+}
+
+#content .callout.warning > h3 {
+  @apply dark:text-yellow-500;
+}
+
+#content .callout.danger {
+  @apply dark:bg-red-500/20;
+  @apply dark:border-red-600;
+}
+
+#content .callout.danger > h3 {
+  @apply dark:text-red-500;
+}
