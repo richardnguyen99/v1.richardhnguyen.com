@@ -130,7 +130,7 @@ export const query = graphql`
       }
       frontmatter {
         title
-        created
+        created(formatString: "MMMM DD, YYYY")
         updated
         author
         published
