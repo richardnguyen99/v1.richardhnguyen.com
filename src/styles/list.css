@@ -1,0 +1,30 @@
+#content ol {
+  @apply list-decimal;
+}
+
+#content ul {
+  @apply list-disc;
+}
+
+#content > ol,
+#content > ul {
+  @apply mt-6;
+  @apply pl-12;
+
+  @apply marker:text-sky-300;
+  @apply marker:font-bold;
+  @apply marker:font-mono;
+}
+
+#content > ol > li,
+#content > ul > li {
+  @apply mt-5;
+  @apply pl-3;
+  @apply list-item;
+}
+
+#content > ol > li > p,
+#content > ul > li > p {
+  @apply mt-3;
+  @apply leading-[1.5];
+}

@@ -1,4 +1,6 @@
 @import "./global.css";
 @import "./prismjs.css";
 @import "./typography.css";
+
+@import "./list.css";
 @import "./callout.css";
