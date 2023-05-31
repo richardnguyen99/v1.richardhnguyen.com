@@ -264,17 +264,6 @@ code {
   @apply dark:hover:text-indigo-500;
 }
 
-#content ul {
-  @apply mt-6;
-  @apply pl-12;
-}
-
-#content ul li {
-  @apply mt-3;
-  @apply list-item;
-  @apply list-disc;
-}
-
 #toc li {
   @apply my-2;
 }
