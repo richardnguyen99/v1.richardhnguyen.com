@@ -6,17 +6,25 @@
  */
 
 import path from "path";
-import { GatsbyNode } from "gatsby";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 import { createFilePath } from "gatsby-source-filesystem";
+import { compileMDXWithCustomOptions } from "gatsby-plugin-mdx";
 import readingTime from "reading-time";
 
-const MDX_EXCERPT_SEPARATOR = "{/* Except */}";
+import rehypeMetadataCodeblock from "./plugins/rehype-metadata-codeblock.mjs";
 
-export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] =
+const MDX_EXCERPT_SEPARATOR = "{/* Except */}";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+/**
+ * @type {import("gatsby").GatsbyNode["onCreateWebpackConfig"]}
+ */
+export const onCreateWebpackConfig =
   // This configuration will allow me to create a shortcut for each folder in
   // src/. Instead of adding a prefix "./src/something", now I can just use
   // "@something".
-  async ({ actions, stage, loaders }) => {
+  async ({ actions, _stage, _loaders }) => {
     actions.setWebpackConfig({
       resolve: {
         alias: {
@@ -29,16 +37,14 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] =
     });
   };
 
-export const onCreateNode: GatsbyNode["onCreateNode"] = ({
-  node,
-  actions,
-  getNode,
-  reporter,
-}) => {
+/**
+ * @type {import("gatsby").GatsbyNode["onCreateNode"]}
+ */
+export const onCreateNode = ({ node, actions, getNode, reporter }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === "Mdx") {
-    const content = node.body as string;
+    const content = node.body;
 
     try {
       const [excerpt, rawContent] = content.split(MDX_EXCERPT_SEPARATOR);
@@ -87,14 +93,13 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
   }
 };
 
-export const createPages: GatsbyNode["createPages"] = async ({
-  graphql,
-  actions,
-  reporter,
-}) => {
+/**
+ * @type {import("gatsby").GatsbyNode["createPages"]}
+ */
+export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  const result = await graphql<Queries.MdxNodeQuery>(`
+  const result = await graphql(`
     query MdxNode {
       allMdx {
         nodes {
@@ -134,4 +139,77 @@ export const createPages: GatsbyNode["createPages"] = async ({
       context: { id: node.id },
     });
   });
+};
+
+/**
+ * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
+ */
+export const createSchemaCustomization = async ({
+  getNode,
+  getNodesByType,
+  pathPrefix,
+  reporter,
+  cache,
+  actions,
+  schema,
+  store,
+}) => {
+  const { createTypes } = actions;
+
+  const headingsResolver = schema.buildObjectType({
+    name: "Mdx",
+    fields: {
+      headings: {
+        type: "[MdxHeading]",
+        async resolve(mdxNode) {
+          const fileNode = getNode(mdxNode.parent);
+
+          if (!fileNode) {
+            return null;
+          }
+
+          const result = await compileMDXWithCustomOptions(
+            {
+              source: mdxNode.body,
+              absolutePath: fileNode.absolutePath,
+            },
+            {
+              pluginOptions: {},
+              customOptions: {
+                mdxOptions: {
+                  rehypePlugins: [rehypeMetadataCodeblock],
+                },
+              },
+              getNode,
+              getNodesByType,
+              pathPrefix,
+              reporter,
+              cache,
+              store,
+            }
+          );
+
+          if (!result) {
+            return null;
+          }
+
+          return result.metadata.headings;
+        },
+      },
+    },
+  });
+
+  createTypes([
+    `#graphql
+      type Mdx implements Node {
+        timeToRead: Float @proxy(from: "fields.timeToRead.minutes")
+        wordCount: Int @proxy(from: "fields.timeToRead.words")
+      }
+      type MdxHeading {
+        value: String
+        depth: Int
+      }
+    `,
+    headingsResolver,
+  ]);
 };

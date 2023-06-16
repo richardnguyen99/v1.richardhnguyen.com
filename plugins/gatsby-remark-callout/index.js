@@ -1,7 +1,6 @@
 // Manipulate AST
 
 import { visit } from "unist-util-visit";
-import toString from "mdast-util-to-string";
 
 export default async function gatsbyRemarkCallout(
   { markdownAST },

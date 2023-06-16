@@ -46,7 +46,7 @@
     "src/**/*.tsx",
     "./src/**/*",
     "./gatsby-node.ts",
-    "./gatsby-config.ts",
+    // "gatsby-config.mjs",
     "./plugins/**/*"
   ],
   "exclude": ["node_modules", "**/generated/*"]

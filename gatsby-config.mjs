@@ -1,17 +1,26 @@
 /**
- * Support for Typescript
  *
  * @see https://www.gatsbyjs.com/docs/
  */
 
 import dotenv from "dotenv";
-import { GatsbyConfig } from "gatsby";
+import remarkGfm from "remark-gfm";
+import remarkSlug from "remark-slug";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+import rehypeMetadataCodeblock from "./plugins/rehype-metadata-codeblock.mjs";
 
 dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const config: GatsbyConfig = {
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+/**
+ * @type {import("gatsby").GatsbyConfig}
+ */
+const config = {
   graphqlTypegen: true,
   siteMetadata: {
     title: "Richard H. Nguyen",
@@ -104,6 +113,10 @@ const config: GatsbyConfig = {
             },
           },
         ],
+        mdxOptions: {
+          remarkPlugins: [remarkGfm, remarkSlug],
+          rehypePlugins: [rehypeMetadataCodeblock],
+        },
       },
     },
 
