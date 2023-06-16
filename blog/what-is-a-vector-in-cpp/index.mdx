@@ -45,7 +45,8 @@ Dynamically-allocated memory operations always a pointer pointing to the first b
 
 A straight-forward solution is to have two member fields to the keep track of them. Let's name them `size` for the number of elements, and `cap` for the capacity of this array. Then we can just do pointer-arithmetic operations to work with them
 
-```cpp
+```cpp title="vector.h"
+
 class vector
 {
   public:
@@ -55,6 +56,7 @@ class vector
     int size;
     int cap;
 };
+
 ```
 
 <div>
@@ -65,7 +67,7 @@ class vector
 
 Another way to do this is to use one pointer, `finish`, pointing to the next available space, and one pointer, `end`, pointing to pass-the-end of the array.
 
-```cpp
+```cpp title=vector.h
 class vector
 {
   public:

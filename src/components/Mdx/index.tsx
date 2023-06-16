@@ -12,6 +12,7 @@ import { SEO } from "@components/SEO";
 import TOC from "./TOC";
 import Title from "./Title";
 import FrontMatter from "./FrontMatter";
+import Code from "./Code";
 
 type MdxPageProps = PageProps<Queries.MdxPageQuery>;
 type Props = React.HTMLAttributes<HTMLDivElement> & MdxPageProps;
@@ -51,7 +52,17 @@ const MdxRenderer: React.FC<Props> = ({ data: { mdx }, children }) => {
         })}
       >
         <div id="content" className="w-full xl:w-9/12">
-          <MDXProvider>{children}</MDXProvider>
+          <MDXProvider
+            components={{
+              pre: (preProps) => {
+                console.log(preProps);
+
+                return <Code {...preProps} />;
+              },
+            }}
+          >
+            {children}
+          </MDXProvider>
         </div>
         <div
           id="toc"

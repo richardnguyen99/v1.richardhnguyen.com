@@ -46,10 +46,6 @@ const config: GatsbyConfig = {
         // Add your gatsby-remark-* plugins here
         plugins: [
           {
-            resolve: "gatsby-remark-callout",
-            options: {},
-          },
-          {
             resolve: "gatsby-remark-autolink-headers",
             options: {
               offsetY: "100",
@@ -59,10 +55,6 @@ const config: GatsbyConfig = {
               // isIconAfterHeader: true,
               elements: ["h1", "h2", "h3"],
             },
-          },
-          {
-            resolve: "gatsby-remark-prismjs",
-            options: {},
           },
         ],
       },
