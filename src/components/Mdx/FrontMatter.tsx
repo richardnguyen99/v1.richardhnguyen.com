@@ -43,7 +43,7 @@ const FronMatter: React.FC<FrontMatterProps> = ({
             <GatsbyImage
               alt={thumbnail.alt}
               imgClassName="rounded-lg"
-              className="rounded-lg mt-6 lg:mt-12 md:max-h-[480px] lg:max-h-[600px]"
+              className="rounded-lg mt-6 lg:mt-12 border-2  border-slate-700"
               image={thumbnail.data}
             />
             {thumbnail.author && (
@@ -60,7 +60,7 @@ const FronMatter: React.FC<FrontMatterProps> = ({
           </>
         )}
       </div>
-      <hr className="h-[1px] mt-6 lg:mt-12 rounded-xl dark:bg-zinc-700 border-none" />
+      <hr className="h-[1px] mt-6 lg:mt-12 rounded-xl dark:bg-slate-700 border-none" />
     </div>
   );
 };
