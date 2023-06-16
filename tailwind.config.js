@@ -12,9 +12,9 @@ module.exports = {
       serif: ["Georgia", "ui-serif", "serif"],
       paragraph: ["Fanwood Text", "Georgia", "ui-serif", "serif"],
       mono: [
-        "League Mono",
-        "SFMono-Regular",
-        "SF Mono",
+        // "League Mono",
+        // "SFMono-Regular",
+        // "SF Mono",
         "Menlo",
         "Consolas",
         "Liberation Mono",

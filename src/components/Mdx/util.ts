@@ -1,5 +1,9 @@
 import type { PreProps } from "./types";
 
+export const getLanguageExt = (className: string) => {
+  return className.split("language-").pop();
+};
+
 export const preparePreProps = (preProps: PreProps) => {
   if (preProps.children.type !== "code") return undefined;
 
