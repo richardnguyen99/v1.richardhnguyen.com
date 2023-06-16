@@ -1,0 +1,8 @@
+.gatsby-resp-image-figcaption {
+  @apply text-sm;
+  @apply text-center;
+  @apply font-medium;
+  @apply text-slate-300;
+
+  @apply mt-8;
+}
