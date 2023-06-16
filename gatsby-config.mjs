@@ -99,6 +99,8 @@ const config = {
               maxWidth: 768,
               quality: 100,
               linkImagesToOriginal: true,
+              showCaptions: true,
+              markdownCaptions: true,
             },
           },
           {
