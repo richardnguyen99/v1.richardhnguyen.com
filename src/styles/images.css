@@ -6,3 +6,20 @@
 
   @apply mt-8;
 }
+
+a.gatsby-resp-image-link {
+  @apply border-none;
+  @apply rounded-md;
+}
+
+.gatsby-resp-image-wrapper {
+  @apply rounded-md;
+}
+
+.gatsby-resp-image-image {
+  @apply rounded-md;
+}
+
+.gatsby-resp-image-background-image {
+  @apply rounded-md;
+}
