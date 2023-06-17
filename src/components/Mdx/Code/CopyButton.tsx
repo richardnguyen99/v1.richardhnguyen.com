@@ -50,7 +50,7 @@ const CopyButton: React.FC<Props> = ({ content, ...rest }) => {
       />
       <CheckIcon
         size={16}
-        className="w-4 h-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50 group-[.show]:opacity-100 group-[.show]:scale-100 transition-all ease-in-out duration-500"
+        className="w-4 h-4 absolute fill-green-500 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50 group-[.show]:opacity-100 group-[.show]:scale-100 transition-all ease-in-out duration-500"
       />
     </button>
   );

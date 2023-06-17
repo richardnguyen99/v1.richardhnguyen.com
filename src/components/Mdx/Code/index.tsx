@@ -41,7 +41,7 @@ const Code: React.FC<CodeProps> = ({
       {({ className, tokens, getTokenProps, getLineProps }) => (
         <div
           id={id}
-          className="relative my-4 border bg-neutral-300 dark:bg-[#0B1416] border-slate-400 dark:border-gray-700 rounded-md text-sm"
+          className="relative my-4 border bg-neutral-300 dark:bg-[#0B1416] border-slate-400 dark:border-gray-700 rounded-md text-sm mt-8"
           aria-describedby="code"
         >
           <div
