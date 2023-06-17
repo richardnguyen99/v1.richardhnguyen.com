@@ -113,30 +113,6 @@ code {
   @apply dark:border-neutral-500;
 }
 
-/* Style code tags that are not inside the pre tags */
-
-#content code:not(pre > code) {
-  @apply text-base;
-  @apply text-pink-400;
-  @apply p-1;
-  @apply px-2;
-  @apply rounded-lg;
-  @apply bg-neutral-300;
-  @apply dark:bg-zinc-800;
-  @apply font-mono;
-  @apply font-medium;
-}
-
-#content a:not(.anchor) {
-  @apply font-bold;
-  @apply border-b;
-  @apply hover:border-b-4;
-  @apply cursor-pointer;
-  @apply border-sky-500;
-  @apply dark:text-zinc-50;
-  @apply transition-all;
-}
-
 #content .anchor {
   @apply pr-3;
   @apply font-black;

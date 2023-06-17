@@ -2,6 +2,7 @@
 @import "./prismjs.css";
 @import "./typography.css";
 
+@import "./link.css";
 @import "./list.css";
 @import "./code.css";
 @import "./callout.css";
