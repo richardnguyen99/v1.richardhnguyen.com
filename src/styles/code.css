@@ -1,0 +1,14 @@
+pre[aria-describedby="code-pre"] {
+  counter-reset: token-line;
+}
+
+.show .token-line::before {
+  counter-increment: token-line;
+  content: counter(token-line);
+  @apply w-4;
+  @apply select-none;
+  @apply text-right;
+  @apply mr-5;
+  @apply inline-block;
+  @apply opacity-40;
+}

@@ -1,5 +1,8 @@
 import * as React from "react";
+import clsx from "classnames";
 import { Highlight, themes } from "prism-react-renderer";
+
+import getFileType from "./getFileTypeIcon";
 
 import { getLanguageExt } from "../util";
 
@@ -18,39 +21,45 @@ const Code: React.FC<CodeProps> = ({
   title: _title,
 }) => {
   const id = React.useId();
-
-  React.useEffect(() => {
-    console.log(_className);
-  }, []);
+  const extension = getLanguageExt(_className);
+  const FileTypeIcon = getFileType(extension);
 
   return (
-    <Highlight
-      theme={themes.dracula}
-      code={codeString}
-      language={getLanguageExt(_className)}
-    >
+    <Highlight theme={themes.dracula} code={codeString} language={extension}>
       {({ className, tokens, getTokenProps, getLineProps }) => (
         <div
           id={id}
-          className="relative border border-gray-400 text-sm"
+          className="relative my-4 border border-gray-600 rounded-md text-sm"
           aria-describedby="code"
         >
-          <div aria-describedby="code-header">{_title}</div>
-          <pre aria-describedby="code-pre">
-            <code>
+          <div
+            aria-describedby="code-header"
+            className="flex items-center gap-2 px-3 py-2 rounded-tl-md rounded-tr-md border-b border-gray-600 dark:bg-[#0D1618]"
+          >
+            <div className="flex items-center flex-shrink-0 w-5 ">
+              <FileTypeIcon />
+            </div>
+            <div>{_title}</div>
+          </div>
+          <pre aria-describedby="code-pre" className="my-3">
+            <code
+              className={clsx({
+                show: showLineNumber,
+              })}
+            >
               {tokens.map((line, i) => {
-                const lineProps = getLineProps({ line, key: i });
+                const lineProps = getLineProps({
+                  line,
+                  key: i,
+                });
 
                 return (
                   <div key={i} {...lineProps}>
-                    {showLineNumber && (
-                      <span className="inline-block w-8 text-right ml-1 mr-3 opacity-40">
-                        {i + 1}
-                      </span>
-                    )}
-                    {line.map((token, key) => (
-                      <span key={i} {...getTokenProps({ token, key })} />
-                    ))}
+                    {line.map((token, key) => {
+                      return (
+                        <span key={i} {...getTokenProps({ token, key })} />
+                      );
+                    })}
                   </div>
                 );
               })}
