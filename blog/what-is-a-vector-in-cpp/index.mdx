@@ -90,4 +90,19 @@ Both approaches are valid. However, STD vector prefers the second approach to th
 
 # How growing works
 
-(To be updated...)
+Let's consider the most used method in STD vector, [`vector<T>::push_back`](https://cplusplus.com/reference/vector/vector/push_back/), which appends the new element to the back of the vector. The simple algorithm to achieve this goal is described as below:
+
+1. Check if there is enough space (i.e. `end - finish > 0`).
+2. If there is enough space, go to step 6. Otherwise continue.
+3. Allocate a new space with a new, sufficient capacity.
+4. Copy the values from the old array to the new one.
+5. Free the space of the old array.
+6. Append the new element to end.
+
+If our vector has enough space, the work to append a new element is simple; _just assign it the space pointed by `finish` and increment the pointer_. However, if there is not enough space, our vector has to find a new space. Allocation, copying and deallocation are expensive operations.
+
+> In terms of time complexity, if there is enough space, the time complexity
+> $O(1)$. Otherwise, the time complexity to copy all data is $O(N)$, with $N$
+> is the number of elements. But since this happens once in a while,
+> `push_back` is said to have an
+> [amortized](https://en.wikipedia.org/wiki/Amortized_analysis) constant time.

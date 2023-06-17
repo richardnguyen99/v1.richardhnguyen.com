@@ -15,6 +15,7 @@ import ThemeProvider from "./src/components/Theme/Provider";
 
 import "./fonts/fonts.css";
 import "./src/styles/index.css";
+import "katex/dist/katex.min.css";
 
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
   element,

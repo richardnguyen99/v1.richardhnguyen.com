@@ -104,6 +104,12 @@ const config = {
             },
           },
           {
+            resolve: "gatsby-remark-katex",
+            options: {
+              strict: "ignore",
+            },
+          },
+          {
             resolve: "gatsby-remark-autolink-headers",
             options: {
               offsetY: "100",
