@@ -90,7 +90,7 @@ Both approaches are valid. However, STD vector prefers the second approach to th
 
 # How growing works
 
-Let's consider the most used method in STD vector, [`vector<T>::push_back`](https://cplusplus.com/reference/vector/vector/push_back/), which appends the new element to the back of the vector. The simple algorithm to achieve this goal is described as below:
+Let's consider the most used method in STD vector, [`vector<T>::push_back`](https://cplusplus.com/reference/vector/vector/push_back/), which appends the new element to the back of the vector. The simple procedure to achieve this goal is described as below:
 
 1. Check if there is enough space (i.e. `end - finish > 0`).
 2. If there is enough space, go to step 6. Otherwise continue.
@@ -99,6 +99,8 @@ Let's consider the most used method in STD vector, [`vector<T>::push_back`](http
 5. Free the space of the old array.
 6. Append the new element to end.
 
+![vector push back](./vector-push-back.png "Vector push_back (before & after)")
+
 If our vector has enough space, the work to append a new element is simple; _just assign it the space pointed by `finish` and increment the pointer_. However, if there is not enough space, our vector has to find a new space. Allocation, copying and deallocation are expensive operations.
 
 > In terms of time complexity, if there is enough space, the time complexity
@@ -106,3 +108,18 @@ If our vector has enough space, the work to append a new element is simple; _jus
 > is the number of elements. But since this happens once in a while,
 > `push_back` is said to have an
 > [amortized](https://en.wikipedia.org/wiki/Amortized_analysis) constant time.
+
+To avoid allocating overhead, determining a new size is crucial. You can come up with crazy ideas to set a new size for your vector. However, a simple approach is to **double** the old size. In fact, this is how STD vector does it.
+
+# Insert new elements
+
+`push_back` is a great method, and it solves almost 95% use cases of vector. However, there are certain scenarios that you might need to insert elements at somewhere else except at the back. This is where you might need [`vector<T>::insert()`](https://cplusplus.com/reference/vector/vector/insert/).
+
+## Without reallocation
+
+Since all elements in a vector are stored contiguously, which means there is no
+hole in a vector, inserting new elements at any random position requires some mechanisms to find space for new incoming elements.
+
+That mechanism is called **shifting**. `insert()` will right-shift all the elements after the position to which you want to insert. After making some available space, you can now safely insert the new elements.
+
+![vector insert without allocation](./vector-insert-no-alloc.png "Vector insert without allocation")
