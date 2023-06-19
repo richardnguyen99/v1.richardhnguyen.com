@@ -90,6 +90,8 @@ Both approaches are valid. However, STD vector prefers the second approach to th
 
 # How growing works
 
+## Push back
+
 Let's consider the most used method in STD vector, [`vector<T>::push_back`](https://cplusplus.com/reference/vector/vector/push_back/), which appends the new element to the back of the vector. The simple procedure to achieve this goal is described as below:
 
 1. Check if there is enough space (i.e. `end - finish > 0`).
@@ -110,6 +112,37 @@ If our vector has enough space, the work to append a new element is simple; _jus
 > [amortized](https://en.wikipedia.org/wiki/Amortized_analysis) constant time.
 
 To avoid allocating overhead, determining a new size is crucial. You can come up with crazy ideas to set a new size for your vector. However, a simple approach is to **double** the old size. In fact, this is how STD vector does it.
+
+## Reserve space
+
+At this point, we know that reallocation associated with vector is an expensive process, so we want to avoid it as much as possible. If we know how many elements we might need, we want to allocate that space beforehand.
+
+STD C++ provides a method, called [`vector<T>::reserve()`](https://cplusplus.com/reference/vector/vector/reserve/) to achieve that goal. The method only increases the capacity when needed, and does not alternate the original elements.
+
+```cpp title="main.cpp"
+vector<int> foo(8);
+auto print = [](const int& n) { std::cout << n << ' '; };
+
+std::cout << "Old cap: " << foo.capacity() << "\n";
+
+std::cout << "Data: [ "
+std::for_each(foo.begin(), foo.end(), print)
+std::cout << "]\n";
+
+foo.reserve(100);
+std::cout << "New cap: " << foo.capacity() << "\n";
+
+std::cout << "Data: [ "
+std::for_each(foo.begin(), foo.end(), print)
+std::cout << "]\n";
+```
+
+```txt title="Output" showLineNumber=false enableCopy=false
+Old cap: 8
+Data: [ 0 0 0 0 0 0 0 0 ]
+New cap: 100
+Data: [ 0 0 0 0 0 0 0 0 ]
+```
 
 # Insert new elements
 

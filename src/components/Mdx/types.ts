@@ -5,7 +5,7 @@ export interface PreProps {
       className?: string;
 
       title?: string;
-      withLineNumbers?: string;
+      showLineNumbers?: string;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       [key: string]: any;

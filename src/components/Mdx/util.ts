@@ -7,13 +7,21 @@ export const getLanguageExt = (className: string) => {
 export const preparePreProps = (preProps: PreProps) => {
   if (preProps.children.type !== "code") return undefined;
 
-  const { children, className = "", ...props } = preProps.children.props;
+  const {
+    children,
+    className = "",
+    showLineNumber,
+    enableCopy,
+    ...props
+  } = preProps.children.props;
   const match = className.match(/language-([\0-\uFFFF]*)/);
 
   return {
     codeString: children.trim(),
     className,
     language: match !== null ? match[1] : "",
+    showLineNumber: showLineNumber === "false" ? false : true,
+    enableCopy: enableCopy === "false" ? false : true,
     ...props,
   };
 };

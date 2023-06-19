@@ -18,6 +18,10 @@ pre[aria-describedby="code-pre"] {
   counter-increment: token-line;
   content: counter(token-line);
   @apply w-8;
+}
+
+.token-line::before {
+  content: "";
   @apply select-none;
   @apply text-right;
   @apply mr-5;

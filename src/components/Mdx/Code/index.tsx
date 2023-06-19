@@ -6,13 +6,13 @@ import getFileType from "./getFileTypeIcon";
 
 import { getLanguageExt } from "../util";
 import ThemeContext from "@components/Theme/Context";
-import { CopyIcon } from "@primer/octicons-react";
 import CopyButton from "./CopyButton";
 
 export type CodeProps = {
   codeString: string;
   className: string;
   showLineNumber?: boolean;
+  enableCopy?: boolean;
 
   title?: string;
 };
@@ -21,6 +21,7 @@ const Code: React.FC<CodeProps> = ({
   codeString,
   className: _className,
   showLineNumber = true,
+  enableCopy = true,
   title: _title,
 }) => {
   const themeContext = React.useContext(ThemeContext);
@@ -54,9 +55,11 @@ const Code: React.FC<CodeProps> = ({
               </div>
               <div>{_title}</div>
             </div>
-            <div>
-              <CopyButton content={codeString} />
-            </div>
+            {enableCopy && (
+              <div>
+                <CopyButton content={codeString} />
+              </div>
+            )}
           </div>
           <pre aria-describedby="code-pre" className="my-3">
             <code
