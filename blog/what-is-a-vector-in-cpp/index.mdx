@@ -123,3 +123,19 @@ hole in a vector, inserting new elements at any random position requires some me
 That mechanism is called **shifting**. `insert()` will right-shift all the elements after the position to which you want to insert. After making some available space, you can now safely insert the new elements.
 
 ![vector insert without allocation](./vector-insert-no-alloc.png "Vector insert without allocation")
+
+The shifting operation is the basis operation of this method, so the time complexity is linear depending the distance between your position to which you want to insert and the last element. In other words, inserting at the beginning of the vector is the worst case. Now, you get some ideas why vector is so great at inserting elements at the back but not at the front.
+
+## With reallocation
+
+The idea is pretty same as what we discussed in [How growing works](#how-growing-works). You need to find a space to store old and new elements. A simple approach can be as follow:
+
+1. Allocate a new array
+2. Copy the old array to the new one.
+3. Perform shifting and insert the new elements.
+
+This approach is straight-forward, but there is a way to combine copying and inserting. We can split the copying process into 3 parts. First part is the elements before the inserting position, the second part is the inserting elements and the last part is the remaining elements in the old array.
+
+This will remove the overlap between copying and shifting from the "naive" approach, and yield a better performance. This illustration might help clear things out for you:
+
+![vector insert with allocation](./vector-insert-with-alloc.png "Vector insert with allocation")
