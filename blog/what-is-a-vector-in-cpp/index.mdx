@@ -155,7 +155,11 @@ hole in a vector, inserting new elements at any random position requires some me
 
 That mechanism is called **shifting**. `insert()` will right-shift all the elements after the position to which you want to insert. After making some available space, you can now safely insert the new elements.
 
+<div className="mt-8">
+
 ![vector insert without allocation](./vector-insert-no-alloc.png "Vector insert without allocation")
+
+</div>
 
 The shifting operation is the basis operation of this method, so the time complexity is linear depending the distance between your position to which you want to insert and the last element. In other words, inserting at the beginning of the vector is the worst case. Now, you get some ideas why vector is so great at inserting elements at the back but not at the front.
 
@@ -171,4 +175,14 @@ This approach is straight-forward, but there is a way to combine copying and ins
 
 This will remove the overlap between copying and shifting from the "naive" approach, and yield a better performance. This illustration might help clear things out for you:
 
+<div className="mt-8">
+
 ![vector insert with allocation](./vector-insert-with-alloc.png "Vector insert with allocation")
+
+</div>
+
+# Conclusion
+
+Vector is a wonderful solution to deal with fixed-size arrays. The actual implementation of C++ vector is way more complicated than what we have covered in this article. We have not talked about allocator, constructor, deletion, meta programming and iterators. Nevertheless, understanding the basis will help you understand how C++ works, and, more importantly, how reallocation works to accomodate new elements.
+
+From there, you can try to recreate vector from scratch by yourself. If you're interested, you check [`my vector implementation`](https://github.com/richardnguyen99/dutcpp/).
