@@ -102,7 +102,11 @@ Let's consider the most used method in STD vector, [`vector<T>::push_back`](http
 5. Free the space of the old array.
 6. Append the new element to end.
 
+<div className="mt-8">
+
 ![vector push back](./vector-push-back.png "Vector push_back (before & after)")
+
+</div>
 
 If our vector has enough space, the work to append a new element is simple; _just assign it the space pointed by `finish` and increment the pointer_. However, if there is not enough space, our vector has to find a new space. Allocation, copying and deallocation are expensive operations.
 

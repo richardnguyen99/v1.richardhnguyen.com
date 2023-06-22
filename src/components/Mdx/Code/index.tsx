@@ -42,12 +42,12 @@ const Code: React.FC<CodeProps> = ({
       {({ className, tokens, getTokenProps, getLineProps }) => (
         <div
           id={id}
-          className="relative my-4 border bg-neutral-300 dark:bg-[#0B1416] border-slate-400 dark:border-gray-700 rounded-md text-sm mt-8"
+          className="relative my-4 border bg-neutral-100 dark:bg-[#0B1416] border-slate-300 dark:border-gray-700 rounded-md text-sm mt-8"
           aria-describedby="code"
         >
           <div
             aria-describedby="code-header"
-            className="flex items-center justify-between px-3 py-2 rounded-tl-md rounded-tr-md border-b border-slate-400 dark:border-gray-700 bg-gray-300 dark:bg-[#0D1618]"
+            className="flex items-center justify-between px-3 py-2 rounded-tl-md rounded-tr-md border-b border-slate-300 dark:border-gray-700 bg-gray-100 dark:bg-[#0D1618]"
           >
             <div className="flex items-center gap-2">
               <div className="flex items-center flex-shrink-0 w-5 ">

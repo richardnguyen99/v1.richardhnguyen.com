@@ -37,11 +37,14 @@ const CopyButton: React.FC<Props> = ({ content, ...rest }) => {
     <button
       {...rest}
       type="button"
-      className={clsx("group rounded-lg dark:hover:bg-[#1E2729]", {
-        "relative w-8 h-8": true,
-        "flex items-center justify-center": true,
-        show: isCopied,
-      })}
+      className={clsx(
+        "group rounded-lg hover:bg-neutral-200 dark:hover:bg-[#1E2729]",
+        {
+          "relative w-8 h-8": true,
+          "flex items-center justify-center": true,
+          show: isCopied,
+        }
+      )}
       onClick={handleCopyClick}
     >
       <CopyIcon
