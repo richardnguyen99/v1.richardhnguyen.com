@@ -11,7 +11,8 @@
   @apply mt-6;
   @apply pl-12;
 
-  @apply marker:text-sky-300;
+  @apply marker:text-sky-500;
+  @apply dark:marker:text-sky-300;
   @apply marker:font-bold;
   @apply marker:font-mono;
 }

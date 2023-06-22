@@ -1,8 +1,10 @@
 .mdx-link {
+  @apply text-slate-950;
   @apply dark:text-white;
   @apply font-extrabold;
   @apply border-b;
-  @apply border-sky-400;
+  @apply border-sky-600;
+  @apply dark:border-sky-400;
   @apply hover:border-b-4;
   @apply transition-all;
   @apply ease-in-out;
@@ -13,13 +15,16 @@
 }
 
 .mdx-link.code > .mdx-code {
-  @apply text-sky-400;
-  @apply bg-sky-950;
+  @apply text-sky-600;
+  @apply dark:text-sky-400;
+  @apply bg-sky-200;
+  @apply dark:bg-sky-950;
 }
 
 .mdx-link.code > .mdx-code > span {
   @apply border-b;
-  @apply border-sky-400;
+  @apply border-sky-600;
+  @apply dark:border-sky-400;
   @apply hover:border-b-[3px];
   @apply transition-all;
   @apply ease-in-out;

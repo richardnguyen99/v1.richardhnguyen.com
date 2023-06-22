@@ -1,10 +1,12 @@
 .mdx-code {
   @apply text-base;
-  @apply text-pink-400;
+  @apply text-rose-400;
+  @apply dark:text-pink-400;
   @apply p-1;
   @apply px-2;
   @apply rounded-lg;
-  @apply bg-neutral-300;
+  @apply bg-neutral-200;
+  @apply dark:bg-neutral-300;
   @apply dark:bg-[#0e1d1f];
   @apply font-mono;
   @apply font-extrabold;

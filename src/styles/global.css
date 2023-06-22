@@ -58,6 +58,7 @@ code {
 
 #content {
   @apply text-lg;
+  @apply text-slate-700;
   @apply dark:text-zinc-300;
 }
 
@@ -66,6 +67,7 @@ code {
 }
 
 #content h1 {
+  @apply text-slate-950;
   @apply dark:text-white;
   @apply text-5xl;
   @apply font-black;
@@ -73,6 +75,7 @@ code {
 }
 
 #content h2 {
+  @apply text-slate-950;
   @apply dark:text-white;
   @apply text-3xl;
   @apply font-extrabold;
@@ -80,6 +83,7 @@ code {
 }
 
 #content h3 {
+  @apply text-slate-950;
   @apply dark:text-white;
   @apply text-xl;
   @apply font-bold;

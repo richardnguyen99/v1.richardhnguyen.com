@@ -2,7 +2,8 @@
   @apply text-sm;
   @apply text-center;
   @apply font-medium;
-  @apply text-slate-300;
+  @apply text-slate-500;
+  @apply dark:text-slate-300;
 
   @apply mt-8;
 }
