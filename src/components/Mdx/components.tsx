@@ -8,6 +8,7 @@ import Link from "./Link";
 
 const mdxComponents: MDXComponents = {
   pre: (preProps) => {
+    console.log(preProps);
     const preparedProps = preparePreProps(preProps as PreProps);
 
     if (!preparedProps) return <pre {...preProps} />;

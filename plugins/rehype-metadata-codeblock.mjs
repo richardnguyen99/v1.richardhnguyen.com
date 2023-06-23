@@ -6,12 +6,14 @@ const transformer = (tree) => {
   return visit(tree, "element", function (node) {
     let match;
 
-    // For inline code elements.
-    if (node.tagName === "code" && !node.data) {
-      node.properties["className"] = "mdx-code";
+    if (
+      node.tagName === "code" &&
+      typeof node.properties.className === "undefined"
+    ) {
+      node.properties.className = "mdx-code";
+      return;
     }
 
-    // For code block elements.
     if (node.tagName === "code" && node.data && node.data.meta) {
       re.lastIndex = 0; // Reset regex.
 
