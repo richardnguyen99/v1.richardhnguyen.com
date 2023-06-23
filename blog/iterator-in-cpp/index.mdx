@@ -9,12 +9,92 @@ tags:
   - C++
   - Python
 published: true
+thumbnail: ./iterator-in-cpp.png
 ---
 
-Something
+The first time you learn about the [C++ Standard Template Library (STL)](https://cplusplus.com/reference/stl/), you probably get confused by the term **Iterator**. STL uses iterators for almost operations. It provides access to the elements in the underlying container. But why can you not access the elements directly? What does it do?
 
 {/* Except */}
 
 # Introduction
+
+In the [Gang of Four (GOF) book](https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8) on Design Pattern, it says:
+
+> The intent of an iterator is to provide a way to access the elements of an
+> aggregate object sequentially without exposing its underlying representation.
+>
+> [First edition - Page 353]
+
+C++ STL defines it [as](https://cplusplus.com/reference/iterator/):
+
+> An iterator is any object that, pointing to some element in a range of elements
+> (such as an array or a container), has the ability to iterate through the
+> elements of that range using a set of operators (with at least the increment
+> (++) and dereference (\*) operators).
+
+Iterators are used to access elements sequentially without exposing the underlying implementation of the object.
+
+Let's say you have a binary tree. To traverse a tree, you can use any traversal techique that is your favorite. The problem with these traversing is that you can only traverse through the whole tree. What if you want to access the values in the tree one by one?
+
+Iterators can help you achieve that goal. Instead of traversing the whole tree, iterator will give its users a chance to go one-by-one, or _sequentially_. And of course, you can traverse through the whole tree by combining a loop and iterators.
+
+# Basic requirements
+
+Each programming language has its own requirements on what basic methods an iterator must have. They can be defined under different literature. For C++, it's mostly defined as [overloaded operators](https://en.cppreference.com/w/cpp/language/operators). For Python, it uses [Data Model](https://docs.python.org/3/reference/datamodel.html). For Java, iterators are inherited from the super [Interface Iterable](https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html).
+
+However there are certain functionalities that an iterator must support:
+
+1. **Sequential iteration** &mdash; iterators can be incremented to move to the next element.
+2. **Termination** &mdash; iterators should know whether there is any element left.
+3. **Retrieval** &mdash; iterators should be able to return the value of the element.
+
+As mentioned, C++ supports these functionalities by overloading operators. For (1), C++ overloads the two unary incrementing operators, `operator++()` and `operator++(int)`, to advance the iterator. For (2), C++ overloads the two comparison operators, `operator==()` and `operator!=()`, to support termination. Finally, you can dererference an iterator to retrieve some data with `operator*()` and `operator->()`.
+
+From now on, I will only focus on the C++ implementation of iterators.
+
+# Categories
+
+C++ supports a variety of iterators, depending on the need, the nature of the container and the underlying data structure to support that container.
+
+From the [basic requirements](#basic-requirements), C++ defines as the [Input Iterator](https://cplusplus.com/reference/iterator/InputIterator/). That is the most basic iterator, which defines the basic functionalities of other iterator categories.
+
+From here, C++ has other iterator categories according to different containers.
+
+## Forward Iterator
+
+[Forward Iterator](https://cplusplus.com/reference/iterator/ForwardIterator/) has everything that an Input iterator has. Additionally, foward iterators can be used as _lvalue_, which means its value can be reassigned.
+
+An example to illustrate this point is by using the container [`std::forward_list`](https://cplusplus.com/reference/forward_list/forward_list/). Forward list is a singly-linked list, which can be only iterated in a forwarding direction (from start to finish). That's the basic functionalities from the input iterator.
+
+With forward iterators, it allows assigning new value to the element to which the iterator is pointing. This can be done by dereferencing an iterator via `operator*()`.
+
+```cpp title="forward_list.cpp"
+#include <forward_list>
+#include <iostream>
+
+int main(void) {
+  std::forward_list<int> ist{1, 2, 3, 4, 5};
+
+  for (auto curr = list.begin(); curr != list.end(); ++curr)
+    std::cout << *curr << " ";
+  std::cout << "\n";
+
+  auto first = list.begin();
+  auto second = ++first;
+
+  *second = -2; // Assign new value
+
+    for (auto curr = list.begin(); curr != list.end(); ++curr)
+    std::cout << *curr << " ";
+  std::cout << "\n";
+
+  return 0;
+}
+```
+
+```txt title="Output" showLineNumber="false" enableCopy="false"
+1  2 3 4 5
+1 -2 3 4 5
+```
 
 # Conclusion
