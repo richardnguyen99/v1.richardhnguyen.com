@@ -204,4 +204,36 @@ int main(void) {
 10 9 8 7 -6 5 -4 3 2 -1
 ```
 
+# Implementation
+
+Despite having categories to define the expected operations, different containers have different implementation to accomodate their underlying representation. Some is very straight-forward, while some is complicated. Therefore, there is no universal implementation for all iterators.
+
+For that reason, each container will define the implementation of its own iterator. This will include what type of traversal algorithm is, how the advancing works, how much the container wants to expose its underlying elements, etc.
+
+Let's take `vector` and `deque` into comparison. Both support Random Access Iterator to access elements directly and advance iterators by offset. However, while vector iterators are just like pointers, deque iterators are way more complicated due to its map of nodes.
+
+`vector` has an array as the underlying data structure. The container defines its iterator as `__normal_iterator`, which is basically a class wrapping a pointer. This iterator can perform any operation that a normal pointer can such as pointer-arithmetic operations, dereferencing, reassign, etc. Additionally, this iterator can support other utilitiies such as converting a const iterator to a normal iterator and vice versa.
+
+`deque`, on the hand, uses a map of lists under the hood. A map, in a nutshell, is an array whose elements are other arrays. Each iterator needs to know the pointer to the array, the boundary of the array and the pointer to the current element.
+
+<div className="mt-8">
+
+![deque illustration](./deque-illustration.png "Deque illustration")
+
+</div>
+
+Most iterator implementations contain some essential information about the underlying data structure of the associating container. The information is usually represented in pointers. They will expose the location of the elements and their "surrounding environment" to the iterator implementation. Depending the traversal algorithm and the data structure, these information can be varied.
+
+The iterator needs the information to cover all the possible scenarios that could happen when it performs the expected functionalities. For example, why deque iterator needs to know the pointer `*m_node`? Well, in case advancing the iterator moves `*m_curr` outside of the array, the iterator will advance `*m_node` and continue advancing with the remaining offset.
+
+But thanks to the iterator, you don't need to know the detail of implementation when you use `deque` container. The iterator provides you an interface to access the elements sequentially without intimidating you with the complicated procedure.
+
 # Conclusion
+
+Iterator is a useful interface for programmers to access the underlying elements without worrying too much about the actual implementation. Unlike other programming languages, C++ publicly supports iterators in its containers. All STL containers need iterators to perform most of their methods.
+
+Therefore, getting comfortable with iterators will help you work tremendously better with STL containers.
+
+# References
+
+- [CPlusPlus Iterator](https://cplusplus.com/reference/iterator/)
