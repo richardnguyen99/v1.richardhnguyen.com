@@ -84,7 +84,7 @@ int main(void) {
 
   *second = -2; // Assign new value
 
-    for (auto curr = list.begin(); curr != list.end(); ++curr)
+  for (auto curr = list.begin(); curr != list.end(); ++curr)
     std::cout << *curr << " ";
   std::cout << "\n";
 
@@ -95,6 +95,56 @@ int main(void) {
 ```txt title="Output" showLineNumber="false" enableCopy="false"
 1  2 3 4 5
 1 -2 3 4 5
+```
+
+## Bidirectional iterator
+
+[Bidirectional iterator](https://cplusplus.com/reference/iterator/BidirectionalIterator/) has everything that Forward Iterator supports. Additionally, it also supports decrementing operations, which means you can iterate from start to finish, and backward! As oppose to incrementing, which uses `operator++`, the decrementing can be done via two unary operations, `operator--()` and `operator--(int)`.
+
+Let's continue to illustrate this by using the container [`std::list`](https://cplusplus.com/reference/list/list/). Unlike forward list, `std::list` is a doubly-linked list whose nodes have two pointers, one pointing to the next node and one pointing to the previous node. It can be iterated in a forwarding direction, just like forward iterator, and can be iterated backward too. And of course, bidirectional iterators also support reassignment.
+
+```cpp title="list.cpp"
+#include <algorithm>
+#include <iostream>
+#include <list>
+
+int main(void) {
+  std::list<int> list{1, 2, 3, 4, 5};
+  auto print = [](const int &e) { std::cout << e << " "; };
+
+  std::for_each(list.begin(), list.end(), print);
+  std::cout << "\n";
+
+  auto first = list.begin();
+  auto second = ++first;
+
+  *second = -2;
+
+  // Decrementing
+  auto it = list.end();
+  while (it != list.begin())
+  {
+    --it;
+    print(*it);
+  }
+  std::cout << "\n";
+
+  return 0;
+}
+```
+
+```txt title="Output" showLineNumber="false" enableCopy="false"
+1 2 3  4 5
+5 4 3 -2 1
+```
+
+Now, iterating backward is troublesome since `end()` does not reference to the last element, but to _one-past_ the last element. This accomodates the range `[first, last)`. In C++ STL, if a container supports bidirectional iterator, it guarantees to provide `rbegin()` and `rend()` (prefix _'r'_ standing for reverse).
+
+You can replace the decrementing loop with `rbegin()` and `rend()`.
+
+```cpp
+std::for_each(list.begin(), list.end(), print);
+std::cout << "\n";
 ```
 
 # Conclusion
