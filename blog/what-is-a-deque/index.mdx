@@ -1,26 +1,34 @@
 ---
 title: "What is a deque?"
-created: 2023-04-14
-updated: 2023-04-14
+created: 2023-06-23
+updated: 2023-06-23
 author: "Richard Nguyen"
 categories:
   - Sharing
 tags:
   - C++
   - Python
-thumbnailAuthor: Dariusz Sankowski
-thumbnailAuthorLink: https://unsplash.com/photos/3OiYMgDKJ6k
-thumbnail: ./dariusz-sankowski-3OiYMgDKJ6k-unsplash.png
+thumbnail: ./what-is-deque.png
 ---
 
-I use `deque` a lot while solving tree and graph problems. In Python, you can import it from `collections` module. In C++, you can import it from `deque` header file. In Java, you can import it from `java.util` package. It's a great data structure when you need to have random access and to work with elements at both ends efficiently.
+Many problems can be solved with arrays and their dynamic version. In Python, you can use the builtin [`list`](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists). In C++, you use [`vector`](https://cplusplus.com/reference/vector/). But the drawback is that these dynamic array is terrible at insertion and deletion at the front due to shifting. Deque is created to solve this problem!
 
 {/* Except */}
 
 # Introduction
 
-(To be updated...)
+Deque, or **doubly-ended queue**, is a data structure created to solve the critical problem that dynamic arrays have: working with the front element.
 
-## Credits
+As a reminder, dynamic arrays are great at inserting and deleting the last element in the array, thanks to the size property: appending new elements will increase the size. Assume there is no reallocation happening, the time complexity of this operation is constant.
 
-- Thumbnail by [Syd Wachs](https://unsplash.com/photos/slItfWbhijc)
+However, inserting or deleting an element at some arbitary position will take linear time, $O(N)$ where $N$ is the distance between the position on which the operation performs and the position of the last element. This means working with the first element always yields the worst runtime. (Psst. I have a post about about [this](/posts/what-is-a-vector-in-cpp))
+
+This is where deque comes in to "save the world"!
+
+# What deque can do
+
+What deque proposes and tries to solve is support insertion and deletion at the front of a container. You might wonder: "Has linked list already solved this problem?". That is correct. Insertion/deleteion at the front can be done with linked lists.
+
+However, the problem with linked lists is that accessing elements takes linear time. The beauty of a deque is that it also supports constant access time (random access).
+
+In summary, deque wants to solve the problem that dynamic arrays have, while still keeps their best traits.
