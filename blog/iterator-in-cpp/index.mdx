@@ -147,4 +147,61 @@ std::for_each(list.begin(), list.end(), print);
 std::cout << "\n";
 ```
 
+## Random Access Iterator
+
+The final iterator category with the most supported operations is the [Random Access Iterator](https://cplusplus.com/reference/iterator/RandomAccessIterator/). They can be used to access elements with an offset.
+
+All the above iterators have one drawback when you look at the examples. If you want to advance an iterator to a certain position, you must repeat either `operator++()` or `operator--()` for incrementing and decrementing respectively. As a result, it also supports `operator[]` to directly access an element.
+
+Random access iterators allow advancing iterators with an offset, which can be done by `operator+(int)` and `operator-(int)`.
+
+You might wonder _"Why can I implement operator+(int) by repeating operator++() multiple times?"_. The answer is **yes**. However, it will takes a linear time, $O(N)$ to complete the operation. The bigger the offset is, the worse it gets.
+
+With random access iterators, the operation only takes constant time, $O(1)$, regardless how big the offset is.
+
+An example of a container supporting this category is [`std::deque`](https://en.cppreference.com/w/cpp/container/deque). A deque behaves like a vector, but it also supports operations at the front of the container with constant time too.
+
+```cpp title="deque.cpp"
+#include <algorithm>
+#include <deque>
+#include <iostream>
+
+int main(void) {
+  std::deque<int> deque{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  auto print = [](const int &e) { std::cout << e << " "; };
+
+  std::for_each(deque.begin(), deque.end(), print);
+  std::cout << "\n";
+
+  for (size_t i = 0; i < deque.size(); i += 2)
+    print(*(deque.begin() + i));
+  std::cout << "\n";
+
+  for (size_t i = 1; i < deque.size(); i += 2)
+    print(*(deque.begin() + i));
+  std::cout << "\n";
+
+  // direct access
+  deque[5] = -6;
+
+  // advance by offset
+  first += 3;
+  *first = -4;
+  first -= 3;
+  *first = -1;
+
+  std::for_each(deque.rbegin(), deque.rend(), print);
+  std::cout << "\n";
+
+  return 0;
+}
+```
+
+```txt title="Output" showLineNumber="false" enableCopy="false"
+1 2 3 4 5 6 7 8 9 10
+1 3 5 7 9
+2 4 6 8 10
+10 9 8 7 -6 5 -4 3 2 -1
+```
+
 # Conclusion
