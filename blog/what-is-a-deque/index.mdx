@@ -29,6 +29,45 @@ This is where deque comes in to "save the world"!
 
 What deque proposes and tries to solve is support insertion and deletion at the front of a container. You might wonder: "Has linked list already solved this problem?". That is correct. Insertion/deleteion at the front can be done with linked lists.
 
-However, the problem with linked lists is that accessing elements takes linear time. The beauty of a deque is that it also supports constant access time (random access).
+However, the problem with linked lists is that accessing elements takes linear time. The beauty of a deque is that it also supports constant access time (random access), just like a vector can do.
 
-In summary, deque wants to solve the problem that dynamic arrays have, while still keeps their best traits.
+With these useful traits, deque can be used as the underlying data structure for both stack (first-in last-out) and queue (first-in first out).
+
+# Implementation
+
+> This article will focus heavily on the implementation on [`std::deque<T>`](https://en.cppreference.com/w/cpp/container/deque), and a bit from [`collections.deque`](https://docs.python.org/3/library/collections.html#collections.deque).
+
+A deque maintains an array of fix-sized arrays. This data structure is often referred as _a map_. Initially, the map has an arbitary initial number of slots. In C++, this initial number is 8. In Python, it does not have an initial size as the implementation uses a doubly-linked list.
+
+Each element in this map points to a block of elements. These blocks often have a fixed number of elements. In Python, the block length is set to 64, which means each block will contain 64 elements of a type. In C++, the block length is determined in bytes, which is 512. For example, C++ integer type `int` is 4 bytes, then the block length will be `512 / 4 = 128` elements in total. The bigger the size of a type is, the shorter the block is.
+
+> If the size of a type exceeds 512, C++ deque allocates only one object of that type, which means there is one element in a block.
+
+# Deque iterator
+
+The core functionalities rely on the implementation of its iterator.
+
+> An iterator is an interface on how you can access the underlying elements without knowing too much the internal implementation. More detail about C++ iterator [here](/posts/iterator-in-cpp/).
+
+In C++, a deque iterator contains _4_ essential member fields:
+
+1. `map_node`: Map pointer that points to a block.
+2. `start`: Block pointer that points to the first element.
+3. `finish`: Block pointer that points to the end of the block.
+4. `curr`: Block pointer that points to the last element.
+
+Each deque object contains two iterators. One is used to mark the first range and one is used to mark the second range in the deque. The first pointer will grow backward, which means appending new elements will decrease the start iterator. Meanwhile, the second pointer will grow forward, which means appending new elements will increase the finish iterator.
+
+<div className="mt-8">
+
+![Deque illustrator 1](./deque-illustration.png "Deque illustrator (1)")
+
+</div>
+
+If we re-arrange this illustration so that all blocks look continous:
+
+<div className="mt-8">
+
+![Deque illustrator 2](./deque-illustration-2.png "Deque illustrator (2)")
+
+</div>
