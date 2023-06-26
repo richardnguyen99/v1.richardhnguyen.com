@@ -41,7 +41,9 @@ A deque maintains an array of fix-sized arrays. This data structure is often ref
 
 Each element in this map points to a block of elements. These blocks often have a fixed number of elements. In Python, the block length is set to 64, which means each block will contain 64 elements of a type. In C++, the block length is determined in bytes, which is 512. For example, C++ integer type `int` is 4 bytes, then the block length will be `512 / 4 = 128` elements in total. The bigger the size of a type is, the shorter the block is.
 
-> If the size of a type exceeds 512, C++ deque allocates only one object of that type, which means there is one element in a block.
+If the size of a type exceeds 512, C++ deque allocates only one object of that type, which means there is one element in a block.
+
+> Deque has a complicated implementation due to many functionalities, I will not cover all the details. As usual, if you're interested in how the actual implementation works, please see my [oversimplified version](#)
 
 # Deque iterator
 
@@ -71,3 +73,5 @@ If we re-arrange this illustration so that all blocks look continous:
 ![Deque illustrator 2](./deque-illustration-2.png "Deque illustrator (2)")
 
 </div>
+
+In the second illustration, you have a better picture how the appending to front and to back works. Appending to the back will use the `finish` iterator and increase its internal `_curr` so that the deque can grow to the right. Appending to the front will use the `start` iterator and decrease its internal `_curr` so the the deque can grow to the left.
