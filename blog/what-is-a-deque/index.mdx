@@ -75,3 +75,104 @@ If we re-arrange this illustration so that all blocks look continous:
 </div>
 
 In the second illustration, you have a better picture how the appending to front and to back works. Appending to the back will use the `finish` iterator and increase its internal `_curr` so that the deque can grow to the right. Appending to the front will use the `start` iterator and decrease its internal `_curr` so the the deque can grow to the left.
+
+# Reallocation
+
+You might wonder how deque handles reallocation when there is not enough space. Well, the beauty in deque's implementation does not stop there.
+
+An inituitive thought is that you might copy allocate a completely new map, allocate all the nodes and start to copy everything from the old deque to the newly-created one.
+
+If that's what you think, you are _partly_ correct. To accomodate more space for new elements, we need to allocate a new map. However, you do not need to allocate new nodes and copy element by element.
+
+Instead, the deque can just move the address of those nodes from the old deque to the new one. This will make the reallocation would be significantly less expensive.
+
+<div>
+
+To examine that, let's _debug_ the following simple C++ program:
+
+```cpp title="debug_deque.cpp"
+#include <deque>
+#include <iostream>
+
+int main(void) {
+  std::deque<int> d{1, 2, 3, 4, 5, 6, 7, 8};
+
+  for (int i = 9; i < 2024; i++)
+    d.push_back(i);
+
+  return 0;
+}
+```
+
+You can compile with your favorite compiler. I tested it with `clang++` and `g++` on Fedora 38. Just remember to add the debug flag to your compiling command.
+
+```sh title="Terminal" showLineNumber=false
+$ gcc -g debug_deque.cpp -o main
+$ ls
+debug_deque.cpp         main
+```
+
+Next, I will use `gdb` to look at the detail of the running program. You can use a more visual debugger such as VS Code or CLion if you're more familiar with them.
+
+```txt
+$ gdb
+# ...(GDB welcome prompt)
+(gdb) file main
+Reading symbols from main...
+(gdb) break main
+Breakpoint 1 at 0x11f2: file main.cpp, line 5.
+(gdb) run
+Starting program: /home/youknowwho/c++dev/main
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+...
+```
+
+At this point, the program has been running and has already entered the main function.
+
+We want to examine the deque object at two different points: after initialization and after the for-loop. We will look at the address of the map as well as of the nodes after initialization.
+
+```txt
+(gdb) n
+7         for (int i = 9; i < 2024; i++)
+(gdb) p d
+$2 = std::deque with 8 elements = {1, 2, 3, 4, 5, 6, 7, 8}
+(gdb) p d._M_impl._M_map
+$3 = (std::_Deque_base<int, std::allocator<int> >::_Map_pointer) 0x55555556c2b0
+(gdb) p (d._M_impl._M_map + 1)
+$4 = (int **) 0x55555556c2b8
+(gdb) p *(d._M_impl._M_map + 1)
+$5 = (int *) 0x0
+(gdb) p (d._M_impl._M_map + 3)
+$6 = (int **) 0x55555556c2c8
+(gdb) p *(d._M_impl._M_map + 3)
+$7 = (int *) 0x55555556c300
+```
+
+Let's carefully look at the result from `gdb`. You ignore the step variables `$_` and the addresses because they can be different values in your machine.
+
+`p d` gives us the list of elements inside the deque object. So far, we have 8 elements. Then, `p d._M_impl._M_map` tells us where the map lives. After that, we can do pointer operations such as advancing and dereferencing to examine the content.
+
+`p *(d._M_impl._M_map + 1)` gives us the content at the position with offset by 1 from the map pointer, or it's the second element in terms of array. Notice that `p *(d._M_impl._M_map + 1)` returns a null pointer, while `p *(d._M_impl._M_map + 3)` returns an address. This is due to the initialization of C++ deque: first node will start from the middle of the map to avoid running out of space from both ends.
+
+Keep in mind the address returned by `p *(d._M_impl._M_map + 3)`. It's likely to be different on your machine but it should be consistent.
+
+Next, we want to insert a sufficiently large number of times. This will trigger the deque to reallocate a new map:
+
+```txt title="Output" showLineNumber=false
+# Keep reapting unitl you see the return statement as below
+(gdb) until
+10        return 0;
+
+(gdb) p d
+$8 = std::deque with 2023 elements = {1, 2, 3, 4, 5, 6,
+  7, 8, 9, 10, 11...}
+(gdb) p *(d._M_impl._M_map + 3)
+$9 = (int *) 0x0
+(gdb) p *(d._M_impl._M_map + 12)
+$10 = (int *) 0x55555556c300
+```
+
+After reallocation, the address `0x55555556c300` has moved to the offset `12`. This indicates that the node array remains.
+
+</div>
