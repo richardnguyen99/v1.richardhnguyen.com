@@ -11,6 +11,7 @@
 import * as React from "react";
 import type { GatsbySSR } from "gatsby";
 
+import ThemeProvider from "./src/components/Theme/Provider";
 import RootLayout from "./src/components/Layout/Root";
 
 export const onRenderBody: GatsbySSR["onRenderBody"] = (
@@ -31,6 +32,10 @@ export const onRenderBody: GatsbySSR["onRenderBody"] = (
   ]);
 };
 
-export const wrapRootElement: GatsbySSR["wrapRootElement"] = ({ element }) => {
-  return <RootLayout>{element}</RootLayout>;
+export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({ element }) => {
+  return (
+    <ThemeProvider>
+      <RootLayout>{element}</RootLayout>
+    </ThemeProvider>
+  );
 };

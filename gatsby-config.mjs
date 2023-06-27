@@ -79,14 +79,15 @@ const config = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "blog",
-        path: `${__dirname}/blog`,
+        name: "pages",
+        path: `${__dirname}/src/pages`,
       },
     },
     {
-      resolve: "gatsby-plugin-page-creator",
+      resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/blog/`,
+        name: "blog",
+        path: `${__dirname}/blog`,
       },
     },
     {
@@ -123,7 +124,6 @@ const config = {
         ],
         mdxOptions: {
           remarkPlugins: [remarkGfm, remarkSlug],
-          rehypePlugins: [rehypeMetadataCodeblock],
         },
       },
     },

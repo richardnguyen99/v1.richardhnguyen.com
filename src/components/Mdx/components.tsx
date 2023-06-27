@@ -1,12 +1,14 @@
 import * as React from "react";
-import { Components as MDXComponents } from "@mdx-js/react/lib/index";
+import type { Components as MDXComponents } from "@mdx-js/react/lib/index";
 
 import type { PreProps } from "./types";
 import { preparePreProps } from "./util";
 import Code from "./Code";
 import Link from "./Link";
+import PageBreak from "./PageBreak";
 
 const mdxComponents: MDXComponents = {
+  PageBreak,
   pre: (preProps) => {
     console.log(preProps);
     const preparedProps = preparePreProps(preProps as PreProps);

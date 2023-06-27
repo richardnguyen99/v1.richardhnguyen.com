@@ -212,6 +212,8 @@ def bfs(root):
 
 One more good reason to use deque is that deque can handle a large data set with constant insertion. As we know from the [Reallocation](#reallocation), deque only allocates a new map; it doesn't copy the actual elements when reallocation happens.
 
+<PageBreak />
+
 Now, when and why you should not use deque. Deque has a large initial cost due to its internal implementation. So, if you have a small dataset and you really need to preserve memory, deque might be not a good option.
 
 A _niche_ aspect of considering not use deque is the contiguity of the storage. This refers to [spatial locality](https://en.wikipedia.org/wiki/Locality_of_reference). In a nutshell, a spatial locality means that your CPU grabs the element and its neighbors and store those in a cache with super fast access time. This requires the storage to be contiguous (like vector and array).
