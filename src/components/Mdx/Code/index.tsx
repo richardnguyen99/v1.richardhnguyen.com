@@ -61,9 +61,11 @@ const Code: React.FC<CodeProps> = ({
               </div>
             )}
           </div>
-          <pre aria-describedby="code-pre" className="my-3">
+          <pre aria-describedby="code-pre" className="py-4 overflow-x-auto">
             <code
               className={clsx({
+                "text-left": true,
+                "break-normal": true,
                 show: showLineNumber,
               })}
             >
