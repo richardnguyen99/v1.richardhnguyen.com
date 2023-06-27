@@ -176,3 +176,111 @@ $10 = (int *) 0x55555556c300
 After reallocation, the address `0x55555556c300` has moved to the offset `12`. This indicates that the node array remains.
 
 </div>
+
+# To use or not to use?
+
+Deque is a great container that supports many useful functionalities to end users like us. They're widely used to solve problems that require efficient inserting at the front.
+
+One of the most used case of deque in Python and C++ is probably to apply the queue data structure to solve problems. For example, [Breadth-first search (BFS)](https://en.wikipedia.org/wiki/Breadth-first_search) requires using a queue to keep track of what node will be traversed next.
+
+```python title="bfs.py"
+from collections import deque
+
+class TreeNode:
+  def __init__(self, val=0, left=None, right=None):
+    self.val = val
+    self.left = left
+    self.right = right
+
+def bfs(root):
+  if root is None:
+    return root
+
+  q = deque()
+  q.append(root)
+
+  while len(q) != 0:
+    node = q.popleft()
+    print(node.val)
+
+    if node.left:
+      q.append(node.left)
+
+    if node.right:
+      q.append(node.right)
+```
+
+One more good reason to use deque is that deque can handle a large data set with constant insertion. As we know from the [Reallocation](#reallocation), deque only allocates a new map; it doesn't copy the actual elements when reallocation happens.
+
+Now, when and why you should not use deque. Deque has a large initial cost due to its internal implementation. So, if you have a small dataset and you really need to preserve memory, deque might be not a good option.
+
+A _niche_ aspect of considering not use deque is the contiguity of the storage. This refers to [spatial locality](https://en.wikipedia.org/wiki/Locality_of_reference). In a nutshell, a spatial locality means that your CPU grabs the element and its neighbors and store those in a cache with super fast access time. This requires the storage to be contiguous (like vector and array).
+
+Whereas, deque does have a contiguous memory storage. The elements are scattered in memory, which does not utilize the spatial locality that your computer offers.
+
+We can do a small test in C++ to demonstrate this comparison:
+
+```cpp title="compare.cpp"
+#include <chrono>
+#include <deque>
+#include <iostream>
+#include <vector>
+
+#define ONE_MILLION 1e6
+
+// Simple test - assign the range [1..999999] to both vector and deque
+// with pre-allocated size.
+int main(void) {
+  // Avoid timing reallocation
+  std::vector<int> v(ONE_MILLION);
+  std::deque<int> d(ONE_MILLION);
+
+  using namespace std::chrono;
+
+  steady_clock::time_point begin;
+  steady_clock::time_point end;
+
+  begin = steady_clock::now();
+
+  for (size_t i = 0; i < v.size(); ++i)
+    v[i] = i;
+
+  end = steady_clock::now();
+  std::cout << "Elapsed time (vector): "
+            << duration_cast<microseconds>(end - begin).count() << "ms"
+            << std::endl;
+
+  begin = steady_clock::now();
+
+  for (size_t i = 0; i < d.size(); ++i)
+    d[i] = i;
+
+  end = steady_clock::now();
+  std::cout << "Elapsed time (deque):  "
+            << duration_cast<microseconds>(end - begin).count() << "ms"
+            << std::endl;
+
+  return 0;
+}
+```
+
+```txt title="Output" showLineNumber=false enableCopy=false
+Elapsed time (vector): 7689 ms
+Elapsed time (deque): 62380 ms
+```
+
+You re-run the program multiple times. The elapsed time of vector is still significantly smaller than of deque. This is because vector utilizes the spatial locality better than deque does.
+
+The last thing you should consider not using a deque is when you constantly need to insert in the middle of the container. Due to deque's special traits, inserting/deleting in the middle takes an expensive amount of time to accomplish. It needs to determine which one of the two iterators should perform such a operation, locate the correct position in the node and do the shifting.
+
+Choosing the right container to solve your problem is often a crucial decision because it might affect your program's performance drastically. A rule of thumb to determine which one you should use:
+
+1. You should consider vector first. It solves almost the problems you need to solve. It's very closed to built-in arrays so it gets a great support and performance boost from computers.
+2. Consider using deque if you need to insert/delete at front.
+3. Consider using list if you need to insert/delete in the middle of the container.
+
+# Conclusion
+
+Deque is a great container that can solve many problems, which vector cannot solve. The implementation of deque allows to insert and/or remove elements at both ends with constant time without compromising the constant access time.
+
+In the implementation point of view, deque has a more complicated codebase compared to vector due to its bookkeeping mechanism for additional inserting/deleting at front.
