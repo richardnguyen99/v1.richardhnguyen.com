@@ -9,6 +9,7 @@
  */
 
 import * as React from "react";
+import { Script } from "gatsby";
 import type { GatsbySSR } from "gatsby";
 
 import ThemeProvider from "./src/components/Theme/Provider";
@@ -34,8 +35,16 @@ export const onRenderBody: GatsbySSR["onRenderBody"] = (
 
 export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({ element }) => {
   return (
-    <ThemeProvider>
-      <RootLayout>{element}</RootLayout>
-    </ThemeProvider>
+    <>
+      <ThemeProvider>
+        <RootLayout>{element}</RootLayout>
+      </ThemeProvider>
+      <Script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"
+        integrity="sha512-3qtI9+9JXi658yli19POddU1RouYtkTEhTHo6X5ilOvMiDfNvo6GIS6k2Ukrsx8MyaKSXeVrnIWeyH8G5EOyIQ=="
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
+      />
+    </>
   );
 };

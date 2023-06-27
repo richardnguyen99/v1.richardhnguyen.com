@@ -124,6 +124,7 @@ const config = {
         ],
         mdxOptions: {
           remarkPlugins: [remarkGfm, remarkSlug],
+          rehypePlugins: [rehypeMetadataCodeblock],
         },
       },
     },

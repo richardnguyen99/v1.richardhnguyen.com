@@ -1,12 +1,15 @@
 import * as React from "react";
 import clsx from "classnames";
-import { Highlight, themes } from "prism-react-renderer";
+import { Highlight, Prism, themes } from "prism-react-renderer";
 
 import getFileType from "./getFileTypeIcon";
 
 import { getLanguageExt } from "../util";
 import ThemeContext from "@components/Theme/Context";
 import CopyButton from "./CopyButton";
+import("prismjs/components/prism-python");
+
+(typeof global !== "undefined" ? global : window).Prism = Prism;
 
 export type CodeProps = {
   codeString: string;
@@ -43,7 +46,7 @@ const Code: React.FC<CodeProps> = ({
         <div
           id={id}
           className="relative my-4 border bg-neutral-100 dark:bg-[#0B1416] border-slate-300 dark:border-gray-700 rounded-md text-sm mt-8"
-          aria-describedby="code"
+          aria-describedby={`${extension}-code`}
         >
           <div
             aria-describedby="code-header"
