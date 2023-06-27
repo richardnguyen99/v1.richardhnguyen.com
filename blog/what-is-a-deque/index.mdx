@@ -114,7 +114,7 @@ debug_deque.cpp         main
 
 Next, I will use `gdb` to look at the detail of the running program. You can use a more visual debugger such as VS Code or CLion if you're more familiar with them.
 
-```txt
+```txt title="Terminal" showLineNumber=false
 $ gdb
 # ...(GDB welcome prompt)
 (gdb) file main
@@ -132,7 +132,7 @@ At this point, the program has been running and has already entered the main fun
 
 We want to examine the deque object at two different points: after initialization and after the for-loop. We will look at the address of the map as well as of the nodes after initialization.
 
-```txt
+```txt title="Terminal" showLineNumber=false
 (gdb) n
 7         for (int i = 9; i < 2024; i++)
 (gdb) p d
@@ -159,7 +159,7 @@ Keep in mind the address returned by `p *(d._M_impl._M_map + 3)`. It's likely to
 
 Next, we want to insert a sufficiently large number of times. This will trigger the deque to reallocate a new map:
 
-```txt title="Output" showLineNumber=false
+```txt title="Terminal" showLineNumber=false
 # Keep reapting unitl you see the return statement as below
 (gdb) until
 10        return 0;
