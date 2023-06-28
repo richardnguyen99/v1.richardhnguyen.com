@@ -25,7 +25,7 @@ const ToolBar: React.FC = () => {
       <div className="hidden sm:block h-4 w-px bg-zinc-600 md:hidden" />
       <div className="hidden sm:flex items-center justify-center gap-4">
         <Tooltip message="Github" placement="bottom-end">
-          <Icon onClick={() => console.log("lol")}>
+          <Icon>
             <a
               target="_blank"
               rel="noreferrer"
@@ -37,7 +37,7 @@ const ToolBar: React.FC = () => {
         </Tooltip>
         <Tooltip message="RSS Freed" placement="bottom">
           <Link to="/rss.xml">
-            <Icon size="base" onClick={() => console.log("lol")}>
+            <Icon size="base">
               <RssIcon size={16} />
             </Icon>
           </Link>

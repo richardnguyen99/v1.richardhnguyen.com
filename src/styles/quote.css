@@ -39,6 +39,9 @@ blockquote {
   @apply rounded-md;
   @apply border-none;
 
+  @apply transition-all;
+  @apply duration-300;
+
   background-image: radial-gradient(var(--dot-color) 10%, transparent 10%),
     radial-gradient(var(--dot-color) 10%, transparent 10%);
   background-position: 0px 0px, 8px 8px;

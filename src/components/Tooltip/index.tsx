@@ -73,10 +73,10 @@ const Tooltip: React.FC<Props> = ({
             setPopperElement(null);
             setArrowElement(null);
           }}
-          enter="transition ease-out duration-100"
+          enter="transition-transform ease-out"
           enterFrom="transform opacity-0 scale-95"
           enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
+          leave="transition-transform ease-in"
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
           unmount={false}

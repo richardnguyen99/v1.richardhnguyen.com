@@ -1,5 +1,7 @@
 import * as React from "react";
+
 import useSiteMetadata from "@hooks/useSiteMetadata";
+
 import { SEOComponentType } from "./type";
 
 export const SEO: SEOComponentType = ({
@@ -32,10 +34,7 @@ export const SEO: SEOComponentType = ({
 
   return (
     <>
-      <html
-        lang="en-US"
-        className="dark: scroll-smooth transition-colors duration-700"
-      />
+      <html lang="en-US" className="scroll-smooth" />
       <title>
         {formattedTitle()} {defaultTitle}
       </title>

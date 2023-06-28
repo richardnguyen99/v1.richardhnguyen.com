@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Script } from "gatsby";
 import { GatsbyBrowser } from "gatsby";
+import { Prism } from "prism-react-renderer";
 
 import RootLayout from "./src/components/Layout/Root";
 import ThemeProvider from "./src/components/Theme/Provider";
@@ -8,6 +9,8 @@ import ThemeProvider from "./src/components/Theme/Provider";
 import "./fonts/fonts.css";
 import "./src/styles/index.css";
 import "katex/dist/katex.min.css";
+
+(typeof global !== "undefined" ? global : window).Prism = Prism;
 
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
   element,

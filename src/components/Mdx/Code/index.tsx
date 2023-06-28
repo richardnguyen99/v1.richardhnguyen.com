@@ -1,6 +1,6 @@
 import * as React from "react";
 import clsx from "classnames";
-import { Highlight, Prism, themes } from "prism-react-renderer";
+import { Highlight, themes } from "prism-react-renderer";
 
 import getFileType from "./getFileTypeIcon";
 
@@ -8,8 +8,6 @@ import { getLanguageExt } from "../util";
 import ThemeContext from "@components/Theme/Context";
 import CopyButton from "./CopyButton";
 import("prismjs/components/prism-python");
-
-(typeof global !== "undefined" ? global : window).Prism = Prism;
 
 export type CodeProps = {
   codeString: string;

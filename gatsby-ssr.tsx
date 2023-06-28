@@ -10,10 +10,13 @@
 
 import * as React from "react";
 import { Script } from "gatsby";
+import { Prism } from "prism-react-renderer";
 import type { GatsbySSR } from "gatsby";
 
 import ThemeProvider from "./src/components/Theme/Provider";
 import RootLayout from "./src/components/Layout/Root";
+
+(typeof global !== "undefined" ? global : window).Prism = Prism;
 
 export const onRenderBody: GatsbySSR["onRenderBody"] = (
   { setPostBodyComponents },
