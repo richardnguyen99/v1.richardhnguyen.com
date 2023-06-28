@@ -18,8 +18,6 @@ The first time you learn about the [C++ Standard Template Library (STL)](https:/
 
 # Introduction
 
-In the [Gang of Four (GOF) book](https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8) on Design Pattern, it says:
-
 <Quote citation="Design Patterns: Elements of Reusable Object-Oriented Software, 1st Edition">
 
 The intent of an iterator is to provide a way to access the elements of an
@@ -27,14 +25,9 @@ aggregate object sequentially without exposing its underlying representation.
 
 </Quote>
 
-C++ STL defines it [as](https://cplusplus.com/reference/iterator/):
+C++ STL defines that an iterator is any object that, pointing to some element in a range of elements (such as an array or a container), has the ability to iterate through the elements of that range using a set of operators (with at least the increment (++) and dereference (\*) operators).
 
-> An iterator is any object that, pointing to some element in a range of elements
-> (such as an array or a container), has the ability to iterate through the
-> elements of that range using a set of operators (with at least the increment
-> (++) and dereference (\*) operators).
-
-Iterators are used to access elements sequentially without exposing the underlying implementation of the object.
+In a nutshell, iterator is an interface that provides access to elements sequentially without exposing the underlying implementation of the object.
 
 Let's say you have a binary tree. To traverse a tree, you can use any traversal techique that is your favorite. The problem with these traversing is that you can only traverse through the whole tree. What if you want to access the values in the tree one by one?
 
