@@ -1,4 +1,5 @@
 import * as React from "react";
+import clsx from "classnames";
 import { Disclosure } from "@headlessui/react";
 import ChevronUpIcon from "@heroicons/react/24/outline/ChevronUpIcon";
 
@@ -12,15 +13,26 @@ type Props = React.PropsWithChildren<
 
 const Collapsible: React.FC<Props> = ({ children, summary, ...rest }) => {
   return (
-    <Disclosure {...rest}>
+    <Disclosure {...rest} as="div">
       {({ open }) => (
         <>
-          <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-            <span>{summary}</span>
+          <Disclosure.Button
+            className={clsx("group flex w-full justify-between mt-8", {
+              "rounded-lg px-4 py-2 text-left text-sm font-extrabold": true,
+              "bg-slate-100 hover:bg-slate-200": true,
+              "dark:bg-[#1B2426] hover:dark:bg-[#2E3739]": true,
+              "focus:outline-none focus-visible:ring": true,
+              "focus-visible:ring-purple-500/75": true,
+              "transition-colors duration-300": true,
+            })}
+          >
+            <span className="group-hover:dark:text-white group-hover:text-black">
+              {summary}
+            </span>
             <ChevronUpIcon
-              className={`${
-                open ? "rotate-180 transform" : ""
-              } h-5 w-5 text-purple-500`}
+              className={clsx("h-5 w-5 text-sky-500", {
+                "rotate-180 transform": open,
+              })}
             />
           </Disclosure.Button>
           <Disclosure.Panel className="px-4 pt-4 pb-2">
