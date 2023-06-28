@@ -51,7 +51,7 @@ blockquote {
 
   content: "";
 
-  @apply -ml-6;
+  @apply -ml-7;
   @apply -mt-4;
   @apply h-8;
   @apply w-10;
