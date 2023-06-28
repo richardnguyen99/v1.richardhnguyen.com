@@ -1,6 +1,6 @@
 import * as React from "react";
 import clsx from "classnames";
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, Transition } from "@headlessui/react";
 import ChevronUpIcon from "@heroicons/react/24/outline/ChevronUpIcon";
 
 export type CollapsibleProps = {
@@ -31,13 +31,23 @@ const Collapsible: React.FC<Props> = ({ children, summary, ...rest }) => {
             </span>
             <ChevronUpIcon
               className={clsx("h-5 w-5 text-sky-500", {
+                "transition-transform duration-200": true,
                 "rotate-180 transform": open,
               })}
             />
           </Disclosure.Button>
-          <Disclosure.Panel className="px-4 pt-4 pb-2">
-            {children}
-          </Disclosure.Panel>
+          <Transition
+            enter="transition duration-300 ease-out"
+            enterFrom="transform -translate-y-[5px] opacity-0"
+            enterTo="transform translate-y-0 opacity-100"
+            leave="transition duration-200 ease-out"
+            leaveFrom="transform translate-y-0 opacity-100"
+            leaveTo="transform -translate-y-[5px] opacity-0"
+          >
+            <Disclosure.Panel className="px-4 pt-4 pb-2">
+              {children}
+            </Disclosure.Panel>
+          </Transition>
         </>
       )}
     </Disclosure>
