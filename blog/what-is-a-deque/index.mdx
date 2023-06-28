@@ -86,7 +86,7 @@ If that's what you think, you are _partly_ correct. To accomodate more space for
 
 Instead, the deque can just move the address of those nodes from the old deque to the new one. This will make the reallocation would be significantly less expensive.
 
-<div>
+<Collapsible summary="Psst. You can test with GDB">
 
 To examine that, let's _debug_ the following simple C++ program:
 
@@ -175,7 +175,7 @@ $10 = (int *) 0x55555556c300
 
 After reallocation, the address `0x55555556c300` has moved to the offset `12`. This indicates that the node array remains.
 
-</div>
+</Collapsible>
 
 # To use or not to use?
 

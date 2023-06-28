@@ -7,10 +7,13 @@ import Code from "./Code";
 import Link from "./Link";
 import PageBreak from "./PageBreak";
 import Quote from "./Quote";
+import Collapsible from "./Collapsible";
 
 const mdxComponents: MDXComponents = {
   PageBreak,
   Quote,
+  Collapsible,
+
   pre: (preProps) => {
     console.log(preProps);
     const preparedProps = preparePreProps(preProps as PreProps);
