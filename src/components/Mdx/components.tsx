@@ -6,9 +6,11 @@ import { preparePreProps } from "./util";
 import Code from "./Code";
 import Link from "./Link";
 import PageBreak from "./PageBreak";
+import Quote from "./Quote";
 
 const mdxComponents: MDXComponents = {
   PageBreak,
+  Quote,
   pre: (preProps) => {
     console.log(preProps);
     const preparedProps = preparePreProps(preProps as PreProps);

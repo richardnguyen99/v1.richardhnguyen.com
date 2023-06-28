@@ -1,0 +1,99 @@
+:is([data-mode="dark"] .quote) {
+  --quote-color: rgb(243 243 243);
+  --dot-color: rgb(255 255 255 / 0.075);
+  --shadow-color: rgb(0 0 0 / 0.75);
+}
+:is([data-mode="light"] .quote) {
+  --quote-color: rgb(24 24 24);
+  --dot-color: rgb(15 15 15 / 0.075);
+  --shadow-color: rgb(0 0 0 / 0.125);
+}
+
+blockquote {
+  @apply leading-8;
+  @apply tracking-tight;
+  @apply italic;
+
+  @apply mt-8;
+  @apply -ml-6;
+  @apply pl-6;
+
+  @apply border-l-[3px];
+  @apply border-zinc-500;
+  @apply dark:border-zinc-300;
+  @apply text-zinc-400;
+  @apply dark:text-zinc-500;
+}
+
+.quote {
+  @apply relative;
+  @apply grid;
+  @apply gap-5;
+  @apply py-4;
+  @apply px-8;
+  @apply my-16;
+
+  @apply dark:bg-[#0B1416];
+  @apply bg-slate-50;
+
+  @apply rounded-md;
+  @apply border-none;
+
+  background-image: radial-gradient(var(--dot-color) 10%, transparent 10%),
+    radial-gradient(var(--dot-color) 10%, transparent 10%);
+  background-position: 0px 0px, 8px 8px;
+  background-size: 16px 16px;
+  box-shadow: 0.5rem 0.5rem 2rem var(--shadow-color);
+}
+
+.quote::before {
+  --qoute-height: 2rem;
+
+  content: "";
+
+  @apply -ml-6;
+  @apply -mt-4;
+  @apply h-8;
+  @apply w-10;
+  @apply xl:h-16;
+  @apply xl:w-20;
+
+  background-image: radial-gradient(
+      circle at bottom right,
+      transparent calc(var(--qoute-height) / 4 - 1px),
+      var(--quote-color, black) calc(var(--qoute-height) / 4)
+        calc(var(--qoute-height) / 2),
+      transparent calc(var(--qoute-height) / 2 + 1px)
+    ),
+    linear-gradient(var(--quote-color, black), var(--quote-color, black));
+  background-size: calc(var(--qoute-height) / 2) calc(var(--qoute-height) / 2);
+  background-position: top left, bottom left;
+  background-repeat: space no-repeat;
+}
+
+@media (min-width: 1280px) {
+  .quote::before {
+    --qoute-height: 4rem;
+  }
+}
+
+.quote p {
+  @apply bg-none !important;
+
+  @apply text-zinc-900;
+  @apply dark:text-gray-200;
+
+  @apply font-black;
+  @apply font-serif;
+  @apply md:text-2xl;
+  @apply xl:text-3xl;
+  @apply not-italic;
+}
+
+.quote cite {
+}
+
+.quote cite::before {
+  content: "---";
+  @apply mr-4;
+}

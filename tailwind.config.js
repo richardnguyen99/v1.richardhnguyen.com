@@ -9,7 +9,7 @@ module.exports = {
     fontFamily: {
       body: "Alliance No.1, ui-sans-serif",
       sans: '"Alliance No.1", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-      serif: ["Georgia", "ui-serif", "serif"],
+      serif: ["Georgia", "Playfair Display", "ui-serif", "serif"],
       paragraph: ["Fanwood Text", "Georgia", "ui-serif", "serif"],
       mono: [
         // "League Mono",
