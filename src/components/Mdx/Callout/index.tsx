@@ -10,7 +10,7 @@ type Props = React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>>;
 const Callout: React.FC<CalloutProps & Props> = ({
   children,
   title,
-  type,
+  type = "info",
   collapsible = false,
   ...rest
 }) => {
@@ -21,7 +21,7 @@ const Callout: React.FC<CalloutProps & Props> = ({
   const contentHeight = React.useMemo(() => {
     if (!loaded) return 0;
 
-    return contentRef.current.getBoundingClientRect().height + 40;
+    return contentRef.current.getBoundingClientRect().height + 48;
   }, [loaded]);
 
   const afterEnterHanlder = React.useCallback(() => {
@@ -49,21 +49,32 @@ const Callout: React.FC<CalloutProps & Props> = ({
       className={clsx("relative", {
         "mt-8 -ml-6 pl-6 rounded-md": true,
         "border-l-4": true,
-        "border-sky-500": true,
         "transition-transform duration-300": true,
+
+        "bg-sky-400/20": type === "info",
+        "dark:bg-sky-500/40": type === "info",
+        "border-sky-500": type === "info",
+
+        "bg-orange-400/20": type === "warning",
+        "dark:bg-orange-500/10": type === "warning",
+        "border-orange-500": type === "warning",
       })}
     >
       {({ open }) => (
         <>
           <div
             className={clsx("group flex w-full items-center gap-3 mt-8", {
-              "rounded-lg py-2 text-left text-sm font-extrabold": true,
+              "rounded-lg py-4 text-left text-sm font-extrabold": true,
             })}
           >
             <span
-              className={clsx("text-3xl", {
-                "text-sky-500": !collapsible,
-                "text-sky-400 group-hover:text-sky-500": true,
+              className={clsx("text-xl", {
+                "text-sky-500": !collapsible && type === "info",
+                "text-sky-400 group-hover:text-sky-500": type === "info",
+
+                "text-orange-500": !collapsible && type === "warning",
+                "text-orange-400 group-hover:text-orange-500":
+                  type === "warning",
               })}
             >
               {title}
@@ -72,9 +83,13 @@ const Callout: React.FC<CalloutProps & Props> = ({
             {collapsible && (
               <Disclosure.Button>
                 <ChevronUpIcon
-                  className={clsx("h-5 w-5 text-sky-500", {
+                  className={clsx("h-5 w-5", {
                     "transition-transform duration-200": true,
                     "rotate-180 transform": open,
+
+                    "text-sky-500": type === "info",
+
+                    "text-orange-500": type === "warning",
                   })}
                 />
               </Disclosure.Button>
@@ -94,7 +109,11 @@ const Callout: React.FC<CalloutProps & Props> = ({
             leaveFrom="transform"
             leaveTo="transform max-h-0"
           >
-            <Disclosure.Panel ref={contentRef} className="py-2" static>
+            <Disclosure.Panel
+              ref={contentRef}
+              className="py-4 [&>*:first-child]:!mt-0"
+              static
+            >
               {children}
             </Disclosure.Panel>
           </Transition>
