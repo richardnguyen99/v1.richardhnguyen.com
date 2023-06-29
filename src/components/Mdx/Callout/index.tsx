@@ -21,13 +21,17 @@ const Callout: React.FC<CalloutProps & Props> = ({
   const contentHeight = React.useMemo(() => {
     if (!loaded) return 0;
 
-    return contentRef.current.getBoundingClientRect().height + 48;
+    const height = contentRef.current.getBoundingClientRect().height;
+
+    transitionRef.current.style.setProperty("display", "block");
+    transitionRef.current.style.setProperty("max-height", `${height}px`);
+
+    return height + 48;
   }, [loaded]);
 
   const afterEnterHanlder = React.useCallback(() => {
     if (transitionRef === null || transitionRef.current === null) return;
 
-    transitionRef.current.style.setProperty("display", "block");
     transitionRef.current.style.setProperty("max-height", `${contentHeight}px`);
   }, [contentHeight]);
 
@@ -96,10 +100,11 @@ const Callout: React.FC<CalloutProps & Props> = ({
             )}
           </div>
           <Transition
+            hidden={false}
             ref={transitionRef}
             show={open}
             unmount={false}
-            className="transition-all overflow-y-clip"
+            className="transition-all overflow-y-clip pr-6"
             afterEnter={afterEnterHanlder}
             enter="transition transition-[max-height]"
             enterFrom="transform max-h-0"
