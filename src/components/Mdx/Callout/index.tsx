@@ -4,6 +4,7 @@ import { Disclosure, Transition } from "@headlessui/react";
 import { ChevronUpIcon } from "@primer/octicons-react";
 
 import type { CalloutProps } from "./types";
+import CalloutIcon from "./Icon";
 
 type Props = React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>>;
 
@@ -53,19 +54,36 @@ const Callout: React.FC<CalloutProps & Props> = ({
       className={clsx("relative", {
         "mt-8 -ml-6 pl-6 rounded-md": true,
         "border-l-4": true,
-        "transition-transform duration-300": true,
+        "transition-transform duration-200": true,
 
-        "bg-sky-400/20": type === "info",
-        "dark:bg-sky-500/40": type === "info",
-        "border-sky-500": type === "info",
+        "bg-sky-400/20": type === "info" || type === "default",
+        "dark:bg-sky-500/40": type === "info" || type === "default",
+        "border-sky-500": type === "info" || type === "default",
 
         "bg-amber-400/20": type === "warning",
         "dark:bg-amber-500/10": type === "warning",
         "border-amber-500": type === "warning",
+
+        "bg-rose-400/20": type === "danger",
+        "dark:bg-rose-500/10": type === "danger",
+        "border-rose-500": type === "danger",
+
+        "bg-lime-400/20": type === "success",
+        "dark:bg-lime-500/10": type === "success",
+        "border-lime-500": type === "success",
       })}
     >
       {({ open }) => (
         <>
+          <div
+            className={clsx("absolute top-0 left-0 p-2 rounded-[50%]", {
+              "transition-colors duration-300": true,
+              "bg-slate-50 dark:bg-[#0B1416]": true,
+              "translate-x-[calc(-50%-1.5px)] -translate-y-1/2": true,
+            })}
+          >
+            <CalloutIcon type={type} />
+          </div>
           <div
             className={clsx("group flex w-full items-center gap-3 mt-8", {
               "rounded-lg py-4 text-left text-sm font-extrabold": true,
@@ -73,11 +91,19 @@ const Callout: React.FC<CalloutProps & Props> = ({
           >
             <span
               className={clsx("text-xl", {
-                "text-sky-500": !collapsible && type === "info",
-                "text-sky-400 group-hover:text-sky-500": type === "info",
+                "text-sky-500":
+                  !collapsible && (type === "info" || type === "default"),
+                "text-sky-400 group-hover:text-sky-500":
+                  type === "info" || type === "default",
 
                 "text-amber-500": !collapsible && type === "warning",
                 "text-amber-400 group-hover:text-amber-500": type === "warning",
+
+                "text-rose-500": !collapsible && type === "danger",
+                "text-rose-400 group-hover:text-rose-500": type === "danger",
+
+                "text-lime-500": !collapsible && type === "success",
+                "text-lime-400 group-hover:text-lime-500": type === "success",
               })}
             >
               {title}
@@ -89,10 +115,10 @@ const Callout: React.FC<CalloutProps & Props> = ({
                   className={clsx("h-5 w-5", {
                     "transition-transform duration-200": true,
                     "rotate-180 transform": open,
-
-                    "text-sky-500": type === "info",
-
+                    "text-sky-500": type === "info" || type === "default",
                     "text-amber-500": type === "warning",
+                    "text-rose-500": type === "danger",
+                    "text-lime-500": type === "success",
                   })}
                 />
               </Disclosure.Button>
