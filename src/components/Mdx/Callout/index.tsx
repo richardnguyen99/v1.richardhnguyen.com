@@ -59,9 +59,9 @@ const Callout: React.FC<CalloutProps & Props> = ({
         "dark:bg-sky-500/40": type === "info",
         "border-sky-500": type === "info",
 
-        "bg-orange-400/20": type === "warning",
-        "dark:bg-orange-500/10": type === "warning",
-        "border-orange-500": type === "warning",
+        "bg-amber-400/20": type === "warning",
+        "dark:bg-amber-500/10": type === "warning",
+        "border-amber-500": type === "warning",
       })}
     >
       {({ open }) => (
@@ -76,9 +76,8 @@ const Callout: React.FC<CalloutProps & Props> = ({
                 "text-sky-500": !collapsible && type === "info",
                 "text-sky-400 group-hover:text-sky-500": type === "info",
 
-                "text-orange-500": !collapsible && type === "warning",
-                "text-orange-400 group-hover:text-orange-500":
-                  type === "warning",
+                "text-amber-500": !collapsible && type === "warning",
+                "text-amber-400 group-hover:text-amber-500": type === "warning",
               })}
             >
               {title}
@@ -93,7 +92,7 @@ const Callout: React.FC<CalloutProps & Props> = ({
 
                     "text-sky-500": type === "info",
 
-                    "text-orange-500": type === "warning",
+                    "text-amber-500": type === "warning",
                   })}
                 />
               </Disclosure.Button>

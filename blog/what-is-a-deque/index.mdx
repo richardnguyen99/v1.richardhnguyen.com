@@ -279,14 +279,20 @@ You re-run the program multiple times. The elapsed time of vector is still signi
 
 The last thing you should consider not using a deque is when you constantly need to insert in the middle of the container. Due to deque's special traits, inserting/deleting in the middle takes an expensive amount of time to accomplish. It needs to determine which one of the two iterators should perform such a operation, locate the correct position in the node and do the shifting.
 
+<Callout title="How to choose" type="info">
+
 Choosing the right container to solve your problem is often a crucial decision because it might affect your program's performance drastically. A rule of thumb to determine which one you should use:
 
 1. You should consider vector first. It solves almost the problems you need to solve. It's very closed to built-in arrays so it gets a great support and performance boost from computers.
 2. Consider using deque if you need to insert/delete at front.
 3. Consider using list if you need to insert/delete in the middle of the container.
 
+</Callout>
+
 # Conclusion
 
-Deque is a great container that can solve many problems, which vector cannot solve. The implementation of deque allows to insert and/or remove elements at both ends with constant time without compromising the constant access time.
+Deque is a greate container and it can solve many problems efficiently. People often compare it with its sister, vector, and cause some questions whether you should use deque over vector. This article will give you some ideas about the advantages of using deque, and the internal implementation to explain those advantages.
 
-In the implementation point of view, deque has a more complicated codebase compared to vector due to its bookkeeping mechanism for additional inserting/deleting at front.
+A good way to start from here is to implement a _simplified_ version of the deque container. You would realize how complicate deque is.
+
+Feel free to discuss the article on Twitter.
