@@ -141,7 +141,7 @@ const Callout: React.FC<CalloutProps & Props> = ({
           >
             <Disclosure.Panel
               ref={contentRef}
-              className="py-4 [&>*:first-child]:!mt-0"
+              className="py-4 [&>*:first-child]:!mt-0 dark:text-white"
               static
             >
               {children}
