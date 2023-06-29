@@ -121,7 +121,8 @@ code {
   @apply pr-3;
   @apply font-black;
   @apply -translate-x-full;
-  @apply dark:hover:text-sky-500;
+  @apply hover:text-sky-500;
+  @apply dark:hover:text-sky-400;
   @apply transition-all;
   @apply opacity-0;
 }
@@ -133,11 +134,13 @@ code {
 }
 
 #content h2:hover > .anchor {
-  @apply dark:hover:text-lime-500;
+  @apply hover:text-lime-500;
+  @apply dark:hover:text-lime-400;
 }
 
 #content h3:hover > .anchor {
-  @apply dark:hover:text-indigo-500;
+  @apply hover:text-indigo-500;
+  @apply dark:hover:text-indigo-400;
 }
 
 #toc li {
