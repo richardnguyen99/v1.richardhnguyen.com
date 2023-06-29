@@ -7,11 +7,11 @@ import { ArticleProps } from "./type";
 
 const ArticleContainer: React.FC = () => {
   const {
-    allMarkdownRemark: { edges },
+    allMdx: { edges },
   } = useStaticQuery<Queries.ArticlesQuery>(query);
 
   const transformEdge = (
-    node: Queries.ArticlesQuery["allMarkdownRemark"]["edges"][number]["node"]
+    node: Queries.ArticlesQuery["allMdx"]["edges"][number]["node"]
   ): ArticleProps => {
     return {
       title: node.frontmatter.title,
@@ -19,7 +19,7 @@ const ArticleContainer: React.FC = () => {
       author: node.frontmatter.author,
       tags: node.frontmatter.tags as string[],
       categories: node.frontmatter.categories[0],
-      excerpt: node.excerpt,
+      excerpt: node.fields.excerpt,
       slug: node.fields.slug,
       gatsbyImageData:
         node.frontmatter.thumbnail.childImageSharp.gatsbyImageData,
@@ -29,12 +29,16 @@ const ArticleContainer: React.FC = () => {
   return (
     <div id="article-container" className="flex flex-wrap -mx-6 transition-all">
       <HeroArticle data={transformEdge(edges[0].node)} />
-      <ArticleCard data={transformEdge(edges[1].node)} />
-      <ArticleCard data={transformEdge(edges[1].node)} />
-      <ArticleCard data={transformEdge(edges[1].node)} />
-      <ArticleCard data={transformEdge(edges[1].node)} />
-      <ArticleCard data={transformEdge(edges[1].node)} />
-      <ArticleCard data={transformEdge(edges[1].node)} />
+
+      {edges.map((edge, i) => {
+        if (i === 0) return;
+
+        if (edge.node.frontmatter.thumbnail === null) return;
+
+        if (!edge.node.frontmatter.published) return;
+
+        return <ArticleCard key={i} data={transformEdge(edge.node)} />;
+      })}
     </div>
   );
 };
@@ -43,21 +47,22 @@ export default ArticleContainer;
 
 export const query = graphql`
   query Articles {
-    allMarkdownRemark(sort: { frontmatter: { created: DESC } }) {
+    allMdx(sort: { frontmatter: { created: DESC } }) {
       edges {
         node {
           id
           tableOfContents(maxDepth: 2)
-          excerpt(format: MARKDOWN)
           fields {
+            excerpt
             slug
           }
           frontmatter {
+            published
             title
-            created(formatString: "MMM DD, YYYY")
             author
             tags
             categories
+            created(formatString: "MMM DD, YYYY")
             thumbnail {
               childImageSharp {
                 gatsbyImageData(

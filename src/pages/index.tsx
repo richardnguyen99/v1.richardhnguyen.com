@@ -1,7 +1,6 @@
 import * as React from "react";
 import clsx from "classnames";
 
-import SwipeButton from "@components/Button/SwipeButton";
 import { SEO } from "@components/SEO";
 import TypeWriter from "@components/Typewritter";
 import Articles from "@components/Article";
