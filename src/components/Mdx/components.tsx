@@ -8,11 +8,13 @@ import Link from "./Link";
 import PageBreak from "./PageBreak";
 import Quote from "./Quote";
 import Collapsible from "./Collapsible";
+import Callout from "./Callout";
 
 const mdxComponents: MDXComponents = {
   PageBreak,
   Quote,
   Collapsible,
+  Callout,
 
   pre: (preProps) => {
     console.log(preProps);
