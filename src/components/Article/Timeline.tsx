@@ -10,8 +10,8 @@ const Timeline: React.FC = () => {
   } = useStaticQuery<Queries.ArticlesQuery>(query);
 
   return (
-    <div className="relative">
-      <div className="flex flex-col gap-y-16">
+    <div className="relative py-12 px-6 md:max-w-3xl md:py-16 md:px-10 md:mx-auto lg:max-w-4xl lg:py-20 xl:max-w-6xl xl:py-24">
+      <div className="flex flex-col gap-y-16 pl-14 sm:border-l-[3px] border-slate-200 dark:border-slate-800">
         {edges.map((edge, i) => (
           <ArticleTimeline data={transformEdge(edge.node)} key={i} />
         ))}
