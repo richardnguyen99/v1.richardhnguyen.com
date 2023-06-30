@@ -22,6 +22,7 @@ const IndexPage: React.FC = () => {
 
       <Articles />
 
+      <div className="my-16 w-56 h-4 bg-gradient-to-tr from-sky-400 to-blue-500" />
       <MoreContentLink />
     </div>
   );
@@ -36,12 +37,12 @@ export const Head = () => (
 const MoreContentLink: React.FC = () => {
   return (
     <ArrowLink native href="/posts/">
-      <div className="group flex items-center gap-3 mt-16 text-sky-500">
+      <div className="group flex items-center gap-3 mt-16 text-blue-500">
         <h3
           className={clsx("text-5xl font-black", {
             " text-transparent bg-clip-text": true,
             "bg-gradient-to-r": true,
-            "from-cyan-500 to-sky-500": true,
+            "from-sky-400 to-blue-500": true,
           })}
         >
           More content

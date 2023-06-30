@@ -1,10 +1,10 @@
 import * as React from "react";
 
 import { SEO } from "@components/SEO";
-import Construction from "@components/Layout/Construction";
+import Timeline from "@components/Article/Timeline";
 
 const PostPage: React.FC = () => {
-  return <Construction />;
+  return <Timeline />;
 };
 
 export const Head = () => <SEO title="Posts" />;

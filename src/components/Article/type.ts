@@ -8,5 +8,6 @@ export type ArticleProps = {
   tags: Array<string>;
   categories: string;
   slug: string;
-  gatsbyImageData: IGatsbyImageData;
+  published: boolean;
+  gatsbyImageData: IGatsbyImageData | null;
 };

@@ -1,33 +1,24 @@
-import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
+import { graphql, useStaticQuery } from "gatsby";
 
-import HeroArticle from "./Hero";
-import ArticleCard from "./ArticleCard";
+import ArticleTimeline from "./ArticleTimeline";
 import { transformEdge } from "./util";
 
-const ArticleContainer: React.FC = () => {
+const Timeline: React.FC = () => {
   const {
     allMdx: { edges },
   } = useStaticQuery<Queries.ArticlesQuery>(query);
 
   return (
-    <div id="article-container" className="flex flex-wrap -mx-6 transition-all">
-      <HeroArticle data={transformEdge(edges[0].node)} />
-
-      {edges.map((edge, i) => {
-        if (i === 0) return;
-
-        if (edge.node.frontmatter.thumbnail === null) return;
-
-        if (!edge.node.frontmatter.published) return;
-
-        return <ArticleCard key={i} data={transformEdge(edge.node)} />;
-      })}
+    <div className="relative">
+      {edges.map((edge, i) => (
+        <ArticleTimeline data={transformEdge(edge.node)} key={i} />
+      ))}
     </div>
   );
 };
 
-export default ArticleContainer;
+export default Timeline;
 
 export const query = graphql`
   query Articles {
