@@ -19,8 +19,6 @@ const ArticleContainer: React.FC = () => {
 
         if (edge.node.frontmatter.thumbnail === null) return;
 
-        if (!edge.node.frontmatter.published) return;
-
         return <ArticleCard key={i} data={transformEdge(edge.node)} />;
       })}
     </div>
@@ -31,7 +29,10 @@ export default ArticleContainer;
 
 export const query = graphql`
   query Articles {
-    allMdx(sort: { frontmatter: { created: DESC } }) {
+    allMdx(
+      sort: { frontmatter: { created: DESC } }
+      filter: { frontmatter: { published: { eq: true } } }
+    ) {
       edges {
         node {
           id
@@ -41,7 +42,6 @@ export const query = graphql`
             slug
           }
           frontmatter {
-            published
             title
             author
             tags

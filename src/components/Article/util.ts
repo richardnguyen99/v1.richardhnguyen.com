@@ -4,7 +4,7 @@ export const transformEdge = (
   node: Queries.ArticlesQuery["allMdx"]["edges"][number]["node"]
 ): ArticleProps => {
   return {
-    published: node.frontmatter.published,
+    published: true,
     title: node.frontmatter.title,
     created: node.frontmatter.created,
     author: node.frontmatter.author,
