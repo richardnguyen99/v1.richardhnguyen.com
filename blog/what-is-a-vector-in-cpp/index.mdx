@@ -16,6 +16,12 @@ Have you ever wondered how vector allows you to insert new elements without worr
 
 {/* Except */}
 
+<Quote citation="Bjarne Stroustrup - ISO CPP">
+
+And, yes, my recomendation is to use $\texttt{std::vector}$ by default.
+
+</Quote>
+
 # Introduction
 
 Vector is the [C++ Standard Template Library (STL)](https://cplusplus.com/reference/stl/) container that stores a collection of objects. Just like C-arrays, vector supports [Random (Direct) Access](https://en.wikipedia.org/wiki/Random_access) and pointer-arithmetic operations. Unlike C-arrays, vectors support many other functionalities to make your day easier:
@@ -28,10 +34,14 @@ Vector is the [C++ Standard Template Library (STL)](https://cplusplus.com/refere
 
 Our focus in this article is _dynamic reallocation_. Basically, when a vector is about to run out of space for new elements, it will allocate a new space with a sufficient size, then copy the old elements from the original space to the new one. But how does it work? What are the necessary _member fields_ to accomplish it? How does the _dynamic reallocation_ mechanism under the programming perspective?
 
-> This article does not show the actual implementation of `std::vector`.
-> The implementation is complex due to many support for different scenarios
-> and use cases. My focus is more likely on the design and hopefully, you can
-> come up with your own implementation from there.
+<Callout type="warning" title="Disclaimer">
+
+This article does not show the actual implementation of `std::vector`.
+The implementation is complex due to many support for different scenarios
+and use cases. My focus is more likely on the design and hopefully, you can
+come up with your own implementation from there.
+
+</Callout>
 
 # Member fields
 
