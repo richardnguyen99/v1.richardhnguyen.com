@@ -11,9 +11,11 @@ const Timeline: React.FC = () => {
 
   return (
     <div className="relative">
-      {edges.map((edge, i) => (
-        <ArticleTimeline data={transformEdge(edge.node)} key={i} />
-      ))}
+      <div className="flex flex-col gap-y-16">
+        {edges.map((edge, i) => (
+          <ArticleTimeline data={transformEdge(edge.node)} key={i} />
+        ))}
+      </div>
     </div>
   );
 };
