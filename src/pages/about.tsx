@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { SEO } from "@components/SEO";
+import Visibility from "@components/Visibility";
 
 const AboutPage: React.FC = () => {
   return (
@@ -23,12 +24,12 @@ const AboutPage: React.FC = () => {
           <div className="h-[6vw] xl:h-[5vw] " />
           <h5 className="text-2xl tracking-[0.25em] font-thin">WHO AM I?</h5>
           <div className="font-extrabold uppercase text-3xl my-auto">
-            <div className="group is-visible">
+            <Visibility visible={true} className="group">
               <div>BSCS Grad @SeattleU</div>
               <div>Software Enginner</div>
               <div>Writer (like this!)</div>
               <div>Designer (a bit)</div>
-            </div>
+            </Visibility>
           </div>
         </div>
       </section>
