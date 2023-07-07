@@ -9,7 +9,7 @@ const AboutPage: React.FC = () => {
       <section className="container min-h-[90vh] flex justify-between flex-col py-[2.5vw] mx-6 md:px-10">
         <div className="h-full m-auto flex items-center justify-center w-8/12">
           <h1>
-            <span className="text-9xl font-black">About</span>
+            <span className="text-9xl font-black tracking-widest">ABOUT</span>
           </h1>
         </div>
         <div className="text-center mx-auto lg:max-w-[65%]">
@@ -19,16 +19,32 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
       <div className="h-[18vw] xl:h-[9vw] " />
-      <section className="bg-[#172022] text-white h-[50vh] lg:h-[75vh] min-h-[400px]">
+      <section className="bg-[#172022] text-white h-[30vh] lg:h-[50vh] min-h-[400px]">
         <div className="container flex flex-col items-center justify-center w-full h-full">
           <div className="h-[6vw] xl:h-[5vw] " />
           <h5 className="text-2xl tracking-[0.25em] font-thin">WHO AM I?</h5>
           <div className="font-extrabold uppercase text-3xl my-auto">
             <Visibility visible={true} className="group">
-              <div>BSCS Grad @SeattleU</div>
-              <div>Software Enginner</div>
-              <div>Writer (like this!)</div>
-              <div>Designer (a bit)</div>
+              <div className="overflow-hidden">
+                <div className="transition-transform-opacity ease-smooth-out duration-[800ms] transform-gpu delay-0 group-[.is-visible]:delay-[0ms] opacity-0 group-[.is-visible]:opacity-100 translate-y-full group-[.is-visible]:translate-y-0 group-hidden:-translate-y-full group-hidden:opacity-0">
+                  <div>BSCS Grad @SeattleU</div>
+                </div>
+              </div>
+              <div className="overflow-hidden">
+                <div className="transition-transform-opacity ease-smooth-out duration-[800ms] transform-gpu delay-0 group-[.is-visible]:delay-[50ms] opacity-0 group-[.is-visible]:opacity-100 translate-y-full group-[.is-visible]:translate-y-0 group-hidden:-translate-y-full group-hidden:opacity-0">
+                  <div>Software Enginner</div>
+                </div>
+              </div>
+              <div className="overflow-hidden">
+                <div className="transition-transform-opacity ease-smooth-out duration-[800ms] transform-gpu delay-0 group-[.is-visible]:delay-[100ms] opacity-0 group-[.is-visible]:opacity-100 translate-y-full group-[.is-visible]:translate-y-0 group-hidden:-translate-y-full group-hidden:opacity-0">
+                  <div>Writer (like this!)</div>
+                </div>
+              </div>
+              <div className="overflow-hidden">
+                <div className="transition-transform-opacity ease-smooth-out duration-[800ms] transform-gpu delay-0 group-[.is-visible]:delay-[150ms] opacity-0 group-[.is-visible]:opacity-100 translate-y-full group-[.is-visible]:translate-y-0 group-hidden:-translate-y-full group-hidden:opacity-0">
+                  <div>Designer (a bit)</div>
+                </div>
+              </div>
             </Visibility>
           </div>
         </div>
