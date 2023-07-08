@@ -1,5 +1,5 @@
 export type HoverImageProps = {
-  src: string;
+  srcId: string;
   alt: string;
   link: string;
   children: React.ReactNode;
