@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { SEO } from "@components/SEO";
 import Visibility from "@components/Visibility";
+import HoverImage from "@components/HoverImage";
 
 const AboutPage: React.FC = () => {
   return (
@@ -27,22 +28,30 @@ const AboutPage: React.FC = () => {
             <Visibility visible={true} className="group">
               <div className="overflow-hidden">
                 <div className="transition-transform-opacity ease-smooth-out duration-[800ms] transform-gpu delay-0 group-[.is-visible]:delay-[0ms] opacity-0 group-[.is-visible]:opacity-100 translate-y-full group-[.is-visible]:translate-y-0 group-hidden:-translate-y-full group-hidden:opacity-0">
-                  <div>BSCS Grad @SeattleU</div>
+                  <HoverImage alt=" " src=" " link="https://seattleu.edu">
+                    BSCS @SeattleU
+                  </HoverImage>
                 </div>
               </div>
               <div className="overflow-hidden">
                 <div className="transition-transform-opacity ease-smooth-out duration-[800ms] transform-gpu delay-0 group-[.is-visible]:delay-[50ms] opacity-0 group-[.is-visible]:opacity-100 translate-y-full group-[.is-visible]:translate-y-0 group-hidden:-translate-y-full group-hidden:opacity-0">
-                  <div>Software Enginner</div>
+                  <HoverImage alt=" " src=" " link="#">
+                    Software Engineer
+                  </HoverImage>
                 </div>
               </div>
               <div className="overflow-hidden">
                 <div className="transition-transform-opacity ease-smooth-out duration-[800ms] transform-gpu delay-0 group-[.is-visible]:delay-[100ms] opacity-0 group-[.is-visible]:opacity-100 translate-y-full group-[.is-visible]:translate-y-0 group-hidden:-translate-y-full group-hidden:opacity-0">
-                  <div>Writer (like this!)</div>
+                  <HoverImage alt=" " src=" " link="#">
+                    Writer (like This)
+                  </HoverImage>
                 </div>
               </div>
               <div className="overflow-hidden">
                 <div className="transition-transform-opacity ease-smooth-out duration-[800ms] transform-gpu delay-0 group-[.is-visible]:delay-[150ms] opacity-0 group-[.is-visible]:opacity-100 translate-y-full group-[.is-visible]:translate-y-0 group-hidden:-translate-y-full group-hidden:opacity-0">
-                  <div>Designer (a bit)</div>
+                  <HoverImage alt=" " src=" " link="#">
+                    Designer (a bit)
+                  </HoverImage>
                 </div>
               </div>
             </Visibility>
@@ -50,7 +59,7 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
       <div className="h-[18vw] xl:h-[9vw] " />
-      <section className="relative min-h-screen mt-[-100vh] pt-[100vh] ">
+      <section className="relative min-h-screen mt-[-100vh] pt-[100vh] pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden"></div>
         <div>
           <div className="h-vw-28 xl:h-vw-12 mobile:hidden" />
