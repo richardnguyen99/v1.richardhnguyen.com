@@ -22,8 +22,16 @@ const AboutPage: React.FC = () => {
     (edge) => edge.node.relativePath === "about/avatar.jpg"
   );
 
+  const metaLight = data.allFile.edges.find(
+    (edge) => edge.node.relativePath === "about/meta-light.png"
+  );
+
+  const metaDark = data.allFile.edges.find(
+    (edge) => edge.node.relativePath === "about/meta-dark.png"
+  );
+
   return (
-    <div className="scroll-smooth relative">
+    <div className="scroll-smooth relative overflow-hidden">
       <div className="absolute opacity-50 top-0 -left-[20%] md:-left-[7.5%] lg:-left-[5%]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -110,14 +118,14 @@ const AboutPage: React.FC = () => {
 
       <section
         id="greeting"
-        className="px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl min-h-[95vh] z-10"
+        className="relative px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl min-h-[95vh] z-10"
       >
         <h1 className="peer relative text-[5.75vw] font-black text-black dark:text-white">
           Myself
         </h1>
         <div className="w-3/12 h-2 dark:bg-slate-50 bg-[#0b1416]" />
-        <div className="flex gap-8 mt-10 text-lg">
-          <div className="w-8/12">
+        <div className="flex flex-col md:flex-row gap-8 mt-10 text-lg">
+          <div className="w-full md:w-8/12">
             <p>
               Hi there! I&apos;m Richard, a software engineer that loves to
               build applications end-to-end. I love to challenge myself with new
@@ -139,23 +147,30 @@ const AboutPage: React.FC = () => {
               knowledge with others, like this blog!
             </p>
           </div>
-          <div className="w-4/12 flex items-center -mr-12">
+          <div className="relative w-full md:w-4/12 flex items-center -mr-12">
+            <div className="absolute top-0 left-0 leading-none lg:top-[-25%]">
+              <h1 className="text-[10vw] font-black max-w-[10rem] max-h-[10rem] w-full">
+                <p className="hyphens-auto">WO&shy;RK</p>
+              </h1>
+            </div>
             <div
               className={clsx("group", {
-                "block relative w-full rounded-2xl bg-cyan-400 z-10": true,
+                "block relative mx-auto mt-12 md:m-0 w-[260px] md:w-full rounded-2xl bg-cyan-400 z-10":
+                  true,
                 "hover:outline-0 hover:-translate-x-1 hover:-translate-y-1":
                   true,
                 "transition-all duration-300 ease-in-out": true,
 
                 "before:content-[''] before:block before:absolute": true,
-                "before:w-full before:h-full before:rounded-2xl": true,
+                "before:w-[260px] md:before:w-full before:h-full before:rounded-2xl":
+                  true,
                 "before:top-0 before:left-0 before:bg-cyan-400 before:mix-blend-screen":
                   true,
                 "before:transition-all before:duration-300 before:ease-in-out":
                   true,
 
                 "after:content-[''] after:block after:absolute": true,
-                "after:w-full after:h-full after:rounded-2xl after:z-[-1]":
+                "after:w-[260px] md:after:w-full after:h-full after:rounded-2xl after:z-[-1]":
                   true,
                 "after:transition-all after:duration-300 after:ease-in-out":
                   true,
@@ -168,7 +183,7 @@ const AboutPage: React.FC = () => {
                 alt="avatar"
                 image={avatar.node.childImageSharp.gatsbyImageData}
                 className={clsx("", {
-                  "overflow-hidden inline-block w-full h-full align-middle rounded-2xl":
+                  "overflow-hidden inline-block w-[260px] md:w-full h-full align-middle rounded-2xl":
                     true,
                   "relative duration-300 ease-in-out mix-blend-multiply": true,
                   "filter grayscale contrast-100 z-10": true,
@@ -180,10 +195,46 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      <section
-        id="section-2"
-        className="px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl min-h-[90vh]"
-      ></section>
+      <section id="Skills" className="relative w-full min-h-[90vh]">
+        <div className="relative px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl">
+          <div className="relative w-5/12 translate-x-2/4 translate-y-2/4">
+            <img
+              src={
+                /* eslint-disable indent */
+                theme === "light"
+                  ? metaLight?.node.childImageSharp.gatsbyImageData.images
+                      .fallback.src
+                  : metaDark?.node.childImageSharp.gatsbyImageData.images
+                      .fallback.src
+                /* eslint-enable indent */
+              }
+              alt="snippet"
+              className="w-full opacity-20"
+            />
+            <div className="absolute bottom-0 left-0 bg-gradient-to-t w-full h-20 dark:from-[#0b1416]/100 dark:to-[#0b1416]/0 from-slate-50/100 to-slate-50/0 z-0" />
+          </div>
+          <h1 className="peer relative text-[5.75vw] font-black text-black dark:text-white">
+            My experience
+          </h1>
+          <div className="relative w-5/12 h-2 dark:bg-slate-50 bg-[#0b1416]" />
+          <div className="w-7/12">
+            <p className="mt-10 text-lg">
+              I have interest in a wide range of applications and technologies.
+            </p>
+            <p>&nbsp;</p>
+            <p>
+              Not a full-stack developer, but there is no limits for me to
+              develop apps to solve problems, whether it is{" "}
+              <span className="font-bold">systems</span>,{" "}
+              <span className="font-bold">front-end</span>,{" "}
+              <span className="font-bold">back-end</span>or
+              <span className="font-bold">infrastructure</span>.
+            </p>
+            <p>&nbsp;</p>
+            <p>Here are some of my work </p>
+          </div>
+        </div>
+      </section>
       <section
         id="section-3"
         className="px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl min-h-[90vh]"
