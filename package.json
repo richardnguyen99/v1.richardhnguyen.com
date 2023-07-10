@@ -35,6 +35,7 @@
     "gatsby-source-graphql": "^5.8.0",
     "gatsby-transformer-remark": "^6.11.0",
     "gatsby-transformer-sharp": "^5.8.0",
+    "hover-effect": "^1.2.1",
     "katex": "^0.16.7",
     "prism-react-renderer": "^2.0.5",
     "prismjs": "^1.29.0",

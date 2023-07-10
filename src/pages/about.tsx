@@ -5,6 +5,8 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 import { SEO } from "@components/SEO";
 import ThemeContext from "@components/Theme/Context";
+import HoverProjectCard from "@components/HoverProjectCard";
+import { ProjectStatus } from "@components/HoverProjectCard/type";
 
 const AboutPage: React.FC = () => {
   const { theme } = React.useContext(ThemeContext);
@@ -28,6 +30,10 @@ const AboutPage: React.FC = () => {
 
   const metaDark = data.allFile.edges.find(
     (edge) => edge.node.relativePath === "about/meta-dark.png"
+  );
+
+  const gearsim = data.allFile.edges.find(
+    (edge) => edge.node.relativePath === "about/sdi-gearsim.png"
   );
 
   return (
@@ -232,6 +238,20 @@ const AboutPage: React.FC = () => {
             </p>
             <p>&nbsp;</p>
             <p>Here are some of my work </p>
+          </div>
+          <div>
+            <HoverProjectCard
+              defaultImageSrc="https://images.unsplash.com/photo-1518276455915-d0dbe7b2e493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+              hoverImageSrc={
+                gearsim.node.childImageSharp.gatsbyImageData.images.fallback.src
+              }
+              orderImageSrc="#"
+              stacks={[]}
+              status={ProjectStatus.DONE}
+              title="PERSONAL PAGE"
+            >
+              Something
+            </HoverProjectCard>
           </div>
         </div>
       </section>
