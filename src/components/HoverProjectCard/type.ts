@@ -15,4 +15,5 @@ export type HoverProjectCardProps = {
   status: ProjectStatus;
 
   externalLink?: string;
+  linkText?: string;
 };

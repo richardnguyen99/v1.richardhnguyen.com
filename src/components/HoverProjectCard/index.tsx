@@ -16,6 +16,7 @@ const HoverProjectCard: React.FC<Props> = ({
   stacks,
   title,
   externalLink = "#",
+  linkText = "",
   status,
   children,
   ...rest
@@ -41,8 +42,8 @@ const HoverProjectCard: React.FC<Props> = ({
 
   return (
     <div
-      className={clsx("w-[80%]", {
-        "mx-auto mt-60": true,
+      className={clsx("w-[90%]", {
+        "mx-auto mt-20 first:mt-10": true,
       })}
       data-image-1={defaultImageSrc}
       data-image-2={hoverImageSrc}
@@ -50,27 +51,57 @@ const HoverProjectCard: React.FC<Props> = ({
       <div
         className={clsx("", {
           "w-full h-full": true,
-          "flex items-center": true,
-          "p-24": true,
+          flex: true,
+          "p-12 rounded-[3rem]": true,
+          "bg-slate-100 dark:bg-[rgb(20,29,31)]": true,
         })}
       >
         <div
           ref={imageRef}
           className={clsx({
-            "w-[20rem] h-[25rem]": true,
+            "w-[320px] h-[400px]": true,
             "bg-cover relative overflow-hidden": true,
-            "rounded-3xl": true,
+            "rounded-[3rem]": true,
           })}
         >
           <div className="block opacity-0" />
         </div>
         <div
           className={clsx("", {
-            "ml-24 ": true,
+            "w-[calc(100%-320px)] ml-24 ": true,
+            "flex flex-col justify-between": true,
           })}
         >
-          <h2>{title}</h2>
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl font-black">{title}</h1>
+
+            <div className="flex items-center gap-3">
+              {externalLink !== "#" && (
+                <a href={externalLink} target="_blank" rel="noreferrer">
+                  <span className="font-bold text-slate-500">{linkText}</span>
+                </a>
+              )}
+              <span className="text-2xl font-black">{status}</span>
+            </div>
+          </div>
           <div>{children}</div>
+          <div className="flex gap-1 mt-auto">
+            {stacks.map((stack, index) => (
+              <a key={index} href="#" target="_blank">
+                <span
+                  className={clsx("", {
+                    "rounded-full  px-4 py-2 text-sm font-bold": true,
+                    "bg-slate-400 hover:bg-slate-500 ": true,
+                    "text-slate-100 hover:text-white": true,
+                    "dark:text-neutral-200 dark:hover:text-100": true,
+                    "dark:bg-neutral-700 dark:hover:bg-neutral-600": true,
+                  })}
+                >
+                  {stack}
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>

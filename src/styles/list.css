@@ -1,3 +1,84 @@
+ol {
+  @apply list-decimal;
+}
+
+ul {
+  @apply list-disc;
+}
+
+ol,
+ul {
+  @apply mt-6;
+  @apply pl-12;
+
+  @apply marker:text-sky-500;
+  @apply dark:marker:text-sky-300;
+  @apply marker:font-bold;
+  @apply marker:font-mono;
+  @apply marker:text-xl;
+}
+
+ol > li,
+ul > li {
+  @apply mt-5;
+  @apply pl-3;
+  @apply list-item;
+}
+
+ol > li > p,
+ul > li > p {
+  @apply mt-3;
+  @apply leading-[1.5];
+}
+
+ol ol {
+  @apply mt-4;
+  @apply pl-8;
+
+  list-style-type: lower-alpha;
+}
+
+ul ul {
+  @apply mt-4;
+  @apply pl-8;
+
+  list-style-type: circle;
+}
+
+ul ol {
+  @apply mt-4;
+  @apply pl-8;
+
+  list-style-type: lower-alpha;
+}
+
+ol ul {
+  @apply mt-4;
+  @apply pl-8;
+
+  list-style-type: circle;
+}
+
+ul ul > li {
+  @apply mt-2;
+  @apply pl-2;
+}
+
+ol ol > li {
+  @apply mt-2;
+  @apply pl-2;
+}
+
+ol ul > li {
+  @apply mt-2;
+  @apply pl-2;
+}
+
+ul ol > li {
+  @apply mt-2;
+  @apply pl-2;
+}
+
 #content ol {
   @apply list-decimal;
 }

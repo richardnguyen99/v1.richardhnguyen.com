@@ -36,6 +36,14 @@ const AboutPage: React.FC = () => {
     (edge) => edge.node.relativePath === "about/sdi-gearsim.png"
   );
 
+  const blog = data.allFile.edges.find(
+    (edge) => edge.node.relativePath === "about/blog.png"
+  );
+
+  const seattleu = data.allFile.edges.find(
+    (edge) => edge.node.relativePath === "about/seattleu.png"
+  );
+
   return (
     <div className="scroll-smooth relative overflow-hidden">
       <div className="absolute opacity-50 top-0 -left-[20%] md:-left-[7.5%] lg:-left-[5%]">
@@ -246,11 +254,88 @@ const AboutPage: React.FC = () => {
                 gearsim.node.childImageSharp.gatsbyImageData.images.fallback.src
               }
               orderImageSrc="#"
-              stacks={[]}
+              stacks={["Qt", "C++", "QML"]}
               status={ProjectStatus.DONE}
-              title="PERSONAL PAGE"
+              externalLink="https://www.sdi-eng.com"
+              linkText="@SDI Engineering"
+              title="SWE, Intern"
             >
-              Something
+              <ul className="pl-6">
+                <li>
+                  I worked in a team that focused on migrating an landing gear
+                  simulation and analysis tool from MATHLAB/Simulink to C++/Qt
+                </li>
+                <li>
+                  I designed the UI architecture for rendering views and numeric
+                  inputs dynamically based on user&apos;s selection in QML
+                </li>
+                <li>
+                  I implemented the file storage API to read, write and save
+                  user&apos; numeric input using Qt and C++
+                </li>
+              </ul>
+            </HoverProjectCard>
+            <HoverProjectCard
+              defaultImageSrc="https://images.unsplash.com/photo-1547104442-9f0af4f37a87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80"
+              hoverImageSrc={
+                blog.node.childImageSharp.gatsbyImageData.images.fallback.src
+              }
+              orderImageSrc="#"
+              stacks={["Gatsby", "TypeScript", "TailwindCSS", "MDX"]}
+              status={ProjectStatus.IN_PROGRESS}
+              externalLink="https://richardhnguyen.com/"
+              linkText="richardhnguyen.com"
+              title="Personal blog"
+            >
+              <ul className="pl-6">
+                <li>
+                  I create <span className="font-bold">this blog</span> to share
+                  what I learn with you! Most of the content is about software
+                  engineering, tutorial and general writing in the tech
+                  industry.
+                </li>
+                <li>
+                  I use <span className="font-mono font-bold">Gatsby</span>,
+                  <span className="font-mono font-bold">TypeScript</span>, and{" "}
+                  <span className="font-mono font-bold">TailwindCSS</span> to
+                  power this blog.
+                </li>
+                <li>
+                  I use <span className="font-mono font-bold">MDX</span> as a
+                  content management system to write my blog posts. I also write
+                  some custom components and plugins to make my blog more
+                  interactive than original markdown.
+                </li>
+              </ul>
+            </HoverProjectCard>
+            <HoverProjectCard
+              defaultImageSrc="https://images.unsplash.com/photo-1628258334105-2a0b3d6efee1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+              hoverImageSrc={
+                seattleu.node.childImageSharp.gatsbyImageData.images.fallback
+                  .src
+              }
+              orderImageSrc="#"
+              stacks={["Python", "Java", "C++"]}
+              status={ProjectStatus.IN_PROGRESS}
+              externalLink="https://www.seattleu.edu/scieng/computer-science/"
+              linkText="@SeattleU (CS Dept.)"
+              title="Teaching Assistant"
+            >
+              <ul className="pl-6">
+                <li>
+                  I worked as a TA for a variety of programming courses at
+                  Seattle University, including introductory programming
+                  courses, data structures, algorithms, computational langage
+                  and automata theory.
+                </li>
+                <li>I graded submissions using C++, Python3, and Java</li>
+                <li>
+                  I use <span className="font-mono font-bold">MDX</span> as a
+                  content management system to write my blog posts. I also write
+                  some custom components and plugins to make my blog more
+                  interactive than original markdown.
+                </li>
+              </ul>
             </HoverProjectCard>
           </div>
         </div>
