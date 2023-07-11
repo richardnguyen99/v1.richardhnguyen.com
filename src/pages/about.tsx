@@ -353,7 +353,7 @@ const AboutPage: React.FC = () => {
             <p>
               Thanks for stopping! I&apos;m currently looking for a team that is
               solving interesting problems and challenges. If you think I&apos;m
-              a good fit, please reach out to me:
+              a good fit, please reach out to me
             </p>
             <p>&nbsp;</p>
           </div>
