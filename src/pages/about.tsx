@@ -2,15 +2,27 @@ import * as React from "react";
 import clsx from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { useForm } from "react-hook-form";
 
 import { SEO } from "@components/SEO";
+import Input from "@components/Input";
 import ThemeContext from "@components/Theme/Context";
 import HoverProjectCard from "@components/HoverProjectCard";
 import { ProjectStatus } from "@components/HoverProjectCard/type";
+import Textarea from "@components/Textarea";
 
 const AboutPage: React.FC = () => {
   const { theme } = React.useContext(ThemeContext);
   const data = useStaticQuery<Queries.AboutPageQuery>(query);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const [fullName, setFullName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [message, setMessage] = React.useState("");
 
   const snippetLight = data.allFile.edges.find(
     (edge) => edge.node.relativePath === "about/snippet-light.png"
@@ -43,6 +55,29 @@ const AboutPage: React.FC = () => {
   const seattleu = data.allFile.edges.find(
     (edge) => edge.node.relativePath === "about/seattleu.png"
   );
+
+  const submitHandler: React.FormEventHandler<HTMLFormElement> =
+    React.useCallback(
+      (data) => {
+        const jsonifiedData = JSON.stringify(data);
+
+        fetch("/api/contact", {
+          method: "POST",
+          body: jsonifiedData,
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Length": jsonifiedData.length.toString(),
+          },
+        })
+          .then((res) => res.json())
+          .then((body) => {
+            console.log(body);
+          });
+
+        console.log({ errors });
+      },
+      [errors]
+    );
 
   return (
     <div className="scroll-smooth relative overflow-hidden">
@@ -329,12 +364,6 @@ const AboutPage: React.FC = () => {
                   and automata theory.
                 </li>
                 <li>I graded submissions using C++, Python3, and Java</li>
-                <li>
-                  I use <span className="font-mono font-bold">MDX</span> as a
-                  content management system to write my blog posts. I also write
-                  some custom components and plugins to make my blog more
-                  interactive than original markdown.
-                </li>
               </ul>
             </HoverProjectCard>
           </div>
@@ -358,7 +387,52 @@ const AboutPage: React.FC = () => {
             <p>&nbsp;</p>
           </div>
         </div>
-        <form method="POST" action={process.env.GETFORM_ENDPOINT}></form>
+        <form
+          onSubmit={handleSubmit(submitHandler)}
+          className="mt-12 w-full md:w-8/12"
+        >
+          <Input
+            name="fullname"
+            label="Full Name"
+            placeholder="Richard Nguyen"
+            {...register("fullname", {
+              required: true,
+              value: fullName,
+              setValueAs: (value) => setFullName(value),
+            })}
+          />
+          <Input
+            name="email"
+            label="Email"
+            placeholder="email@example.com"
+            {...register("email", {
+              required: true,
+              value: email,
+              setValueAs: (value) => setEmail(value),
+            })}
+          />
+          <Textarea
+            name="message"
+            label="Message"
+            placeholder="Send greeting"
+            rows={10}
+            {...register("message", {
+              required: true,
+              value: message,
+              setValueAs: (value) => setMessage(value),
+            })}
+          />
+          <button
+            type="submit"
+            className={clsx("w-full mt-12", {
+              "flex items-center justify-center": true,
+              "rounded-3xl px-2 py-2": true,
+              "bg-slate-500 dark:bg-sky-400": true,
+            })}
+          >
+            Send
+          </button>
+        </form>
       </section>
       <section
         id="section-4"
