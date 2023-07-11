@@ -230,7 +230,7 @@ const AboutPage: React.FC = () => {
           <h1 className="peer relative text-[5.75vw] font-black text-black dark:text-white">
             My experience
           </h1>
-          <div className="relative w-5/12 h-2 dark:bg-slate-50 bg-[#0b1416]" />
+          <div className="relative w-7/12 h-2 dark:bg-slate-50 bg-[#0b1416]" />
           <div className="w-7/12">
             <p className="mt-10 text-lg">
               I have interest in a wide range of applications and technologies.
@@ -341,9 +341,25 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
       <section
-        id="section-3"
-        className="px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl min-h-[90vh]"
-      ></section>
+        id="connect"
+        className="px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl min-h-[90vh] mt-32"
+      >
+        <h1 className="peer relative text-[5.75vw] font-black text-black dark:text-white">
+          Convienced yet?
+        </h1>
+        <div className="relative w-5/12 h-2 dark:bg-slate-50 bg-[#0b1416]" />
+        <div className="flex flex-col md:flex-row gap-8 mt-10 text-lg">
+          <div className="w-full md:w-5/12">
+            <p>
+              Thanks for stopping! I&apos;m currently looking for a team that is
+              solving interesting problems and challenges. If you think I&apos;m
+              a good fit, please reach out to me:
+            </p>
+            <p>&nbsp;</p>
+          </div>
+        </div>
+        <form method="POST" action={process.env.GETFORM_ENDPOINT}></form>
+      </section>
       <section
         id="section-4"
         className="px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl min-h-[90vh]"
