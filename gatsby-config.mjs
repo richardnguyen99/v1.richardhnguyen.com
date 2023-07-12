@@ -159,6 +159,9 @@ const config = {
       },
     },
 
+    // For interact with Gatsby Cloud functions
+    "gatsby-plugin-gatsby-cloud",
+
     // For web app manifest
     {
       resolve: "gatsby-plugin-manifest",

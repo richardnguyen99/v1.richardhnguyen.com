@@ -56,28 +56,29 @@ const AboutPage: React.FC = () => {
     (edge) => edge.node.relativePath === "about/seattleu.png"
   );
 
-  const submitHandler: React.FormEventHandler<HTMLFormElement> =
-    React.useCallback(
-      (data) => {
-        const jsonifiedData = JSON.stringify(data);
+  const submitHandler: React.FormEventHandler<HTMLFormElement> = async (e) => {
+    // Stop reloading the page on submitting and let AJAX do that job
+    e.preventDefault();
 
-        fetch("/api/contact", {
-          method: "POST",
-          body: jsonifiedData,
-          headers: {
-            "Content-Type": "application/json",
-            "Content-Length": jsonifiedData.length.toString(),
-          },
-        })
-          .then((res) => res.json())
-          .then((body) => {
-            console.log(body);
-          });
+    const jsonifiedData = JSON.stringify({
+      email: email,
+      fullName: fullName,
+      message: message,
+    });
 
-        console.log({ errors });
+    const result = await fetch("/api/contact", {
+      method: "POST",
+      body: jsonifiedData,
+      headers: {
+        "Content-Type": "application/json",
+        "Content-Length": jsonifiedData.length.toString(),
       },
-      [errors]
-    );
+    });
+
+    const body = await result.json();
+
+    console.log("json: " + body["email"]);
+  };
 
   return (
     <div className="scroll-smooth relative overflow-hidden">
@@ -376,63 +377,64 @@ const AboutPage: React.FC = () => {
         <h1 className="peer relative text-[5.75vw] font-black text-black dark:text-white">
           Convienced yet?
         </h1>
-        <div className="relative w-5/12 h-2 dark:bg-slate-50 bg-[#0b1416]" />
-        <div className="flex flex-col md:flex-row gap-8 mt-10 text-lg">
-          <div className="w-full md:w-5/12">
+        <div className="relative w-4/12 h-2 dark:bg-slate-50 bg-[#0b1416]" />
+        <div className="flex justify-between md:flex-row gap-16 mt-10 text-lg">
+          <div className="w-full md:w-4/12">
             <p>
               Thanks for stopping! I&apos;m currently looking for a team that is
               solving interesting problems and challenges. If you think I&apos;m
               a good fit, please reach out to me
             </p>
             <p>&nbsp;</p>
+
+            <div>
+              I&apos;m also available on other platforms, so let&apos; talk!
+            </div>
+            <div className="flex items-center gap-6 mt-8">
+              <BorderLink href="https://www.linkedin.com/in/richardmhnguyen/">
+                LINKEDIN
+              </BorderLink>
+              <BorderLink href="https://twitter.com/richardmhnguyen">
+                TWITTER
+              </BorderLink>
+            </div>
+          </div>
+          <div className="w-full md:w-6/12">
+            <form className="w-full" onSubmit={submitHandler}>
+              <Input
+                name="fullname"
+                label="Full Name"
+                placeholder="Richard Nguyen"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
+              <Input
+                name="email"
+                label="Email"
+                placeholder="email@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Textarea
+                name="message"
+                label="Message"
+                placeholder="Send greeting"
+                rows={10}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+              <button
+                type="submit"
+                className={clsx("w-full mt-12", {
+                  "flex items-center justify-center": true,
+                  "rounded-3xl px-2 py-2": true,
+                  "bg-slate-500 dark:bg-sky-400": true,
+                })}
+              >
+                Send
+              </button>
+            </form>
           </div>
         </div>
-        <form
-          onSubmit={handleSubmit(submitHandler)}
-          className="mt-12 w-full md:w-8/12"
-        >
-          <Input
-            name="fullname"
-            label="Full Name"
-            placeholder="Richard Nguyen"
-            {...register("fullname", {
-              required: true,
-              value: fullName,
-              setValueAs: (value) => setFullName(value),
-            })}
-          />
-          <Input
-            name="email"
-            label="Email"
-            placeholder="email@example.com"
-            {...register("email", {
-              required: true,
-              value: email,
-              setValueAs: (value) => setEmail(value),
-            })}
-          />
-          <Textarea
-            name="message"
-            label="Message"
-            placeholder="Send greeting"
-            rows={10}
-            {...register("message", {
-              required: true,
-              value: message,
-              setValueAs: (value) => setMessage(value),
-            })}
-          />
-          <button
-            type="submit"
-            className={clsx("w-full mt-12", {
-              "flex items-center justify-center": true,
-              "rounded-3xl px-2 py-2": true,
-              "bg-slate-500 dark:bg-sky-400": true,
-            })}
-          >
-            Send
-          </button>
-        </form>
       </section>
       <section
         id="section-4"
@@ -471,7 +473,17 @@ const BorderLink: React.FC<
       target="_blank"
       rel="noreferrer"
       {...rest}
-      className={clsx("", {})}
+      className={clsx("flex items-center gap-3 relative", {
+        "text-lg font-light uppercase tracking-[0.25em]": true,
+        "text-slate-800 dark:text-slate-200": true,
+        "hover:text-slate-950  dark:hover:text-slate-50": true,
+
+        "after:content-[''] after:absolute after:block": true,
+        "after:left-0 after:bottom-0": true,
+        "after:h-[2px] after:w-0 hover:after:w-full": true,
+        "after:bg-sky-500": true,
+        "after:transition-[width] after:duration-300 after:ease-in-out": true,
+      })}
     >
       {children}
     </a>

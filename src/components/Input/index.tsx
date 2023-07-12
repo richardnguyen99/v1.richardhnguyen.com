@@ -5,19 +5,13 @@ import { InputProps } from "./type";
 
 type Props = React.InputHTMLAttributes<HTMLInputElement> & InputProps;
 
-const Input: React.FC<Props> = ({
-  label,
-  value,
-  onChange,
-  placeholder,
-  ...rest
-}) => {
+const Input: React.FC<Props> = ({ label, placeholder, ...rest }) => {
   const id = React.useId();
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 first:mt-0">
       <label
-        className={clsx("block mb-2", {
+        className={clsx("block mb-2 ", {
           "text-lg": true,
         })}
         htmlFor={id}
@@ -27,8 +21,8 @@ const Input: React.FC<Props> = ({
       <input
         id={id}
         type={rest.type || "text"}
-        value={value}
-        onChange={onChange}
+        value={rest.value}
+        onChange={rest.onChange}
         placeholder={placeholder}
         className={clsx("", {
           "outline-none text-sm rounded-lg block w-full p-2.5 border ": true,

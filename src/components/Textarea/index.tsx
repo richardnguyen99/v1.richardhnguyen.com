@@ -5,13 +5,7 @@ import type { TextareaProps } from "./type";
 
 type Props = React.TextareaHTMLAttributes<HTMLTextAreaElement> & TextareaProps;
 
-const Textarea: React.FC<Props> = ({
-  label,
-  value,
-  placeholder,
-  onChange,
-  ...rest
-}) => {
+const Textarea: React.FC<Props> = ({ label, placeholder, ...rest }) => {
   const id = React.useId();
 
   return (
@@ -26,8 +20,6 @@ const Textarea: React.FC<Props> = ({
       </label>
       <textarea
         id={id}
-        value={value}
-        onChange={onChange}
         placeholder={placeholder}
         className={clsx("", {
           "outline-none text-sm rounded-lg block w-full p-2.5 border ": true,
