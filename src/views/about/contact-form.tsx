@@ -40,7 +40,30 @@ const ContactForm: FC<
   ) => {
     e.preventDefault();
 
-    console.log({ fullName, email, message });
+    const msg = JSON.stringify({ fullName, email, message });
+
+    setLoading(true);
+    fetch("/api/contact", {
+      method: "POST",
+      body: msg,
+      headers: {
+        "Content-Type": "application/json",
+        "Content-Length": msg.length.toString(),
+      },
+    })
+      .then((res) => {
+        console.log(res.headers);
+        return res.json();
+      })
+      .then((body) => {
+        console.log(body);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (

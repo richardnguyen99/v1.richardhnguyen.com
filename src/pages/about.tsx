@@ -2,30 +2,17 @@ import * as React from "react";
 import clsx from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { useForm } from "react-hook-form";
 
 import { SEO } from "@components/SEO";
-import Input from "@components/Input";
 import ThemeContext from "@components/Theme/Context";
 import HoverProjectCard from "@components/HoverProjectCard";
 import { ProjectStatus } from "@components/HoverProjectCard/type";
-import Textarea from "@components/Textarea";
 
 import { ContactForm } from "@views/about";
 
 const AboutPage: React.FC = () => {
   const { theme } = React.useContext(ThemeContext);
   const data = useStaticQuery<Queries.AboutPageQuery>(query);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const [loading, setLoading] = React.useState(false);
-  const [fullName, setFullName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [message, setMessage] = React.useState("");
 
   const snippetLight = data.allFile.edges.find(
     (edge) => edge.node.relativePath === "about/snippet-light.png"
@@ -58,32 +45,6 @@ const AboutPage: React.FC = () => {
   const seattleu = data.allFile.edges.find(
     (edge) => edge.node.relativePath === "about/seattleu.png"
   );
-
-  const submitHandler: React.FormEventHandler<HTMLFormElement> = async (e) => {
-    // Stop reloading the page on submitting and let AJAX do that job
-    e.preventDefault();
-
-    const jsonifiedData = JSON.stringify({
-      email: email,
-      fullName: fullName,
-      message: message,
-    });
-
-    setLoading(true);
-
-    const result = await fetch("/api/contact", {
-      method: "POST",
-      body: jsonifiedData,
-      headers: {
-        "Content-Type": "application/json",
-        "Content-Length": jsonifiedData.length.toString(),
-      },
-    });
-
-    const body = await result.json();
-
-    setTimeout(() => setLoading(false), 1500);
-  };
 
   return (
     <div className="scroll-smooth relative overflow-hidden">
@@ -461,15 +422,5 @@ const BorderLink: React.FC<
     >
       {children}
     </a>
-  );
-};
-
-const Loading: React.FC = () => {
-  return (
-    <div className="flex items-center gap-2">
-      <div className="animate-loading animation-delay-300 block w-[10px] h-[10px] rounded-full bg-white" />
-      <div className="animate-loading animation-delay-200 block w-[10px] h-[10px] rounded-full bg-white" />
-      <div className="animate-loading animation-delay-100 block w-[10px] h-[10px] rounded-full bg-white" />
-    </div>
   );
 };
