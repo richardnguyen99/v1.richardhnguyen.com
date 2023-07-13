@@ -345,7 +345,7 @@ const AboutPage: React.FC = () => {
               stacks={["Gatsby", "TypeScript", "TailwindCSS", "MDX"]}
               status={ProjectStatus.IN_PROGRESS}
               externalLink="https://richardhnguyen.com/"
-              linkText="richardhnguyen.com"
+              linkText="@richardhnguyen.com"
               title="Personal blog"
             >
               <ul className="pl-6">

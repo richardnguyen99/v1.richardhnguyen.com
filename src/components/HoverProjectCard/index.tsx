@@ -58,18 +58,18 @@ const HoverProjectCard: React.FC<Props> = ({
 
   return (
     <div
-      className={clsx("w-[90%]", {
+      className={clsx("w-full xl:w-[90%]", {
         "mx-auto mt-20 first:mt-10": true,
+        "w-full h-full": true,
+        "p-12 rounded-[3rem]": true,
+        "bg-slate-100 dark:bg-[rgb(20,29,31)]": true,
       })}
       data-image-1={defaultImageSrc}
       data-image-2={hoverImageSrc}
     >
       <div
         className={clsx("", {
-          "w-full h-full": true,
           flex: true,
-          "p-12 rounded-[3rem]": true,
-          "bg-slate-100 dark:bg-[rgb(20,29,31)]": true,
         })}
       >
         <div
@@ -83,50 +83,72 @@ const HoverProjectCard: React.FC<Props> = ({
           <div className="block opacity-0" />
         </div>
         <div
-          className={clsx("", {
-            "w-[calc(100%-320px)] ml-24 ": true,
-            "flex flex-col justify-between": true,
+          className={clsx("relative", {
+            "w-[calc(100%-320px)] h-[400px] overflow-hidden lg:ml-16 xl:ml-24 ":
+              true,
+            "flex flex-col": true,
           })}
         >
           <div className="grid grid-cols-[repeat(5,_1fr)_minmax(32px,_auto)] w-full items-center">
-            <h1 className="lg:order-1 col-start-1 col-span-3 text-3xl font-black overflow-auto">
+            <h1 className="md:order-1 lg:order-1 md:col-span-5 xl:col-start-1 xl:col-span-3 text-3xl font-black overflow-auto">
               {title}
             </h1>
 
-            <div className="lg:order-2 flex col-start-4 col-span-3 col-end-6 items-center gap-3">
+            <div className="lg:order-3 xl:order-2 flex lg:col-start-1 lg:col-span-6 xl:col-start-4 xl:col-span-3 xl:col-end-6 items-center gap-3">
               {externalLink !== "#" && (
                 <a
                   href={externalLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="ml-auto"
+                  className="ml-0 xl:ml-auto"
                 >
                   <span className="font-bold text-slate-500">{linkText}</span>
                 </a>
               )}
             </div>
-            <span className="lg:order-3 flex col-span-1 col-end-7 ml-auto text-2xl font-black">
+            <span className="flex items-center justify-center lg:order-2 xl:order-3 col-span-1 col-end-7 xl:ml-auto text-2xl font-black">
               {renderStatus(status)}
             </span>
           </div>
           <div>{children}</div>
-          <div className="flex gap-1 mt-auto">
-            {stacks.map((stack, index) => (
-              <a key={index} href="#" target="_blank">
-                <span
-                  className={clsx("", {
-                    "rounded-full  px-4 py-2 text-sm font-bold": true,
-                    "bg-slate-400 hover:bg-slate-500 ": true,
-                    "text-slate-100 hover:text-white": true,
-                    "dark:text-neutral-200 dark:hover:text-100": true,
-                    "dark:bg-neutral-700 dark:hover:bg-neutral-600": true,
+          <div className="absolute bottom-0 left-0 w-full">
+            <div className="relative bg-gradient-to-t from-slate-100/100 from-0% via-75% via-slate-100/90 to-slate-100/[0] dark:from-[rgba(20,29,31,1)] dark:via-[rgba(20,29,31,0.9)] dark:to-[rgba(20,29,31,0)] h-[100px]">
+              <div className="absolute bottom-[10%] left-0">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={clsx("flex items-center gap-3 relative", {
+                    "text-lg font-light uppercase tracking-[0.25em]": true,
+                    "text-slate-800 dark:text-slate-200": true,
+                    "hover:text-slate-950  dark:hover:text-slate-50": true,
+
+                    "after:content-[''] after:absolute after:block": true,
+                    "after:left-0 after:bottom-0": true,
+                    "after:h-[2px] after:w-0 hover:after:w-full": true,
+                    "after:bg-sky-500": true,
+                    "after:transition-[width] after:duration-300 after:ease-in-out":
+                      true,
                   })}
                 >
-                  {stack}
-                </span>
-              </a>
-            ))}
+                  <span>View Project</span>
+                </a>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+      <div className="w-fit ml-auto">
+        <div className="flex items-center gap-4 mt-8 w-full after:content-[''] after:block after:w-[120px] after:h-[1px] after:dark:bg-white">
+          {stacks.map((stack, index) => (
+            <a
+              href="#"
+              key={index}
+              className="text-sm uppercase font-light tracking-wider after:content-[','] last-of-type:after:content-['']"
+            >
+              {stack}
+            </a>
+          ))}
         </div>
       </div>
     </div>
