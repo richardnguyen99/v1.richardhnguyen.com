@@ -36,6 +36,8 @@
       "@pages": ["src/pages"],
       "@assets/*": ["src/assets/*"],
       "@assets": ["src/assets"],
+      "@views/*": ["src/views/*"],
+      "@views": ["src/views"],
       "@generated/*": ["src/generated/*"],
       "@generated": ["src/generated"]
     }

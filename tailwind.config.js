@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class", '[data-mode="dark"]'],
@@ -35,6 +37,7 @@ module.exports = {
         "bounce-1": "bounce-1 10s infinite ease-in-out",
         "bounce-2": "bounce-2 10s infinite ease-in-out",
         "bounce-3": "bounce-3 10s infinite ease-in-out",
+        loading: "loading 0.6s linear infinite",
       },
       keyframes: {
         "kf-swapOut": {
@@ -92,8 +95,42 @@ module.exports = {
             transform: "translateY(0)",
           },
         },
+
+        loading: {
+          "0%": {
+            transform: "translate(0,0)",
+          },
+          "25%": {
+            transform: "translate(0, -7.5px)",
+          },
+          "50%": {
+            transform: "translate(0, 0px)",
+          },
+          "75%": {
+            transform: "translate(0, 7.5px)",
+          },
+          "100%": {
+            transform: "translate(0, 0)",
+          },
+        },
       },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          "animation-delay": (value) => {
+            return {
+              "animation-delay": value,
+            };
+          },
+        },
+        {
+          values: theme("transitionDelay"),
+        }
+      );
+    }),
+  ],
 };

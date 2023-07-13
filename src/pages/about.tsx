@@ -11,6 +11,8 @@ import HoverProjectCard from "@components/HoverProjectCard";
 import { ProjectStatus } from "@components/HoverProjectCard/type";
 import Textarea from "@components/Textarea";
 
+import { ContactForm } from "@views/about";
+
 const AboutPage: React.FC = () => {
   const { theme } = React.useContext(ThemeContext);
   const data = useStaticQuery<Queries.AboutPageQuery>(query);
@@ -20,6 +22,7 @@ const AboutPage: React.FC = () => {
     formState: { errors },
   } = useForm();
 
+  const [loading, setLoading] = React.useState(false);
   const [fullName, setFullName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState("");
@@ -66,6 +69,8 @@ const AboutPage: React.FC = () => {
       message: message,
     });
 
+    setLoading(true);
+
     const result = await fetch("/api/contact", {
       method: "POST",
       body: jsonifiedData,
@@ -77,7 +82,7 @@ const AboutPage: React.FC = () => {
 
     const body = await result.json();
 
-    console.log("json: " + body["email"]);
+    setTimeout(() => setLoading(false), 1500);
   };
 
   return (
@@ -144,7 +149,7 @@ const AboutPage: React.FC = () => {
           <div className="mt-[5rem]">
             <div className="flex items-center gap-4 uppercase font-thin tracking-widest">
               <BorderLink href="#">View Projects</BorderLink>
-              <BorderLink href="#">My LinkedIn</BorderLink>
+              <BorderLink href="#">My GitHub</BorderLink>
             </div>
           </div>
         </div>
@@ -191,10 +196,10 @@ const AboutPage: React.FC = () => {
             </p>
             <p>&nbsp;</p>
             <p>
-              My main focus is to build scalable and high-perfomance
-              applications with sophisticated architectures to solve pratical
-              problems. I also love to build small projects and share my
-              knowledge with others, like this blog!
+              My main focus is to develop and expand my skills on scalable and
+              high-perfomance applications with sophisticated architectures to
+              solve pratical problems. I also love to build small projects and
+              share my knowledge with others, like this blog!
             </p>
           </div>
           <div className="relative w-full md:w-4/12 flex items-center -mr-12">
@@ -299,7 +304,8 @@ const AboutPage: React.FC = () => {
               <ul className="pl-6">
                 <li>
                   I worked in a team that focused on migrating an landing gear
-                  simulation and analysis tool from MATHLAB/Simulink to C++/Qt
+                  simulation and analysis tool written from MATHLAB/Simulink to
+                  C++/Qt
                 </li>
                 <li>
                   I designed the UI architecture for rendering views and numeric
@@ -361,10 +367,14 @@ const AboutPage: React.FC = () => {
                 <li>
                   I worked as a TA for a variety of programming courses at
                   Seattle University, including introductory programming
-                  courses, data structures, algorithms, computational langage
-                  and automata theory.
+                  courses, data structures, algorithms, computational langage ,
+                  automata theory and bootcamp using C++, Python3, and Java
                 </li>
-                <li>I graded submissions using C++, Python3, and Java</li>
+                <li>
+                  I hosted office hours and workshops to help students get
+                  familiar with lecture materials, mainly about Java and
+                  Object-oriented programming
+                </li>
               </ul>
             </HoverProjectCard>
           </div>
@@ -400,46 +410,10 @@ const AboutPage: React.FC = () => {
             </div>
           </div>
           <div className="w-full md:w-6/12">
-            <form className="w-full" onSubmit={submitHandler}>
-              <Input
-                name="fullname"
-                label="Full Name"
-                placeholder="Richard Nguyen"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-              />
-              <Input
-                name="email"
-                label="Email"
-                placeholder="email@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Textarea
-                name="message"
-                label="Message"
-                placeholder="Send greeting"
-                rows={10}
-                onChange={(e) => setMessage(e.target.value)}
-              />
-              <button
-                type="submit"
-                className={clsx("w-full mt-12", {
-                  "flex items-center justify-center": true,
-                  "rounded-3xl px-2 py-2": true,
-                  "bg-slate-500 dark:bg-sky-400": true,
-                })}
-              >
-                Send
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>
-      <section
-        id="section-4"
-        className="px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl min-h-[90vh]"
-      ></section>
     </div>
   );
 };
@@ -487,5 +461,15 @@ const BorderLink: React.FC<
     >
       {children}
     </a>
+  );
+};
+
+const Loading: React.FC = () => {
+  return (
+    <div className="flex items-center gap-2">
+      <div className="animate-loading animation-delay-300 block w-[10px] h-[10px] rounded-full bg-white" />
+      <div className="animate-loading animation-delay-200 block w-[10px] h-[10px] rounded-full bg-white" />
+      <div className="animate-loading animation-delay-100 block w-[10px] h-[10px] rounded-full bg-white" />
+    </div>
   );
 };

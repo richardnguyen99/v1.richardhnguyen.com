@@ -32,6 +32,7 @@ export const onCreateWebpackConfig =
           "@hooks": path.resolve(__dirname, "src", "hooks"),
           "@components": path.resolve(__dirname, "src", "components"),
           "@assets": path.resolve(__dirname, "src", "assets"),
+          "@views": path.resolve(__dirname, "src", "views"),
         },
       },
     });
