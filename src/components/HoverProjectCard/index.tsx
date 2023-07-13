@@ -3,7 +3,8 @@ import clsx from "classnames";
 import hoverEffect from "hover-effect";
 import { graphql, useStaticQuery } from "gatsby";
 
-import { HoverProjectCardProps } from "./type";
+import { HoverProjectCardProps, ProjectStatus } from "./type";
+import { CheckIcon, FlameIcon } from "@primer/octicons-react";
 
 type Props = React.PropsWithChildren<
   React.HTMLAttributes<HTMLDivElement> & HoverProjectCardProps
@@ -26,6 +27,21 @@ const HoverProjectCard: React.FC<Props> = ({
   } = useStaticQuery<Queries.DistortionImageQuery>(query);
 
   const imageRef = React.useRef<HTMLDivElement>(null);
+
+  const renderStatus = (status: ProjectStatus) => {
+    /* eslint-disable indent */
+    switch (status) {
+      case ProjectStatus.DONE:
+        return <CheckIcon className="w-5 h-5 fill-green-400" />;
+      case ProjectStatus.IN_PROGRESS:
+        return <FlameIcon className="w-5 h-5 fill-amber-500" />;
+      case ProjectStatus.ON_HOLD:
+        return "on hold";
+      default:
+        return "upcoming";
+    }
+    /* eslint-enable indent */
+  };
 
   React.useEffect(() => {
     if (!imageRef.current) return;
@@ -72,17 +88,26 @@ const HoverProjectCard: React.FC<Props> = ({
             "flex flex-col justify-between": true,
           })}
         >
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-black">{title}</h1>
+          <div className="grid grid-cols-[repeat(5,_1fr)_minmax(32px,_auto)] w-full items-center">
+            <h1 className="lg:order-1 col-start-1 col-span-3 text-3xl font-black overflow-auto">
+              {title}
+            </h1>
 
-            <div className="flex items-center gap-3">
+            <div className="lg:order-2 flex col-start-4 col-span-3 col-end-6 items-center gap-3">
               {externalLink !== "#" && (
-                <a href={externalLink} target="_blank" rel="noreferrer">
+                <a
+                  href={externalLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ml-auto"
+                >
                   <span className="font-bold text-slate-500">{linkText}</span>
                 </a>
               )}
-              <span className="text-2xl font-black">{status}</span>
             </div>
+            <span className="lg:order-3 flex col-span-1 col-end-7 ml-auto text-2xl font-black">
+              {renderStatus(status)}
+            </span>
           </div>
           <div>{children}</div>
           <div className="flex gap-1 mt-auto">

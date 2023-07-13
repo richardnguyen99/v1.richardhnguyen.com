@@ -379,8 +379,8 @@ const AboutPage: React.FC = () => {
               stacks={["Python", "Java", "C++"]}
               status={ProjectStatus.IN_PROGRESS}
               externalLink="https://www.seattleu.edu/scieng/computer-science/"
-              linkText="@SeattleU (CS Dept.)"
-              title="Teaching Assistant"
+              linkText="@SU - CS Dept."
+              title="TA / Grader"
             >
               <ul className="pl-6">
                 <li>
@@ -404,7 +404,7 @@ const AboutPage: React.FC = () => {
         className="px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl min-h-[90vh] mt-32"
       >
         <h1 className="peer relative text-[5.75vw] font-black text-black dark:text-white">
-          Convienced yet!
+          Convienced yet?
         </h1>
         <div className="relative w-4/12 h-2 dark:bg-slate-50 bg-[#0b1416]" />
         <div className="flex justify-between md:flex-row gap-16 mt-10 text-lg">
@@ -474,7 +474,7 @@ const AboutPage: React.FC = () => {
                     rows={10}
                     placeholder="Hello, World!"
                     className={clsx("", {
-                      "outline-none text-sm rounded-lg block w-full p-2.5 border ":
+                      "outline-none text-sm rounded-lg block w-full p-2.5 border":
                         true,
                       "bg-gray-100 dark:bg-[rgb(20,29,31)]": true,
                       "hover:bg-gray-200 dark:hover:bg-[rgb(25,34,36)]": true,
@@ -604,7 +604,7 @@ const Input = React.forwardRef<
       className={clsx("", {
         "outline-none text-sm rounded-lg block w-full p-2.5 border ": true,
         "bg-gray-100 dark:bg-[rgb(20,29,31)]": true,
-        "hover:bg-gray-200 dark:hover:bg-[rgb(25,34,36)]": true,
+        "hover:bg-gray-200/75 dark:hover:bg-[rgb(25,34,36)]": true,
         "border-gray-300 dark:border-gray-600": true,
         "text-gray-900 dark:text-white": true,
         "dark:placeholder-gray-400 ": true,
