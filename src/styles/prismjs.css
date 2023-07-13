@@ -157,7 +157,9 @@ pre[class*="language-"] {
   word-wrap: normal;
   @apply text-zinc-700;
 
-  font-family: Roboto Mono, monospace;
+  font-family:
+    Roboto Mono,
+    monospace;
   font-size: 1em;
   line-height: 1.5em;
 

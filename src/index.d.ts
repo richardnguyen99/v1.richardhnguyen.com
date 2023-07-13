@@ -10,6 +10,7 @@ declare namespace NodeJS {
     SMTP_HOST: string;
     SMTP_PORT: string;
     SMTP_EMAIL: string;
+    SMTP_SENDER: string;
     SMTP_PASSWORD: string;
   }
 }

@@ -44,7 +44,9 @@ blockquote {
 
   background-image: radial-gradient(var(--dot-color) 10%, transparent 10%),
     radial-gradient(var(--dot-color) 10%, transparent 10%);
-  background-position: 0px 0px, 8px 8px;
+  background-position:
+    0px 0px,
+    8px 8px;
   background-size: 16px 16px;
   box-shadow: 0.5rem 0.5rem 2rem var(--shadow-color);
 }
@@ -70,7 +72,9 @@ blockquote {
     ),
     linear-gradient(var(--quote-color, black), var(--quote-color, black));
   background-size: calc(var(--qoute-height) / 2) calc(var(--qoute-height) / 2);
-  background-position: top left, bottom left;
+  background-position:
+    top left,
+    bottom left;
   background-repeat: space no-repeat;
 }
 

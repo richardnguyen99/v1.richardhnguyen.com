@@ -1,4 +1,5 @@
 import { GatsbyFunctionRequest, GatsbyFunctionResponse } from "gatsby";
+import nodemailer from "nodemailer";
 
 type IFormData = {
   fullName: string;
@@ -15,15 +16,36 @@ const formHandler = (
     return;
   }
 
-  console.log("headers", req.headers);
-  console.log("body", req.body);
-
-  console.log("SMTP_HOST", process.env.SMTP_HOST);
-  console.log("STMTP_PORT", process.env.SMTP_PORT);
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT),
+    secure: true,
+    auth: {
+      user: process.env.SMTP_SENDER,
+      pass: process.env.SMTP_PASSWORD,
+    },
+  });
 
   res.setHeader("Content-Type", "application/json");
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.status(200).json(req.body);
+
+  transporter
+    .sendMail({
+      from: process.env.SMTP_SENDER,
+      to: process.env.SMTP_EMAIL,
+      subject: `New message from ${req.body.fullName} <${req.body.email}>`,
+      text: req.body.message,
+    })
+    .then((info) => {
+      console.log("Message sent: %s", info.messageId);
+
+      res.status(200).json(req.body);
+    })
+    .catch((error) => {
+      console.log(error.message);
+
+      res.status(500).json({ error: error.message });
+    });
 };
 
 export default formHandler;
