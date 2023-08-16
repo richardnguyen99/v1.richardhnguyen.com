@@ -1,94 +1,17 @@
-ol {
+#content ol,
+.styled-list ol {
   @apply list-decimal;
 }
 
-ul {
-  @apply list-disc;
-}
-
-ol,
-ul {
-  @apply mt-6;
-  @apply pl-12;
-
-  @apply marker:text-sky-500;
-  @apply dark:marker:text-sky-300;
-  @apply marker:font-bold;
-  @apply marker:font-mono;
-  @apply marker:text-xl;
-}
-
-ol > li,
-ul > li {
-  @apply mt-5;
-  @apply pl-3;
-  @apply list-item;
-}
-
-ol > li > p,
-ul > li > p {
-  @apply mt-3;
-  @apply leading-[1.5];
-}
-
-ol ol {
-  @apply mt-4;
-  @apply pl-8;
-
-  list-style-type: lower-alpha;
-}
-
-ul ul {
-  @apply mt-4;
-  @apply pl-8;
-
-  list-style-type: circle;
-}
-
-ul ol {
-  @apply mt-4;
-  @apply pl-8;
-
-  list-style-type: lower-alpha;
-}
-
-ol ul {
-  @apply mt-4;
-  @apply pl-8;
-
-  list-style-type: circle;
-}
-
-ul ul > li {
-  @apply mt-2;
-  @apply pl-2;
-}
-
-ol ol > li {
-  @apply mt-2;
-  @apply pl-2;
-}
-
-ol ul > li {
-  @apply mt-2;
-  @apply pl-2;
-}
-
-ul ol > li {
-  @apply mt-2;
-  @apply pl-2;
-}
-
-#content ol {
-  @apply list-decimal;
-}
-
-#content ul {
+#content ul,
+.styled-list ul {
   @apply list-disc;
 }
 
 #content ol,
-#content ul {
+#content ul,
+.styled-list ol,
+.styled-list ul {
   @apply mt-6;
   @apply pl-12;
 
@@ -99,62 +22,74 @@ ul ol > li {
 }
 
 #content ol > li,
-#content ul > li {
+#content ul > li,
+.styled-list ol > li,
+.styled-list ul > li {
   @apply mt-5;
   @apply pl-3;
   @apply list-item;
 }
 
 #content ol > li > p,
-#content ul > li > p {
+#content ul > li > p,
+.styled-list ol > li > p,
+.styled-list ul > li > p {
   @apply mt-3;
   @apply leading-[1.5];
 }
 
-#content ol ol {
+#content ol ol,
+.styled-list ol ol {
   @apply mt-4;
   @apply pl-8;
 
   list-style-type: lower-alpha;
 }
 
-#content ul ul {
+#content ul ul,
+.styled-list ul ul {
   @apply mt-4;
   @apply pl-8;
 
   list-style-type: circle;
 }
 
-#content ul ol {
+#content ul ol,
+.styled-list ul ol {
   @apply mt-4;
   @apply pl-8;
 
   list-style-type: lower-alpha;
 }
 
-#content ol ul {
+#content ol ul,
+.styled-list ol ul {
   @apply mt-4;
   @apply pl-8;
 
   list-style-type: circle;
 }
 
-#content ul ul > li {
+#content ul ul > li,
+.styled-list ul ul > li {
   @apply mt-2;
   @apply pl-2;
 }
 
-#content ol ol > li {
+#content ol ol > li,
+.styled-list ol ol > li {
   @apply mt-2;
   @apply pl-2;
 }
 
-#content ol ul > li {
+#content ol ul > li,
+.styled-list ol ul > li {
   @apply mt-2;
   @apply pl-2;
 }
 
-#content ul ol > li {
+#content ul ol > li,
+.styled-list ul ol > li {
   @apply mt-2;
   @apply pl-2;
 }

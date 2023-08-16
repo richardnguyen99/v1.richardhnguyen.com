@@ -54,7 +54,7 @@ const HoverProjectCard: React.FC<Props> = ({
       displacementImage:
         edges[0].node.childImageSharp.gatsbyImageData.images.fallback.src,
     });
-  }, [defaultImageSrc, edges, hoverImageSrc]);
+  }, [imageRef && imageRef.current]);
 
   return (
     <div
@@ -117,7 +117,7 @@ const HoverProjectCard: React.FC<Props> = ({
             <div className="relative bg-gradient-to-t from-slate-100/100 from-0% via-75% via-slate-100/90 to-slate-100/[0] dark:from-[rgba(20,29,31,1)] dark:via-[rgba(20,29,31,0.9)] dark:to-[rgba(20,29,31,0)] h-[100px]">
               <div className="absolute bottom-[10%] left-0">
                 <a
-                  href="#"
+                  href={externalLink}
                   target="_blank"
                   rel="noreferrer"
                   className={clsx("flex items-center gap-3 relative", {
