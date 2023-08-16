@@ -30,7 +30,6 @@ const PageNavigator: React.FC = () => {
           name="Categories"
         />
         <Item id="header-page-about-link" to="/about" name="About" />
-        <Item id="header-page-projects-link" to="/projects" name="Projects" />
       </div>
     </div>
   );
