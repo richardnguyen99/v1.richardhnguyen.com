@@ -26,7 +26,7 @@ const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
 
       <div className="py-10 flex flex-col md:flex-row-reverse -mx-6">
         <div className="w-full lg:w-8/12 px-6">
-          <Link to={`/posts${data.slug}`}>
+          <Link to={`${data.slug}`}>
             <GatsbyImage
               aria-label="article-thumbnail"
               alt={data.title}

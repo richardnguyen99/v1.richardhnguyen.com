@@ -80,7 +80,7 @@ export const onCreateNode = ({ node, actions, getNode, reporter }) => {
     createNodeField({
       node,
       name: "slug",
-      value: `${slug}`,
+      value: `/posts${slug}`,
     });
   }
 
@@ -135,7 +135,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
       return;
 
     createPage({
-      path: `posts${node.fields.slug}`,
+      path: `${node.fields.slug}`,
       component: `${template}?__contentFilePath=${node.internal.contentFilePath}`,
       context: { id: node.id },
     });

@@ -37,10 +37,12 @@ export const query = graphql`
         node {
           id
           tableOfContents(maxDepth: 2)
+
           fields {
             excerpt
             slug
           }
+
           frontmatter {
             title
             author

@@ -24,11 +24,7 @@ const PageNavigator: React.FC = () => {
       <div className="hidden md:flex">
         <Item id="header-page-posts-link" to="/posts" name="Posts" />
 
-        <Item
-          id="header-page-categories-link"
-          to="/categories"
-          name="Categories"
-        />
+        <Item id="header-page-categories-link" to="/tags" name="Tags" />
         <Item id="header-page-about-link" to="/about" name="About" />
       </div>
     </div>
