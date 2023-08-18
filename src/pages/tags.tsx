@@ -17,7 +17,7 @@ const CategoryPage: React.FC = () => {
     });
   };
 
-  const cppPosts = React.useMemo(() => filterPosts(posts, "C++"), [posts]);
+  const cppPosts = React.useMemo(() => filterPosts(posts, "c++"), [posts]);
 
   return (
     <div className="relative scroll-smooth overflow-x-hidden">

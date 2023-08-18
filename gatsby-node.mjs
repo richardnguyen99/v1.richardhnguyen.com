@@ -110,6 +110,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
           }
           frontmatter {
             published
+            tags
           }
           internal {
             contentFilePath
@@ -123,8 +124,19 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild("Error loading MDX result", result.errors);
   }
 
+  const tagTemplate = path.resolve("./src/components/Tag/Template.tsx");
+  const postTemplate = path.resolve("./src/components/Mdx/index.tsx");
   const posts = result.data.allMdx.nodes;
-  const template = path.resolve("./src/components/Mdx/index.tsx");
+
+  const tags = posts.reduce((acc, node) => {
+    if (!node.frontmatter.tags) return acc;
+
+    node.frontmatter.tags.forEach((tag) => {
+      acc.add(tag);
+    });
+
+    return acc;
+  }, new Set());
 
   posts.forEach((node) => {
     // Only render ready-to-publish posts in production.
@@ -136,8 +148,16 @@ export const createPages = async ({ graphql, actions, reporter }) => {
 
     createPage({
       path: `${node.fields.slug}`,
-      component: `${template}?__contentFilePath=${node.internal.contentFilePath}`,
+      component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
       context: { id: node.id },
+    });
+  });
+
+  tags.forEach((tag) => {
+    createPage({
+      path: `/tags/${tag}`,
+      component: tagTemplate,
+      context: { tag: tag },
     });
   });
 };
