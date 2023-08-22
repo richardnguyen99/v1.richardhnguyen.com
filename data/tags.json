@@ -1,32 +1,44 @@
 [
   {
     "tag": "c++",
-    "description": "For the old school",
+    "display": "C++",
+    "description": "For the old schoolers",
     "url": "https://cplusplus.com/"
   },
   {
     "tag": "c",
+    "display": "C",
     "description": "The one that started it all",
     "url": "https://en.cppreference.com/w/c"
   },
   {
     "tag": "gatsbyjs",
+    "display": "GatsbyJS",
     "description": "The engine of this site",
     "url": "https://www.gatsbyjs.org/"
   },
   {
     "tag": "reactjs",
+    "display": "ReactJS",
     "description": "You know what it is",
     "url": "https://reactjs.org/"
   },
   {
     "tag": "typescript",
+    "display": "TypeScript",
     "description": "For insecure JavaScript developers",
     "url": "https://www.typescriptlang.org/"
   },
   {
     "tag": "python",
+    "display": "Python",
     "description": "Let's go, pythonistas!",
     "url": "https://www.python.org/"
+  },
+  {
+    "tag": "general",
+    "display": "General",
+    "description": "Stuff that doesn't fit anywhere else",
+    "url": null
   }
 ]
