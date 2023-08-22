@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link } from "gatsby";
 
 const BuiltByGatsby: React.FC = () => {
   return (
@@ -25,10 +24,6 @@ const BuiltByGatsby: React.FC = () => {
       >
         Gatsby Cloud
       </a>
-      . More info{" "}
-      <Link className="font-bold hover:underline" to="/about-this-page">
-        here
-      </Link>
       .
     </p>
   );

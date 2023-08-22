@@ -46,28 +46,8 @@ const Footer: React.FC = () => {
           >
             <div
               id="footer-column-container"
-              className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+              className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
             >
-              <Column
-                title="Categories"
-                items={[
-                  {
-                    type: "gatsby-link",
-                    href: "/categories/tutorial",
-                    name: "Tutorial",
-                  },
-                  {
-                    type: "gatsby-link",
-                    href: "/categories/news",
-                    name: "News",
-                  },
-                  {
-                    type: "gatsby-link",
-                    href: "/categories/sharing",
-                    name: "Sharing",
-                  },
-                ]}
-              />
               <Column
                 title="Tags"
                 items={[
@@ -78,13 +58,13 @@ const Footer: React.FC = () => {
                   },
                   {
                     type: "gatsby-link",
-                    href: "/tags/cpp",
+                    href: "/tags/c++",
                     name: "C++",
                   },
                   {
                     type: "gatsby-link",
-                    href: "/tags/react",
-                    name: "React",
+                    href: "/tags/gatsbyjs",
+                    name: "GatsbyJS",
                   },
                   {
                     type: "gatsby-link",
@@ -129,12 +109,12 @@ const Footer: React.FC = () => {
                   {
                     type: "a",
                     href: "https://stackoverflow.com/users/12915739/richard-h-nguyen",
-                    name: "GitHub",
+                    name: "StackOverflow",
                   },
                   {
                     type: "a",
                     href: "https://github.com/richardnguyen99",
-                    name: "StackOverflow",
+                    name: "GitHub",
                   },
                 ]}
               />

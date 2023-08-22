@@ -12,7 +12,7 @@ type TagTemplateProps = PageProps<Queries.PostsWithTagQuery>;
 type Props = React.HTMLAttributes<HTMLDivElement> & TagTemplateProps;
 
 const TagTemplate: React.FC<Props> = ({
-  data: { tagInfo, postsWithTag },
+  data: { tagInfo, postsWithTag: _posts },
   pageContext,
 }) => {
   const { tag, display, url, description } = tagInfo;

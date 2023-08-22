@@ -3,7 +3,7 @@ import clsx from "classnames";
 
 import type { PillProps } from "./type";
 
-const Pill: React.FC<PillProps> = ({ text, color }) => {
+const Pill: React.FC<PillProps> = ({ text, color: _color }) => {
   return (
     <div
       style={
