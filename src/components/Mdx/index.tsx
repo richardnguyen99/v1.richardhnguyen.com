@@ -77,6 +77,7 @@ export const query = graphql`
       id
       tableOfContents(maxDepth: 2)
       body
+
       fields {
         slug
         excerpt
@@ -88,6 +89,7 @@ export const query = graphql`
           words
         }
       }
+
       frontmatter {
         title
         created(formatString: "MMMM DD, YYYY")
@@ -103,6 +105,7 @@ export const query = graphql`
             )
           }
         }
+
         thumbnailAuthor
         thumbnailAuthorLink
       }

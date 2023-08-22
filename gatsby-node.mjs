@@ -226,11 +226,13 @@ export const createSchemaCustomization = async ({
         timeToRead: Float @proxy(from: "fields.timeToRead.minutes")
         wordCount: Int @proxy(from: "fields.timeToRead.words")
       }
+
       type MdxHeading {
         value: String
         depth: Int
       }
     `,
+
     headingsResolver,
   ]);
 };

@@ -129,6 +129,16 @@ const config = {
       },
     },
 
+    // For data json
+    "gatsby-transformer-json",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "data",
+        path: `${__dirname}/data`,
+      },
+    },
+
     // For TailwindCSS
     "gatsby-plugin-postcss",
 
