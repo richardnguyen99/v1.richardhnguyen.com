@@ -7,12 +7,13 @@ import { SEO } from "@components/SEO";
 
 import TagTemplateLine from "@components/Tag/TagTemplateLine";
 import Pill from "@components/Pill";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 type TagTemplateProps = PageProps<Queries.PostsWithTagQuery>;
 type Props = React.HTMLAttributes<HTMLDivElement> & TagTemplateProps;
 
 const TagTemplate: React.FC<Props> = ({
-  data: { tagInfo, postsWithTag: _posts },
+  data: { tagInfo, postsWithTag: _posts, file: thumbnail },
   pageContext,
 }) => {
   const { tag, display, url, description } = tagInfo;
@@ -23,6 +24,11 @@ const TagTemplate: React.FC<Props> = ({
 
   return (
     <div className="flex mx-auto relative overflow-hidden px-6 md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl w-full ">
+      <GatsbyImage
+        className="hidden dark:block absolute top-[-25%] right-0 h-auto w-11/12 pointer-events-none"
+        image={thumbnail.childImageSharp.gatsbyImageData}
+        alt="tag-hero-thumbnail"
+      />
       <div className="w-1/12 flex flex-col relative items-center">
         <div
           className={clsx("", {
@@ -73,6 +79,13 @@ export default TagTemplate;
 
 export const query = graphql`
   query PostsWithTag($tag: String!) {
+    file(relativePath: { eq: "tag/bg-stars-1.png" }) {
+      id
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+
     tagInfo: tagsJson(tag: { eq: $tag }) {
       tag
       display
