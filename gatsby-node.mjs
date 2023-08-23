@@ -138,6 +138,8 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     return acc;
   }, new Set());
 
+  tags.add("python");
+
   posts.forEach((node) => {
     // Only render ready-to-publish posts in production.
     if (
