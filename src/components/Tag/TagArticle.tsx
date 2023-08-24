@@ -5,6 +5,7 @@ import { Link } from "gatsby";
 import { useRemark } from "react-remark";
 
 import type { TagArticleProps } from "./types";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 type Props = React.PropsWithChildren<
   React.HTMLAttributes<HTMLDivElement> & TagArticleProps
@@ -15,6 +16,7 @@ const TagArticle: React.FC<Props> = ({
   title,
   excerpt,
   created,
+  image,
   className: _className,
   ...rest
 }) => {
@@ -27,9 +29,8 @@ const TagArticle: React.FC<Props> = ({
   return (
     <>
       <article {...rest} className="group relative">
-        <div></div>
         <div className="relative flex items-center gap-4 -my-1 py-8 bg-gray-100 dark:bg-[rgb(16,25,27)] z-10 rounded-xl shadow-lg shadow-gray-300 drop-shadow-md dark:shadow-none dark:border dark:border-[rgb(41,50,52)]">
-          <div className="m-4 ml-12 w-8/12 flex flex-col gap-6">
+          <div className="my-4 ml-12 w-8/12 flex flex-col gap-6 h-full">
             <Link
               to={slug}
               className={clsx("relative block w-fit", {
@@ -73,6 +74,18 @@ const TagArticle: React.FC<Props> = ({
               </p>
             </div>
           </div>
+          {typeof image !== "undefined" && (
+            <div className="w-4/12 h-full mr-12">
+              <div className="flex w-full">
+                <GatsbyImage
+                  alt={`${title}-thumbnail`}
+                  image={image}
+                  className="ml-auto max-h-[120px] max-w-[calc(16/9*120px)] object-cover"
+                  imgClassName="hover:scale-105 duration-300 ease-in-out !transition-[transform,opacity]"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </article>
       <div className="relative flex z-10 items-center">
@@ -82,7 +95,7 @@ const TagArticle: React.FC<Props> = ({
           </div>
         </div>
         <div className="w-5/12 text-slate-600 dark:text-slate-400">
-          Created at:
+          Published at:
           <span className="font-mono text-slate-900 dark:text-slate-200 ml-2">
             {created}
           </span>

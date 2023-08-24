@@ -83,6 +83,7 @@ const TagTemplate: React.FC<Props> = ({
               created={frontmatter.created}
               title={frontmatter.title}
               excerpt={fields.excerpt}
+              image={frontmatter.thumbnail.childImageSharp.gatsbyImageData}
             />
           ))}
         </div>
@@ -138,6 +139,11 @@ export const query = graphql`
             title
             tags
             created(formatString: "MMMM do, YYYY")
+            thumbnail {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
           }
         }
       }
