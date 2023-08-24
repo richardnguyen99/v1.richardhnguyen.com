@@ -21,7 +21,7 @@ const ArticleTimeline: React.FC<Props & DataProps> = ({ data, ...rest }) => {
 
   return (
     <article {...rest} className="relative group ">
-      <ArrowLink href={`/posts${data.slug}`} native>
+      <ArrowLink href={`${data.slug}`} native>
         <svg
           viewBox="0 0 9 9"
           className="hidden absolute right-full mr-6 top-[calc(0.5rem-7px)] text-slate-400 dark:text-slate-600 sm:mr-[calc(3.5rem-3px)] w-[calc(0.5rem+1px)] h-[calc(0.5rem+1px)] overflow-visible sm:block"

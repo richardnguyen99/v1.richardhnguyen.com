@@ -39,7 +39,7 @@ const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
         <div className="flex flex-col justify-between w-full lg:w-4/12 px-6">
           <div>
             <h3 className="mt-4 mb-6 lg:mt-3 lg:mb-0 text-3xl lg:text-4xl font-extrabold tracking-tight text-sky-400 dark:hover:text-sky-500 cursor-pointer">
-              <Link to={`/posts${data.slug}`}>{data.title}</Link>
+              <Link to={`${data.slug}`}>{data.title}</Link>
             </h3>
 
             <p className="dark:text-neutral-400 mt-3">{content}</p>
