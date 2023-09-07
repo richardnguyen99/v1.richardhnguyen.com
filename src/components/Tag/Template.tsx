@@ -26,7 +26,7 @@ const TagTemplate: React.FC<Props> = ({
     <div className="mx-auto px-6 md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl w-full ">
       <div className="flex w-full relative overflow-hidden">
         <GatsbyImage
-          className="hidden dark:block absolute top-[-25%] right-0 h-auto w-11/12 pointer-events-none"
+          className="!hidden dark:!block !absolute top-[-25%] right-0 h-auto w-11/12 pointer-events-none"
           image={thumbnail.childImageSharp.gatsbyImageData}
           alt="tag-hero-thumbnail"
         />
