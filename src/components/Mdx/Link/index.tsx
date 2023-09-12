@@ -1,6 +1,7 @@
 import * as React from "react";
 import clsx from "classnames";
 import { Link as GatsbyLink } from "gatsby";
+import { CrossReferenceIcon } from "@primer/octicons-react";
 
 export type LinkProps = {
   href: string;
@@ -14,11 +15,15 @@ export type Props = React.PropsWithChildren<
 const Link: React.FC<Props> = ({ href, type, children, ...rest }) => {
   const Content = () => {
     return type === "code" ? (
-      <code className="mdx-code">
+      <code className="mdx-code flex items-center">
         <span>{children}</span>
+        <CrossReferenceIcon size={16} />
       </code>
     ) : (
-      <>{children}</>
+      <>
+        {children}
+        <CrossReferenceIcon size={16} />
+      </>
     );
   };
 
@@ -38,8 +43,6 @@ const Link: React.FC<Props> = ({ href, type, children, ...rest }) => {
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noreferrer"
       className={clsx("mdx-link", {
         code: type === "code",
       })}

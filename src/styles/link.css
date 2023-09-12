@@ -8,6 +8,9 @@
   @apply hover:border-b-4;
   @apply transition-all;
   @apply ease-in-out;
+  @apply inline-flex;
+  @apply items-center;
+  @apply leading-tight;
 }
 
 .mdx-link.code {
