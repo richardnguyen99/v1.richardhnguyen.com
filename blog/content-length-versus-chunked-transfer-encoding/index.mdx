@@ -1,0 +1,95 @@
+---
+title: "Content-Length versus Transfer-Encoding: chunked"
+created: 2023-09-10
+updated: 2023-09-10
+author: "Richard Nguyen"
+categories:
+  - Network
+tags:
+  - c
+published: false
+thumbnail: ./content-length-versus-chunked-transfer-encoding-thumbnail.png
+---
+
+HTTP, the foundation of the World Wide Web, allows us to transfer data from one computer to another in a reliable way. But how does one know when the data transfer is complete? Can one send a sufficiently large object over an HTTP message? And if not, how can one break it down?
+
+{/* Except */}
+
+# Why bother?
+
+HTTP, stands for **Hyper Text Transfer Protocol**, is a protocol built on top of [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol). TCP, in a nutshell, is a stream of bytes. For example, when a server wants send a message `"Hello, World"` to a client, TCP will send the message as a stream of bytes, like so:
+
+```txt showWindowBar="false" showLineNumber="false"
+server ---> 48 65 6c 6c 6f 2c 20 57 6f 72 6c 64 ---> client
+```
+
+The client will then receive the message as a stream of bytes, and it will decode the bytes into a string, `"Hello, World"`. But now, the client is asking itself: _"Is that it?"_
+
+## Complete message?
+
+You might be asking.: _"Can we just simply add newlines '\n' to the end of the message and stop reading when first encountering it?"_
+
+Well, what if the received message is just the first line of the whole message that the server wants to send? What if the server wants to send a message that contains newlines?
+
+_"Well then, we might use '\r\n' for the end of message while '\n' is for the newline characters"_.
+
+That might be a good idea. But Windows uses `\r\n` as the official newline character, and certainly we don't want to discriminate Windows users, do we? Even that's something you want to do, which I highly discourage, HTTP messages use `\r\n` as the end of line character:
+
+```http showWindowBar="false"
+HTTP/1.1 200 OK\r\n
+Header-1: value-1\r\n
+Header-2: value-2\r\n
+<more-headers>
+\r\n
+<content>
+```
+
+In fact, this is the standard for all Internet protocols[^1], not just for the HTTP protocol.
+
+## Maybe we can inform the client?
+
+Luckily, HTTP provides a schema of messages so that client knows how to interpret the message.
+
+<br />
+
+![http-message-format](http-message-format.png "HTTP Message Format")
+
+The example above is a HTTP response message:
+
+1. The first line is the starting line, which contains the HTTP version, the status code, and the status message.
+2. The following lines are the headers, which contains the metadata of the message. To mark the end of the headers, follow a blank line.
+3. The rest of the message is the content.
+
+Take a look at the `Content-Length` header. It tells the client how many bytes the content is. So, the client can read the content until it reaches the number of bytes specified in the `Content-Length` header.
+
+# Content-Length Header
+
+Content Length header is useful when the server knows exactly how many bytes the content has. This is great for serving static files such as HTML pages, CSS sheets and JavaScript code.
+
+## How to define the content length?
+
+For simple strings, many programming languages provide either a property or a method (or both) to calculate the length of the string.
+
+<CodeSwitcher>
+
+```c title="strlen.c" tab=1
+#include <stdio.h>
+#include <string.h>
+
+...
+char *str = "Hello, World";
+strlen(str)
+```
+
+```c title="strlen.c" tab=1
+#include <stdio.h>
+#include <string.h>
+
+...
+char *str = "Hello, World";
+strlen(str)
+```
+
+</CodeSwitcher>
+
+[^1]: RFC 5322: Internet Message Format - Section 2.1 [rfc5322#section-2.1](https://datatracker.ietf.org/doc/html/rfc5322#section-2.1)

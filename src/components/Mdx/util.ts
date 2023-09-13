@@ -12,6 +12,8 @@ export const preparePreProps = (preProps: PreProps) => {
     className = "",
     showLineNumber,
     enableCopy,
+    showWindowBar,
+    tab,
     ...props
   } = preProps.children.props;
   const match = className.match(/language-([\0-\uFFFF]*)/);
@@ -22,6 +24,8 @@ export const preparePreProps = (preProps: PreProps) => {
     language: match !== null ? match[1] : "",
     showLineNumber: showLineNumber === "false" ? false : true,
     enableCopy: enableCopy === "false" ? false : true,
+    showWindowBar: showWindowBar === "false" ? false : true,
+    tab: typeof tab === "string" ? parseInt(tab) : undefined,
     ...props,
   };
 };

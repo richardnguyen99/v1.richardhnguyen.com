@@ -14,6 +14,8 @@ export type CodeProps = {
   className: string;
   showLineNumber?: boolean;
   enableCopy?: boolean;
+  showWindowBar?: boolean;
+  tab?: number;
 
   title?: string;
 };
@@ -22,8 +24,10 @@ const Code: React.FC<CodeProps> = ({
   codeString,
   className: _className,
   showLineNumber = true,
+  showWindowBar = true,
   enableCopy = true,
   title: _title,
+  tab = 0,
 }) => {
   const themeContext = React.useContext(ThemeContext);
 
@@ -42,26 +46,39 @@ const Code: React.FC<CodeProps> = ({
     >
       {({ className, tokens, getTokenProps, getLineProps }) => (
         <div
-          id={id}
-          className="relative my-4 border bg-neutral-100 dark:bg-[#0B1416] border-slate-300 dark:border-gray-700 rounded-md text-sm mt-8"
+          id={`tab-${tab}-${id}`}
+          className={clsx({
+            "relative my-4 text-sm mt-8": true,
+            "border rounded-md": tab === 0,
+            "border-slate-300 dark:border-gray-700": tab === 0,
+            "bg-neutral-100 dark:bg-[#0B1416]": tab === 0,
+          })}
           aria-describedby={`${extension}-code`}
         >
-          <div
-            aria-describedby="code-header"
-            className="flex items-center justify-between px-3 py-2 rounded-tl-md rounded-tr-md border-b border-slate-300 dark:border-gray-700 bg-gray-100 dark:bg-[#0D1618]"
-          >
-            <div className="flex items-center gap-2">
-              <div className="flex items-center flex-shrink-0 w-5 ">
-                <FileTypeIcon />
+          {showWindowBar && tab === 0 && (
+            <div
+              aria-describedby="code-header"
+              className={clsx({
+                "flex items-center justify-between": true,
+                "px-3 py-2": true,
+                "border-b  rounded-tl-md rounded-tr-md": tab === 0,
+                "border-slate-300 dark:border-gray-700": tab === 0,
+                "bg-gray-100 dark:bg-[#0D1618]": tab === 0,
+              })}
+            >
+              <div className="flex items-center gap-2">
+                <div className="flex items-center flex-shrink-0 w-5 ">
+                  <FileTypeIcon />
+                </div>
+                <div>{_title}</div>
               </div>
-              <div>{_title}</div>
+              {enableCopy && (
+                <div>
+                  <CopyButton content={codeString} />
+                </div>
+              )}
             </div>
-            {enableCopy && (
-              <div>
-                <CopyButton content={codeString} />
-              </div>
-            )}
-          </div>
+          )}
           <pre aria-describedby="code-pre" className="py-4 overflow-x-auto">
             <code
               className={clsx({

@@ -16,11 +16,11 @@ const Title: React.FC<Props> = ({
       id="title"
       className={clsx("", {
         "text-5xl xl:text-6xl": true,
-        "text-transparent bg-clip-text bg-gradient-to-r to-sky-200 from-cyan-500":
-          true,
+        "text-transparent bg-clip-text bg-gradient-to-r": true,
+        "to-sky-200 from-cyan-500": true,
         "font-extrabold gradient lg:font-black": true,
-        "leading-normal xl:leading-loose tracking-tight lg:tracking-tighter":
-          true,
+        "leading-normal xl:leading-none": true,
+        "tracking-tight lg:tracking-tighter": true,
       })}
     >
       {children}
