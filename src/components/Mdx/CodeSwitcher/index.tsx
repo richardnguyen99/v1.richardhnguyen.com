@@ -2,9 +2,17 @@ import * as React from "react";
 import clsx from "classnames";
 import getFileType from "../Code/getFileTypeIcon";
 import { getLanguageExt } from "../util";
+import CopyButton from "../Code/CopyButton";
 
 interface CodeSwitcherProps {
   children: React.ReactNode | React.ReactNode[];
+}
+
+interface ChildrenProps {
+  children: string;
+  className: string;
+  tab: string;
+  title: string;
 }
 
 type Props = CodeSwitcherProps;
@@ -13,7 +21,23 @@ const CodeSwitcher: React.FC<Props> = ({ children }) => {
   const childrenArray = React.Children.toArray(children);
   const [active, setActive] = React.useState(0);
 
-  const childrenMemo = React.useMemo(() => {}, [childrenArray]);
+  const childrenPropsMemo = React.useMemo<ChildrenProps[]>(() => {
+    return childrenArray.map((child) => {
+      const childProps = (child as React.ReactElement).props;
+
+      console.log(childProps);
+
+      const children = childProps.children as React.ReactElement;
+      const props = children.props as ChildrenProps;
+
+      return {
+        children: props.children,
+        className: props.className,
+        tab: props.tab,
+        title: props.title,
+      };
+    });
+  }, [childrenArray]);
 
   React.useEffect(() => {
     console.log(childrenArray[active]);
@@ -30,15 +54,56 @@ const CodeSwitcher: React.FC<Props> = ({ children }) => {
         })}
       >
         <div
-          aria-describedby="code-header"
           className={clsx({
+            "px-2 py-2": true,
+            "rounded-tl-md rounded-tr-md": true,
+            "border-b border-slate-300 dark:border-gray-700": true,
             "flex items-center justify-between": true,
-            "px-3 py-2": true,
-            "border-b  rounded-tl-md rounded-tr-md": true,
-            "border-slate-300 dark:border-gray-700": true,
-            "bg-gray-100 dark:bg-[#0D1618]": true,
+            "bg-neutral-200 dark:bg-[rgb(21,30,32)]": true,
           })}
-        ></div>
+        >
+          <div
+            aria-describedby="code-header"
+            className={clsx({
+              "flex items-center": true,
+              //"bg-gray-100 dark:bg-[#0D1618]": true,
+            })}
+          >
+            {childrenPropsMemo.map((child, index) => {
+              const extension = getLanguageExt(child.className);
+              const FileTypeIcon = getFileType(extension);
+
+              return (
+                <div
+                  key={index}
+                  onClick={() => setActive(index)}
+                  className={clsx("", {
+                    "flex items-center gap-2": true,
+                    "-mb-[13px]": true,
+                    "px-3 py-2": true,
+                    "border-t border-l border-r rounded-tl-lg rounded-tr-lg":
+                      true,
+                    "border-b": active !== index,
+                    "border-slate-300 dark:border-gray-700": true,
+                    "bg-gray-100 dark:bg-[rgb(11,20,22)]": active === index,
+                    "bg-gray-200 dark:bg-[rgb(16,25,27)]": active !== index,
+                    "hover:cursor-pointer": true,
+                  })}
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center flex-shrink-0 w-5 ">
+                      <FileTypeIcon />
+                    </div>
+                    {child.title}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div>
+            <CopyButton content={childrenPropsMemo[active].children} />
+          </div>
+        </div>
         {childrenArray[active]}
       </div>
     </div>

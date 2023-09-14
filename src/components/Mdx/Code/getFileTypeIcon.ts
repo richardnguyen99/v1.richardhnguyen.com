@@ -1,8 +1,10 @@
 import DefaultFile from "@components/Icons/DefaultFile";
+import FileTypeC from "@components/Icons/FileTypeC";
 import FileTypeCpp from "@components/Icons/FileTypeCpp";
 import FileTypePython from "@components/Icons/FileTypePython";
 
 export const FileType = {
+  c: FileTypeC,
   cpp: FileTypeCpp,
   py: FileTypePython,
   python: FileTypePython,

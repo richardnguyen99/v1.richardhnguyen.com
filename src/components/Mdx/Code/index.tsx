@@ -16,6 +16,7 @@ export type CodeProps = {
   enableCopy?: boolean;
   showWindowBar?: boolean;
   tab?: number;
+  hidden?: boolean;
 
   title?: string;
 };
@@ -48,7 +49,7 @@ const Code: React.FC<CodeProps> = ({
         <div
           id={`tab-${tab}-${id}`}
           className={clsx({
-            "relative my-4 text-sm mt-8": true,
+            "relative my-4 text-sm mt-4": true,
             "border rounded-md": tab === 0,
             "border-slate-300 dark:border-gray-700": tab === 0,
             "bg-neutral-100 dark:bg-[#0B1416]": tab === 0,
