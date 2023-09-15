@@ -104,7 +104,15 @@ const CodeSwitcher: React.FC<Props> = ({ children }) => {
             <CopyButton content={childrenPropsMemo[active].children} />
           </div>
         </div>
-        {childrenArray[active]}
+        <div
+          className={clsx({
+            "h-[378px]": true,
+            "overflow-y-auto": true,
+            "scroll-m-1": true,
+          })}
+        >
+          {childrenArray[active]}
+        </div>
       </div>
     </div>
   );
