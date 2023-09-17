@@ -136,5 +136,109 @@ message = response % (len(content), content)
 
 </CodeSwitcher>
 
+## Notes to consider
+
+- If `Content-Length` header is present with a value, the receiving end only reads the content within the specified number of bytes.
+  1. If the content is less than the value of `Content-Length` header, the message is considered incomplete, and the receiving end will close the connection.
+  2. If the content is more than the value of `Content-Length` header, the receiving end will read the content until it reaches the value of `Content-Length` header, and the rest of the content will be discarded.
+- If `Content-Length` header is not present, the receiving end will read the content until it reaches the end of the connection.
+
+[RFC 7230 - Section 3.32](https://datatracker.ietf.org/doc/html/rfc7230#section-3.3.2) defines the `Content-Length` header more detailed.
+
+<PageBreak />
+
+# Chunked Transfer Encoding
+
+The `Content-Length` header is a great way to inform the client how many bytes the content is. But what if the server doesn't know the size of the content beforehand? What if the server wants to send a large file to the client? What if the server wants to send a stream of data to the client?
+
+## Unknown content length
+
+There are some situations where the sever cannot compute the size of the content before sending the response. It could be a video stream, or a result of SQL queries. In these cases, the server cannot use the `Content-Length` header to inform the client how many bytes the content is.
+
+## Implementation
+
+Like `Content-Length` header, the `Transfer-Encoding` header is used to inform the receiving end how to interpret the message, and when to stop reading the content. In HTTP messages, the `Transfer-Encoding` can be used as below:
+
+```http showWindowBar="false"
+HTTP/1.1 200 OK\r\n
+Transfer-Encoding: chunked\r\n
+...
+```
+
+The tricky part is the content itself, or more specifically, the way the content is encoded. [RFC 7230 - Section 4.1](https://datatracker.ietf.org/doc/html/rfc7230#section-4.1) defines the `chunked` transfer encoding as below:
+
+```txt showWindowBar="false" showLineNumber="false"
+chunked-body   = *chunk
+                last-chunk
+                trailer-part
+                CRLF
+
+chunk          = chunk-size [ chunk-ext ] CRLF
+                chunk-data CRLF
+chunk-size     = 1*HEXDIG
+last-chunk     = 1*("0") [ chunk-ext ] CRLF
+
+chunk-data     = 1*OCTET ; a sequence of chunk-size octets
+```
+
+Now, I admit, the definition above seems a bit confusing. However, we can break it down into smaller and simpler parts. Every chunked content has multiple chunks, (`*chunk` means multiple chunks), the last chunk and `CRLF` (`\r\n`).
+
+Each chunk has 2 major parts: the size of a chunk and the chunk itself.
+
+- The size of a chunk is a hexadecimal number followed by a `CRLF` to determine the size of the chunk.
+- The chunk, or the content, is a sequence of bytes with the size specified in the previous step.
+
+The last chunk, or the _terminal_ chunk, is a specical in which there is no content. This last chunk is the signal to the receiving end that the message is complete.
+
+## Example
+
+Let's say we have a message looks like as below:
+
+```txt title="message"
+IT will be seen that this mere painstaking burrower and
+grub -worm of a poor devil of a Sub -Sub appears to have gone
+through the long Vaticans and street-stalls of the earth, pick-
+ing up whatever random allusions to whales he could anyways
+...
+```
+
+The content can be arbitarily large and the server doesn't know the size of the content beforehand. We can only send the message line-by-line. Then, the chunked messages can be broken down into:
+
+```txt title="chunked message"
+33\r\n
+IT will be seen that this mere painstaking burrower and\r\n
+3D\r\n
+grub -worm of a poor devil of a Sub -Sub appears to have gone\r\n
+40\r\n
+through the long Vaticans and street-stalls of the earth, pick-\r\n
+3C\r\n
+ing up whatever random allusions to whales he could anyways\r\n
+...
+0\r\n
+\r\n
+```
+
+We treat each line as one chunk. For every chunk, we calculate the size of the chunk, followed by the chunk itself. The receiving end will read all the chunks and concatenate them into one message. Then, the last chunked message, `0\r\n\r\n`, is the signal to the receiving end that the message is complete.
+
+<Callout title="Note" type="warning">
+
+1. HTTP requires the existence of the last chunk in order to determine the end of the message. If the last chunk is missing, the receiving end will either hang waiting for the last chunk if the connection is still alive, or it will yeild an error as <span className="text-amber-500">incomplete message</span> if the sending end has closed the connection.
+2. The receiving end might stop reading the content prematurely if the last chunk is present, even where the message is not complete.
+
+</Callout>
+
+# Which one?
+
+## Content-Length
+
+The rule of thumb when considering which header to use in your code is to use `Content-Length` header if you know the exact size of the content before sending.
+
+`Content-Length` header has some advantages. First, it's simple to implement because you let TCP handle sending the content itself. Second, it only sends what it needs to send, as it doesn't ship extra bytes such as `\r\n` to accomodate the format of chunked encoding.
+
+## Chunked Transfer Encoding
+
+With that being said, there is only one reason to use `Transfer-Encoding: chunked` over `Content-Length`. If the content is large and the server doesn't know the size of the content beforehand. In this case, the server can send the content line-by-line, or chunk-by-chunk with fixed size. Thanks to the format
+of chunked transfer encoding, the receiving end can read all the chunks and build them into one final message.
+
 [^1]: [Beej's Guide to Network Programming 5.7. send() and recv()](https://beej.us/guide/bgnet/html/#sendrecv)
 [^2]: RFC 5322: Internet Message Format - Section 2.1 [rfc5322#section-2.1](https://datatracker.ietf.org/doc/html/rfc5322#section-2.1)
