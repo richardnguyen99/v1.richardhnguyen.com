@@ -1,4 +1,5 @@
 import * as React from "react";
+import clsx from "classnames";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { useRemark } from "react-remark";
@@ -33,8 +34,17 @@ const ArticleCard: React.FC<Props> = ({ data, ...rest }) => {
         <h3 className="mt-4 mb-6 text-3xl lg:text-xl text-sky-400 hover:text-sky-500 font-bold transition-all">
           <Link to={`${data.slug}`}>{data.title}</Link>
         </h3>
-        <p className="dark:text-neutral-400">{content}</p>
-        <div className="flex items-center justify-between mt-3">
+        <p
+          className={clsx({
+            "dark:text-neutral-400": true,
+            "text-neutral-600": true,
+            "text-sm": true,
+            "line-clamp-3": true,
+          })}
+        >
+          {content}
+        </p>
+        <div className="flex items-center justify-between mt-6">
           <span className="font-bold">{data.author}</span>
           <span>{data.created}</span>
         </div>
