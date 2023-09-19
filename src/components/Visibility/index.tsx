@@ -3,7 +3,7 @@ import clsx from "classnames";
 
 import type { VisibilityProps } from "./type";
 
-import useInViewport from "@hooks/use-in-viewport";
+import useInViewport from "@hooks/useInViewport";
 
 type Props = React.PropsWithChildren<
   React.HTMLAttributes<HTMLDivElement> & VisibilityProps

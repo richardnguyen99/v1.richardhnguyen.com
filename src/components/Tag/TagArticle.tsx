@@ -29,13 +29,21 @@ const TagArticle: React.FC<Props> = ({
   return (
     <>
       <article {...rest} className="group relative">
-        <div className="relative flex items-center gap-4 -my-1 py-8 bg-gray-100 dark:bg-[rgb(16,25,27)] z-10 rounded-xl shadow-lg shadow-gray-300 drop-shadow-md dark:shadow-none dark:border dark:border-[rgb(41,50,52)]">
+        <div
+          className={clsx({
+            "relative flex items-center z-10": true,
+            "gap-4 -my-1 py-8": true,
+            "bg-gray-100 dark:bg-[rgb(16,25,27)]": true,
+            "rounded-xl shadow-lg drop-shadow-md": true,
+            "dark:shadow-none dark:border": true,
+            "shadow-gray-300 dark:border-[rgb(41,50,52)]": true,
+          })}
+        >
           <div className="my-4 ml-12 w-8/12 flex flex-col gap-6 h-full">
             <Link
               to={slug}
               className={clsx("relative block w-fit", {
-                "bg-transparent": true,
-                "hover:bg-gradient-70": true,
+                "bg-transparent hover:bg-gradient-70": true,
                 "from-blue-500 to-cyan-400": true,
                 "dark:from-sky-400 dark:to-cyan-100": true,
                 "bg-clip-text": true,
@@ -55,9 +63,11 @@ const TagArticle: React.FC<Props> = ({
             </Link>
             <div>
               <p
-                className={clsx("", {
+                className={clsx({
                   "text-lg font-semibold leading-6": true,
                   "text-slate-500 dark:text-slate-400": true,
+
+                  // Cannot access the content rendered by react-remark
                   "[&_a]:underline": true,
                   "[&_code]:text-slate-900": true,
                   "[&_strong]:text-slate-900": true,
@@ -80,8 +90,14 @@ const TagArticle: React.FC<Props> = ({
                 <GatsbyImage
                   alt={`${title}-thumbnail`}
                   image={image}
-                  className="ml-auto max-h-[120px] max-w-[calc(16/9*120px)] object-cover"
-                  imgClassName="hover:scale-105 duration-300 ease-in-out !transition-[transform,opacity]"
+                  className={clsx({
+                    "ml-auto object-cover": true,
+                    "max-h-[120px] max-w-[calc(16/9*120px)]": true,
+                  })}
+                  imgClassName={clsx({
+                    "hover:scale-105 duration-300": true,
+                    "ease-in-out !transition-[transform,opacity]": true,
+                  })}
                 />
               </div>
             </div>
@@ -90,7 +106,15 @@ const TagArticle: React.FC<Props> = ({
       </article>
       <div className="relative flex z-10 items-center">
         <div className="w-1/12 h-full flex flex-col items-center ">
-          <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-[rgb(26,35,37)] shadow-lg shadow-slate-300 dark:shadow-none flex items-center justify-center dark:border border-[rgb(71,80,82)]">
+          <div
+            className={clsx({
+              "w-10 h-10 rounded-full": true,
+              "flex items-center justify-center": true,
+              "bg-slate-100 dark:bg-[rgb(26,35,37)]": true,
+              "shadow-lg shadow-slate-300 dark:shadow-none": true,
+              "dark:border border-[rgb(71,80,82)]": true,
+            })}
+          >
             <RocketIcon size={16} className="inline-block w-4 h-4" />
           </div>
         </div>

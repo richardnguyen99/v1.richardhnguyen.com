@@ -1,4 +1,5 @@
 import * as React from "react";
+import clsx from "classnames";
 import { Link } from "gatsby";
 
 const LegalNotice: React.FC = () => {
@@ -6,10 +7,19 @@ const LegalNotice: React.FC = () => {
     <nav
       id="legal-links"
       aria-label="legal"
-      className="block border-t pt-6 mt-6 border-zinc-700 lg:flex lg:justify-between lg:mt-0 lg:pt-0 lg:border-t-0"
+      className={clsx({
+        "block border-t pt-6 mt-6": true,
+        "lg:flex lg:justify-between lg:mt-0 lg:pt-0": true,
+        "border-zinc-700 lg:border-t-0": true,
+      })}
     >
       <span>© 2023 richardhnguyen.com. All Rights Reserved.</span>
-      <div className="flex justify-between mt-3 mb-3 lg:mt-0 lg:justify-start lg:items-start">
+      <div
+        className={clsx({
+          "flex justify-between mt-3 mb-3": true,
+          "lg:mt-0 lg:justify-start lg:items-start": true,
+        })}
+      >
         <Link className="hover:underline" to="/privacy">
           Privacy Notice
         </Link>

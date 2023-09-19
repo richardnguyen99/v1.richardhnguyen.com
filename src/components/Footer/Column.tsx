@@ -1,5 +1,6 @@
-import { Link } from "gatsby";
 import * as React from "react";
+import clsx from "classnames";
+import { Link } from "gatsby";
 
 interface ItemProps {
   name: string;
@@ -31,14 +32,25 @@ const Column: React.FC<Props> = ({ title, items, ...rest }) => {
 
   return (
     <div {...rest}>
-      <h2 className="font-extrabold text-xl lg:text-2xl xl:text-3xl text-sky-500 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500 pb-6">
+      <h2
+        className={clsx({
+          "font-extrabold text-xl pb-6 lg:text-2xl xl:text-3xl": true,
+          "text-sky-500 hover:text-sky-600": true,
+          "dark:text-sky-400 dark:hover:text-sky-500": true,
+        })}
+      >
         {title}
       </h2>
       <ul className="flex items-center gap-6 md:block">
         {items.map((item, i) => (
           <li
             key={`footer-item-${i}`}
-            className="font-medium opacity-80 hover:opacity-100 dark:opacity-40 dark:hover:opacity-80 leading-tight mb-4 cursor-pointer dark:text-white"
+            className={clsx({
+              "mb-4 cursor-pointer": true,
+              "opacity-80 hover:opacity-100": true,
+              "dark:opacity-40 dark:hover:opacity-80": true,
+              "leading-tight font-medium dark:text-white": true,
+            })}
           >
             {renderItem(item)}
           </li>

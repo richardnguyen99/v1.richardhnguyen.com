@@ -1,7 +1,8 @@
 import * as React from "react";
+import clsx from "classnames";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@primer/octicons-react";
-import { Link } from "gatsby";
+
 import DropdownMenu from "./DropdownMenu";
 
 export type DropdownProps = {
@@ -47,28 +48,56 @@ const Dropdown: React.FC<Props> = ({ opening, onClose, ...rest }) => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-4"
             >
-              <Dialog.Panel className="w-full h-full transform overflow-hidden rounded-2xl bg-zinc-200 dark:bg-zinc-900/90 p-6 text-left align-middle shadow-2xl transition-all">
+              <Dialog.Panel
+                className={clsx({
+                  "w-full h-full overflow-hidden": true,
+                  "bg-zinc-200 dark:bg-zinc-900/90": true,
+                  "rounded-2xl p-6 text-left align-middle": true,
+                  "shadow-2xl transition-all transform ": true,
+                })}
+              >
                 <Dialog.Title
                   as="h1"
-                  className="text-3xl font-black leading-6 text-gray-900 dark:text-white"
+                  className={clsx({
+                    "text-3xl font-black leading-6": true,
+                    "text-gray-900 dark:text-white": true,
+                  })}
                 >
                   <div className="flex items-center">
                     <p>
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r to-sky-500 from-blue-600 mr-2">
+                      <span
+                        className={clsx({
+                          "text-transparent bg-clip-text mr-2": true,
+                          "bg-gradient-to-r to-sky-500 from-blue-600": true,
+                        })}
+                      >
                         Menu
                       </span>
                     </p>
                     <button
                       ref={cancelButtonRef}
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent px-2 py-2 text-sm font-medium hover:bg-gray-300  dark:hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ml-auto"
+                      className={clsx({
+                        "inline-flex justify-center px-2 py-2 ml-auto": true,
+                        "rounded-md border border-transparent": true,
+                        "font-medium text-sm": true,
+                        "hover:bg-gray-300 dark:hover:bg-zinc-700": true,
+                        "focus:outline-none focus-visible:ring-2": true,
+                        "focus-visible:ring-blue-500 ": true,
+                        "focus-visible:ring-offset-2": true,
+                      })}
                       onClick={onClose}
                     >
                       <XIcon size={24} />
                     </button>
                   </div>
                 </Dialog.Title>
-                <hr className="my-4 h-[2px] bg-gray-300 border-0 dark:bg-slate-800" />
+                <hr
+                  className={clsx({
+                    "my-4 h-[2px] border-0": true,
+                    "bg-gray-300 dark:bg-slate-800": true,
+                  })}
+                />
 
                 <div>
                   <DropdownMenu />

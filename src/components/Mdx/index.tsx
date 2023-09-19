@@ -56,7 +56,10 @@ const MdxRenderer: React.FC<Props> = ({ data: { mdx }, children }) => {
         </div>
         <div
           id="toc"
-          className="hidden xl:w-3/12 xl:ml-12 xl:sticky xl:flex xl:top-16 text-sm"
+          className={clsx({
+            "hidden text-sm": true,
+            "xl:w-3/12 xl:ml-12 xl:sticky xl:flex xl:top-16 ": true,
+          })}
         >
           <TOC id="toc" toc={mdx.tableOfContents} />
         </div>

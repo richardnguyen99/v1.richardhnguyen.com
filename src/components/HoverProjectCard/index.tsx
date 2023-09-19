@@ -13,7 +13,6 @@ type Props = React.PropsWithChildren<
 const HoverProjectCard: React.FC<Props> = ({
   defaultImageSrc,
   hoverImageSrc,
-  orderImageSrc,
   stacks,
   title,
   externalLink = "#",
@@ -54,10 +53,11 @@ const HoverProjectCard: React.FC<Props> = ({
       displacementImage:
         edges[0].node.childImageSharp.gatsbyImageData.images.fallback.src,
     });
-  }, [imageRef && imageRef.current]);
+  }, [defaultImageSrc, edges, hoverImageSrc]);
 
   return (
     <div
+      {...rest}
       className={clsx("w-full xl:w-[90%] overflow-hidden", {
         "mx-auto mt-20 first:mt-10": true,
         "w-full h-full": true,
@@ -85,18 +85,37 @@ const HoverProjectCard: React.FC<Props> = ({
           <div className="block opacity-0" />
         </div>
         <div
-          className={clsx("relative", {
-            "w-[calc(100%-192px)] h-[240px] md:w-[calc(100%-256px)] md:h-[320px] lg:w-[calc(100%-320px)] lg:h-[400px] overflow-hidden ml-12 lg:ml-16 xl:ml-24 ":
-              true,
-            "flex flex-col": true,
+          className={clsx({
+            "relative flex flex-col overflow-hidden": true,
+            "w-[calc(100%-192px)] h-[240px]": true,
+            "md:w-[calc(100%-256px)] md:h-[320px]": true,
+            "lg:w-[calc(100%-320px)] lg:h-[400px]": true,
+            "ml-12 lg:ml-16 xl:ml-24 ": true,
           })}
         >
-          <div className="grid grid-cols-[repeat(5,_1fr)_minmax(32px,_auto)] w-full items-center">
-            <h1 className="order-1 col-span-5 xl:col-start-1 xl:col-span-3 text-3xl font-black overflow-auto">
+          <div
+            className={clsx({
+              "grid grid-cols-[repeat(5,_1fr)_minmax(32px,_auto)]": true,
+              "w-full items-center": true,
+            })}
+          >
+            <h1
+              className={clsx({
+                "col-span-5 xl:col-start-1 xl:col-span-3": true,
+                "order-1 text-3xl font-black overflow-auto": true,
+              })}
+            >
               {title}
             </h1>
 
-            <div className="order-3 xl:order-2 flex col-start-1 col-span-6 xl:col-start-4 xl:col-span-3 xl:col-end-6 items-center gap-3">
+            <div
+              className={clsx({
+                "order-3 xl:order-2": true,
+                "col-start-1 xl:col-start-4": true,
+                "col-span-6 xl:col-span-3 xl:col-end-6": true,
+                "flex items-center gap-3": true,
+              })}
+            >
               {externalLink !== "#" && (
                 <a
                   href={externalLink}
@@ -108,13 +127,27 @@ const HoverProjectCard: React.FC<Props> = ({
                 </a>
               )}
             </div>
-            <span className="flex items-center justify-center order-2 xl:order-3 col-span-1 col-end-7 xl:ml-auto text-2xl font-black">
+            <span
+              className={clsx({
+                "flex items-center justify-center text-2xl font-black": true,
+                "order-2 xl:order-3": true,
+                "col-span-1 col-end-7 xl:ml-auto": true,
+              })}
+            >
               {renderStatus(status)}
             </span>
           </div>
           <div>{children}</div>
           <div className="absolute bottom-0 left-0 w-full">
-            <div className="relative bg-gradient-to-t from-slate-100/100 from-0% via-75% via-slate-100/90 to-slate-100/[0] dark:from-[rgba(20,29,31,1)] dark:via-[rgba(20,29,31,0.9)] dark:to-[rgba(20,29,31,0)] h-[100px]">
+            <div
+              className={clsx({
+                "relative bg-gradient-to-t h-[100px]": true,
+                "from-0% via-75%": true,
+                "from-slate-100/100 dark:from-[rgba(20,29,31,1)]": true,
+                "via-slate-100/90 dark:via-[rgba(20,29,31,0.9)]": true,
+                "to-slate-100/[0] dark:to-[rgba(20,29,31,0)] ": true,
+              })}
+            >
               <div className="absolute bottom-[10%] left-0">
                 <a
                   href={externalLink}
@@ -143,12 +176,22 @@ const HoverProjectCard: React.FC<Props> = ({
         </div>
       </div>
       <div className="w-fit">
-        <div className="flex items-center gap-4 mt-8 w-full overflow-x-hidden before:content-[''] before:block before:w-[120px] before:h-[1px] before:dark:bg-white">
+        <div
+          className={clsx({
+            "flex items-center gap-4": true,
+            "mt-8 w-full overflow-x-hidden": true,
+            "before:content-[''] before:block": true,
+            "before:w-[120px] before:h-[1px] before:dark:bg-white": true,
+          })}
+        >
           {stacks.map((stack, index) => (
             <a
               href="#"
               key={index}
-              className="text-sm uppercase font-light tracking-[0.25em] after:content-[','] last-of-type:after:content-['']"
+              className={clsx({
+                "text-sm uppercase font-light tracking-[0.25em]": true,
+                "after:content-[','] last-of-type:after:content-['']": true,
+              })}
             >
               {stack}
             </a>

@@ -1,14 +1,22 @@
 import * as React from "react";
+import clsx from "classnames";
+
 import Swapper from "./Swapper";
 import Typer from "./Typer";
 
-const TypeWriter = () => {
+const TypeWriter: React.FC = () => {
   const [state, setState] = React.useState(0);
 
   const next = React.useCallback(() => setState((s) => s + 1), []);
 
   return (
-    <h1 className="box-content flex text-5xl md:text-6xl lg:h-[286px] lg:text-[64px] xl:text-[78px] lg:leading-[96px] tracking-tighter flex-nowrap">
+    <h1
+      className={clsx({
+        "box-content flex flex-nowrap": true,
+        "text-5xl md:text-6xl lg:text-[64px] xl:text-[78px]": true,
+        "lg:h-[286px] lg:leading-[96px] tracking-tighter": true,
+      })}
+    >
       <span className="inline lg:hidden motion-reduce:inline">
         <p>
           Hi, <span className="font-extrabold">I&apos;m Richard!</span>

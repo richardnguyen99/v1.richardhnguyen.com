@@ -1,4 +1,5 @@
 import * as React from "react";
+import clsx from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 
 import ArticleTimeline from "./ArticleTimeline";
@@ -10,8 +11,19 @@ const Timeline: React.FC = () => {
   } = useStaticQuery<Queries.ArticlesQuery>(query);
 
   return (
-    <div className="relative py-12 px-6 md:max-w-3xl md:py-16 md:px-10 md:mx-auto lg:max-w-4xl lg:py-20 xl:max-w-6xl xl:py-24">
-      <div className="flex flex-col gap-y-16 pl-14 sm:border-l-[3px] border-slate-200 dark:border-slate-800">
+    <div
+      className={clsx({
+        "relative md:mx-auto md:max-w-3xl lg:max-w-4xl xl:max-w-6xl": true,
+        "py-12 md:py-16 lg:py-20 xl:py-24": true,
+        "px-6 md:px-10": true,
+      })}
+    >
+      <div
+        className={clsx({
+          "flex flex-col gap-y-16 pl-14": true,
+          "sm:border-l-[3px] border-slate-200 dark:border-slate-800": true,
+        })}
+      >
         {edges.map((edge, i) => {
           return <ArticleTimeline data={transformEdge(edge.node)} key={i} />;
         })}

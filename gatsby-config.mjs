@@ -1,4 +1,6 @@
 /**
+ * Gatsby Configuration API for managing plugins, site metadata and other
+ * environment configurations.
  *
  * @see https://www.gatsbyjs.com/docs/
  */
@@ -44,37 +46,6 @@ const config = {
       },
     },
 
-    // For markdowns
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        footnotes: true,
-        gfm: true,
-        jsFrontmatterEngine: false,
-        excerpt_separator: "<!-- end -->",
-        // Add your gatsby-remark-* plugins here
-        plugins: [
-          {
-            resolve: "gatsby-remark-autolink-headers",
-            options: {
-              offsetY: "100",
-              icon: "<span>#</span>",
-              className: "anchor",
-              removeAccents: true,
-              // isIconAfterHeader: true,
-              elements: ["h1", "h2", "h3"],
-            },
-          },
-        ],
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "content",
-        path: `${__dirname}/content`,
-      },
-    },
     // For MDX
     {
       resolve: "gatsby-source-filesystem",
@@ -233,26 +204,29 @@ const config = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map((node) => {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
+                  description: node.fields.excerpt,
                   date: node.frontmatter.created,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+                  custom_elements: [{ "content:encoded": node.body }],
                 });
               });
             },
-            query: `
-              {
-                allMarkdownRemark(sort: {frontmatter: {created: DESC}}){
+            query: `#graphql
+              query {
+                allMdx(sort: { frontmatter: { created: DESC }}) {
                   nodes {
+                    body
                     excerpt
-                    html
+
                     fields {
+                      excerpt
                       slug
                     }
+
                     frontmatter {
                       title
                       created

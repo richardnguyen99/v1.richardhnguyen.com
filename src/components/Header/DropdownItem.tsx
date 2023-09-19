@@ -29,7 +29,10 @@ const DropdownItem: React.FC<Props> = ({
     >
       <Link
         to={url}
-        activeClassName="dark:text-sky-500 dark:hover:text-sky-600 font-extrabold"
+        activeClassName={clsx({
+          "font-extrabold": true,
+          "dark:text-sky-500 dark:hover:text-sky-600": true,
+        })}
       >
         {children}
       </Link>

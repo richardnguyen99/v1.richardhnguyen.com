@@ -26,7 +26,11 @@ const Collapsible: React.FC<Props> = ({ children, summary, ...rest }) => {
               "transition-colors duration-300": true,
             })}
           >
-            <span className="group-hover:dark:text-white group-hover:text-black">
+            <span
+              className={clsx({
+                "group-hover:dark:text-white group-hover:text-black": true,
+              })}
+            >
               {summary}
             </span>
             <ChevronUpIcon

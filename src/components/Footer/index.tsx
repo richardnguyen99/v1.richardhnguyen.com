@@ -17,7 +17,11 @@ const Footer: React.FC = () => {
   return (
     <footer
       id="footer"
-      className="w-full pt-20 bg-gradient-to-b from-slate-50 to-slate-300 dark:from-[#0B1416] dark:to-[#070f11] transition-all"
+      className={clsx({
+        "w-full pt-20 bg-gradient-to-b transition-all": true,
+        "from-slate-50 to-slate-300": true,
+        "dark:from-[#0B1416] dark:to-[#070f11]": true,
+      })}
     >
       <div
         id="footer-container"
@@ -123,7 +127,10 @@ const Footer: React.FC = () => {
         </div>
         <div
           id="footer-extra-info-container"
-          className="flex mt-10 pt-10 border-t border-zinc-400 dark:border-zinc-700"
+          className={clsx({
+            "flex mt-10 pt-10": true,
+            "border-t border-zinc-400 dark:border-zinc-700": true,
+          })}
         >
           <div className="flex-grow-[2]">
             <BuiltByGatsby />

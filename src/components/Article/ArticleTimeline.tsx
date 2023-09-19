@@ -24,7 +24,13 @@ const ArticleTimeline: React.FC<Props & DataProps> = ({ data, ...rest }) => {
       <ArrowLink href={`${data.slug}`} native>
         <svg
           viewBox="0 0 9 9"
-          className="hidden absolute right-full mr-6 top-[calc(0.5rem-7px)] text-slate-400 dark:text-slate-600 sm:mr-[calc(3.5rem-3px)] w-[calc(0.5rem+1px)] h-[calc(0.5rem+1px)] overflow-visible sm:block"
+          className={clsx({
+            "hidden absolute overflow-visible sm:block": true,
+            "right-full top-[calc(0.5rem-7px)]": true,
+            "text-slate-400 dark:text-slate-600": true,
+            "mr-6 sm:mr-[calc(3.5rem-3px)]": true,
+            "w-[calc(0.5rem+1px)] h-[calc(0.5rem+1px)]": true,
+          })}
         >
           <circle
             cx="4.5"
@@ -35,7 +41,12 @@ const ArticleTimeline: React.FC<Props & DataProps> = ({ data, ...rest }) => {
             strokeWidth="2"
           ></circle>
         </svg>
-        <div className="relative -m-7 p-6 rounded-2xl hover:bg-slate-200 dark:hover:bg-[#0f1c1f]">
+        <div
+          className={clsx({
+            "relative -m-7 p-6 rounded-2xl": true,
+            "hover:bg-slate-200 dark:hover:bg-[#0f1c1f]": true,
+          })}
+        >
           <h5>{data.created}</h5>
           <h3
             className={clsx("", {

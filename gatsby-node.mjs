@@ -1,8 +1,6 @@
 /**
- * Support for Typescript
- *
- * @see https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#gatsby-nodets
- * @see https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#requireresolve
+ * Gatsby Node API for creating pages, slug, fields and other site
+ * configurations
  */
 
 import path from "path";
@@ -24,6 +22,9 @@ export const onCreateWebpackConfig =
   // This configuration will allow me to create a shortcut for each folder in
   // src/. Instead of adding a prefix "./src/something", now I can just use
   // "@something".
+  //
+  // This is only for Gatsby as Webpack needs to know how to resolve the
+  // aliases. For TypeScript, these are separately defined in tsconfig.json.
   async ({ actions, _stage, _loaders }) => {
     actions.setWebpackConfig({
       resolve: {
@@ -39,17 +40,29 @@ export const onCreateWebpackConfig =
   };
 
 /**
+ * @description Create custom nodes based on other nodes
+ *
  * @type {import("gatsby").GatsbyNode["onCreateNode"]}
  */
 export const onCreateNode = ({ node, actions, getNode, reporter }) => {
   const { createNodeField } = actions;
 
+  // MDX-related nodes
   if (node.internal.type === "Mdx") {
     const content = node.body;
 
     try {
       const [excerpt, rawContent] = content.split(MDX_EXCERPT_SEPARATOR);
 
+      // Create custom `excerpt` field from the MDX content with custom
+      // separator. It is used to briefly describe the related post.
+      createNodeField({
+        node,
+        name: "excerpt",
+        value: excerpt,
+      });
+
+      // The rest of the content is used to render the post.
       createNodeField({
         node,
         name: "markdownBody",
@@ -61,12 +74,6 @@ export const onCreateNode = ({ node, actions, getNode, reporter }) => {
         name: "timeToRead",
         value: readingTime(rawContent),
       });
-
-      createNodeField({
-        node,
-        name: "excerpt",
-        value: excerpt,
-      });
     } catch (error) {
       reporter.panicOnBuild(
         `Error processing Markdown ${
@@ -76,6 +83,8 @@ export const onCreateNode = ({ node, actions, getNode, reporter }) => {
       );
     }
 
+    // Create slug for each post. This doesn't actually create the path but give
+    // each post a slug field so other components can use and navigate to it.
     const slug = createFilePath({ node, getNode, basePath: "pages" });
     createNodeField({
       node,
@@ -95,23 +104,31 @@ export const onCreateNode = ({ node, actions, getNode, reporter }) => {
 };
 
 /**
+ * @description Create pages dynamically
+ *
  * @type {import("gatsby").GatsbyNode["createPages"]}
  */
 export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  const result = await graphql(`
+  // GraphQL query to get all the MDX nodes used to create pages
+  const result = await graphql(`#graphql
     query MdxNode {
       allMdx {
         nodes {
           id
+
+          # Create from _createNodeField_ in _onCreateNode_
           fields {
             slug
           }
+
+          # Create from the frontmatter in MDX files. See MDX files for more.
           frontmatter {
-            published
-            tags
+            published       # Control whether a post is ready to be rendered
+            tags            # Control post rendering based on tags
           }
+
           internal {
             contentFilePath
           }
@@ -124,10 +141,11 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild("Error loading MDX result", result.errors);
   }
 
-  const tagTemplate = path.resolve("./src/components/Tag/Template.tsx");
+  const tagTemplate = path.resolve("./src/components/Tag/TagTemplate.tsx");
   const postTemplate = path.resolve("./src/components/Mdx/index.tsx");
   const posts = result.data.allMdx.nodes;
 
+  // Create a set of tags from all the posts.
   const tags = posts.reduce((acc, node) => {
     if (!node.frontmatter.tags) return acc;
 
@@ -138,10 +156,15 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     return acc;
   }, new Set());
 
+  // Predetermined tags - Might need to remove these after there are posts with
+  // these tags.
+  tags.add("c");
   tags.add("python");
 
+  // Create pages for each post with the post template.
   posts.forEach((node) => {
-    // Only render ready-to-publish posts in production.
+    // Only render ready-to-publish posts in production. In development, not-
+    // ready posts are still accessible through their paths.
     if (
       process.env.NODE_ENV === "production" &&
       node.frontmatter.published === false
@@ -155,6 +178,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
+  //
   tags.forEach((tag) => {
     createPage({
       path: `/tags/${tag}`,
@@ -165,6 +189,8 @@ export const createPages = async ({ graphql, actions, reporter }) => {
 };
 
 /**
+ * @description Create custom schema for MDX nodes
+ *
  * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
  */
 export const createSchemaCustomization = async ({

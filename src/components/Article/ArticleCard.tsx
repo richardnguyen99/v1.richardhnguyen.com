@@ -23,7 +23,13 @@ const ArticleCard: React.FC<Props> = ({ data, ...rest }) => {
 
   return (
     <article {...rest} className="block w-full md:w-6/12 lg:w-4/12 px-6">
-      <div className="flex flex-col py-4 md:py-6 lg:py-10 border-t border-zinc-300 dark:border-zinc-700">
+      <div
+        className={clsx({
+          "flex flex-col": true,
+          "py-4 md:py-6 lg:py-10": true,
+          "border-t border-zinc-300 dark:border-zinc-700": true,
+        })}
+      >
         <GatsbyImage
           aria-label="article-thumbnail"
           alt={data.title}
@@ -31,7 +37,14 @@ const ArticleCard: React.FC<Props> = ({ data, ...rest }) => {
           className="rounded-lg"
           imgClassName="rounded-lg hover:scale-[1.05]"
         />
-        <h3 className="mt-4 mb-6 text-3xl lg:text-xl text-sky-400 hover:text-sky-500 font-bold transition-all">
+        <h3
+          className={clsx({
+            "mt-4 mb-6": true,
+            "text-3xl lg:text-xl": true,
+            "text-sky-400 hover:text-sky-500": true,
+            "font-bold transition-all": true,
+          })}
+        >
           <Link to={`${data.slug}`}>{data.title}</Link>
         </h3>
         <p
