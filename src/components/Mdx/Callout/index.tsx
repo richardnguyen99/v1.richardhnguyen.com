@@ -53,24 +53,26 @@ const Callout: React.FC<CalloutProps & Props> = ({
       defaultOpen
       className={clsx("relative", {
         "mt-8 -ml-6 pl-6 rounded-md": true,
+        "border border-transparent": true,
         "border-l-4": true,
-        "transition-transform duration-200": true,
+        "transition-[transform,_border] duration-200": true,
 
         "bg-sky-400/20": type === "info" || type === "default",
-        "dark:bg-sky-500/40": type === "info" || type === "default",
-        "border-sky-500": type === "info" || type === "default",
+        "dark:bg-sky-900/30": type === "info" || type === "default",
+        "border-l-sky-500 hover:border-sky-500":
+          type === "info" || type === "default",
 
         "bg-amber-400/20": type === "warning",
         "dark:bg-amber-500/10": type === "warning",
-        "border-amber-500": type === "warning",
+        "border-l-amber-500 hover:border-amber-500": type === "warning",
 
         "bg-rose-400/20": type === "danger",
         "dark:bg-rose-500/10": type === "danger",
-        "border-rose-500": type === "danger",
+        "border-l-rose-500 hover:border-rose-500": type === "danger",
 
         "bg-lime-400/20": type === "success",
         "dark:bg-lime-500/10": type === "success",
-        "border-lime-500": type === "success",
+        "border-l-lime-500 hover:border-lime-500": type === "success",
       })}
     >
       {({ open }) => (
@@ -85,7 +87,7 @@ const Callout: React.FC<CalloutProps & Props> = ({
             <CalloutIcon type={type} />
           </div>
           <div
-            className={clsx("group flex w-full items-center gap-3 mt-8", {
+            className={clsx("group flex w-full items-center gap-3 mt-6", {
               "rounded-lg py-4 text-left text-sm font-extrabold": true,
             })}
           >
@@ -141,7 +143,7 @@ const Callout: React.FC<CalloutProps & Props> = ({
           >
             <Disclosure.Panel
               ref={contentRef}
-              className="py-4 [&>*:first-child]:!mt-0 dark:text-white"
+              className={`mdx-callout mdx--${type}`}
               static
             >
               {children}

@@ -1,0 +1,748 @@
+---
+title: "N tips to work with C strings"
+created: 2023-12-01
+updated: 2023-12-01
+author: "Richard Nguyen"
+categories:
+  - Sharing
+tags:
+  - c++
+published: true
+thumbnail: ./desola-lanre-ologun-kwzWjTnDPLk-unsplash.jpg
+---
+
+
+C strings are notoriously difficult to use and easy to mess up, for both
+beginners and experienced. If you come from other programming languages, C
+strings can cause a lot of headaches due to its lack of supporting ordinary
+features to work with strings that you might see in other programming languages.
+
+{/* Except */}
+
+# C string as an array of characters
+
+Strings in C are defined as an array of chracters. While type character, `char`,
+is a primitive data type in C, strings are not. Therefore, you can assign
+strings to variables like these:
+
+```c
+char *str1 = "Hello world";
+char str2[] = "Hello world";
+char str3[] = {'H', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd', '\0'};
+char str4[12] = "Hello world";
+```
+The first two examples are special syntaxes that the compiler can understand
+and create two arrays of characters for you. The only difference is that the
+double-quoted string in the second example specifies the initial values of the
+character in the array, whereas the first one creates a _static, read-only_
+string in memory and assign the address to the pointer `str1`.[^1]
+
+The third example allows you to explicitly define the array of characters.
+However, you need to append the null terminator character, `\0`, at the end of
+the array to indicate the end of the string. Otherwise, other functions can keep
+reading pass the array and cause undefined behaviors.
+
+The last example is simply for readability. Similar to the second example where
+the compiler can infer the size of the array from the string literal, the third
+one allows you to explicitly define the size of the array.
+
+<Callout collapsible title="Note" type="warning">
+
+In the last example, the size of array must be at least 12 to include the null
+terminator character. Otherwise, the compiler will complain about the size of
+the array is too small.
+
+```c title="main.c"
+char too_long_str[12] = "This initializer string exceeds the size of the array";
+printf("%s\n", too_long_str);
+```
+
+Output:
+
+```bash title="Output" showLineNumber=false enableCopy=false
+main.c: In function 'main':
+main.c:13:29: warning: initializer-string for array of 'char' is too long
+      |     char too_long_str[12] = "This initializer string exceeds the size of the array";
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This initial
+```
+
+</Callout>
+
+# Modifying C strings
+
+Programming languages like Java and Python have immutable strings, which means
+once you create a string, you cannot modify it. C, on the other hand, allows you
+to modify strings in place because to C, strings are just arrays of characters.
+
+```c title="main.c"
+char str[] = "Hello world";
+str[0] = 'h';
+printf("%s\n", str);
+```
+
+Output:
+
+```bash title="Output" showLineNumber=false enableCopy=false
+hello world
+```
+
+C also provides a set of functions to directly modify strings. For example,
+
+```c title="main.c"
+#include <stdio.h>
+#include <ctype.h>
+
+int main()
+{
+    char str[] = "Hello world";
+
+    // Uppercase all characters
+    for (int i = 0; str[i] != '\0'; ++i) {
+      str[i] = toupper(str[i]);
+    }
+
+    printf("%s\n", str);
+
+    // Lower case all characters
+    for (int i = 0; str[i] != '\0'; ++i) {
+      str[i] = tolower(str[i]);
+    }
+
+    printf("%s\n", str);
+
+    return 0;
+}
+```
+
+Output:
+
+```text title="Output" showLineNumber=false enableCopy=false
+HELLO WORLD
+hello world
+```
+
+<Callout title="Note" type="warning">
+
+C allows you to directly modify strings as long as those changes are within the
+boundaries of the array. Another limitation is that you cannot change the size
+of the array. If you need to change the size of the string, you need to create a
+new array and copy the content of the old array to the new one.
+
+As mentioned in the previous section, in order to modify strings, you need to
+create one with `char[]` instead of `char *`, because the latter creates a
+readonly string and cannot be modified.
+
+</Callout>
+
+# Size and iteration
+
+One easy way to get the size of a string is to iterate through the array and
+count the number of characters until the null terminator character is reached.
+
+```c title="main.c"
+#include <stdio.h>
+
+int main()
+{
+    char str[] = "Hello world";
+    int size = 0;
+
+    for (int i = 0; str[i] != '\0'; ++i) {
+      ++size;
+    }
+
+    // or
+    for (char *p = str; *p != '\0'; ++p) {
+      ++size;
+    }
+
+
+    printf("Size of string: %d\n", size);
+
+    return 0;
+}
+```
+
+Output:
+
+```text title="Output" showLineNumber=false enableCopy=false
+Size of string: 11
+```
+
+However, this is not efficient and can be troublesome if you're not careful.
+Luckily, C provides a function to get the size of a string called
+[`strlen(3)`](https://man7.org/linux/man-pages/man3/strlen.3.html).
+
+```c title="main.c"
+#include <stdio.h>
+
+int main()
+{
+    char str[] = "Hello world";
+    int size = strlen(str);
+
+    printf("Size of string: %d\n", size);
+
+    return 0;
+}
+```
+
+Output:
+
+```text title="Output" showLineNumber=false enableCopy=false
+Size of string: 11
+```
+
+<Callout title="Note" type="info">
+
+Another way to get the size of a string is to use the `sizeof` operator.
+
+```c title="main.c"
+size_t size = sizeof(str) / sizeof(str[0]); // 12
+```
+
+However, this method is not recommended because it also counts the null
+terminator character.
+
+</Callout>
+
+# String comparison
+
+An intuitive way to compare two strings is to iterate through two strings and
+compare one-by-one character. However, C provides a set of string-comparison
+functions to save the troubles for you
+
+## `strcmp` and `strncmp`
+
+[`strcmp`](https://man7.org/linux/man-pages/man3/strcmp.3.html) is the most
+commonly used function to compare two strings.
+
+Meanwhile, `strncmp` is similar to `strcmp` but allows you to specify the number
+of characters to compare. This is useful when you want to compare a substring
+of two strings such checking if two strings have the same prefix.
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str1[] = "Hello world";
+    char str2[] = "Hello world";
+    char str3[] = "hello world";
+
+    printf("str1 == str2: %d\n", strcmp(str1, str2));
+    printf("str1 == str3: %d\n", strcmp(str1, str3));
+    printf("str2 == str3: %d\n", strcmp(str2, str3));
+    printf("(last word) str1 == str3: %d\n", strncmp(str1 + 6, str3 + 6, 5));
+
+    return 0;
+}
+```
+
+Output:
+
+```text title="Output" showLineNumber=false enableCopy=false
+str1 == str2: 0
+str1 == str3: -32
+str2 == str3: -32
+(last word) str1 == str3: 0
+```
+
+The return value of `strcmp` and `strncmp` returns `0` if the two strings are
+equal, a negative value if the first string is less than the second string, and
+a positive value if the first string is greater than the second string. To know
+what the value means exactly, you might want to refer to the documentation.
+
+## `strcasecmp` and `strncasecmp`
+
+Addition to `strcmp`, [`strcasecmp`](https://man7.org/linux/man-pages/man3/strcasecmp.3.html)
+is another function to compare two strings but ignores the case of the strings.
+
+This is useful when you want to compare two strings but don't care about their
+cases such as checking two headers in HTTP requests.
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char *request_header = "Content-Type";
+    char *content_type_header = "content-type";
+    char *content_length_header = "content-length";
+
+    printf("request_header == content_type_header: %d\n",
+            strcmp(request_header, content_type_header));
+
+    printf("(same prefix) request_header == content_length_header: %d\n",
+            strcmp(request_header, content_length_header, 7));
+
+    return 0;
+}
+```
+
+Output:
+
+```text title="Output" showLineNumber=false enableCopy=false
+request_header == content_type_header: 0
+(same prefix) request_header == content_length_header: 0
+```
+
+# String copy
+
+## `strcpy`
+
+String copy can be done by iterating through the source string and copy each
+character to the destination string. However, C provides a function to do this
+for you.
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str1[] = "Hello world";
+    char str2[12];
+
+    strcpy(str2, str1);
+    printf("str2: %s\n", str2);
+
+    return 0;
+}
+```
+
+Output:
+
+```text title="Output" showLineNumber=false enableCopy=false
+str2: Hello world
+```
+
+## `strncpy`
+
+`strncpy` is similar to `strcpy` but allows you to specify the number of characters
+to copy. This is useful when you want to copy a substring of a string.
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str1[] = "Hello world";
+    char str2[6];
+
+    strncpy(str2, str1 + 6, 5);
+    printf("str2: %s\n", str2);
+
+    return 0;
+}
+```
+
+Output:
+
+```text title="Output" showLineNumber=false enableCopy=false
+str2: world
+```
+
+<Callout title="Note" type="info">
+
+`strcpy` and `strncpy` do not check the size of the destination string. It is
+the responsibility of the programmer to make sure that the destination string
+has enough space to store the source string, including the null terminator, i.e.
+`strlen(src) + 1`.
+
+</Callout>
+
+## `strdup`
+
+While `strcpy` and `strcpy` requires you to create the destination string and
+make sure it has enough space on your own, [`strdup(3)`](https://man7.org/linux/man-pages/man3/strdup.3.html)
+and [`strndup(3)`](https://man7.org/linux/man-pages/man3/strdup.3.html) will
+do those things for you.
+
+The only drawback is that since the returned string is dynamically allocated,
+you need to free it to avoid memory leaks. Also, as a result of dynamic
+allocation, you might also want to check if the allocation is successful.
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main()
+{
+    char str1[] = "Hello world";
+    char *str2 = strdup(str1);
+    char *str3 = strndup(str1, 5);
+
+    if (str2 == NULL) {
+      printf("Failed to allocate memory\n");
+      return 1;
+    }
+
+    printf("str2: %s\n", str2);
+    printf("str3: %s\n", str3);
+
+    free(str2);
+
+    return 0;
+}
+```
+
+Output:
+
+```text title="Output" showLineNumber=false enableCopy=false
+str2: Hello world
+str3: Hello
+```
+
+# String concatenation
+
+Programming languages like Java and Python provide an overloaded `operator+()`
+to concatenate two strings. C, on the other hand, does not provide such thing.
+However, C provides a set of functions to achieve the same results
+
+## In-place concatenation
+
+[`strcat`](https://linux.die.net/man/3/strcat) allows you to append a string to
+an original string, and override the null terminator if need. Similar to `strcpy`,
+you need to make sure that the original string has enough space to store the
+appended string, i.e. `strlen(dest) + strlen(src) + 1`.
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str1[12] = "Hello";
+    char str2[] = " world";
+
+    strcat(str1, str2);
+    printf("str1: %s\n", str1);
+
+    return 0;
+}
+```
+
+## New strings with `malloc`
+
+If you don't want to modify the original strings while concatenating them, you
+can create a new string and copy the content of the original strings to the new
+one.
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main()
+{
+    char str1[] = "Hello";
+    char str2[] = " world";
+
+    // Make sure to allocate enough space for the null terminator (+1)
+    char *str3 = malloc(strlen(str1) + strlen(str2) + 1);
+
+    if (str3 == NULL) {
+      printf("Failed to allocate memory\n");
+      return 1;
+    }
+
+    strcpy(str3, str1);
+    strcat(str3, str2);
+
+    printf("str3: %s\n", str3);
+
+    free(str3);
+
+    return 0;
+}
+```
+
+## New strings with `char[]`
+
+Allocating memory with `malloc` can be troublesome. If the string is relatively
+small, you can create a new string with `char[]` and copy the content of the
+original strings to the new one.
+
+In order to determine the size of the new string, you can use `strlen` to get
+the size of the original strings and add `1` for the null terminator.
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str1[] = "Hello";
+    char str2[] = " world";
+    char str3[strlen(str1) + strlen(str2) + 1];
+
+    strcpy(str3, str1);
+    strcat(str3, str2);
+
+    printf("str3: %s\n", str3);
+
+    return 0;
+}
+```
+
+Another way is to determine the maximum size of your string. This is useful when
+your application requires a fixed-size buffer to store the string, like HTTP
+headers
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_HEADER_SIZE 1024
+
+int main()
+{
+    char str1[] = "Hello";
+    char str2[] = " world";
+    char str3[MAX_HEADER_SIZE];
+
+    strcpy(str3, str1);
+    strcat(str3, str2);
+
+    printf("str3: %s\n", str3);
+
+    return 0;
+}
+```
+
+## New string with string literals
+
+C allows you to concatenate string literals togehter.
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char *str1 = "Hello" " " "world";
+
+    printf("str1: %s\n", str1);
+
+    return 0;
+}
+```
+
+The above syntax is extremely useful when you have string literals as macros.
+For example, you can define a macro to change the color of the text in the
+terminal.
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+
+#define RED "\033[0;31m"
+#define GREEN "\033[0;32m"
+#define RESET "\033[0m"
+
+int main()
+{
+    char *str1 = RED "Hello" RESET " " GREEN "world" RESET " from C";
+
+    printf("str1: %s\n", str1);
+
+    return 0;
+}
+```
+
+Output:
+
+<Output>
+
+str1: <span class="text-red-500">Hello</span> <span class="text-lime-400">world</span> from C
+
+</Output>
+
+# String breaking
+
+In particular programs, you might encounter strings that are too long to fit in
+a single readable line. In this case, you can break the string into multiple
+lines by using the `\` character. This is used in almost CLI programs written in
+C. For example, [`coreutils/cat`](https://github.com/coreutils/coreutils/blob/master/src/cat.c#L91C1-L122C4)
+uses this technique to break the help message into multiple lines.
+
+```c title="main.c"
+const char *helpmsg = "\
+Usage: cat [OPTION]... [FILE]...\n\
+Concatenate FILE(s) to standard output.\n\
+\n\
+With no FILE, or when FILE is -, read standard input.\n\
+\n\
+  -A, --show-all           equivalent to -vET\n\
+  -b, --number-nonblank    number nonempty output lines, overrides -n\n\
+  -e                       equivalent to -vE\n\
+  -E, --show-ends          display $ at end of each line\n\
+  -n, --number             number all output lines\n\
+  -s, --squeeze-blank      suppress repeated empty output lines\n\
+  -t                       equivalent to -vT\n\
+  -T, --show-tabs          display TAB characters as ^I\n\
+  -u                       (ignored)\n\
+  -v, --show-nonprinting   use ^ and M- notation, except for LFD and TAB\n\
+  --help                   display this help and exit\n\
+  --version                output version information and exit\n\
+";
+```
+
+You can break a string into multiple lines using string literals.
+
+```c title="main.c"
+const char *http_request_template = "GET / HTTP/1.1\r\n"
+                                    "Host: %s\r\n"
+                                    "User-Agent: %s\r\n"
+                                    "Accept: */*\r\n"
+                                    "\r\n";
+```
+
+# String templating
+
+Another features that other programming languages have but C does not is string
+templating/interpolation. For example, in Python, you can use the `f-string`, or
+in JavaScript, you can use the template literal `` `${}` `` syntax to interpolate variables
+into a string.
+
+<CodeSwitcher maxHeight={180}>
+
+```python title="main.py" tab="1"
+name = input("What is your name? ")
+print(f"Hello {name}")
+```
+
+```js title="main.js" tab="2"
+const name = prompt("What is your name? ");
+console.log(`Hello ${name}`);
+```
+
+</CodeSwitcher>
+
+## With stack-based strings
+
+In C, you can use [`sprintf`](https://man7.org/linux/man-pages/man3/sprintf.3p.html)
+to achieve the same result. However, as usual, you need to make sure that the
+destination string has enough space to store the interpolated string.
+
+```c title="main.c"
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char name[32];
+    char greeting[64];
+
+    printf("What is your name? ");
+    scanf("%s", name);
+
+    sprintf(greeting, "Hello %s", name);
+
+    printf("%s\n", greeting);
+
+    return 0;
+}
+```
+
+You can extent this technique to apply on template files such as HTML files
+where there are placeholders that you want to replace with actual values.
+
+
+<CodeSwitcher>
+
+```html title="index.html" tab="1"
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>%s</title>
+  </head>
+  <body>
+    <h1 class="text-3xl font-bold underline">Hello %s</h1>
+  </body>
+</html>
+
+```
+
+```c title="main.c" tab="2"
+#define _GNU_SOURCE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+
+int main()
+{
+    int fd = open("index.html", O_RDONLY);
+
+    if (fd == -1)
+    {
+        perror("open");
+        exit(EXIT_FAILURE);
+    }
+
+    struct stat sb;
+    if (fstat(fd, &sb) == -1)
+    {
+        perror("fstat");
+        exit(EXIT_FAILURE);
+    }
+
+    char *template = (char *)mmap(NULL, sb.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+
+    if (template == MAP_FAILED)
+    {
+        perror("mmap");
+        exit(EXIT_FAILURE);
+    }
+
+    char rendered_html[2048];
+    sprintf(rendered_html, template, "An example", "human");
+
+    printf("%s\n", rendered_html);
+    munmap(template, sb.st_size);
+
+    return 0;
+}
+```
+
+```text title="Output" tab="3"
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>An example</title>
+  </head>
+  <body>
+    <h1 class="text-3xl font-bold underline">Hello human</h1>
+  </body>
+</html>
+```
+</CodeSwitcher>
+
+The problem with this approach is that you need to make sure that the size of
+the destination string is large enough to store the interpolated string. For
+example:
+
+```c title="main.c"
+const char *template = "You entered %d";
+
+char str[13];
+snprintf(str, 13, template, 123456789);
+```
+
+
+[^1]: `comp.lang.c` FAQ list - Question 1.32 ([Link](https://c-faq.com/decl/strlitinit.html))

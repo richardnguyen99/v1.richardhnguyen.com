@@ -49,8 +49,9 @@ const Code: React.FC<CodeProps> = ({
         <div
           id={`tab-${tab}-${id}`}
           className={clsx({
-            "relative my-4 text-sm mt-4": true,
-            "border rounded-md": tab === 0,
+            "relative my-4 text-sm": true,
+            "mt-0": tab !== 0,
+            "border rounded-md ": tab === 0,
             "border-slate-300 dark:border-gray-700": tab === 0,
             "bg-neutral-100 dark:bg-[#0B1416]": tab === 0,
           })}
@@ -80,7 +81,7 @@ const Code: React.FC<CodeProps> = ({
               )}
             </div>
           )}
-          <pre aria-describedby="code-pre" className="py-4 overflow-x-auto">
+          <pre aria-describedby="code-pre" className="pb-4 overflow-x-auto">
             <code
               className={clsx({
                 "text-left": true,

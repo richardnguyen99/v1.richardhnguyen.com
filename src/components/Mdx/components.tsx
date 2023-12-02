@@ -9,6 +9,7 @@ import PageBreak from "./PageBreak";
 import Quote from "./Quote";
 import Collapsible from "./Collapsible";
 import Callout from "./Callout";
+import Output from "./Output";
 import CodeSwitcher from "./CodeSwitcher";
 
 const mdxComponents: MDXComponents = {
@@ -16,10 +17,10 @@ const mdxComponents: MDXComponents = {
   Quote,
   Collapsible,
   Callout,
+  Output,
   CodeSwitcher,
 
   pre: (preProps) => {
-    console.log(preProps);
     const preparedProps = preparePreProps(preProps as PreProps);
 
     if (!preparedProps) return <pre {...preProps} />;

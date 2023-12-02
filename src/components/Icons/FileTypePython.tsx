@@ -7,6 +7,7 @@ const FileTypePython: React.FC = () => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 32 32"
     >
+      <title>file_type_python</title>
       <defs>
         <linearGradient
           id="a"
@@ -33,7 +34,6 @@ const FileTypePython: React.FC = () => {
           <stop offset="1" stopColor="#ffc331" />
         </linearGradient>
       </defs>
-      <title>file_type_python</title>
       <path
         d="M15.885,2.1c-7.1,0-6.651,3.07-6.651,3.07V8.36h6.752v1H6.545S2,8.8,2,16.005s4.013,6.912,4.013,6.912H8.33V19.556s-.13-4.013,3.9-4.013h6.762s3.772.06,3.772-3.652V5.8s.572-3.712-6.842-3.712h0ZM12.153,4.237a1.214,1.214,0,1,1-1.183,1.244v-.02a1.214,1.214,0,0,1,1.214-1.214h0Z"
         style={{ fill: "url(#a)" }}

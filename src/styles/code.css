@@ -12,6 +12,13 @@
   @apply font-extrabold;
 }
 
+h2 > .mdx-code {
+  @apply text-3xl;
+  @apply font-extrabold;
+  @apply text-lime-500;
+  @apply dark:text-lime-400;
+}
+
 pre[aria-describedby="code-pre"] {
   counter-reset: token-line;
 }

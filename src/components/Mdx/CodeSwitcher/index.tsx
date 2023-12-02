@@ -6,6 +6,7 @@ import CopyButton from "../Code/CopyButton";
 
 interface CodeSwitcherProps {
   children: React.ReactNode | React.ReactNode[];
+  maxHeight?: number;
 }
 
 interface ChildrenProps {
@@ -17,15 +18,13 @@ interface ChildrenProps {
 
 type Props = CodeSwitcherProps;
 
-const CodeSwitcher: React.FC<Props> = ({ children }) => {
+const CodeSwitcher: React.FC<Props> = ({ children, maxHeight }) => {
   const childrenArray = React.Children.toArray(children);
   const [active, setActive] = React.useState(0);
 
   const childrenPropsMemo = React.useMemo<ChildrenProps[]>(() => {
     return childrenArray.map((child) => {
       const childProps = (child as React.ReactElement).props;
-
-      console.log(childProps);
 
       const children = childProps.children as React.ReactElement;
       const props = children.props as ChildrenProps;
@@ -39,18 +38,18 @@ const CodeSwitcher: React.FC<Props> = ({ children }) => {
     });
   }, [childrenArray]);
 
-  React.useEffect(() => {
-    console.log(childrenArray[active]);
-  }, [active, childrenArray]);
-
   return (
     <div className="code-switcher">
       <div
+        style={
+          { "--max-height": `${maxHeight ?? -1}px` } as React.CSSProperties
+        }
         className={clsx({
           "relative my-4 text-sm mt-8": true,
           "border rounded-md": true,
           "border-slate-300 dark:border-gray-700": true,
           "bg-neutral-100 dark:bg-[#0B1416]": true,
+          "max-h-[var(--max-height)]": maxHeight !== undefined,
         })}
       >
         <div

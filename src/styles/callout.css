@@ -1,58 +1,53 @@
-#content .callout {
-  @apply overflow-hidden;
-  @apply flex;
-  @apply flex-col;
-  @apply items-start;
-  @apply relative;
-  @apply w-auto;
-  @apply mt-6;
-  @apply rounded-lg;
-  @apply border;
-  @apply p-6;
-  @apply dark:bg-zinc-800;
-  @apply dark:border-zinc-500;
+.mdx-callout {
+  @apply py-4 [&>*:first-child]:!mt-0 dark:text-white;
 }
 
-#content blockquote > p:first-child {
-  @apply mt-0;
+.mdx-callout.mdx--info .mdx-code {
+  @apply bg-sky-500/40 text-sky-700;
+  @apply dark:bg-sky-700/40 dark:text-sky-500;
 }
 
-#content .callout > h3 {
-  @apply mt-0;
+.mdx-callout.mdx--warning .mdx-code {
+  @apply bg-sky-500/40 text-sky-700;
+  @apply dark:bg-sky-700/40 dark:text-sky-500;
 }
 
-#content .callout.note {
-  @apply dark:bg-sky-500/20;
-  @apply dark:border-sky-600;
+.mdx-callout.mdx--info [aria-describedby$="-code"] {
+  @apply border-sky-500 dark:border-sky-700/75;
 }
 
-#content .callout.note > h3 {
-  @apply dark:text-sky-500;
+.mdx-callout.mdx--info [aria-describedby="code-header"] {
+  @apply text-sky-700 bg-sky-500/40;
+  @apply dark:text-sky-500 dark:bg-sky-800/40;
+  @apply border-sky-500 dark:border-sky-700/75;
 }
 
-#content .callout.tip {
-  @apply dark:bg-lime-500/20;
-  @apply dark:border-lime-600;
+.mdx-callout.mdx--info [aria-describedby="code-pre"] {
+  @apply bg-sky-300/40;
+  @apply dark:bg-sky-700/20;
 }
 
-#content .callout.tip > h3 {
-  @apply dark:text-lime-500;
+.mdx-callout.mdx--info [aria-describedby="code-copy-button"] {
+  @apply hover:bg-sky-500/40;
+  @apply dark:hover:bg-sky-700/40;
 }
 
-#content .callout.warning {
-  @apply dark:bg-yellow-500/20;
-  @apply dark:border-yellow-600;
+.mdx-callout.mdx--warning [aria-describedby$="-code"] {
+  @apply border-yellow-500 dark:border-yellow-700/75;
 }
 
-#content .callout.warning > h3 {
-  @apply dark:text-yellow-500;
+.mdx-callout.mdx--warning [aria-describedby="code-header"] {
+  @apply text-yellow-700 bg-yellow-500/40;
+  @apply dark:text-yellow-500 dark:bg-yellow-700/40;
+  @apply border-yellow-500 dark:border-yellow-700/75;
 }
 
-#content .callout.danger {
-  @apply dark:bg-red-500/20;
-  @apply dark:border-red-600;
+.mdx-callout.mdx--warning [aria-describedby="code-pre"] {
+  @apply bg-yellow-300/40;
+  @apply dark:bg-yellow-700/20;
 }
 
-#content .callout.danger > h3 {
-  @apply dark:text-red-500;
+.mdx-callout.mdx--warning [aria-describedby="code-copy-button"] {
+  @apply hover:bg-yellow-500/40;
+  @apply dark:hover:bg-yellow-700/40;
 }

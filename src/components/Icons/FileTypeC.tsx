@@ -10,6 +10,7 @@ const FileTypeC: React.FC<Props> = ({ ...rest }) => {
       viewBox="0 0 48 48"
       clipRule="evenodd"
     >
+      <title>file_type_c</title>
       <path
         fill="#283593"
         fillRule="evenodd"
