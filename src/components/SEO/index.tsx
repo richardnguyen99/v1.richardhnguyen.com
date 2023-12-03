@@ -2,13 +2,14 @@ import * as React from "react";
 
 import useSiteMetadata from "@hooks/useSiteMetadata";
 
-import { SEOComponentType } from "./type";
+import { OpenGraphType, SEOComponentType } from "./type";
 
 export const SEO: SEOComponentType = ({
   title,
   description,
   pathname,
   children,
+  openGraph,
 }) => {
   const formattedTitle = () => {
     if (typeof title === "undefined" || title === "") return "";
@@ -27,9 +28,19 @@ export const SEO: SEOComponentType = ({
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image}`,
+    image: `${siteUrl}/${image}`,
     url: `${siteUrl}${pathname || ""}`,
     twitterUsername,
+  };
+
+  const openGraphData: OpenGraphType = {
+    title: openGraph?.title || defaultTitle,
+    description: openGraph?.description || defaultDescription,
+    image: `${siteUrl}${openGraph?.image || ""}`,
+    type: openGraph?.type || "website",
+    locale: openGraph?.locale || "en_US",
+    site_name: openGraph?.site_name || defaultTitle,
+    url: openGraph?.url || `${siteUrl}${pathname || ""}`,
   };
 
   return (
@@ -59,6 +70,16 @@ export const SEO: SEOComponentType = ({
 
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+      <meta name="author" content="Richard H. Nguyen" />
+
+      <meta property="og:title" content={openGraphData.title} />
+      <meta property="og:url" content={openGraphData.url} />
+      <meta property="og:type" content={openGraphData.type} />
+      <meta property="og:locale" content={openGraphData.locale} />
+      <meta property="og:description" content={openGraphData.description} />
+      <meta property="og:image" content={openGraphData.image} />
+      <meta property="og:site_name" content={openGraphData.site_name} />
+
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:url" content={seo.url} />

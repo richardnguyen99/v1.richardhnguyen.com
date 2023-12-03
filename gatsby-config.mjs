@@ -30,8 +30,8 @@ const config = {
     description: "Main page for Richard H. Nguyen",
     twitterUsername: "@richardmhnguyen",
     author: "@richardnguyen99",
-    image: "static/brand-16.png",
-    siteUrl: "http://richardhnguyen.com",
+    image: "static/brand-64.png",
+    siteUrl: "https://www.richardhnguyen.com",
   },
   plugins: [
     // For working with images
@@ -151,38 +151,86 @@ const config = {
         short_name: "richardhnguyen.com",
         lang: "en",
         start_url: "/",
-        background_color: "#18181b",
-        theme_color: "#818cf8",
+        background_color: "#0B1416",
+        theme_color: "#0ea5e9",
         display: "standalone",
         crossOrigin: "use-credentials",
-        icon: "static/brand-16.png",
+        icon: "static/brand-64.png",
         icons: [
           {
-            src: "static/brand-16.png",
+            src: "/static/brand-16.png",
             sizes: "16x16",
             type: "image/png",
           },
           {
-            src: "static/brand-32.png",
+            src: "/static/brand-32.png",
             sizes: "32x32",
             type: "image/png",
           },
           {
-            src: "static/brand-64.png",
+            src: "/static/brand-64.png",
             sizes: "64x64",
             type: "image/png",
           },
           {
-            src: "static/brand-96.png",
+            src: "/static/brand-96.png",
             sizes: "96x96",
             type: "image/png",
           },
           {
-            src: "static/brand-128.png",
+            src: "/static/brand-128.png",
             sizes: "128x128",
             type: "image/png",
           },
         ],
+      },
+    },
+
+    // For SEO and sitemap
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        query: `#graphql
+          {
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+
+          }
+        `,
+        resolveSiteUrl: () => "https://www.richardhnguyen.com",
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+        }) => {
+          return allPages
+        },
+        serialize: ({ path }) => {
+          return {
+            url: path,
+            changefreq: "daily",
+            priority: 0.7,
+          };
+        },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://www.richardhnguyen.com",
+        sitemap: "https://www.richardhnguyen.com/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
+
+    // For Google Analytics
+    {
+      resolve: "gatsby-plugin-google-gtag",
+      options: {
+        trackingIds: [
+          "G-1WSKJFCD4F"
+        ]
       },
     },
 

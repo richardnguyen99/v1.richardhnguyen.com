@@ -71,7 +71,21 @@ const MdxRenderer: React.FC<Props> = ({ data: { mdx }, children }) => {
 export default MdxRenderer;
 
 export const Head: HeadFC<Queries.MdxPageQuery> = ({ data }) => (
-  <SEO title={data.mdx.frontmatter.title} />
+  <SEO
+    title={data.mdx.frontmatter.title}
+    pathname={data.mdx.fields.slug}
+    description={data.mdx.frontmatter.short_description}
+    openGraph={{
+      image:
+        data.mdx.frontmatter.thumbnail?.childImageSharp?.gatsbyImageData?.images
+          ?.fallback?.src,
+      type: "article",
+      description: data.mdx.frontmatter.short_description,
+      title: data.mdx.frontmatter.title,
+      locale: "en_US",
+      site_name: "Blog",
+    }}
+  />
 );
 
 export const query = graphql`
@@ -99,6 +113,7 @@ export const query = graphql`
         updated
         author
         published
+        short_description
         thumbnail {
           childImageSharp {
             gatsbyImageData(

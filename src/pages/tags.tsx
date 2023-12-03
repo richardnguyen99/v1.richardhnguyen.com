@@ -17,7 +17,13 @@ const CategoryPage: React.FC = () => {
     });
   };
 
-  const cppPosts = React.useMemo(() => filterPosts(posts, "c++"), [posts]);
+  const tagFilteredPosts = React.useMemo(
+    () => [
+      { tag: "c++", posts: filterPosts(posts, "c++") },
+      { tag: "c", posts: filterPosts(posts, "c") },
+    ],
+    [posts]
+  );
 
   return (
     <div className="relative scroll-smooth overflow-x-hidden">
@@ -41,58 +47,74 @@ const CategoryPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="relative -mt-4 z-10">
-        <div
-          id="c-cpp"
-          className="px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl w-full"
-        >
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-3">
-              <h3 className="text-4xl font-black">C++</h3>
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                {cppPosts.length} posts
-              </span>
-            </div>
-            <Link to="/tags/c++" className="text-4xl font-black">
-              More
-            </Link>
-          </div>
-          <div className="flex items-center w-full gap-4">
-            {cppPosts.slice(0, 3).map((post, i) => (
-              <Link
-                key={i}
-                to={post.node.fields.slug}
-                className="group relative w-1/3 overflow-hidden rounded-lg bg-slate-100 dark:bg-[rgb(19,28,30)] shadow-lg transition-shadow shadow-slate-300 hover:shadow-slate-400 dark:shadow-none dark:border dark:border-[rgb(46,55,57)] dark:hover:border-[rgb(76,85,87)]"
-              >
-                <div className="relative">
-                  <GatsbyImage
-                    className="w-full h-full max-h-[205px] object-cover"
-                    imgClassName="hover:scale-105 !transition-all duration-300 ease-in-out"
-                    image={
-                      post.node.frontmatter.thumbnail.childImageSharp
-                        .gatsbyImageData
-                    }
-                    alt={post.node.frontmatter.title}
-                  />
-                </div>
-                <div className="flex justify-start flex-col p-4 ">
-                  <h3 className="text-2xl font-bold hover:underline underline-offset-4">
-                    {post.node.frontmatter.title}
-                  </h3>
-                  <h5 className="text-slate-400 dark:text-slate-600 mt-4">
-                    Published on: {post.node.frontmatter.created}
-                  </h5>
-                </div>
+      <div className="relative flex flex-col gap-12 -mt-4 z-10">
+        {tagFilteredPosts.map((tagFilteredPost, i) => (
+          <div
+            key={tagFilteredPost.tag}
+            id={tagFilteredPost.tag}
+            className="px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl w-full"
+          >
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <h3 className="text-4xl font-black">
+                  {tagFilteredPost.tag.toUpperCase()}
+                </h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  {tagFilteredPost.posts.length} posts
+                </span>
+              </div>
+              <Link to="/tags/c++" className="text-4xl font-black">
+                More
               </Link>
-            ))}
+            </div>
+            <div className="flex w-full gap-4">
+              {tagFilteredPost.posts.slice(0, 6).map((post, i) => (
+                <Link
+                  key={i}
+                  to={post.node.fields.slug}
+                  className="group relative w-1/3 overflow-hidden rounded-lg bg-slate-100 dark:bg-[rgb(19,28,30)] shadow-lg transition-shadow shadow-slate-300 hover:shadow-slate-400 dark:shadow-none dark:border dark:border-[rgb(46,55,57)] dark:hover:border-[rgb(76,85,87)]"
+                >
+                  <div className="relative">
+                    <GatsbyImage
+                      className="w-full h-full max-h-[205px] object-cover"
+                      imgClassName="hover:scale-105 !transition-all duration-300 ease-in-out"
+                      image={
+                        post.node.frontmatter.thumbnail.childImageSharp
+                          .gatsbyImageData
+                      }
+                      alt={post.node.frontmatter.title}
+                    />
+                  </div>
+                  <div className="flex justify-start flex-col p-4 ">
+                    <h3 className="text-2xl font-bold hover:underline underline-offset-4">
+                      {post.node.frontmatter.title}
+                    </h3>
+                    <h5 className="text-slate-400 dark:text-slate-600 mt-4">
+                      Published on: {post.node.frontmatter.created}
+                    </h5>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export const Head = () => <SEO title="Categories" />;
+export const Head = () => (
+  <SEO
+    title="Tags"
+    pathname="/tags"
+    description="Explore all the tags on the blog"
+    openGraph={{
+      title: "Tags",
+      description: "Explore all the tags on the blog",
+      url: "https://www.richardhnguyen.com/tags/",
+    }}
+  />
+);
 
 export default CategoryPage;
 
