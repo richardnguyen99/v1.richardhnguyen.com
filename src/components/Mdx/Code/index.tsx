@@ -81,7 +81,7 @@ const Code: React.FC<CodeProps> = ({
               )}
             </div>
           )}
-          <pre aria-describedby="code-pre" className="pb-4 overflow-x-auto">
+          <pre aria-describedby="code-pre" className="py-4 overflow-x-auto">
             <code
               className={clsx({
                 "text-left": true,

@@ -1,5 +1,5 @@
 ---
-title: "N tips to work with C strings"
+title: "10 tips to work with C string"
 created: 2023-12-01
 updated: 2023-12-01
 author: "Richard Nguyen"
@@ -8,7 +8,7 @@ categories:
 tags:
   - c++
 published: true
-thumbnail: ./desola-lanre-ologun-kwzWjTnDPLk-unsplash.jpg
+thumbnail: ./10-ways-to-work-with-c-string.png
 ---
 
 
@@ -19,7 +19,7 @@ features to work with strings that you might see in other programming languages.
 
 {/* Except */}
 
-# C string as an array of characters
+# 1. Array of characters
 
 Strings in C are defined as an array of chracters. While type character, `char`,
 is a primitive data type in C, strings are not. Therefore, you can assign
@@ -36,6 +36,39 @@ and create two arrays of characters for you. The only difference is that the
 double-quoted string in the second example specifies the initial values of the
 character in the array, whereas the first one creates a _static, read-only_
 string in memory and assign the address to the pointer `str1`.[^1]
+
+<Callout collapsible type="info" title="Fun fact">
+
+In memory, the first example will create a readonly string in the `.rodata`,
+which is a section in the binary that stores read-only data such as string
+literals. Those are created at compile time and cannot be modified during
+runtime.
+
+You can test this by creating two strings with the same content and compare
+their addresses.
+
+```c title="main.c"
+char hello1[]   = {'H', 'e', 'l', 'l', 'o', '\0'};
+char hello2[]   = {'H', 'e', 'l', 'l', 'o', '\0'};
+char *constant1 = "template string";
+char *constant2 = "template string";
+
+printf("Address of hello1: %p\n", hello1);
+printf("Address of hello2: %p\n", hello2);
+printf("Address of constant1: %p\n", constant1);
+printf("Address of constant2: %p\n", constant2);
+```
+
+Output:
+
+```text title="Output" showLineNumber=false enableCopy=false
+Address of hello1: 0x7ffe2cb51346
+Address of hello2: 0x7ffe2cb51340
+Address of constant1: 0x402010
+Address of constant2: 0x402010
+```
+
+</Callout>
 
 The third example allows you to explicitly define the array of characters.
 However, you need to append the null terminator character, `\0`, at the end of
@@ -69,7 +102,7 @@ This initial
 
 </Callout>
 
-# Modifying C strings
+# 2. Modifying C strings
 
 Programming languages like Java and Python have immutable strings, which means
 once you create a string, you cannot modify it. C, on the other hand, allows you
@@ -135,7 +168,7 @@ readonly string and cannot be modified.
 
 </Callout>
 
-# Size and iteration
+# 3. Size and iteration
 
 One easy way to get the size of a string is to iterate through the array and
 count the number of characters until the null terminator character is reached.
@@ -207,7 +240,7 @@ terminator character.
 
 </Callout>
 
-# String comparison
+# 4. String comparison
 
 An intuitive way to compare two strings is to iterate through two strings and
 compare one-by-one character. However, C provides a set of string-comparison
@@ -290,7 +323,7 @@ request_header == content_type_header: 0
 (same prefix) request_header == content_length_header: 0
 ```
 
-# String copy
+# 5. String copy
 
 ## `strcpy`
 
@@ -399,7 +432,7 @@ str2: Hello world
 str3: Hello
 ```
 
-# String concatenation
+# 6. String concatenation
 
 Programming languages like Java and Python provide an overloaded `operator+()`
 to concatenate two strings. C, on the other hand, does not provide such thing.
@@ -564,7 +597,7 @@ str1: <span class="text-red-500">Hello</span> <span class="text-lime-400">world<
 
 </Output>
 
-# String breaking
+# 7. String breaking
 
 In particular programs, you might encounter strings that are too long to fit in
 a single readable line. In this case, you can break the string into multiple
@@ -604,7 +637,7 @@ const char *http_request_template = "GET / HTTP/1.1\r\n"
                                     "\r\n";
 ```
 
-# String templating
+# 8. String templating
 
 Another features that other programming languages have but C does not is string
 templating/interpolation. For example, in Python, you can use the `f-string`, or
@@ -744,5 +777,383 @@ char str[13];
 snprintf(str, 13, template, 123456789);
 ```
 
+This might cause a buffer overflow because the size of the destination string is
+smaller than what is required to store the interpolated string. Buffer overflow
+can cause undefined behaviors, which are not detected by the compiler and also
+hard to catch during runtime.
+
+<Callout title="Use `snprintf`" type="success">
+
+`sprintf` is not safe because neither does it check the size of the destination
+nor give you a way to specify the size of the destination string. Instead, you
+can use `snprintf`. It allows you to specify the size of the destination string
+and the function will not write more than the size you specified.
+
+</Callout>
+
+
+## With dynamic strings
+
+It is sometimes hard to determine the correct size of the destination array in
+some situations. Let's consider the following example where you want to return
+an HTTP response with an HTML page.
+
+```c title="main.c"
+#define _GNU_SOURCE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+
+int main()
+{
+    int fd = open("index.html", O_RDONLY);
+
+    if (fd == -1)
+    {
+        perror("open");
+        exit(EXIT_FAILURE);
+    }
+
+    struct stat sb;
+    if (fstat(fd, &sb) == -1)
+    {
+        close(fd);
+        perror("fstat");
+        exit(EXIT_FAILURE);
+    }
+
+    char *html_str = (char *)mmap(NULL, sb.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+
+    if (html_str == MAP_FAILED)
+    {
+        close(fd);
+        perror("mmap");
+        exit(EXIT_FAILURE);
+    }
+
+    char *response = NULL;
+    const char *template = "HTTP/1.1 200 OK\r\n"
+                           "Content-Type: text/html\r\n"
+                           "Content-Length: %ld\r\n"
+                           "\r\n"
+                           "%s";
+
+    asprintf(&response, template, sb.st_size, html_str);
+
+    if (response == NULL)
+    {
+        close(fd);
+        munmap(html_str, sb.st_size);
+        perror("asprintf");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("%s\n", response);
+
+    close(fd);
+    munmap(html_str, sb.st_size);
+    free(response);
+
+    return 0;
+}
+```
+
+Output:
+
+```text title="HTTP Response" showLineNumber=false enableCopy=false
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 266
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index page</title>
+  </head>
+  <body>
+    <h1 class="text-3xl font-bold underline">Hello page</h1>
+  </body>
+</html>
+```
+
+In this example, you don't need to worry about the size of the destination
+string because `asprintf` will calculate the correct size and allocate the
+string for you. The only drawback is that you need to check and free the
+allocated string manually.
+
+# 9. Strings as paramaters
+
+In C, strings are passed as pointers to the first character of the string. That
+implies two things:
+
+The string parameters are new pointers that point to the same memory address as
+the original string. Modifying the content to which the new pointers point will
+also modify the original string.
+
+## With `char *`
+
+The most simple way to pass a string as a parameter is to use `char *`.
+
+```c title="read_str.c"
+void read_str(char *str)
+{
+  for (int i = 0; str[i] != '\0'; ++i) {
+    printf("%c", str[i]);
+  }
+}
+```
+
+This function assumes that your string is correctly initialized. With the help
+of the null terminator character, you can iterate through the string and read
+each character until the null terminator character is reached.
+
+## With `size_t`
+
+In most case, you need to retrieve the size of the array. With only one string
+as parameter, you can use `strlen` to get the size of the string. However,
+`strlen` will iterate through the string every time you call it. This is
+inefficient if you need to call it multiple times.
+
+To increase a bit of performance, you can pass the size of the string as an
+extra parameter.
+
+```c title="read_str.c"
+void read_str(char *str, size_t size)
+{
+  for (int i = 0; i < size; ++i) {
+    printf("%c", str[i]);
+  }
+}
+```
+
+## With `const`
+
+If you don't have an intention to modify the string, you might want to use
+`const` to indicate that the string is readonly and prevent accidental
+modification.
+
+```c title="read_str.c"
+void read_str(const char *str, size_t size)
+{
+  for (int i = 0; i < size; ++i) {
+    printf("%c", str[i]);
+  }
+}
+```
+
+# 10. Return strings
+
+Unlike other programming languages, C does not allow you to return strings
+directly from a function. However, there are 3 ways to work around this.
+
+## Why not return directly?
+
+Consider an intuitive way to return a string from a function.
+
+```c title="str.c"
+
+char *get_str()
+{
+    char str[BUFLEN];
+    snprintf(str, BUFLEN, "Hello, world!");
+
+    return str;
+}
+
+```
+
+But when we compile it with `gcc`, we get the following warning:
+
+<Output enableCopy={false}>
+
+str.c: In function 'get_str':
+
+str.c:10:12: <span class="text-violet-500">warning</span>: function returns address of local variable [<span class="text-violet-500">-Wreturn-local-addr</span>]
+
+&nbsp;&nbsp;&nbsp;10 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <span class="text-violet-500">str</span>;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-violet-500">^~~</span>
+
+</Output>
+
+The array `str` is a chunk of memory allocated on the stack in the scope of
+the function `get_str`. `str` points to the first character of the array.
+When the function returns, the stack frame is popped and the memory chunk ceases
+to exist. Therefore, the pointer `str` has nothing to point to and becomes
+invalid.
+
+## With `static`
+
+The first way is to return a pointer to a static string. This is similar to
+returning a pointer to a string literal.
+
+<CodeSwitcher maxHeight={280}>
+
+```c title="static_str.c" tab="1"
+#define BUFLEN 1024
+
+char *get_static_str(void)
+{
+  static char str[BUFLEN];
+
+  snprintf(str, BUFLEN, "Hello world");
+
+  return str
+}
+```
+
+```c title="main.c" tab="2"
+#include <stdio.h>
+
+int main()
+{
+    char *static_str = get_static_str();
+
+    printf("Content of static_str: %s\n", static_str);
+    printf("Address of static_str: %p\n", static_str);
+
+    return 0;
+}
+```
+
+```text title="Output" tab="3" showLineNumber=false enableCopy=false
+Content of static_str: Hello world
+Address of static_str: 0x404040
+```
+
+</CodeSwitcher>
+
+Static strings are created once and live throughout the lifetime of the program.
+Therefore, you don't need to worry about the lifetime of the string. However,
+since the string is shared among all calls to the function, you need to make
+sure that the string is used with caution.
+
+## With stack-based strings
+
+The second way is to create an empty array of characters and pass it as an
+argument. As mentioned above, modifying the content of the array will also
+modify the original string.
+
+<CodeSwitcher>
+
+```c title="stack_str.c" tab="1"
+int get_stack_str(char *str, size_t size)
+{
+  snprintf(str, size, "Hello, world!");
+
+  return 0;
+}
+```
+
+```c title="main.c" tab="2"
+#include <stdio.h>
+
+int main()
+{
+    // Your responsibility to make sure that the size is sufficient
+    char str[14];
+
+    int ret = get_stack_str(str, 14);
+
+    printf("Content of str: %s\n", str);
+    printf("Address of str: %p\n", str);
+
+    return 0;
+}
+```
+
+```text title="Output" tab="3" showLineNumber=false enableCopy=false
+Content of stack_str: Hello, world!
+Address of stack_str: 0x7fff502c2e96
+```
+
+</CodeSwitcher>
+
+Most of the C string functions use this technique such as `strcpy`, `strcat`.
+The only drawback is that you need to make sure the size of the parameterized
+string is large enough to store the returned string.
+
+Since you already use an argument to store the returned string, you can use
+the return value to indicate the status of the function. In most C functions,
+`0` indicates success and `-1` indicates failure.
+
+## With `malloc`
+
+The third way is to use `malloc` to allocate memory for the string. This is
+similar to the technique used in `strdup` and `strndup`.
+
+<CodeSwitcher>
+
+```c title="malloc_str.c" tab="1"
+
+char *get_heap_str()
+{
+    char *str = (char *)malloc(14);
+
+    if (str == NULL) {
+      return NULL;
+    }
+
+    snprintf(str, 14, "Hello, world!");
+
+    return str;
+}
+```
+
+```c title="main.c" tab="2"
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char *heap_str = get_heap_str();
+
+    if (heap_str == NULL)
+    {
+        perror("get_heap_str:malloc");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Content of heap_str: %s\n", heap_str);
+    printf("Address of heap_str: %p\n", heap_str);
+
+    free(heap_str);
+
+    return 0;
+}
+```
+
+```text title="Output" tab="3" showLineNumber=false enableCopy=false
+Content of heap_str: Hello, world!
+Address of heap_str: 0x211e2a0
+```
+
+</CodeSwitcher>
+
+This technique can extent to other dynamically-allocated string functions such
+as `asprintf` and `strdup`. The allocated string is created on the heap and
+the object will live there until you free it. That's why you can return the
+string because the memory is still valid. The same drawback in any dynamic
+allocation is that you need to keep track and free the allocated memory to
+avoid memory leaks.
+
+# Conclusion
+
+Other programming languages provide string-support features and abstract away
+the details of working with strings. C, on the other hand, does not provide such
+features. You have the total control over how you want to create and use strings,
+with some extra help from the standard library. It's also easier to mess up with
+C strings over small things such as forgetting to append the null terminator.
+
+Working with C strings might be frustrating due to its lack of supporting,
+especially if you come from other programming languages. Therefore, I hope this
+article can make your work with C a bit easier.
 
 [^1]: `comp.lang.c` FAQ list - Question 1.32 ([Link](https://c-faq.com/decl/strlitinit.html))

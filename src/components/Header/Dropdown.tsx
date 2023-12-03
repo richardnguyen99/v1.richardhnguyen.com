@@ -22,7 +22,7 @@ const Dropdown: React.FC<Props> = ({ opening, onClose, ...rest }) => {
       <Dialog
         {...rest}
         as="div"
-        className="relative z-10"
+        className="relative z-[9999]"
         initialFocus={cancelButtonRef}
         onClose={onClose}
       >
@@ -51,7 +51,7 @@ const Dropdown: React.FC<Props> = ({ opening, onClose, ...rest }) => {
               <Dialog.Panel
                 className={clsx({
                   "w-full h-full overflow-hidden": true,
-                  "bg-zinc-200 dark:bg-zinc-900/90": true,
+                  "bg-zinc-200 dark:bg-[#0B1416]/90": true,
                   "rounded-2xl p-6 text-left align-middle": true,
                   "shadow-2xl transition-all transform ": true,
                 })}

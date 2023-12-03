@@ -32,6 +32,36 @@
   @apply dark:hover:bg-sky-700/40;
 }
 
+.mdx-callout.mdx--success .mdx-code {
+  @apply bg-lime-500/40 text-lime-700;
+  @apply dark:bg-lime-700/40 dark:text-lime-500;
+}
+
+.mdx-callout.mdx--warning .mdx-code {
+  @apply bg-lime-500/40 text-lime-700;
+  @apply dark:bg-lime-700/40 dark:text-lime-500;
+}
+
+.mdx-callout.mdx--success [aria-describedby$="-code"] {
+  @apply border-lime-500 dark:border-lime-700/75;
+}
+
+.mdx-callout.mdx--success [aria-describedby="code-header"] {
+  @apply text-lime-700 bg-lime-500/40;
+  @apply dark:text-lime-500 dark:bg-lime-800/40;
+  @apply border-lime-500 dark:border-lime-700/75;
+}
+
+.mdx-callout.mdx--success [aria-describedby="code-pre"] {
+  @apply bg-lime-300/40;
+  @apply dark:bg-lime-700/20;
+}
+
+.mdx-callout.mdx--success [aria-describedby="code-copy-button"] {
+  @apply hover:bg-lime-500/40;
+  @apply dark:hover:bg-lime-700/40;
+}
+
 .mdx-callout.mdx--warning [aria-describedby$="-code"] {
   @apply border-yellow-500 dark:border-yellow-700/75;
 }

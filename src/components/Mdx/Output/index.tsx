@@ -10,8 +10,16 @@ import CopyButton from "./CopyButton";
 import DefaultFile from "@components/Icons/DefaultFile";
 import("prismjs/components/prism-python");
 
+interface RecursiveProps {
+  children?:
+    | React.ReactElement<RecursiveProps>
+    | React.ReactElement<RecursiveProps>[];
+}
+
 export type CodeProps = {
-  children: React.ReactElement;
+  children:
+    | React.ReactElement<RecursiveProps>
+    | React.ReactElement<RecursiveProps>[];
   className: string;
   showLineNumber?: boolean;
   enableCopy?: boolean;
@@ -31,22 +39,30 @@ const Output: React.FC<CodeProps> = ({
   title: _title,
   tab = 0,
 }) => {
+  const createCopyString = React.useCallback(
+    (_children: typeof children, content: string[]) => {
+      if (_children === undefined) return;
+
+      if (typeof _children === "string") {
+        content.push(_children);
+      } else if (React.isValidElement(_children)) {
+        createCopyString(_children.props.children, content);
+      } else {
+        _children.forEach((child) => {
+          createCopyString(child, content);
+        });
+      }
+    },
+    []
+  );
+
   const copyString = React.useMemo(() => {
-    let content = "";
+    const content: string[] = [];
 
-    if (typeof children === "string") content = children;
-    else {
-      React.Children.forEach(children.props.children, (child) => {
-        if (typeof child === "string") content += child;
-        // Only support one level of nesting
-        else {
-          content += child.props.children;
-        }
-      });
-    }
+    createCopyString(children, content);
 
-    return content;
-  }, [children]);
+    return content.join(" ");
+  }, [children, createCopyString]);
   const OutputIcon = () => <DefaultFile />;
 
   return (
