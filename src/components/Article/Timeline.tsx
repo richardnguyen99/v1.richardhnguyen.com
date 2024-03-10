@@ -14,14 +14,13 @@ const Timeline: React.FC = () => {
     <div
       className={clsx({
         "relative md:mx-auto md:max-w-3xl lg:max-w-4xl xl:max-w-6xl": true,
-        "py-12 md:py-16 lg:py-20 xl:py-24": true,
-        "px-6 md:px-10": true,
+        "py-4 md:py-16 lg:py-20 xl:py-24": true,
       })}
     >
       <div
         className={clsx({
-          "flex flex-col gap-y-16 pl-14": true,
-          "sm:border-l-[3px] border-slate-200 dark:border-slate-800": true,
+          "flex flex-col md:gap-y-10 lg:gap-y-16 md:pl-14": true,
+          "md:border-l-[3px] border-slate-200 dark:border-slate-800": true,
         })}
       >
         {edges.map((edge, i) => {

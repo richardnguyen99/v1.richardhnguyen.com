@@ -43,7 +43,7 @@ const ArticleTimeline: React.FC<Props & DataProps> = ({ data, ...rest }) => {
         </svg>
         <div
           className={clsx({
-            "relative -m-7 p-6 rounded-2xl": true,
+            "relative mx-4 lg:-m-7 p-6 rounded-2xl": true,
             "hover:bg-slate-200 dark:hover:bg-[#0f1c1f]": true,
           })}
         >
