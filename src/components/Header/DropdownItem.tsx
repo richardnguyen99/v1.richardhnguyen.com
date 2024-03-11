@@ -23,7 +23,7 @@ const DropdownItem: React.FC<Props> = ({
       className={clsx("dark:text-white dark:hover:text-sky-500", {
         "flex items-center": true,
         "p-4 rounded-lg": true,
-        "dark:hover:bg-zinc-700/25": true,
+        "hover:bg-gray-200 dark:hover:bg-gray-800": true,
         [className as string]: className,
       })}
     >
