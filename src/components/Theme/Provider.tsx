@@ -7,7 +7,7 @@ import { ThemeType } from "./type";
 type Props = React.PropsWithChildren<React.HTMLAttributes<HTMLElement>>;
 
 const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const [theme, setTheme] = useLocalStorage<ThemeType>("theme", "light");
+  const [theme, setTheme] = useLocalStorage<ThemeType>("theme", "dark");
 
   const toggleTheme = React.useCallback(() => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));

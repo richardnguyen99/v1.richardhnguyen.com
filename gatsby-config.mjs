@@ -152,7 +152,7 @@ const config = {
         lang: "en",
         start_url: "/",
         background_color: "#0B1416",
-        theme_color: "#0ea5e9",
+        theme_color: "#0EA5E9",
         display: "standalone",
         crossOrigin: "use-credentials",
         icon: "static/brand-64.png",
@@ -204,7 +204,7 @@ const config = {
         resolvePages: ({
           allSitePage: { nodes: allPages },
         }) => {
-          return allPages
+          return allPages;
         },
         serialize: ({ path }) => {
           return {
