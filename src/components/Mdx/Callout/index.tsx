@@ -52,7 +52,7 @@ const Callout: React.FC<CalloutProps & Props> = ({
       as="div"
       defaultOpen
       className={clsx("relative", {
-        "mt-8 -ml-6 pl-6 rounded-md": true,
+        "mt-8 md:-ml-6 pl-6 rounded-md": true,
         "border border-transparent": true,
         "border-l-4": true,
         "transition-[transform,_border] duration-200": true,

@@ -15,7 +15,7 @@ const Title: React.FC<Props> = ({
       {...rest}
       id="title"
       className={clsx("", {
-        "text-5xl xl:text-6xl": true,
+        "text-4xl md:text-5xl xl:text-6xl": true,
         "text-transparent bg-clip-text bg-gradient-to-r": true,
         "to-sky-200 from-cyan-500": true,
         "font-extrabold gradient lg:font-black": true,

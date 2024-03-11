@@ -28,25 +28,30 @@ const FronMatter: React.FC<FrontMatterProps> = ({
     <div id="frontmatter" className="w-full mt-4 md:mt-5 lg:mt-6 xl:mt-7">
       <div
         className={clsx({
-          "flex items-center gap-3 whitespace-nowrap": true,
+          "flex  gap-3 whitespace-nowrap": true,
           "w-6/12 md:w-5/12": true,
+          "justify-start flex-col md:flex-row md:items-center": true,
         })}
       >
-        <p>{created}</p>
-        <p>·</p>
-        <p>{formatTimeToRead(timeToRead)}</p>
-        <p>·</p>
-        <p>
-          By{" "}
-          <span
-            className={clsx({
-              "font-bold cursor-pointer  transition-all": true,
-              "border-b hover:border-b-4 border-sky-500 ": true,
-            })}
-          >
-            {author}
-          </span>
-        </p>
+        <div className="flex items-center gap-3">
+          <p>
+            By{" "}
+            <span
+              className={clsx({
+                "font-bold cursor-pointer  transition-all": true,
+                "border-b hover:border-b-4 border-sky-500 ": true,
+              })}
+            >
+              {author}
+            </span>
+          </p>
+          <p className="hidden invisible sm:block sm:visible">·</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <p>{created}</p>
+          <p>·</p>
+          <p>{formatTimeToRead(timeToRead)}</p>
+        </div>
       </div>
       <div>
         {thumbnail && (
