@@ -27,7 +27,7 @@ const Header: React.FC<Props> = () => {
     >
       <div
         id="header-container"
-        className={clsx("px-6", {
+        className={clsx("px-10", {
           "md:mx-auto md:max-w-3xl md:px-10": true,
           "lg:max-w-4xl": true,
           "xl:max-w-6xl": true,

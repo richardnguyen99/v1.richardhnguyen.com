@@ -28,7 +28,7 @@ const ArticleTimeline: React.FC<Props & DataProps> = ({ data, ...rest }) => {
             "hidden absolute overflow-visible sm:block": true,
             "right-full top-[calc(0.5rem-7px)]": true,
             "text-slate-400 dark:text-slate-600": true,
-            "mr-6 sm:mr-[calc(3.5rem-3px)]": true,
+            "mr-[calc(2.5rem-3px)]": true,
             "w-[calc(0.5rem+1px)] h-[calc(0.5rem+1px)]": true,
           })}
         >
@@ -43,7 +43,7 @@ const ArticleTimeline: React.FC<Props & DataProps> = ({ data, ...rest }) => {
         </svg>
         <div
           className={clsx({
-            "relative mx-4 lg:-m-7 p-6 rounded-2xl": true,
+            "relative mx-4 md:-m-7 lg:-m-7 p-6 rounded-2xl": true,
             "hover:bg-slate-200 dark:hover:bg-[#0f1c1f]": true,
           })}
         >

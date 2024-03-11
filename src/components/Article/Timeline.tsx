@@ -19,7 +19,9 @@ const Timeline: React.FC = () => {
     >
       <div
         className={clsx({
-          "flex flex-col md:gap-y-10 lg:gap-y-16 md:pl-14": true,
+          "flex flex-col md:gap-y-10 lg:gap-y-16": true,
+          "md:pl-10": true,
+
           "md:border-l-[3px] border-slate-200 dark:border-slate-800": true,
         })}
       >
