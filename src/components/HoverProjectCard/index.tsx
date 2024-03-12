@@ -5,6 +5,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 import { HoverProjectCardProps, ProjectStatus } from "./type";
 import { CheckIcon, FlameIcon } from "@primer/octicons-react";
+import Tooltip from "@components/Tooltip";
 
 type Props = React.PropsWithChildren<
   React.HTMLAttributes<HTMLDivElement> & HoverProjectCardProps
@@ -31,9 +32,17 @@ const HoverProjectCard: React.FC<Props> = ({
     /* eslint-disable indent */
     switch (status) {
       case ProjectStatus.DONE:
-        return <CheckIcon className="w-5 h-5 fill-green-400" />;
+        return (
+          <Tooltip message="Done" placement="bottom-end">
+            <CheckIcon className="w-8 h-8 p-1.5 inline-flex items-center justify-center fill-green-400" />
+          </Tooltip>
+        );
       case ProjectStatus.IN_PROGRESS:
-        return <FlameIcon className="w-5 h-5 fill-amber-500" />;
+        return (
+          <Tooltip message="In progress">
+            <FlameIcon className="w-8 h-8 p-1.5 inline-flex items-center justify-center fill-amber-400" />
+          </Tooltip>
+        );
       case ProjectStatus.ON_HOLD:
         return "on hold";
       default:
@@ -61,7 +70,7 @@ const HoverProjectCard: React.FC<Props> = ({
       className={clsx("w-full xl:w-[90%] overflow-hidden", {
         "mx-auto mt-20 first:mt-10": true,
         "w-full h-full": true,
-        "p-12 rounded-[3rem]": true,
+        "p-6 md:p-8 lg:p-12": true,
         "bg-slate-100 dark:bg-[rgb(20,29,31)]": true,
       })}
       data-image-1={defaultImageSrc}
@@ -75,11 +84,11 @@ const HoverProjectCard: React.FC<Props> = ({
         <div
           ref={imageRef}
           className={clsx({
-            "w-[192px] h-[240px]": true,
+            "w-12 h-12": true,
             "md:w-[256px] md:h-[320px]": true,
             "lg:w-[320px] lg:h-[400px]": true,
             "bg-cover relative overflow-hidden": true,
-            "rounded-[3rem]": true,
+            "rounded-lg md:rounded-2xl lg:rounded-3xl": true,
           })}
         >
           <div className="block opacity-0" />
@@ -87,22 +96,24 @@ const HoverProjectCard: React.FC<Props> = ({
         <div
           className={clsx({
             "relative flex flex-col overflow-hidden": true,
-            "w-[calc(100%-192px)] h-[240px]": true,
+            "w-full h-[240px]": true,
             "md:w-[calc(100%-256px)] md:h-[320px]": true,
             "lg:w-[calc(100%-320px)] lg:h-[400px]": true,
-            "ml-12 lg:ml-16 xl:ml-24 ": true,
+            "-ml-12 md:ml-12 lg:ml-16 xl:ml-24 ": true,
           })}
         >
           <div
             className={clsx({
               "grid grid-cols-[repeat(5,_1fr)_minmax(32px,_auto)]": true,
-              "w-full items-center": true,
+              "w-[calc(100%-64px)] md:w-full items-center": true,
+              "ml-16 md:ml-0": true,
             })}
           >
             <h1
               className={clsx({
+                "text-lg md:text-1xl lg:text-3xl": true,
                 "col-span-5 xl:col-start-1 xl:col-span-3": true,
-                "order-1 text-3xl font-black overflow-auto": true,
+                "order-1 font-black overflow-auto": true,
               })}
             >
               {title}
@@ -132,6 +143,7 @@ const HoverProjectCard: React.FC<Props> = ({
                 "flex items-center justify-center text-2xl font-black": true,
                 "order-2 xl:order-3": true,
                 "col-span-1 col-end-7 xl:ml-auto": true,
+                "w-8 h-8 mr-1": true,
               })}
             >
               {renderStatus(status)}
@@ -177,21 +189,23 @@ const HoverProjectCard: React.FC<Props> = ({
       </div>
       <div className="w-fit">
         <div
-          className={clsx({
-            "flex items-center gap-4": true,
-            "mt-8 w-full overflow-x-hidden": true,
-            "before:content-[''] before:block": true,
-            "before:w-[120px] before:h-[1px] before:dark:bg-white": true,
-          })}
+          className={clsx(
+            "flex items-center gap-4",
+            "mt-8 w-full overflow-x-hidden",
+            "before:content-[''] before:block",
+            " before:h-[1px] before:dark:bg-white",
+            "before:w-12 md:before:w-20 lg:before:w-28"
+          )}
         >
           {stacks.map((stack, index) => (
             <a
               href="#"
               key={index}
-              className={clsx({
-                "text-sm uppercase font-light tracking-[0.25em]": true,
-                "after:content-[','] last-of-type:after:content-['']": true,
-              })}
+              className={clsx(
+                "uppercase font-light tracking-[0.25em]",
+                "after:content-[','] last-of-type:after:content-['']",
+                "text-xs md:text-sm"
+              )}
             >
               {stack}
             </a>

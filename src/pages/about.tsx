@@ -158,7 +158,7 @@ const AboutPage: React.FC = () => {
         className="px-6 md:mx-auto md:max-w-3xl md:px-10 lg:max-w-4xl xl:max-w-6xl min-h-[95vh] flex flex-col justify-between"
       >
         <div className="mt-[10rem]">
-          <div className="text-[5vw] leading-none font-black">
+          <div className="text-[10vw] md:text-[7.5vw] lg:text-[5vw] leading-none font-black">
             <p>i build apps,</p>
             <p>
               from <span className="font-mono">low-level</span>
@@ -320,7 +320,7 @@ const AboutPage: React.FC = () => {
               linkText="@SDI Engineering"
               title="SWE, Intern"
             >
-              <ul className="pl-6">
+              <ul>
                 <li>
                   I worked in a team that focused on migrating an landing gear
                   simulation and analysis tool written from MATHLAB/Simulink to
@@ -377,7 +377,7 @@ const AboutPage: React.FC = () => {
               }
               orderImageSrc="#"
               stacks={["Python", "Java", "C++"]}
-              status={ProjectStatus.IN_PROGRESS}
+              status={ProjectStatus.DONE}
               externalLink="https://www.seattleu.edu/scieng/computer-science/"
               linkText="@SU - CS Dept."
               title="TA / Grader"
@@ -407,7 +407,7 @@ const AboutPage: React.FC = () => {
           Convienced yet?
         </h1>
         <div className="relative w-4/12 h-2 dark:bg-slate-50 bg-[#0b1416]" />
-        <div className="flex justify-between md:flex-row gap-16 mt-10 text-lg">
+        <div className="flex flex-col justify-between md:flex-row gap-16 mt-10 text-lg">
           <div className="w-full md:w-4/12">
             <p>
               Thanks for stopping! I&apos;m currently looking for a team that is
@@ -557,17 +557,21 @@ const BorderLink: React.FC<
       target="_blank"
       rel="noreferrer"
       {...rest}
-      className={clsx("flex items-center gap-3 relative", {
-        "text-lg font-light uppercase tracking-[0.25em]": true,
-        "text-slate-800 dark:text-slate-200": true,
-        "hover:text-slate-950  dark:hover:text-slate-50": true,
+      className={clsx(
+        "flex items-center gap-3 relative",
+        "text-[4vw] md:text-[3.5vw] lg:text-[2vw]",
+        {
+          "text-lg font-light uppercase tracking-[0.25em]": true,
+          "text-slate-800 dark:text-slate-200": true,
+          "hover:text-slate-950  dark:hover:text-slate-50": true,
 
-        "after:content-[''] after:absolute after:block": true,
-        "after:left-0 after:bottom-0": true,
-        "after:h-[2px] after:w-0 hover:after:w-full": true,
-        "after:bg-sky-500": true,
-        "after:transition-[width] after:duration-300 after:ease-in-out": true,
-      })}
+          "after:content-[''] after:absolute after:block": true,
+          "after:left-0 after:bottom-0": true,
+          "after:h-[2px] after:w-0 hover:after:w-full": true,
+          "after:bg-sky-500": true,
+          "after:transition-[width] after:duration-300 after:ease-in-out": true,
+        }
+      )}
     >
       {children}
     </a>
