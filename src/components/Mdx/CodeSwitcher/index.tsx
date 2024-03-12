@@ -45,6 +45,7 @@ const CodeSwitcher: React.FC<Props> = ({ children, maxHeight }) => {
           { "--max-height": `${maxHeight ?? -1}px` } as React.CSSProperties
         }
         className={clsx({
+          "flex flex-col": true,
           "relative my-4 text-sm mt-8": true,
           "border rounded-md": true,
           "border-slate-300 dark:border-gray-700": true,
@@ -54,34 +55,51 @@ const CodeSwitcher: React.FC<Props> = ({ children, maxHeight }) => {
       >
         <div
           className={clsx({
-            "px-2 py-2": true,
+            "relative p-2 pb-0": true,
             "rounded-tl-md rounded-tr-md": true,
             "border-b border-slate-300 dark:border-gray-700": true,
-            "flex items-center justify-between": true,
+            "flex justify-between": true,
             "bg-neutral-200 dark:bg-[rgb(21,30,32)]": true,
           })}
         >
           <div
             aria-describedby="code-header"
+            style={
+              {
+                "--max-tabs": childrenArray.length,
+              } as React.CSSProperties
+            }
             className={clsx({
-              "flex items-center": true,
-              //"bg-gray-100 dark:bg-[#0D1618]": true,
+              flex: true,
+              "w-[calc(100%-3rem)]": true,
+              "relative z-10": true,
             })}
           >
             {childrenPropsMemo.map((child, index) => {
               const extension = getLanguageExt(child.className);
               const FileTypeIcon = getFileType(extension);
 
+              const titleArray = child.title.split(".");
+              const title =
+                titleArray.length > 1
+                  ? titleArray.slice(0, -1).join(".")
+                  : titleArray[0];
+              const formattedExtension =
+                titleArray.length > 1
+                  ? `.${titleArray[titleArray.length - 1]}`
+                  : "";
+
               return (
                 <div
                   key={index}
                   onClick={() => setActive(index)}
                   className={clsx("", {
-                    "flex items-center gap-2": true,
-                    "-mb-[13px]": true,
+                    "flex items-center relative": true,
+                    "max-w-[100px] w-[calc(1/var(--max-tabs)*100%)]": true,
+                    "-mb-[1px]": true,
                     "px-3 py-2": true,
-                    "border-t border-l border-r rounded-tl-lg rounded-tr-lg":
-                      true,
+                    "border-t border-l border-r": true,
+                    "rounded-tl-lg rounded-tr-lg": true,
                     "border-b": active !== index,
                     "border-slate-300 dark:border-gray-700": true,
                     "bg-gray-100 dark:bg-[rgb(11,20,22)]": active === index,
@@ -89,23 +107,24 @@ const CodeSwitcher: React.FC<Props> = ({ children, maxHeight }) => {
                     "hover:cursor-pointer": true,
                   })}
                 >
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center flex-shrink-0 w-5 ">
-                      <FileTypeIcon />
-                    </div>
-                    {child.title}
+                  <div className="flex items-center flex-shrink-0 w-5 ">
+                    <FileTypeIcon />
                   </div>
+                  <div className="overflow-hidden text-ellipsis">{title}</div>
+                  <div>{formattedExtension}</div>
                 </div>
               );
             })}
           </div>
-          <div>
-            <CopyButton content={childrenPropsMemo[active].children} />
+          <div className="absolute top-0 right-0 z-50 w-5 dark:bg-[rgb(21,30,32)] h-full flex items-center justify-end rounded-tr-md">
+            <div className="mr-2">
+              <CopyButton content={childrenPropsMemo[active].children} />
+            </div>
           </div>
         </div>
         <div
           className={clsx({
-            "h-[378px]": true,
+            "h-full": true,
             "overflow-y-auto": true,
             "scroll-m-1": true,
           })}

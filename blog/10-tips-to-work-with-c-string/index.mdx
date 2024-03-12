@@ -594,7 +594,7 @@ Output:
 
 <Output>
 
-str1: <span class="text-red-500">Hello</span> <span class="text-lime-400">world</span> from C
+str1: <span className="text-red-500">Hello</span> <span className="text-lime-400">world</span> from C
 
 </Output>
 
@@ -976,11 +976,11 @@ But when we compile it with `gcc`, we get the following warning:
 
 str.c: In function 'get_str':
 
-str.c:10:12: <span class="text-violet-500">warning</span>: function returns address of local variable [<span class="text-violet-500">-Wreturn-local-addr</span>]
+str.c:10:12: <span className="text-violet-500">warning</span>: function returns address of local variable [<span className="text-violet-500">-Wreturn-local-addr</span>]
 
-&nbsp;&nbsp;&nbsp;10 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <span class="text-violet-500">str</span>;
+&nbsp;&nbsp;&nbsp;10 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <span className="text-violet-500">str</span>;
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-violet-500">^~~</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-violet-500">^~~</span>
 
 </Output>
 
