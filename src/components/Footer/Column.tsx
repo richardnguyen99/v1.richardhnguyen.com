@@ -41,7 +41,7 @@ const Column: React.FC<Props> = ({ title, items, ...rest }) => {
       >
         {title}
       </h2>
-      <ul className="flex items-center gap-6 md:block">
+      <ul className="flex items-center flex-wrap gap-6 md:block">
         {items.map((item, i) => (
           <li
             key={`footer-item-${i}`}

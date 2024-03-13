@@ -85,16 +85,6 @@ const Footer: React.FC = () => {
                     href: "/about",
                     name: "I/Me/Myself",
                   },
-                  {
-                    type: "gatsby-link",
-                    href: "/site",
-                    name: "Site",
-                  },
-                  {
-                    type: "gatsby-link",
-                    href: "/projects",
-                    name: "Projects",
-                  },
                 ]}
               />
               <Column

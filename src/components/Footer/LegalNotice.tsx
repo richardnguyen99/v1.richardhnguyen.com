@@ -16,19 +16,28 @@ const LegalNotice: React.FC = () => {
       <span>© 2023 richardhnguyen.com. All Rights Reserved.</span>
       <div
         className={clsx({
-          "flex justify-between mt-3 mb-3": true,
+          "hidden md:flex justify-between mt-3 mb-3": true,
           "lg:mt-0 lg:justify-start lg:items-start": true,
         })}
       >
-        <Link className="hover:underline" to="/privacy">
+        <Link
+          className="hover:underline text-xs md:text-sm lg:text-lg"
+          to="/privacy"
+        >
           Privacy Notice
         </Link>
-        <span className="px-3">·</span>
-        <Link className="hover:underline" to="/terms">
+        <span className="px-0.5 md:px-1 lg:px-3">·</span>
+        <Link
+          className="hover:underline text-xs md:text-sm lg:text-lg"
+          to="/terms"
+        >
           Terms of service
         </Link>
-        <span className="px-3">·</span>
-        <Link className="hover:underline" to="/cookies">
+        <span className="px-0.5 md:px-1 lg:px-3">·</span>
+        <Link
+          className="hover:underline text-xs md:text-sm lg:text-lg"
+          to="/cookies"
+        >
           Cookie preferences
         </Link>
       </div>

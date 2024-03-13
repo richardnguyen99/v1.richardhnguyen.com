@@ -8,7 +8,7 @@ const BuiltByGatsby: React.FC = () => {
       </span>{" "}
       is powered by{" "}
       <a
-        className="hover:underline text-gatsby"
+        className="hover:underline text-sky-500 dark:text-sky-400"
         target="_blank"
         rel="noreferrer"
         href="https://www.gatsbyjs.com/"
@@ -17,7 +17,7 @@ const BuiltByGatsby: React.FC = () => {
       </a>{" "}
       and is hosted on{" "}
       <a
-        className="hover:underline text-gatsby"
+        className="hover:underline text-sky-500 dark:text-sky-400"
         target="_blank"
         rel="noreferrer"
         href="https://www.gatsbyjs.com/dashboard"
