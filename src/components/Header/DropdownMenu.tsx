@@ -8,11 +8,11 @@ const DropdownMenu: React.FC = () => {
       <DropdownItem url="/posts" active={false}>
         Posts
       </DropdownItem>
+      <DropdownItem url="/tags" active={false}>
+        Tags
+      </DropdownItem>
       <DropdownItem url="/about" active={false}>
         About
-      </DropdownItem>
-      <DropdownItem url="/projects" active={false}>
-        Projects
       </DropdownItem>
     </ul>
   );
