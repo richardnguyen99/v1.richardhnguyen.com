@@ -13,7 +13,7 @@
 .styled-list ol,
 .styled-list ul {
   @apply mt-6;
-  @apply pl-6;
+  @apply pl-10;
 
   @apply marker:text-sky-500;
   @apply dark:marker:text-sky-300;

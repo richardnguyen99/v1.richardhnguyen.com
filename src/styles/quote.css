@@ -14,15 +14,21 @@ blockquote {
   @apply tracking-tight;
   @apply italic;
 
-  @apply mt-8;
-  @apply -ml-6;
-  @apply pl-6;
+  @apply mt-2 md:mt-4 lg:mt-8;
+  @apply pl-2 md:pl-3 lg:pl-6;
+  @apply ml-0 md:-ml-3 lg:-ml-6;
+  @apply border-l-[1px] md:border-l-[2px] lg:border-l-[3px];
 
-  @apply border-l-[3px];
   @apply border-zinc-500;
   @apply dark:border-zinc-300;
   @apply text-zinc-400;
   @apply dark:text-zinc-500;
+}
+
+blockquote > p,
+blockquote > p > .mdx-link,
+blockquote > p > .mdx-link > .mdx-code {
+  @apply text-sm md:text-lg;
 }
 
 .quote {
@@ -92,11 +98,11 @@ blockquote {
 
   @apply font-black;
   @apply font-serif;
+  @apply text-lg;
   @apply md:text-2xl;
   @apply xl:text-3xl;
   @apply not-italic;
 }
-
 .quote cite {
 }
 
