@@ -3,7 +3,7 @@ import clsx from "classnames";
 
 import type { PillProps } from "./type";
 
-const Pill: React.FC<PillProps> = ({ text, color: _color }) => {
+const Pill: React.FC<PillProps> = ({ text, color: _color, fluid = false }) => {
   return (
     <div
       style={
@@ -17,6 +17,7 @@ const Pill: React.FC<PillProps> = ({ text, color: _color }) => {
         } as React.CSSProperties
       }
       className={clsx({
+        "w-full inline-flex items-center justify-center": fluid,
         "text-[var(--text-size)] leading-[var(--line-height)]": true,
         "inline-block z-[1] relative px-3 ": true,
         "before:absolute before:top-[-1px] before:left-[-1px]": true,
@@ -44,7 +45,7 @@ const Pill: React.FC<PillProps> = ({ text, color: _color }) => {
             "--light-gradient-to": "#06b6d4",
           } as React.CSSProperties
         }
-        className={clsx({
+        className={clsx("text-center", {
           "dark:from-[var(--dark-gradient-from)] dark:to-[var(--dark-gradient-to)]":
             true,
           "from-[var(--light-gradient-from)] to-[var(--light-gradient-to)]":

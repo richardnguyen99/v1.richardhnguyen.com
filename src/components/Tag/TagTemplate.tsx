@@ -24,38 +24,34 @@ const TagTemplate: React.FC<Props> = ({
 
   return (
     <div
-      className={clsx({
-        "mx-auto px-6 md:px-10 w-full": true,
-        "md:max-w-3xl lg:max-w-4xl xl:max-w-6xl ": true,
-      })}
+      className={clsx(
+        "mx-auto px-6 md:px-10 w-full",
+        "md:max-w-3xl lg:max-w-4xl xl:max-w-6xl "
+      )}
     >
       <div className="flex w-full relative overflow-hidden">
         <GatsbyImage
-          className={clsx({
-            "!hidden dark:!block !absolute": true,
-            "top-[-25%] right-0": true,
-            "h-auto w-11/12": true,
-            "pointer-events-none": true,
-          })}
+          className={clsx(
+            "!hidden dark:!block !absolute pointer-events-none",
+            "top-[-25%] right-0",
+            "h-auto w-11/12"
+          )}
           image={thumbnail.childImageSharp.gatsbyImageData}
           alt="tag-hero-thumbnail"
         />
         <div className="w-1/12 flex flex-col relative items-center">
           <div
-            className={clsx({
-              "relative z-10": true,
-              "h-full w-[2px] md:w-[3px]": true,
-              "bg-[linear-gradient(#F8FAFC,_#06b6d4,_#06b6d4,_#F8FAFC)]": true,
-              "dark:bg-[linear-gradient(#0B1416,_#06b6d4,_#06b6d4,_#0B1416)]":
-                true,
-            })}
+            className={clsx(
+              "relative z-10 h-full w-[2px] md:w-[3px]",
+              "bg-[linear-gradient(#F8FAFC,_#06b6d4,_#06b6d4,_#F8FAFC)]",
+              "dark:bg-[linear-gradient(#0B1416,_#06b6d4,_#06b6d4,_#0B1416)]"
+            )}
           />
           <div
-            className={clsx({
-              "hidden md:block absolute": true,
-              "top-1/2 bottom-0 w-[81px] h-[485px]": true,
-              "translate-x-[calc(50%-2px)] translate-y-[-50%]": true,
-            })}
+            className={clsx(
+              "hidden md:block absolute w-[81px] h-[485px]",
+              "top-1/2 bottom-0 translate-x-[calc(50%-2px)] translate-y-[-50%]"
+            )}
           >
             <TagTemplateLine />
           </div>
@@ -66,35 +62,29 @@ const TagTemplate: React.FC<Props> = ({
               {url !== null && (
                 <a href={url} className="group flex items-center">
                   <Pill color="blue" text={url} />
-                  <div
-                    className={clsx({
-                      "text-sky-500 font-semibold": true,
-                      "opacity-0 -translate-x-1/4": true,
-                      "group-hover:translate-x-2 group-hover:opacity-100": true,
-                      "transition-[opacity,transform]": true,
-                      "duration-500 ease-in-out": true,
-                      "hover:border-b border-sky-500": true,
-                    })}
-                  >
-                    Go to the official site
-                  </div>
                 </a>
               )}
               <h3
                 className={clsx(
-                  "text-7xl font-bold first-letter:uppercase my-4",
-                  {
-                    "bg-gradient-70": true,
-                    "bg-clip-text": true,
-                    "text-transparent": true,
-                    "from-sky-500 to-cyan-300": true,
-                    "dark:from-sky-400 dark:to-cyan-200": true,
-                  }
+                  "text-4xl md:text-5xl lg:text-7xl",
+                  "font-bold md:font-extrabold lg:font-black",
+                  "first-letter:uppercase my-4",
+                  "bg-gradient-70 bg-clip-text text-transparent",
+                  "from-sky-500 to-cyan-300",
+                  "dark:from-sky-400 dark:to-cyan-200"
                 )}
               >
                 {display}
               </h3>
-              <div className="max-w-6/12 text-2xl font-bold">{description}</div>
+              <div
+                className={clsx(
+                  "w-full md:max-w-9/12 lg:max-w-6/12",
+                  "text-lg md:text-xl lg:text-2xl",
+                  "font-semibold md:font-bold lg:font-extrabold"
+                )}
+              >
+                {description}
+              </div>
             </div>
           </div>
         </div>
@@ -113,19 +103,17 @@ const TagTemplate: React.FC<Props> = ({
           ))}
         </div>
         <div
-          className={clsx({
-            "absolute flex flex-col items-center": true,
-            "w-1/12 h-[calc(100%-128px)] bottom-0 z-0 ": true,
-          })}
+          className={clsx(
+            "absolute flex flex-col items-center",
+            "w-1/12 h-[calc(100%-128px)] bottom-0 z-0 "
+          )}
         >
           <div
-            className={clsx("", {
-              "relative z-10": true,
-              "h-full w-[2px] md:w-[3px]": true,
-              "bg-[linear-gradient(#F8FAFC,_#06b6d4,_#06b6d4,_#F8FAFC)]": true,
-              "dark:bg-[linear-gradient(#0B1416,_#06b6d4,_#06b6d4,_#0B1416)]":
-                true,
-            })}
+            className={clsx(
+              "relative z-10 h-full w-[2px] md:w-[3px]",
+              "bg-[linear-gradient(#F8FAFC,_#06b6d4,_#06b6d4,_#F8FAFC)]",
+              "dark:bg-[linear-gradient(#0B1416,_#06b6d4,_#06b6d4,_#0B1416)]"
+            )}
           />
         </div>
       </div>

@@ -559,18 +559,16 @@ const BorderLink: React.FC<
       {...rest}
       className={clsx(
         "flex items-center gap-3 relative",
-        "text-[4vw] md:text-[3.5vw] lg:text-[2vw]",
-        {
-          "text-lg font-light uppercase tracking-[0.25em]": true,
-          "text-slate-800 dark:text-slate-200": true,
-          "hover:text-slate-950  dark:hover:text-slate-50": true,
+        "text-[3.75vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[1.5vw]",
+        "text-lg font-light uppercase tracking-[0.25em]",
+        "text-slate-800 dark:text-slate-200",
+        "hover:text-slate-950  dark:hover:text-slate-50",
 
-          "after:content-[''] after:absolute after:block": true,
-          "after:left-0 after:bottom-0": true,
-          "after:h-[2px] after:w-0 hover:after:w-full": true,
-          "after:bg-sky-500": true,
-          "after:transition-[width] after:duration-300 after:ease-in-out": true,
-        }
+        "after:content-[''] after:absolute after:block",
+        "after:left-0 after:bottom-0",
+        "after:h-[2px] after:w-0 hover:after:w-full",
+        "after:bg-sky-500",
+        "after:transition-[width] after:duration-300 after:ease-in-out"
       )}
     >
       {children}
