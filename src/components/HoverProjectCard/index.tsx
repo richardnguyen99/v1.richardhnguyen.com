@@ -20,6 +20,7 @@ const HoverProjectCard: React.FC<Props> = ({
   linkText = "",
   status,
   children,
+  orderImageSrc: _,
   ...rest
 }) => {
   const {
@@ -34,13 +35,25 @@ const HoverProjectCard: React.FC<Props> = ({
       case ProjectStatus.DONE:
         return (
           <Tooltip message="Done" placement="bottom-end">
-            <CheckIcon className="w-8 h-8 p-1.5 inline-flex items-center justify-center fill-green-400" />
+            <CheckIcon
+              className={clsx(
+                "w-8 h-8 p-1.5",
+                "inline-flex items-center justify-center",
+                "fill-green-400"
+              )}
+            />
           </Tooltip>
         );
       case ProjectStatus.IN_PROGRESS:
         return (
           <Tooltip message="In progress">
-            <FlameIcon className="w-8 h-8 p-1.5 inline-flex items-center justify-center fill-amber-400" />
+            <FlameIcon
+              className={clsx(
+                "w-8 h-8 p-1.5",
+                "inline-flex items-center justify-center",
+                "fill-amber-400"
+              )}
+            />
           </Tooltip>
         );
       case ProjectStatus.ON_HOLD:
@@ -67,65 +80,61 @@ const HoverProjectCard: React.FC<Props> = ({
   return (
     <div
       {...rest}
-      className={clsx("w-full xl:w-[90%] overflow-hidden", {
-        "mx-auto mt-20 first:mt-10": true,
-        "w-full h-full": true,
-        "p-6 md:p-8 lg:p-12": true,
-        "bg-slate-100 dark:bg-[rgb(20,29,31)]": true,
-      })}
+      className={clsx(
+        "w-full xl:w-[90%] overflow-hidden",
+        "mx-auto mt-20 first:mt-10",
+        "w-full h-full",
+        "p-6 md:p-8 lg:p-12",
+        "bg-slate-100 dark:bg-[rgb(20,29,31)]"
+      )}
       data-image-1={defaultImageSrc}
       data-image-2={hoverImageSrc}
     >
-      <div
-        className={clsx("", {
-          flex: true,
-        })}
-      >
+      <div className="flex">
         <div
           ref={imageRef}
-          className={clsx({
-            "w-12 h-12": true,
-            "md:w-[256px] md:h-[320px]": true,
-            "lg:w-[320px] lg:h-[400px]": true,
-            "bg-cover relative overflow-hidden": true,
-            "rounded-lg md:rounded-2xl lg:rounded-3xl": true,
-          })}
+          className={clsx(
+            "w-12 h-12 bg-cover relative overflow-hidden",
+            "md:w-[256px] md:h-[320px]",
+            "lg:w-[320px] lg:h-[400px]",
+            "rounded-lg md:rounded-2xl lg:rounded-3xl"
+          )}
         >
           <div className="block opacity-0" />
         </div>
         <div
-          className={clsx({
-            "relative flex flex-col overflow-hidden": true,
-            "w-full h-[240px]": true,
-            "md:w-[calc(100%-256px)] md:h-[320px]": true,
-            "lg:w-[calc(100%-320px)] lg:h-[400px]": true,
-            "-ml-12 md:ml-12 lg:ml-16 xl:ml-24 ": true,
-          })}
+          className={clsx(
+            "relative flex flex-col overflow-hidden",
+            "w-full h-[240px]",
+            "md:w-[calc(100%-256px)] md:h-[320px]",
+            "lg:w-[calc(100%-320px)] lg:h-[400px]",
+            "-ml-12 md:ml-12 lg:ml-16 xl:ml-24 "
+          )}
         >
           <div
-            className={clsx({
-              "grid grid-cols-[repeat(5,_1fr)_minmax(32px,_auto)]": true,
-              "w-[calc(100%-64px)] md:w-full items-center": true,
-              "ml-16 md:ml-0": true,
-            })}
+            className={clsx(
+              "grid grid-cols-[repeat(5,_1fr)_minmax(32px,_auto)]",
+              "w-[calc(100%-64px)] md:w-full items-center",
+              "ml-16 md:ml-0"
+            )}
           >
             <h1
-              className={clsx({
-                "text-lg md:text-1xl lg:text-3xl": true,
-                "col-span-5 xl:col-start-1 xl:col-span-3": true,
-                "order-1 font-black overflow-auto": true,
-              })}
+              className={clsx(
+                "text-lg md:text-1xl lg:text-3xl",
+                "col-span-5 xl:col-start-1 xl:col-span-3",
+                "order-1 font-black overflow-auto"
+              )}
             >
               {title}
             </h1>
 
             <div
-              className={clsx({
-                "order-3 xl:order-2": true,
-                "col-start-1 xl:col-start-4": true,
-                "col-span-6 xl:col-span-3 xl:col-end-6": true,
-                "flex items-center gap-3": true,
-              })}
+              className={clsx(
+                "order-3 xl:order-2",
+                "col-start-1 xl:col-start-4",
+                "col-span-6 xl:col-span-3 xl:col-end-6",
+                "flex items-center gap-3"
+              )}
             >
               {externalLink !== "#" && (
                 <a
@@ -139,12 +148,12 @@ const HoverProjectCard: React.FC<Props> = ({
               )}
             </div>
             <span
-              className={clsx({
-                "flex items-center justify-center text-2xl font-black": true,
-                "order-2 xl:order-3": true,
-                "col-span-1 col-end-7 xl:ml-auto": true,
-                "w-8 h-8 mr-1": true,
-              })}
+              className={clsx(
+                "flex items-center justify-center text-2xl font-black",
+                "order-2 xl:order-3",
+                "col-span-1 col-end-7 xl:ml-auto",
+                "w-8 h-8 mr-1"
+              )}
             >
               {renderStatus(status)}
             </span>
@@ -152,33 +161,33 @@ const HoverProjectCard: React.FC<Props> = ({
           <div>{children}</div>
           <div className="absolute bottom-0 left-0 w-full">
             <div
-              className={clsx({
-                "relative bg-gradient-to-t h-[100px]": true,
-                "from-0% via-75%": true,
-                "from-slate-100/100 dark:from-[rgba(20,29,31,1)]": true,
-                "via-slate-100/90 dark:via-[rgba(20,29,31,0.9)]": true,
-                "to-slate-100/[0] dark:to-[rgba(20,29,31,0)] ": true,
-              })}
+              className={clsx(
+                "relative bg-gradient-to-t h-[100px]",
+                "from-0% via-75%",
+                "from-slate-100/100 dark:from-[rgba(20,29,31,1)]",
+                "via-slate-100/90 dark:via-[rgba(20,29,31,0.9)]",
+                "to-slate-100/[0] dark:to-[rgba(20,29,31,0)] "
+              )}
             >
               <div className="absolute bottom-[10%] left-0">
                 <a
                   href={externalLink}
                   target="_blank"
                   rel="noreferrer"
-                  className={clsx("flex items-center gap-3 relative", {
-                    "text-base font-light uppercase tracking-[0.15em]": true,
-                    "lg:text-lg lg:tracking-[0.25em]": true,
+                  className={clsx(
+                    "flex items-center gap-3 relative",
+                    "text-base font-light uppercase tracking-[0.15em]",
+                    "lg:text-lg lg:tracking-[0.25em]",
 
-                    "text-slate-800 dark:text-slate-200": true,
-                    "hover:text-slate-950  dark:hover:text-slate-50": true,
+                    "text-slate-800 dark:text-slate-200",
+                    "hover:text-slate-950  dark:hover:text-slate-50",
 
-                    "after:content-[''] after:absolute after:block": true,
-                    "after:left-0 after:bottom-0": true,
-                    "after:h-[2px] after:w-0 hover:after:w-full": true,
-                    "after:bg-sky-500": true,
-                    "after:transition-[width] after:duration-300 after:ease-in-out":
-                      true,
-                  })}
+                    "after:content-[''] after:absolute after:block",
+                    "after:left-0 after:bottom-0",
+                    "after:h-[2px] after:w-0 hover:after:w-full",
+                    "after:bg-sky-500",
+                    "after:transition-[width] after:duration-300 after:ease-in-out"
+                  )}
                 >
                   <span>View Project</span>
                 </a>

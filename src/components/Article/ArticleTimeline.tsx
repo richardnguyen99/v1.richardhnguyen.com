@@ -2,7 +2,7 @@ import * as React from "react";
 import clsx from "classnames";
 import { useRemark } from "react-remark";
 
-import ArrowLink from "@components/Link/ArrowLink";
+import LinkWrapper from "@components/Link/LinkWrapper";
 
 import type { ArticleProps } from "./type";
 
@@ -21,7 +21,7 @@ const ArticleTimeline: React.FC<Props & DataProps> = ({ data, ...rest }) => {
 
   return (
     <article {...rest} className="relative group ">
-      <ArrowLink href={`${data.slug}`} native>
+      <LinkWrapper href={`${data.slug}`} native>
         <svg
           viewBox="0 0 9 9"
           className={clsx({
@@ -58,7 +58,7 @@ const ArticleTimeline: React.FC<Props & DataProps> = ({ data, ...rest }) => {
             {data.title}
           </h3>
           <p className="text-gray-800 dark:text-slate-300 mt-4">{content}</p>
-          <ArrowLink
+          <LinkWrapper
             native
             href={data.slug}
             className={clsx("font-bold inline-block mt-4", {
@@ -74,9 +74,9 @@ const ArticleTimeline: React.FC<Props & DataProps> = ({ data, ...rest }) => {
             })}
           >
             Read more &gt;
-          </ArrowLink>
+          </LinkWrapper>
         </div>
-      </ArrowLink>
+      </LinkWrapper>
     </article>
   );
 };

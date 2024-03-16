@@ -1,7 +1,7 @@
-import ArrowLink from "./ArrowLink";
+import LinkWrapper from "./LinkWrapper";
 
 const exported = {
-  ArrowLink,
+  LinkWrapper,
 };
 
 export default exported;

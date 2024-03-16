@@ -5,7 +5,7 @@ import { ArrowRightIcon } from "@primer/octicons-react";
 import { SEO } from "@components/SEO";
 import TypeWriter from "@components/Typewritter";
 import Articles from "@components/Article";
-import ArrowLink from "@components/Link/ArrowLink";
+import LinkWrapper from "@components/Link/LinkWrapper";
 
 const IndexPage: React.FC = () => {
   return (
@@ -36,7 +36,7 @@ export const Head = () => (
 
 const MoreContentLink: React.FC = () => {
   return (
-    <ArrowLink native href="/posts/">
+    <LinkWrapper native href="/posts/">
       <div className="group flex items-center gap-3 mt-16 text-blue-500">
         <h3
           className={clsx("text-5xl font-black", {
@@ -55,6 +55,6 @@ const MoreContentLink: React.FC = () => {
           })}
         />
       </div>
-    </ArrowLink>
+    </LinkWrapper>
   );
 };

@@ -5,7 +5,7 @@ import type { LinkProps } from "./type";
 
 type Props = React.PropsWithChildren<React.HTMLAttributes<HTMLAnchorElement>>;
 
-const ArrowLink: React.FC<Props & LinkProps> = ({
+const LinkWrapper: React.FC<Props & LinkProps> = ({
   native,
   href,
   children,
@@ -26,4 +26,4 @@ const ArrowLink: React.FC<Props & LinkProps> = ({
   return native ? <NativeLink /> : <AnchorLink />;
 };
 
-export default ArrowLink;
+export default LinkWrapper;
