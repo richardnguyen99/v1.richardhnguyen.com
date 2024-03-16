@@ -42,7 +42,7 @@ const formHandler = (
       res.status(200).json(req.body);
     })
     .catch((error) => {
-      console.log(error.message);
+      console.error(error.message);
 
       res.status(500).json({ error: error.message });
     });

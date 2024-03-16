@@ -42,7 +42,6 @@ const Output: React.FC<CodeProps> = ({
     (_children: typeof children, content: string[]) => {
       if (_children === undefined) return;
 
-      console.log(_children);
       if (typeof _children === "string") {
         content.push(_children);
       } else if (React.isValidElement(_children)) {
