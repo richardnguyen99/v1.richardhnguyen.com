@@ -5,7 +5,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import ArticleTimeline from "./ArticleTimeline";
 import { transformEdge } from "./util";
 
-const Timeline: React.FC = () => {
+const PostsTimeline: React.FC = () => {
   const {
     allMdx: { edges },
   } = useStaticQuery<Queries.ArticlesQuery>(query);
@@ -33,7 +33,7 @@ const Timeline: React.FC = () => {
   );
 };
 
-export default Timeline;
+export default PostsTimeline;
 
 export const query = graphql`
   query Articles {
