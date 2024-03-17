@@ -4,7 +4,7 @@ import { useRemark } from "react-remark";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-import type { ArticleProps } from "../../features/posts/type";
+import type { ArticleProps } from "./type";
 
 type ArticleDataProps = {
   data: ArticleProps;

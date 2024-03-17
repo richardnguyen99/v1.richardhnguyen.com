@@ -3,7 +3,7 @@ import * as React from "react";
 
 import HeroArticle from "./Hero";
 import ArticleCard from "./ArticleCard";
-import { transformEdge } from "../../features/posts/util";
+import { transformEdge } from "./util";
 
 const ArticleContainer: React.FC = () => {
   const {

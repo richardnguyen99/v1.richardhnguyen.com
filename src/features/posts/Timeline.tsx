@@ -8,22 +8,23 @@ import { transformEdge } from "./util";
 const PostsTimeline: React.FC = () => {
   const {
     allMdx: { edges },
-  } = useStaticQuery<Queries.ArticlesQuery>(query);
+  } = useStaticQuery<Queries.ArticleTimelineQuery>(query);
 
   return (
     <div
-      className={clsx({
-        "relative md:mx-auto md:max-w-3xl lg:max-w-4xl xl:max-w-6xl": true,
-        "py-4 md:py-16 lg:py-20 xl:py-24": true,
-      })}
+      className={clsx(
+        "relative px-4 md:mx-auto",
+        "md:max-w-3xl lg:max-w-4xl xl:max-w-6xl",
+        "py-4 md:py-16 lg:py-20 xl:py-24"
+      )}
     >
       <div
-        className={clsx({
-          "flex flex-col md:gap-y-10 lg:gap-y-16": true,
-          "md:pl-10": true,
+        className={clsx(
+          "flex flex-col md:gap-y-10 lg:gap-y-16",
+          "md:pl-10",
 
-          "md:border-l-[3px] border-slate-200 dark:border-slate-800": true,
-        })}
+          "md:border-l-[3px] border-slate-200 dark:border-slate-800"
+        )}
       >
         {edges.map((edge, i) => {
           return <ArticleTimeline data={transformEdge(edge.node)} key={i} />;
@@ -36,7 +37,7 @@ const PostsTimeline: React.FC = () => {
 export default PostsTimeline;
 
 export const query = graphql`
-  query Articles {
+  query ArticleTimeline {
     allMdx(
       sort: { frontmatter: { created: DESC } }
       filter: { frontmatter: { published: { eq: true } } }
@@ -45,10 +46,13 @@ export const query = graphql`
         node {
           id
           tableOfContents(maxDepth: 2)
+          timeToRead
+
           fields {
             excerpt
             slug
           }
+
           frontmatter {
             title
             author

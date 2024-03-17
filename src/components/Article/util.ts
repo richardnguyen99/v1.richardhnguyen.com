@@ -1,7 +1,7 @@
 import type { ArticleProps } from "./type";
 
 export const transformEdge = (
-  node: Queries.ArticleTimelineQuery["allMdx"]["edges"][number]["node"]
+  node: Queries.ArticlesQuery["allMdx"]["edges"][number]["node"]
 ): ArticleProps => {
   return {
     published: true,
@@ -11,7 +11,6 @@ export const transformEdge = (
     tags: node.frontmatter.tags as string[],
     categories: node.frontmatter.categories[0],
     excerpt: node.fields.excerpt,
-    timeToRead: node.timeToRead,
     slug: node.fields.slug,
     gatsbyImageData:
       node.frontmatter.thumbnail !== null

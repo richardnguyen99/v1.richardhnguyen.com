@@ -9,6 +9,5 @@ export type ArticleProps = {
   categories: string;
   slug: string;
   published: boolean;
-  timeToRead: number;
   gatsbyImageData: IGatsbyImageData | null;
 };
