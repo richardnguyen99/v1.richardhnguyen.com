@@ -17,7 +17,7 @@ type Props = React.PropsWithChildren<
 const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
   const [content, setContent] = useRemark();
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setContent(data.excerpt);
   }, [data.excerpt, setContent]);
 
@@ -40,12 +40,12 @@ const HeroArticle: React.FC<Props> = ({ data, ...rest }) => {
         <div className="flex flex-col justify-between w-full lg:w-4/12 px-6">
           <div>
             <h3
-              className={clsx({
-                "cursor-pointer": true,
-                "mt-4 mb-6 lg:mt-3 lg:mb-0": true,
-                "text-3xl lg:text-4xl font-extrabold tracking-tight": true,
-                "text-sky-400 dark:hover:text-sky-500": true,
-              })}
+              className={clsx(
+                "cursor-pointer",
+                "mt-4 mb-6 lg:mt-3 lg:mb-0",
+                "text-3xl lg:text-4xl font-extrabold tracking-tight",
+                "text-sky-400 dark:hover:text-sky-500"
+              )}
             >
               <Link to={`${data.slug}`}>{data.title}</Link>
             </h3>
