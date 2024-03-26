@@ -13,7 +13,7 @@ const LegalNotice: React.FC = () => {
         "border-zinc-700 lg:border-t-0": true,
       })}
     >
-      <span>© 2023 richardhnguyen.com. All Rights Reserved.</span>
+      <span>© 2024 richardhnguyen.com. All Rights Reserved.</span>
       <div
         className={clsx({
           "hidden md:flex justify-between mt-3 mb-3": true,
