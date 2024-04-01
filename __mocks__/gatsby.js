@@ -20,6 +20,8 @@ module.exports = {
       React.createElement("a", {
         ...rest,
         href: to,
+        "data-testlink": to,
+        "data-activeclassname": activeClassName,
       })
   ),
   Slice: jest.fn().mockImplementation(({ alias, ...rest }) =>

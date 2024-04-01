@@ -12,7 +12,7 @@ export type Props = React.PropsWithChildren<
 >;
 
 /**
- * Header Item is a part of the Header component.
+ * Header HeaderLink is a part of the Header component.
  *
  * This component defines a layout for the items in the header component and
  * holds an URL for the associative page. It uses Gatsby Link under the hood.
@@ -21,21 +21,21 @@ export type Props = React.PropsWithChildren<
  * @param `props` Name to display and To to navigate.
  * @returns React.FC
  */
-const Item: React.FC<Props> = ({ name, to }) => {
+const HeaderLink: React.FC<Props> = ({ name, to }) => {
   return (
     <Link
       to={to}
-      className={clsx("", {
-        "inline-block relative": true,
-        "p-5 font-semibold text-lg leading-6": true,
-        "text-zinc-800 dark:text-zinc-50": true,
-        "hover:text-sky-600 dark:hover:text-sky-500": true,
-      })}
-      activeClassName="dark:text-sky-500"
+      data-testid="header-link"
+      className={clsx(
+        "inline-block relative",
+        "p-5 font-semibold text-lg leading-6",
+        "hover:text-sky-600 dark:hover:text-sky-500"
+      )}
+      activeClassName="text-sky-500 dark:text-sky-400"
     >
-      <div>{name}</div>
+      {name}
     </Link>
   );
 };
 
-export default Item;
+export default HeaderLink;

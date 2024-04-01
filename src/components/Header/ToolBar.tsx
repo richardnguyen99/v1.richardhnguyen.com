@@ -7,6 +7,14 @@ import Tooltip from "@components/Tooltip";
 import Dropdown from "@components/Header/Dropdown";
 import ThemeSwitcher from "@components/Theme/Switcher";
 
+/**
+ * ToolBar is a part of the <Header /> component.
+ *
+ * <Toolbar /> contains external links to the Github repository, RSS feed, and
+ * other configuration options such as the theme switcher.
+ *
+ * @returns React.FC
+ */
 const ToolBar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 

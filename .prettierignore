@@ -3,3 +3,5 @@ package.json
 package-lock.json
 public
 gatsby-*
+__tests__
+__mocks__
