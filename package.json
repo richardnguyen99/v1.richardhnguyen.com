@@ -9,7 +9,8 @@
     "react",
     "typescript",
     "mdx",
-    "styled-components"
+    "tailwindcss",
+    "jset"
   ],
   "license": "MIT",
   "dependencies": {
@@ -108,6 +109,5 @@
   "repository": "https://github.com/richardnguyen99/richardhnguyen.com",
   "bugs": {
     "url": "https://github.com/richardnguyen99/richardhnguyen.com/issues"
-  },
-  "main": "index.js"
+  }
 }

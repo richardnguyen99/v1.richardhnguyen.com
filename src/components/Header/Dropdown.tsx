@@ -15,6 +15,15 @@ type Props = React.PropsWithChildren<
   React.HTMLAttributes<HTMLDivElement> & DropdownProps
 >;
 
+/**
+ * Header Dropdown is a part of the Header component
+ *
+ * This component defines a dropdown menu for the header component in the
+ * mobile view. Dropdown menu is controlled by the <Toolbar /> component, that
+ * toggles the open state of the dropdown.
+ *
+ * @param {Props} props To control the open state of the dropdown and close it.
+ */
 const Dropdown: React.FC<Props> = ({ opening, onClose, ...rest }) => {
   const { theme, setTheme } = React.useContext(ThemeContext);
 
@@ -58,27 +67,27 @@ const Dropdown: React.FC<Props> = ({ opening, onClose, ...rest }) => {
               leaveTo="opacity-0 translate-y-4"
             >
               <Dialog.Panel
-                className={clsx({
-                  "w-full h-full overflow-hidden": true,
-                  "bg-white dark:bg-[#0B1416]/90": true,
-                  "rounded-2xl p-6 text-left align-middle": true,
-                  "shadow-2xl transition-all transform ": true,
-                })}
+                className={clsx(
+                  "w-full h-full overflow-hidden",
+                  "bg-white dark:bg-[#0B1416]/90",
+                  "rounded-2xl p-6 text-left align-middle",
+                  "shadow-2xl transition-all transform "
+                )}
               >
                 <Dialog.Title
                   as="h1"
-                  className={clsx({
-                    "text-3xl font-black leading-6": true,
-                    "text-gray-900 dark:text-white": true,
-                  })}
+                  className={clsx(
+                    "text-3xl font-black leading-6",
+                    "text-gray-900 dark:text-white"
+                  )}
                 >
                   <div className="flex items-center">
                     <p>
                       <span
-                        className={clsx({
-                          "text-transparent bg-clip-text mr-2": true,
-                          "bg-gradient-to-r to-sky-500 from-blue-600": true,
-                        })}
+                        className={clsx(
+                          "text-transparent bg-clip-text mr-2",
+                          "bg-gradient-to-r to-sky-500 from-blue-600"
+                        )}
                       >
                         Menu
                       </span>
@@ -86,15 +95,15 @@ const Dropdown: React.FC<Props> = ({ opening, onClose, ...rest }) => {
                     <button
                       ref={cancelButtonRef}
                       type="button"
-                      className={clsx({
-                        "inline-flex justify-center px-2 py-2 ml-auto": true,
-                        "rounded-md border border-transparent": true,
-                        "font-medium text-sm": true,
-                        "hover:bg-gray-200 dark:hover:bg-gray-700": true,
-                        "focus:outline-none focus-visible:ring-2": true,
-                        "focus-visible:ring-blue-500 ": true,
-                        "focus-visible:ring-offset-2": true,
-                      })}
+                      className={clsx(
+                        "inline-flex justify-center px-2 py-2 ml-auto",
+                        "rounded-md border border-transparent",
+                        "font-medium text-sm",
+                        "hover:bg-gray-200 dark:hover:bg-gray-700",
+                        "focus:outline-none focus-visible:ring-2",
+                        "focus-visible:ring-blue-500 ",
+                        "focus-visible:ring-offset-2"
+                      )}
                       onClick={onClose}
                     >
                       <XIcon size={24} />
@@ -102,21 +111,22 @@ const Dropdown: React.FC<Props> = ({ opening, onClose, ...rest }) => {
                   </div>
                 </Dialog.Title>
                 <hr
-                  className={clsx({
-                    "my-4 h-[2px] border-0": true,
-                    "bg-gray-200 dark:bg-slate-800": true,
-                  })}
+                  className={clsx(
+                    "my-4 h-[2px] border-0",
+                    "bg-gray-200 dark:bg-slate-800"
+                  )}
                 />
 
+                {/* DropMenu Content */}
                 <div>
                   <DropdownMenu />
                 </div>
 
                 <hr
-                  className={clsx({
-                    "my-4 h-[2px] border-0": true,
-                    "bg-gray-200 dark:bg-slate-800": true,
-                  })}
+                  className={clsx(
+                    "my-4 h-[2px] border-0",
+                    "bg-gray-200 dark:bg-slate-800"
+                  )}
                 />
 
                 <div

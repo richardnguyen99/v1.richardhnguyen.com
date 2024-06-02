@@ -4,7 +4,6 @@ import { Link } from "gatsby";
 
 export type DropdownItemProps = {
   url: string;
-  active: boolean;
 };
 
 type Props = React.PropsWithChildren<
