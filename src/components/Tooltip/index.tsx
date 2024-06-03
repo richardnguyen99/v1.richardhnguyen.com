@@ -86,9 +86,9 @@ const Tooltip: React.FC<Props> = ({
               "inline-block items-center justify-center": true,
               "whitespace-nowrap text-xs font-bold": true,
               "rounded-lg p-1.5  border": true,
-              "bg-zinc-300 dark:bg-zinc-800 ": true,
-              "border-zinc-400/50 dark:border-zinc-600 ": true,
-              "shadow-zinc-800 dark:shadow-zinc-800/60": true,
+              "bg-slate-300 dark:bg-slate-800 ": true,
+              "border-slate-400/50 dark:border-slate-600 ": true,
+              "shadow-slate-800 dark:shadow-slate-800/60": true,
             })}
           >
             {message}

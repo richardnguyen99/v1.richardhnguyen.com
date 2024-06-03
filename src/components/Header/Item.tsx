@@ -27,7 +27,7 @@ const Item: React.FC<Props> = ({ name, to }) => {
       to={to}
       className={clsx("", {
         "inline-block relative": true,
-        "p-5 font-semibold text-lg leading-6": true,
+        "p-5 font-semibold text-base leading-6": true,
         "text-zinc-800 dark:text-zinc-50": true,
         "hover:text-sky-600 dark:hover:text-sky-500": true,
       })}

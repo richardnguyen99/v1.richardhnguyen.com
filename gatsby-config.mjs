@@ -152,7 +152,6 @@ const config = {
         lang: "en",
         start_url: "/",
         background_color: "#0B1416",
-        theme_color: "#0EA5E9",
         display: "standalone",
         crossOrigin: "use-credentials",
         icon: "static/brand-64.png",
@@ -180,6 +179,16 @@ const config = {
           {
             src: "/static/brand-128.png",
             sizes: "128x128",
+            type: "image/png",
+          },
+          {
+            src: "/static/brand-256.png",
+            sizes: "256x256",
+            type: "image/png",
+          },
+          {
+            src: "/static/brand-512.png",
+            sizes: "512x512",
             type: "image/png",
           },
         ],

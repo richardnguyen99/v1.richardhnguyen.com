@@ -22,7 +22,7 @@ const Header: React.FC<Props> = () => {
       className={clsx("duration-300 z-50", {
         "w-full fixed z-10 border-b": true, // Layout
         "bg-slate-50 dark:bg-[#0B1416] ": true, // Style
-        "border-gray-300 dark:border-gray-700": true, // Border
+        "border-slate-300 dark:border-slate-800": true, // Border
       })}
     >
       <div

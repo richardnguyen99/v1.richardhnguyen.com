@@ -1,11 +1,12 @@
 import * as React from "react";
 import clsx from "classnames";
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 import Column from "./Column";
 import LegalNotice from "./LegalNotice";
 import BuiltByGatsby from "./BuiltByGatsby";
+import Brand from "@components/Brand/Brand";
 
 const Footer: React.FC = () => {
   const {
@@ -34,7 +35,12 @@ const Footer: React.FC = () => {
         <div className="block md:flex">
           <div className="mb-6 md:w-5/12 md:mb-0">
             <div className="flex items-center">
-              <GatsbyImage image={gatsbyImageData} alt="brand-64" />
+              <Link to="/">
+                <div className="w-24 h-24 p-4 rounded-full dark:hover:bg-slate-800 flex items-center justify-center">
+                  <Brand width="80" height="80" />
+                </div>
+              </Link>
+
               <h2 className="text-7xl leading-none font-bold pl-4">Blog</h2>
             </div>
             <div className="mt-6  w-9/12">
@@ -136,7 +142,7 @@ export default Footer;
 
 export const query = graphql`
   query Footer {
-    file(relativePath: { eq: "brand-64.png" }) {
+    file(relativePath: { eq: "brand-128.png" }) {
       childImageSharp {
         gatsbyImageData
         fixed {
